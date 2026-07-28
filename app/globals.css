@@ -1,26 +1,86 @@
 @import "tailwindcss";
 
+/* Dark mode toggled by a `.dark` class on <html>, not by OS preference. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0a0a0a;
+  --surface: #f7f7f8;
+  --border: #e5e5e5;
+  --muted-foreground: #6b7280;
+
+  --accent-blue: #2563eb;
+  --accent-violet: #7c3aed;
+  --accent-cyan: #0891b2;
+  --accent-amber: #d97706;
+  --accent-rose: #e11d48;
+
+  /* `font-sans` follows locale: Latin by default, Arabic when dir="rtl". */
+  --font-sans: var(--font-latin);
+}
+
+:root[dir="rtl"] {
+  --font-sans: var(--font-arabic);
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --surface: #151517;
+  --border: #27272a;
+  --muted-foreground: #a1a1aa;
+
+  --accent-blue: #60a5fa;
+  --accent-violet: #a78bfa;
+  --accent-cyan: #22d3ee;
+  --accent-amber: #fbbf24;
+  --accent-rose: #fb7185;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-violet: var(--accent-violet);
+  --color-accent-cyan: var(--accent-cyan);
+  --color-accent-amber: var(--accent-amber);
+  --color-accent-rose: var(--accent-rose);
+
+  --font-sans: var(--font-sans);
+  --font-latin: var(--font-latin);
+  --font-arabic: var(--font-arabic);
+
+  /*
+   * Semantic spacing scale for consistent section rhythm, e.g. `py-section-xl`.
+   * Namespaced with a `section-` prefix — Tailwind checks `--spacing-*` before
+   * `--container-*` when resolving named sizes, so bare keys like `xs`/`md`/`2xl`
+   * here would silently shadow the built-in `max-w-xs`, `w-md`, etc. scale.
+   */
+  --spacing-section-xs: 0.5rem;
+  --spacing-section-sm: 1rem;
+  --spacing-section-md: 1.5rem;
+  --spacing-section-lg: 2.5rem;
+  --spacing-section-xl: 4rem;
+  --spacing-section-2xl: 6rem;
+  --spacing-section-3xl: 8rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }

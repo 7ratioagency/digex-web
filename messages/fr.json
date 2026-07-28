@@ -1,0 +1,228 @@
+{
+  "meta": {
+    "title": "Digex | Agence digitale en Algérie — identité, sites, contenu",
+    "description": "Digex Agency : identité visuelle, boutiques en ligne et contenu marketing pour les marques algériennes."
+  },
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "work": "Réalisations",
+    "contact": "Contact",
+    "cta": "Démarrer un projet",
+    "language": "Langue",
+    "theme": "Mode sombre",
+    "menu": "Menu"
+  },
+  "hero": {
+    "eyebrow": "Agence digitale · Algérie",
+    "headline": "Votre marque mérite",
+    "headlineAccent": "mieux qu'une page Facebook",
+    "sub": "Identité visuelle, boutique en ligne, contenu qui vend — une seule équipe, de l'idée à la première vente.",
+    "ctaPrimary": "Démarrer un projet",
+    "ctaSecondary": "Voir nos réalisations"
+  },
+  "problem": {
+    "eyebrow": "Pourquoi nous",
+    "title": "En Algérie, ce n'est pas le produit qui manque. C'est la visibilité.",
+    "lead": "Un bon produit avec une image faible reste invisible. C'est exactement ce que nous corrigeons.",
+    "items": [
+      {
+        "title": "Une identité qui ne vous distingue pas",
+        "body": "Un logo bâclé et des couleurs au hasard : vous ressemblez à tous vos concurrents."
+      },
+      {
+        "title": "Des clients qui passent sans revenir",
+        "body": "Ils vous trouvent sur Facebook, ne trouvent pas où acheter, et partent."
+      },
+      {
+        "title": "Un site lent — ou inexistant",
+        "body": "Ou une boutique qui casse sur mobile, là où 90 % de vos clients naviguent."
+      },
+      {
+        "title": "Du contenu sans direction",
+        "body": "Des publications dispersées, sans ligne visuelle, qui ne construisent aucune mémoire de marque."
+      }
+    ]
+  },
+  "services": {
+    "eyebrow": "Nos services",
+    "title": "Tout ce dont votre marque a besoin, sous un même toit",
+    "lead": "Cinq services connectés. Plus besoin de coordonner quatre freelances.",
+    "cta": "Découvrir le service",
+    "viewAll": "Voir tous les services",
+    "items": {
+      "development": {
+        "title": "Développement web",
+        "tagline": "Des sites et boutiques qui vendent vraiment",
+        "body": "Boutiques rapides, pensées mobile d'abord, connectées au paiement à la livraison et aux transporteurs algériens, avec un back-office que vous pilotez sans développeur."
+      },
+      "brand": {
+        "title": "Identité visuelle",
+        "tagline": "Une marque reconnaissable au premier coup d'œil",
+        "body": "Logo, palette, typographies, packaging et gabarits réseaux sociaux — livrés avec une charte complète, utilisable par n'importe quelle équipe après nous."
+      },
+      "marketing": {
+        "title": "Marketing digital",
+        "tagline": "Des campagnes qui touchent les bons clients",
+        "body": "Campagnes Meta et TikTok construites pour le marché algérien : ciblage par wilaya, contenu en darija, et suivi hebdomadaire des résultats."
+      },
+      "production": {
+        "title": "Photo & production",
+        "tagline": "Du contenu qui arrête le scroll",
+        "body": "Photographie produit, vidéos courtes pour Reels et TikTok, montage livré prêt à publier."
+      },
+      "print": {
+        "title": "Impression & packaging",
+        "tagline": "Du fichier au produit fini",
+        "body": "Packaging, enseignes, cartes et supports imprimés — qualité contrôlée du design jusqu'à la livraison."
+      }
+    }
+  },
+  "process": {
+    "eyebrow": "Notre méthode",
+    "title": "Cinq étapes claires, sans mauvaise surprise",
+    "lead": "Vous savez à tout moment où en est votre projet et quelle est la prochaine étape.",
+    "steps": [
+      {
+        "step": "01",
+        "title": "Découverte",
+        "body": "On s'assoit avec vous : votre activité, vos clients, vos concurrents. Vous repartez avec un cadrage écrit."
+      },
+      {
+        "step": "02",
+        "title": "Identité",
+        "body": "On définit la direction visuelle — logo, couleurs, typographies — et on la valide avant la moindre ligne de code."
+      },
+      {
+        "step": "03",
+        "title": "Production",
+        "body": "On développe le site ou la boutique, on produit le contenu et on prépare les supports imprimés en parallèle."
+      },
+      {
+        "step": "04",
+        "title": "Lancement",
+        "body": "On teste tout sur mobile, on branche l'analytique et le paiement, et on met en ligne."
+      },
+      {
+        "step": "05",
+        "title": "Accompagnement",
+        "body": "On reste après le lancement : mises à jour, campagnes, suivi des chiffres."
+      }
+    ]
+  },
+  "work": {
+    "eyebrow": "Réalisations",
+    "title": "Des projets livrés, que vous pouvez visiter maintenant",
+    "lead": "Chaque projet ici est réel et en ligne. Cliquez et jugez par vous-même.",
+    "cta": "Voir toutes les réalisations",
+    "viewLive": "Visiter le site",
+    "viewCase": "Détails du projet",
+    "viewBehance": "Voir sur Behance",
+    "viewVideo": "Voir la vidéo",
+    "sector": "Secteur",
+    "delivered": "Ce que nous avons livré",
+    "filters": {
+      "all": "Tout",
+      "websites": "Sites & boutiques",
+      "branding": "Identité visuelle",
+      "design": "Design",
+      "print": "Impression",
+      "video": "Vidéo"
+    }
+  },
+  "proof": {
+    "eyebrow": "En chiffres",
+    "title": "Ils nous font confiance",
+    "lead": "Des marques algériennes accompagnées de l'identité jusqu'au lancement.",
+    "stats": [
+      {
+        "value": "16",
+        "suffix": "+",
+        "label": "marques accompagnées"
+      },
+      {
+        "value": "6",
+        "suffix": "",
+        "label": "sites et boutiques en ligne"
+      },
+      {
+        "value": "12",
+        "suffix": "",
+        "label": "productions vidéo"
+      },
+      {
+        "value": "5",
+        "suffix": "",
+        "label": "services sous un même toit"
+      }
+    ]
+  },
+  "parfio": {
+    "eyebrow": "Notre produit",
+    "title": "Parfio — nous ne faisons pas que des sites, nous faisons du logiciel",
+    "lead": "Parfio est notre propre système de gestion pour parfumeries : stock, ventes, fidélité. La preuve que nous construisons de vrais produits, pas seulement des pages.",
+    "features": [
+      {
+        "title": "Gestion du stock",
+        "body": "Chaque flacon suivi, avec alerte avant rupture."
+      },
+      {
+        "title": "Programme de fidélité",
+        "body": "Points et récompenses qui font revenir le client."
+      },
+      {
+        "title": "Analytique",
+        "body": "Rapports de ventes et de marges clairs, jour après jour."
+      }
+    ],
+    "ctaPrimary": "Découvrir Parfio",
+    "ctaSecondary": "Chaîne Parfio"
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Un projet en tête ? Parlons-en.",
+    "lead": "Envoyez-nous votre idée. Réponse sous 24 h avec une proposition claire.",
+    "phoneLabel": "Téléphone",
+    "emailLabel": "E-mail",
+    "locationLabel": "Localisation",
+    "locationValue": "Algérie",
+    "hoursLabel": "Horaires",
+    "hoursValue": "Samedi - Jeudi : 9h - 18h",
+    "formTitle": "Envoyez-nous un message",
+    "nameLabel": "Nom",
+    "namePlaceholder": "Votre nom complet",
+    "emailPlaceholder": "exemple@email.com",
+    "phonePlaceholder": "0X XX XX XX XX",
+    "messageLabel": "Votre message",
+    "messagePlaceholder": "Parlez-nous de votre projet…",
+    "submit": "Envoyer",
+    "submitting": "Envoi en cours…",
+    "success": "Message bien reçu. Nous revenons vers vous sous 24 h.",
+    "error": "Une erreur est survenue. Réessayez ou écrivez-nous sur WhatsApp.",
+    "whatsappTitle": "Écrivez-nous sur WhatsApp",
+    "whatsappBody": "Réponse rapide à vos questions",
+    "whatsappCta": "Démarrer la conversation",
+    "whatsappPrefill": "Bonjour, je souhaite demander un devis",
+    "phoneOptional": "Facultatif",
+    "validation": {
+      "nameRequired": "Veuillez saisir votre nom.",
+      "emailRequired": "Veuillez saisir votre adresse e-mail.",
+      "emailInvalid": "Cette adresse e-mail semble incorrecte.",
+      "messageRequired": "Parlez-nous de votre projet.",
+      "messageTooShort": "Ajoutez un peu plus de détails — au moins 10 caractères."
+    }
+  },
+  "footer": {
+    "tagline": "Agence digitale algérienne. Nous construisons les marques, de l'identité au lancement.",
+    "quickLinks": "Liens rapides",
+    "servicesTitle": "Services",
+    "contactTitle": "Contact",
+    "backToTop": "Retour en haut",
+    "rights": "Tous droits réservés"
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "lead": "Le lien que vous avez ouvert n'existe plus.",
+    "cta": "Retour à l'accueil"
+  }
+}

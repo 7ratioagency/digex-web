@@ -1,0 +1,228 @@
+{
+  "meta": {
+    "title": "Digex | Digital agency in Algeria — branding, websites, content",
+    "description": "Digex Agency: brand identity, online stores and marketing content for Algerian brands."
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "work": "Work",
+    "contact": "Contact",
+    "cta": "Start a project",
+    "language": "Language",
+    "theme": "Dark mode",
+    "menu": "Menu"
+  },
+  "hero": {
+    "eyebrow": "Digital agency · Algeria",
+    "headline": "Your brand deserves",
+    "headlineAccent": "more than a Facebook page",
+    "sub": "Brand identity, an online store that sells, content that lands — one team, from the idea to the first sale.",
+    "ctaPrimary": "Start a project",
+    "ctaSecondary": "See our work"
+  },
+  "problem": {
+    "eyebrow": "Why us",
+    "title": "In Algeria, the product isn't the problem. Visibility is.",
+    "lead": "A good product with weak branding stays invisible. That's exactly what we fix.",
+    "items": [
+      {
+        "title": "An identity that doesn't set you apart",
+        "body": "A rushed logo and random colours make you look like every competitor."
+      },
+      {
+        "title": "Customers who pass through and never return",
+        "body": "They find you on Facebook, can't find where to buy, and leave."
+      },
+      {
+        "title": "A slow site — or no site at all",
+        "body": "Or a store that breaks on mobile, where 90% of your customers are browsing."
+      },
+      {
+        "title": "Content with no direction",
+        "body": "Scattered posts with no visual thread build no memory of your brand."
+      }
+    ]
+  },
+  "services": {
+    "eyebrow": "Our services",
+    "title": "Everything your brand needs, under one roof",
+    "lead": "Five connected services. No more coordinating four freelancers.",
+    "cta": "Explore the service",
+    "viewAll": "View all services",
+    "items": {
+      "development": {
+        "title": "Web development",
+        "tagline": "Sites and stores that actually sell",
+        "body": "Fast online stores, mobile-first, wired for cash-on-delivery and Algerian couriers, with a dashboard you can run without a developer."
+      },
+      "brand": {
+        "title": "Brand identity",
+        "tagline": "A brand recognised at a glance",
+        "body": "Logo, palette, type, packaging and social templates — delivered as a complete brand book any team can use after us."
+      },
+      "marketing": {
+        "title": "Digital marketing",
+        "tagline": "Campaigns that reach the right customers",
+        "body": "Meta and TikTok campaigns built for the Algerian market: wilaya-level targeting, darija-native content, and weekly reporting."
+      },
+      "production": {
+        "title": "Photo & production",
+        "tagline": "Visual content that stops the scroll",
+        "body": "Product photography, short-form video for Reels and TikTok, edited and ready to post."
+      },
+      "print": {
+        "title": "Print & packaging",
+        "tagline": "From file to finished product",
+        "body": "Packaging, signage, cards and print — quality controlled from design through delivery."
+      }
+    }
+  },
+  "process": {
+    "eyebrow": "How we work",
+    "title": "Five clear stages, no surprises",
+    "lead": "You always know where your project stands and what happens next.",
+    "steps": [
+      {
+        "step": "01",
+        "title": "Discovery",
+        "body": "We sit down with you: your business, your customers, your competitors. You leave with a written brief."
+      },
+      {
+        "step": "02",
+        "title": "Identity",
+        "body": "We set the visual direction — logo, colours, type — and lock it before a single line of code."
+      },
+      {
+        "step": "03",
+        "title": "Build",
+        "body": "We develop the site or store, produce the content, and prepare print in parallel."
+      },
+      {
+        "step": "04",
+        "title": "Launch",
+        "body": "We test everything on mobile, connect analytics and payments, and go live."
+      },
+      {
+        "step": "05",
+        "title": "Support",
+        "body": "We stay after launch: updates, campaigns, and tracking the numbers."
+      }
+    ]
+  },
+  "work": {
+    "eyebrow": "Our work",
+    "title": "Projects we shipped — you can visit them right now",
+    "lead": "Every project here is real and live. Click through and judge for yourself.",
+    "cta": "View all work",
+    "viewLive": "Visit the site",
+    "viewCase": "Project details",
+    "viewBehance": "View on Behance",
+    "viewVideo": "Watch the video",
+    "sector": "Sector",
+    "delivered": "What we delivered",
+    "filters": {
+      "all": "All",
+      "websites": "Sites & stores",
+      "branding": "Brand identity",
+      "design": "Design",
+      "print": "Print",
+      "video": "Video"
+    }
+  },
+  "proof": {
+    "eyebrow": "By the numbers",
+    "title": "Brands that trust us",
+    "lead": "Algerian brands we've taken from identity through to launch.",
+    "stats": [
+      {
+        "value": "16",
+        "suffix": "+",
+        "label": "brands served"
+      },
+      {
+        "value": "6",
+        "suffix": "",
+        "label": "live sites and stores"
+      },
+      {
+        "value": "12",
+        "suffix": "",
+        "label": "video productions"
+      },
+      {
+        "value": "5",
+        "suffix": "",
+        "label": "services under one roof"
+      }
+    ]
+  },
+  "parfio": {
+    "eyebrow": "Our product",
+    "title": "Parfio — we don't just build sites, we build software",
+    "lead": "Parfio is our own management system for perfume retailers: inventory, sales, loyalty. Proof that we build real products, not just pages.",
+    "features": [
+      {
+        "title": "Inventory management",
+        "body": "Every bottle tracked, with alerts before you run out."
+      },
+      {
+        "title": "Loyalty programme",
+        "body": "Points and rewards that bring the customer back."
+      },
+      {
+        "title": "Analytics",
+        "body": "Clear sales and margin reports, day by day."
+      }
+    ],
+    "ctaPrimary": "Explore Parfio",
+    "ctaSecondary": "Parfio channel"
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Got a project? Let's start it.",
+    "lead": "Send us your idea. We reply within 24 hours with a clear proposal.",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "locationLabel": "Location",
+    "locationValue": "Algeria",
+    "hoursLabel": "Working hours",
+    "hoursValue": "Saturday - Thursday: 9am - 6pm",
+    "formTitle": "Send us a message",
+    "nameLabel": "Name",
+    "namePlaceholder": "Your full name",
+    "emailPlaceholder": "example@email.com",
+    "phonePlaceholder": "0X XX XX XX XX",
+    "messageLabel": "Your message",
+    "messagePlaceholder": "Tell us about your project…",
+    "submit": "Send",
+    "submitting": "Sending…",
+    "success": "Message received. We'll get back to you within 24 hours.",
+    "error": "Something went wrong. Try again or message us on WhatsApp.",
+    "whatsappTitle": "Message us on WhatsApp",
+    "whatsappBody": "Quick answers to your questions",
+    "whatsappCta": "Start the conversation",
+    "whatsappPrefill": "Hello, I'd like to request a quote",
+    "phoneOptional": "Optional",
+    "validation": {
+      "nameRequired": "Please enter your name.",
+      "emailRequired": "Please enter your email address.",
+      "emailInvalid": "That email address doesn't look right.",
+      "messageRequired": "Please tell us about your project.",
+      "messageTooShort": "Please add a little more detail — at least 10 characters."
+    }
+  },
+  "footer": {
+    "tagline": "Algerian digital agency. We build brands, from identity to launch.",
+    "quickLinks": "Quick links",
+    "servicesTitle": "Services",
+    "contactTitle": "Contact",
+    "backToTop": "Back to top",
+    "rights": "All rights reserved"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "lead": "The link you opened no longer exists.",
+    "cta": "Back to home"
+  }
+}
