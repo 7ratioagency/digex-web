@@ -3,6 +3,7 @@ import { Link } from '@/lib/i18n/navigation'
 import { Section } from '@/components/ui/Section'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { ServiceCard } from '@/components/ui/ServiceCard'
+import { StaggerGroup, StaggerItem } from '@/components/ui/Stagger'
 import { ArrowIcon } from '@/components/icons'
 import { services } from '@/content/services'
 
@@ -17,11 +18,16 @@ export async function Services() {
         lead={t('lead')}
       />
 
-      <ul className="mt-section-xl grid grid-cols-1 gap-section-md sm:grid-cols-2 lg:grid-cols-3">
+      <StaggerGroup
+        as="ul"
+        className="mt-section-xl grid grid-cols-1 gap-section-md sm:grid-cols-2 lg:grid-cols-3"
+      >
         {services.map((service) => (
-          <ServiceCard key={service.key} service={service} />
+          <StaggerItem key={service.key} as="li">
+            <ServiceCard service={service} />
+          </StaggerItem>
         ))}
-      </ul>
+      </StaggerGroup>
 
       <div className="mt-section-lg">
         <Link

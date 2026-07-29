@@ -12,6 +12,13 @@ export function HeaderShell({ children }: { children: React.ReactNode }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  /*
+   * No `useReducedMotion()` here, deliberately. What transitions is colour,
+   * blur and shadow — nothing moves, so there is no vestibular trigger — and
+   * it's a plain CSS transition rather than a motion/react animation.
+   * `motion-reduce:transition-none` below is the correct guard for that, and it
+   * applies before JS runs; routing it through a hook would be strictly worse.
+   */
   return (
     <header
       className={`sticky top-0 z-50 border-b transition-[background-color,backdrop-filter,box-shadow] duration-300 motion-reduce:transition-none ${

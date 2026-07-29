@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { buildMetadata } from '@/lib/seo'
 import { Section } from '@/components/ui/Section'
 import { Button } from '@/components/ui/Button'
 import { ContactCTA } from '@/components/sections/ContactCTA'
@@ -16,10 +17,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'parfio' })
 
-  return {
+  return buildMetadata({
+    locale,
+    path: '/parfio',
     title: `${t('title')} — Digex`,
     description: t('lead'),
-  }
+  })
 }
 
 export default async function ParfioPage({ params }: Props) {

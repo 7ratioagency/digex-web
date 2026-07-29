@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 import { Section } from '@/components/ui/Section'
 import { SectionHeader } from '@/components/ui/SectionHeader'
+import { StaggerGroup, StaggerItem } from '@/components/ui/Stagger'
 import { Button } from '@/components/ui/Button'
 import { ArrowIcon } from '@/components/icons'
 import { contactDetails } from '@/content/services'
@@ -19,10 +20,14 @@ export async function Parfio() {
         lead={t('lead')}
       />
 
-      <ul className="mt-section-xl grid grid-cols-1 gap-section-lg sm:grid-cols-3">
+      <StaggerGroup
+        as="ul"
+        className="mt-section-xl grid grid-cols-1 gap-section-lg sm:grid-cols-3"
+      >
         {features.map((feature) => (
-          <li
+          <StaggerItem
             key={feature.title}
+            as="li"
             className="border-t border-border pt-section-md"
           >
             <h3 className="text-lg font-semibold text-balance">
@@ -31,9 +36,9 @@ export async function Parfio() {
             <p className="mt-section-xs leading-relaxed text-pretty text-muted-foreground">
               {feature.body}
             </p>
-          </li>
+          </StaggerItem>
         ))}
-      </ul>
+      </StaggerGroup>
 
       <div className="mt-section-lg flex flex-col gap-section-sm sm:flex-row sm:items-center">
         <Button href={contactDetails.parfio.page}>

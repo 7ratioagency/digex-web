@@ -3,6 +3,7 @@ import { Link } from '@/lib/i18n/navigation'
 import { Section } from '@/components/ui/Section'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { ProjectCard } from '@/components/ui/ProjectCard'
+import { StaggerGroup, StaggerItem } from '@/components/ui/Stagger'
 import { ArrowIcon } from '@/components/icons'
 import { featuredProjects } from '@/content/projects'
 
@@ -17,13 +18,16 @@ export async function SelectedWork() {
         lead={t('lead')}
       />
 
-      <ul className="mt-section-xl grid grid-cols-1 gap-section-lg sm:grid-cols-2 lg:grid-cols-3">
+      <StaggerGroup
+        as="ul"
+        className="mt-section-xl grid grid-cols-1 gap-section-lg sm:grid-cols-2 lg:grid-cols-3"
+      >
         {featuredProjects.map((project) => (
-          <li key={project.slug}>
+          <StaggerItem key={project.slug} as="li">
             <ProjectCard project={project} />
-          </li>
+          </StaggerItem>
         ))}
-      </ul>
+      </StaggerGroup>
 
       <div className="mt-section-lg">
         <Link

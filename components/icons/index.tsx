@@ -57,7 +57,10 @@ function IconShell({
       aria-hidden="true"
       initial={active ? 'hidden' : false}
       whileInView={active ? 'visible' : undefined}
-      viewport={{ once: true, margin: '-15%' }}
+      // Bottom edge only. '-15%' on its own is shorthand for all four sides,
+      // which shrank the box horizontally too — icons in a grid's first column
+      // sat outside it and never drew.
+      viewport={{ once: true, margin: '0px 0px -15% 0px' }}
       {...(props as SVGMotionProps<SVGSVGElement>)}
     >
       {children}

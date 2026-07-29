@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { buildMetadata } from '@/lib/seo'
 import { Section } from '@/components/ui/Section'
 import { Button } from '@/components/ui/Button'
 import { ContactForm } from '@/components/contact/ContactForm'
@@ -15,10 +16,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'contact' })
 
-  return {
+  return buildMetadata({
+    locale,
+    path: '/contact',
     title: `${t('title')} — Digex`,
     description: t('lead'),
-  }
+  })
 }
 
 export default async function ContactPage({ params }: Props) {

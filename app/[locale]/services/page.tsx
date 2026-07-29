@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { buildMetadata } from '@/lib/seo'
 import { Section } from '@/components/ui/Section'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { ServiceCard } from '@/components/ui/ServiceCard'
@@ -14,10 +15,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'services' })
 
-  return {
+  return buildMetadata({
+    locale,
+    path: '/services',
     title: `${t('title')} — Digex`,
     description: t('lead'),
-  }
+  })
 }
 
 export default async function ServicesPage({ params }: Props) {
@@ -36,7 +39,9 @@ export default async function ServicesPage({ params }: Props) {
 
         <ul className="mt-section-xl grid grid-cols-1 gap-section-md sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
-            <ServiceCard key={service.key} service={service} />
+            <li key={service.key}>
+              <ServiceCard service={service} />
+            </li>
           ))}
         </ul>
       </Section>

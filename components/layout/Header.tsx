@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server'
 import { Link } from '@/lib/i18n/navigation'
+import { SITE_NAME } from '@/lib/seo'
 import { HeaderShell } from './HeaderShell'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { ThemeToggle } from './ThemeToggle'
@@ -18,8 +19,12 @@ export async function Header() {
   return (
     <HeaderShell>
       <div className="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-section-sm lg:px-8">
+        {/*
+          The wordmark is a proper noun, not copy — it is not translated in any
+          locale, so it comes from the SITE_NAME constant rather than messages/.
+        */}
         <Link href="/" className="text-lg font-semibold tracking-tight text-foreground">
-          Digex
+          {SITE_NAME}
         </Link>
 
         <nav className="hidden md:block">

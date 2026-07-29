@@ -139,7 +139,10 @@ export function ContactForm() {
       </div>
 
       {/* Honeypot — off-screen and skipped by keyboard/AT, so only bots fill it. */}
-      <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+      <div
+        aria-hidden="true"
+        className="absolute -start-[9999px] h-0 w-0 overflow-hidden"
+      >
         <label htmlFor="company">Company</label>
         <input id="company" type="text" tabIndex={-1} autoComplete="off" {...register('company')} />
       </div>

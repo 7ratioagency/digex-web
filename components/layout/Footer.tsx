@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server'
 import { Link } from '@/lib/i18n/navigation'
+import { SITE_NAME } from '@/lib/seo'
 import { services, contactDetails } from '@/content/services'
 import {
   ArrowUpIcon,
@@ -40,7 +41,7 @@ export async function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" className="text-xl font-semibold tracking-tight">
-              Digex
+              {SITE_NAME}
             </Link>
             <p className="mt-section-sm max-w-xs text-sm text-muted-foreground">
               {t('tagline')}
@@ -125,11 +126,18 @@ export async function Footer() {
         {/* Bottom bar */}
         <div className="mt-section-2xl flex flex-col items-center justify-between gap-section-md border-t border-border pt-section-lg sm:flex-row">
           <p className="text-xs text-muted-foreground">
-            © {year} Digex — {t('rights')}
+            © {year} {SITE_NAME} — {t('rights')}
           </p>
+          {/*
+            "#top", not "#": `new URL(...).hash` is empty for a bare "#", so
+            Lenis's anchor handler skips it and the browser jumps natively,
+            desyncing Lenis. "#top" is a special case in both — Lenis scrolls to
+            0, and per the HTML spec the browser scrolls to the top of the
+            document even with no #top element, so it still works without JS.
+          */}
           <a
-            href="#"
-            className="inline-flex items-center gap-section-xs text-sm text-muted-foreground transition-colors hover:text-foreground"
+            href="#top"
+            className="inline-flex min-h-11 items-center gap-section-xs text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             {t('backToTop')}
             <ArrowUpIcon className="size-4" />

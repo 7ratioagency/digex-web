@@ -1,3 +1,5 @@
+import { Reveal } from '@/components/ui/Reveal'
+
 type SectionHeaderProps = {
   eyebrow: string
   title: string
@@ -11,6 +13,9 @@ type SectionHeaderProps = {
  *
  * Letter-spacing is scoped to `ltr:` on purpose — Arabic is a cursive script and
  * tracking pulls the joined glyphs apart, so it must never apply at /ar.
+ *
+ * The whole header rises as one block rather than per line — one movement per
+ * section reads as deliberate; three staggered ones read as fussy.
  */
 export function SectionHeader({
   eyebrow,
@@ -19,7 +24,9 @@ export function SectionHeader({
   centered = false,
 }: SectionHeaderProps) {
   return (
-    <div className={centered ? 'mx-auto max-w-3xl text-center' : 'max-w-3xl'}>
+    <Reveal
+      className={centered ? 'mx-auto max-w-3xl text-center' : 'max-w-3xl'}
+    >
       <p className="text-sm font-medium uppercase text-muted-foreground ltr:tracking-wide">
         {eyebrow}
       </p>
@@ -31,6 +38,6 @@ export function SectionHeader({
           {lead}
         </p>
       )}
-    </div>
+    </Reveal>
   )
 }

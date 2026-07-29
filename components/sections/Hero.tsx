@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server'
 import { Button } from '@/components/ui/Button'
+import { SplitText } from '@/components/ui/SplitText'
 import { ArrowIcon } from '@/components/icons'
 
 export async function Hero() {
@@ -13,9 +14,18 @@ export async function Hero() {
             {t('eyebrow')}
           </p>
 
+          {/*
+            Only the headline animates. The sub-copy and the CTAs below stay
+            static so the pitch is readable and the buttons clickable on the
+            first frame — this is above the fold, and the whole point is not to
+            make anyone wait to read it.
+          */}
           <h1 className="mt-section-sm text-4xl font-semibold text-balance sm:text-5xl lg:text-6xl ltr:tracking-tight">
-            {t('headline')}{' '}
-            <span className="text-accent-blue">{t('headlineAccent')}</span>
+            <SplitText text={t('headline')} />{' '}
+            <SplitText
+              text={t('headlineAccent')}
+              className="text-accent-blue"
+            />
           </h1>
 
           <p className="mt-section-md max-w-2xl text-lg leading-relaxed text-pretty text-muted-foreground">

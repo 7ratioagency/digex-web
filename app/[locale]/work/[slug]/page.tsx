@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getLocale, getTranslations, setRequestLocale } from 'next-intl/server'
+import { buildMetadata } from '@/lib/seo'
 import { Link } from '@/lib/i18n/navigation'
 import { Section } from '@/components/ui/Section'
 import { Button } from '@/components/ui/Button'
@@ -32,10 +33,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = getProject(slug)
   if (!project) return {}
 
-  return {
+  return buildMetadata({
+    locale,
+    path: `/work/${project.slug}`,
     title: `${project.client} — Digex`,
     description: project.summary[locale as Locale],
-  }
+  })
 }
 
 export default async function CaseStudyPage({ params }: Props) {

@@ -70,13 +70,29 @@
   --spacing-section-3xl: 8rem;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+/*
+ * No `scroll-behavior: smooth` here on purpose. Lenis sets the scroll position
+ * itself every frame, and native smooth scrolling fights it — the two animate
+ * the same value and the result stutters. Smoothness comes from
+ * LenisProvider; when reduced motion is set Lenis never starts and scrolling
+ * falls back to the browser default, which is what that preference asks for.
+ */
 
+/*
+ * Reduced-motion safety net for the animation primitives.
+ *
+ * `useReducedMotion()` can only report the real preference on the client, so a
+ * component that branches its *markup* on it renders one thing on the server
+ * and another on hydration — a mismatch, and worse, reduced-motion users get
+ * `opacity: 0` markup and see nothing until JS lands. So the primitives always
+ * emit identical markup and this rule paints the final state instead, on the
+ * first frame and without JS.
+ */
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+  [data-reduce-safe] {
+    opacity: 1 !important;
+    transform: none !important;
+    translate: none !important;
   }
 }
 
