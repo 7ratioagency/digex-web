@@ -80,7 +80,7 @@ export async function Services() {
           */}
           <HoverSliderTriggerList
             label={t('eyebrow')}
-            className="flex flex-col border-b border-border"
+            className="flex flex-col"
           >
             {services.map((service, index) => (
               <HoverSliderTrigger
@@ -88,15 +88,7 @@ export async function Services() {
                 index={index}
                 text={t(`items.${service.key}.title`)}
                 segmentBy={segmentBy}
-                className="border-t border-border py-section-md text-xl font-semibold text-balance sm:text-2xl lg:text-3xl ltr:tracking-tight"
-                leading={
-                  <span
-                    aria-hidden="true"
-                    className="text-xs font-medium tabular-nums text-muted-foreground transition-colors duration-200 group-data-[active=true]:text-accent-blue motion-reduce:transition-none"
-                  >
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                }
+                className="py-4 text-3xl font-semibold text-balance leading-none sm:text-4xl lg:text-5xl ltr:tracking-tight"
                 trailing={
                   /*
                     The selected row needs an affordance beyond a colour shift —
