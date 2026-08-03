@@ -121,6 +121,8 @@
     "viewVideo": "Watch the video",
     "sector": "Sector",
     "delivered": "What we delivered",
+    "slidePrev": "Previous project",
+    "slideNext": "Next project",
     "filters": {
       "all": "All",
       "websites": "Sites & stores",

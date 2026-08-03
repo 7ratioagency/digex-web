@@ -15,6 +15,19 @@ type Props = {
   text: string
   className?: string
   as?: keyof typeof tags
+  /**
+   * Gate the reveal on scroll-into-view, vs. rendering already-resolved on
+   * the first frame.
+   *
+   * Default `true` suits headings further down the page, which are offscreen
+   * at load and genuinely get "revealed" by scrolling. Above-the-fold text
+   * (the hero) is already in view at first paint — `whileInView` still fires
+   * without any scroll there, but the words still spend their real duration
+   * (stagger + fade, measured 600-800ms) sitting below full opacity, which
+   * reads as illegible/washed-out text on load rather than a deliberate
+   * animation. Pass `false` for anything that's visible on arrival.
+   */
+  revealOnScroll?: boolean
 }
 
 /**
@@ -37,7 +50,12 @@ type Props = {
  * The word spans are aria-hidden with the full string on `aria-label`, so
  * assistive tech reads one sentence rather than a stream of fragments.
  */
-export function SplitText({ text, className, as = 'span' }: Props) {
+export function SplitText({
+  text,
+  className,
+  as = 'span',
+  revealOnScroll = true,
+}: Props) {
   const reduce = useReducedMotion()
   const Tag = tags[as]
 
@@ -64,10 +82,19 @@ export function SplitText({ text, className, as = 'span' }: Props) {
          * other component using them — the service icons draw themselves with
          * exactly those names, and a shared label left them fighting over the
          * same state and randomly not drawing.
+         *
+         * When `revealOnScroll` is false, `initial` is set directly to the
+         * *visible* variant instead of gating it behind `whileInView`. Motion
+         * only animates a transition when the active variant changes — start
+         * already on the target variant and there is nothing to tween, so
+         * every word (and its child span below) paints at full opacity on the
+         * very first frame instead of racing a 600-800ms fade against the
+         * user actually looking at the page.
          */
-        initial="word-hidden"
-        whileInView="word-visible"
-        viewport={VIEWPORT}
+        initial={revealOnScroll ? 'word-hidden' : 'word-visible'}
+        {...(revealOnScroll
+          ? { whileInView: 'word-visible', viewport: VIEWPORT }
+          : {})}
         variants={{
           'word-hidden': {},
           'word-visible': {

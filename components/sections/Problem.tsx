@@ -1,39 +1,33 @@
 import { getTranslations } from 'next-intl/server'
-import { Section } from '@/components/ui/Section'
 import { SectionHeader } from '@/components/ui/SectionHeader'
-import { StaggerGroup, StaggerItem } from '@/components/ui/Stagger'
+import {
+  ProblemCycle,
+  type ProblemItem,
+} from '@/components/sections/ProblemCycle'
 
-type ProblemItem = { title: string; body: string }
-
+/**
+ * Stays a Server Component: it reads the messages and hands the finished header
+ * down as a prop, so no copy crosses into the client bundle as a string literal
+ * and `next-intl/server` keeps doing the translating.
+ *
+ * The four problems are the section's own content, which is why they cycle here
+ * rather than the service titles — those are the answers, and they belong to the
+ * Services section further down the page.
+ */
 export async function Problem() {
   const t = await getTranslations('problem')
   const items = t.raw('items') as ProblemItem[]
 
   return (
-    <Section className="bg-surface">
-      <SectionHeader
-        eyebrow={t('eyebrow')}
-        title={t('title')}
-        lead={t('lead')}
-      />
-
-      <StaggerGroup
-        as="ul"
-        className="mt-section-xl grid grid-cols-1 gap-section-lg sm:grid-cols-2"
-      >
-        {items.map((item) => (
-          <StaggerItem
-            key={item.title}
-            as="li"
-            className="border-t border-border pt-section-md"
-          >
-            <h3 className="text-lg font-semibold text-balance">{item.title}</h3>
-            <p className="mt-section-xs leading-relaxed text-pretty text-muted-foreground">
-              {item.body}
-            </p>
-          </StaggerItem>
-        ))}
-      </StaggerGroup>
-    </Section>
+    <ProblemCycle
+      items={items}
+      header={
+        <SectionHeader
+          eyebrow={t('eyebrow')}
+          title={t('title')}
+          lead={t('lead')}
+        />
+      }
+    />
   )
 }

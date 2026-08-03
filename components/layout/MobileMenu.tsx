@@ -57,7 +57,24 @@ export function MobileMenu({ links }: { links: NavLink[] }) {
             animate={{ opacity: 1, y: 0 }}
             exit={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-x-0 top-full border-b border-border bg-background px-6 py-section-md shadow-sm"
+            /*
+              Detached from the pill by a small gap so it reads as a second
+              floating surface rather than a square panel hanging off a rounded
+              bar. Shares the pill's shape language — generous radius, hairline
+              border, soft shadow — but is opaque, for two reasons.
+
+              Legibility first: `.glass` at 0.55 alpha is tuned for a small pill
+              with almost nothing behind it, and across a full menu panel the
+              page read straight through, with the links colliding with the
+              headings underneath.
+
+              And translucency here cannot work anyway. This panel renders
+              inside the pill, and an element with `backdrop-filter` becomes the
+              backdrop root for its descendants — so any blur set here samples
+              the pill, never the page behind it. Making it translucent would
+              buy the readability cost without the effect it was paying for.
+            */
+            className="absolute inset-x-0 top-[calc(100%+0.5rem)] rounded-3xl border border-border bg-surface px-section-md py-section-md shadow-lg"
           >
             <ul className="flex flex-col gap-section-sm">
               {links.map((link) => (

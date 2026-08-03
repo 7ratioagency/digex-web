@@ -3,39 +3,134 @@
 /* Dark mode toggled by a `.dark` class on <html>, not by OS preference. */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* ==========================================================================
+   1. Brand ramp — DESIGN.md §1
+   Raw palette. These are pigments, not decisions: use them for gradients,
+   glows and fills. For anything that renders *text*, use the semantic tokens
+   in §3, which are picked per mode to clear the contrast bar.
+   ========================================================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #0a0a0a;
-  --surface: #f7f7f8;
-  --border: #e5e5e5;
-  --muted-foreground: #6b7280;
+  --brand-100: #e8edff;
+  --brand-300: #a8b9ff;
+  --brand-400: #6e8cff;
+  --brand-500: #3b63ff; /* primary — fills and gradients only, see §3 */
+  --brand-600: #2645e0;
+  --brand-700: #1b3ad6;
+  --brand-900: #14259c;
 
-  --accent-blue: #2563eb;
-  --accent-violet: #7c3aed;
-  --accent-cyan: #0891b2;
-  --accent-amber: #d97706;
-  --accent-rose: #e11d48;
+  /* The one signature gradient (DESIGN.md §7: never a second one). */
+  --gradient-signature: linear-gradient(
+    135deg,
+    var(--brand-400) 0%,
+    var(--brand-500) 45%,
+    var(--brand-900) 100%
+  );
 
-  /* `font-sans` follows locale: Latin by default, Arabic when dir="rtl". */
+  /* Neutrals — tinted toward brand, never pure black/white. */
+  --ink-950: #05060d;
+  --ink-900: #0b0e1a;
+  --ink-100: #f5f7ff;
+  --ink-0: #ffffff;
+
+  /* ------------------------------------------------------------------
+     2. Glass — DESIGN.md §2
+     ------------------------------------------------------------------ */
+  --glass-bg-dark: rgba(255, 255, 255, 0.05);
+  --glass-bg-light: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-blur: 20px;
+
+  /* Resolved per mode; light mode overrides these two below. */
+  --glass-bg: var(--glass-bg-light);
+  --glass-border-color: rgba(20, 37, 156, 0.1);
+  --glass-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 20px 40px -24px rgba(20, 37, 156, 0.18);
+
+  /* ------------------------------------------------------------------
+     3. Semantic tokens — the contrast-safe layer
+     ------------------------------------------------------------------ */
+  --background: var(--ink-100);
+  --foreground: var(--ink-950);
+  --surface: var(--ink-0);
+  --border: #c7d0ee;
+  --muted-foreground: #4a5270;
+
+  /*
+   * `--accent-blue` is text, so it is NOT --brand-500.
+   *
+   * This is the contrast bug DESIGN.md §1 calls out. The brand primary
+   * (#3B63FF) measures 4.45:1 on this light background and 4.25:1 on the dark
+   * one — under the 7:1 the same section mandates, and the direct cause of a
+   * headline accent that looks washed out on dark and barely there on light.
+   * The old #2563EB was no better at 5.17:1.
+   *
+   * These two are the nearest ramp values that clear 7:1 while staying a
+   * saturated blue rather than a pale grey:
+   *   light  #1B3AD6 (brand-700) on #F5F7FF -> 7.48:1
+   *   dark   #7C9BFF               on #05060D -> 7.69:1
+   * Verified with the WCAG formula, not by eye.
+   */
+  --accent-blue: var(--brand-700);
+
+  --accent-violet: #6d28d9;
+  --accent-cyan: #0e7490;
+  --accent-amber: #b45309;
+  --accent-rose: #be123c;
+
+  /* ------------------------------------------------------------------
+     4. Typography — DESIGN.md §4
+     ------------------------------------------------------------------ */
   --font-sans: var(--font-latin);
+
+  /*
+   * Display face. DESIGN.md names Clash Display / General Sans / Satoshi —
+   * all Fontshare, none on Google Fonts, so none can be loaded through
+   * next/font/google. The stack degrades to the body face until one is
+   * vendored and registered as --font-display-latin in the root layout;
+   * nothing here breaks in the meantime.
+   */
+  --font-display: var(--font-display-latin, var(--font-latin));
+
+  /*
+   * Tracking resolves to 0 under RTL on purpose. DESIGN.md wants -0.02em on
+   * display type, but Arabic is cursive and negative tracking severs the
+   * joins. Encoding that here means a consumer can write `tracking-display`
+   * once and get the correct behaviour in both scripts, instead of having to
+   * remember an `ltr:` prefix at every call site.
+   */
+  --tracking-display: -0.02em;
 }
 
+/* Locale swap: body and display both follow the script. */
 :root[dir="rtl"] {
   --font-sans: var(--font-arabic);
+  /* DESIGN.md §4: Arabic headlines take the heavy Arabic face, not a Latin display font. */
+  --font-display: var(--font-arabic);
+  --tracking-display: 0em;
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #fafafa;
-  --surface: #151517;
-  --border: #27272a;
-  --muted-foreground: #a1a1aa;
+  --background: var(--ink-950);
+  --foreground: var(--ink-100);
+  --surface: var(--ink-900);
+  --border: #242b4d;
+  --muted-foreground: #9aa3c0;
 
-  --accent-blue: #60a5fa;
+  /* 7.69:1 on --ink-950. See the note above for why this isn't --brand-500. */
+  --accent-blue: #7c9bff;
+
   --accent-violet: #a78bfa;
   --accent-cyan: #22d3ee;
   --accent-amber: #fbbf24;
   --accent-rose: #fb7185;
+
+  /* Glass inverts to the dark recipe from DESIGN.md §2. */
+  --glass-bg: var(--glass-bg-dark);
+  --glass-border-color: var(--glass-border);
+  --glass-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 20px 40px -20px rgba(20, 37, 156, 0.35);
 }
 
 @theme inline {
@@ -51,9 +146,39 @@
   --color-accent-amber: var(--accent-amber);
   --color-accent-rose: var(--accent-rose);
 
+  /* Ramp exposed for gradients/fills, e.g. `from-brand-400`. */
+  --color-brand-100: var(--brand-100);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-brand-900: var(--brand-900);
+
+  --color-ink-0: var(--ink-0);
+  --color-ink-100: var(--ink-100);
+  --color-ink-900: var(--ink-900);
+  --color-ink-950: var(--ink-950);
+
   --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
   --font-latin: var(--font-latin);
   --font-arabic: var(--font-arabic);
+
+  /* DESIGN.md §4: a dramatic jump from body, not a modest bump. */
+  --text-display: clamp(2.5rem, 6vw, 6rem);
+  --text-display--line-height: 1.05;
+  /*
+   * Restores the semibold weight the headline had before the DESIGN.md pass.
+   * Tailwind's preflight makes h1 inherit font-weight rather than default to
+   * bold, so swapping the old `font-semibold` class for `text-display` without
+   * this silently dropped the headline to regular (400) — an unintended
+   * regression, not a design change.
+   */
+  --text-display--font-weight: 600;
+  --tracking-display: var(--tracking-display);
+
+  --radius-glass: 20px;
 
   /*
    * Semantic spacing scale for consistent section rhythm, e.g. `py-section-xl`.
@@ -68,6 +193,216 @@
   --spacing-section-xl: 4rem;
   --spacing-section-2xl: 6rem;
   --spacing-section-3xl: 8rem;
+}
+
+/*
+ * The signature glass texture — DESIGN.md §2.
+ *
+ * In `components` so plain Tailwind utilities still win: `.glass rounded-full`
+ * or `.glass border-accent-blue` override as you'd expect.
+ */
+@layer components {
+  .glass {
+    background: var(--glass-bg);
+    /*
+     * Standard property only — do NOT hand-write `-webkit-backdrop-filter`
+     * alongside it. Lightning CSS treats the pair as duplicates and keeps just
+     * the last one, which silently dropped the unprefixed property; Firefox
+     * supports only the unprefixed form, so glass lost its blur there
+     * entirely. Prefixes are the build's job, driven by browser targets.
+     */
+    backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    border: 1px solid var(--glass-border-color);
+    border-radius: var(--radius-glass);
+    box-shadow: var(--glass-shadow);
+  }
+
+  /*
+   * Backdrop blur is a compositing cost on every scrolled frame, and the
+   * effect is decorative. Drop to an opaque surface when motion is reduced.
+   */
+  @media (prefers-reduced-motion: reduce) {
+    .glass {
+      backdrop-filter: none;
+      background: var(--surface);
+    }
+  }
+}
+
+@layer components {
+  /*
+   * Grain — DESIGN.md §3. The thing that stops a flat digital gradient looking
+   * cheap. Tiled fractal noise at ~4%, `overlay` so it modulates whatever sits
+   * beneath rather than greying it out.
+   *
+   * Callers must keep this *below* text in the stacking order. Blending it over
+   * type would perturb the rendered glyph colour, and the hero's contrast
+   * guarantee is computed on unblended text.
+   */
+  .grain {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23g)'/></svg>");
+    background-repeat: repeat;
+    mix-blend-mode: overlay;
+    opacity: 0.04;
+  }
+
+  /*
+   * The vertical fade that makes the hero's 7:1 contrast guarantee hold —
+   * shared by every decorative background layer (gradient mesh, floating
+   * marks). Fades to the flat base colour through the text band and back to
+   * transparent at the top/bottom edges where blobs and marks actually show.
+   * Runs on the vertical axis on purpose: unlike inline `start`/`end`
+   * placement, `to bottom` doesn't mirror under RTL, so it behaves
+   * identically in both directions. See HeroBackdrop.tsx for the full
+   * story of why this exists.
+   *
+   * Every layer that can drift into the text column must include this as
+   * its own last-painted child — being behind *some* scrim elsewhere in the
+   * stack isn't enough, since a layer with a higher stacking position simply
+   * paints over an earlier one's protection.
+   */
+  .contrast-scrim {
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      color-mix(in srgb, var(--background) 94%, transparent) 14%,
+      color-mix(in srgb, var(--background) 94%, transparent) 86%,
+      transparent 100%
+    );
+  }
+}
+
+@layer components {
+  /*
+   * Tints an arbitrary logo asset brand blue regardless of the source file's
+   * own colours, by using it as an alpha mask over a flat fill instead of
+   * rendering it directly — DESIGN.md §3's floating-mark ambient layer.
+   *
+   * Standard `mask-*` properties only, same rule as `.glass`'s
+   * `backdrop-filter`: Lightning CSS adds the `-webkit-` pairs for Safari at
+   * build time. Hand-writing them here would risk the same dedup bug that
+   * once dropped `.glass`'s blur in Firefox.
+   */
+  .logo-mark {
+    /*
+     * Not a flat --brand-400 in both modes. --brand-400 is a pale, light
+     * blue — measured against --ink-100 (light mode's base) that's a
+     * light-on-near-white pairing, so at ambient-texture opacity (8-15%) it
+     * all but disappears, even though the identical pixel delta against
+     * --ink-950 (dark mode's near-black base) reads clearly. Same principle
+     * as --accent-blue above: the pigment has to change per mode, tuning
+     * opacity alone can't fix a luminance-proximity problem.
+     *
+     * The colour swap alone still wasn't enough — measured contrast against
+     * the light background stayed under 1.3:1, imperceptible in practice
+     * even once it's the "right" colour. `--mark-opacity` is the raw
+     * per-instance random value FloatingLogos.tsx picks (kept as a custom
+     * property instead of the `opacity` shorthand directly, precisely so
+     * this multiplier can scale it per mode); light mode needs roughly
+     * double the alpha of dark mode to read as comparably present.
+     */
+    --logo-mark-opacity-scale: 1.9;
+    background-color: var(--brand-600);
+    opacity: calc(var(--mark-opacity, 1) * var(--logo-mark-opacity-scale));
+    mask-image: url("/logo-mark.png");
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+  }
+
+  .dark .logo-mark {
+    --logo-mark-opacity-scale: 1;
+    background-color: var(--brand-400);
+  }
+}
+
+@layer components {
+  /*
+   * Hides the scrollbar on a horizontally-scrollable strip whose position is
+   * already shown by its own progress indicator. Scrolling stays fully
+   * available — wheel, trackpad, touch and keyboard — so this removes the
+   * duplicate affordance, never the ability.
+   */
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer components {
+  /*
+   * A panel that grows into place as its section scrolls in: it starts inset
+   * and round-cornered, then widens to full bleed and squares off, so the
+   * section reads as arriving rather than just being there.
+   *
+   * Scroll-driven, not time-driven — the growth is tied to scroll position via
+   * `animation-timeline`, so it tracks the wheel exactly and reverses when you
+   * scroll back up. No JS, no scroll listener.
+   *
+   * Only the panel scales; the content above it never does. Scaling a whole
+   * section would resample its text every frame, giving soft edges mid-
+   * animation, and would make the section a transform ancestor.
+   *
+   * The tint is mixed rather than picked from a neutral token on purpose. The
+   * panel has to read as distinct from two different surfaces at once: the page
+   * background showing through the side gaps while it grows, and the section
+   * directly above it, which is already `--surface`. A few percent of brand
+   * blue separates it from both in either theme without introducing a colour.
+   */
+  /*
+   * This base rule is deliberately the animation's *end* state, not its start:
+   * it is what unsupporting browsers and reduced-motion users get, and they
+   * should land where the animation lands. The inset, round-cornered start
+   * lives only in the keyframe below.
+   */
+  .panel-grow {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    /*
+     * 6%, matching the deepest stage in ProcessStack, for the same reason:
+     * tinting toward brand lifts the light surface's luminance and eats into
+     * `--muted-foreground`. At 7% the resting service labels measured exactly
+     * 7.00:1 — passing, but with no margin at all. 6% restores a little.
+     */
+    background: color-mix(in srgb, var(--brand-500) 6%, var(--surface));
+    border-radius: 0;
+  }
+
+  /*
+   * Unsupported (notably Firefox at time of writing) and reduced-motion both
+   * fall through to the rule above — a panel already at its final size and
+   * shape. The effect is the enhancement; its absence costs only the movement.
+   */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .panel-grow-scope {
+        view-timeline: --panel;
+      }
+
+      .panel-grow {
+        transform-origin: 50% 100%;
+        animation: panel-grow both linear;
+        animation-timeline: --panel;
+        animation-range: entry 0% entry 60%;
+      }
+    }
+  }
+
+  @keyframes panel-grow {
+    from {
+      scale: 0.92;
+      border-radius: var(--radius-glass) var(--radius-glass) 0 0;
+    }
+    to {
+      scale: 1;
+      border-radius: 0;
+    }
+  }
+
 }
 
 /*
@@ -93,6 +428,34 @@
     opacity: 1 !important;
     transform: none !important;
     translate: none !important;
+  }
+
+  /*
+   * The service icons draw themselves in by animating `pathLength`, which
+   * Motion implements as stroke-dasharray/dashoffset. Under reduced motion
+   * their `whileInView` is withheld, so they would otherwise sit on the
+   * `hidden` variant — a fully dashed-away, transparent stroke, i.e. no icon
+   * at all. This paints the completed icon instead.
+   *
+   * Targets descendants because the marker sits once on the <svg>, while the
+   * dash lives on each path. These are presentation attributes, which every
+   * stylesheet rule already outranks; `!important` is here to beat the inline
+   * styles Motion writes once an animation has run.
+   */
+  [data-draw-safe] * {
+    opacity: 1 !important;
+    stroke-dasharray: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+
+  /*
+   * Scroll-driven `clip-path` reveals. `[data-reduce-safe]` can't help here —
+   * it resets opacity and transform, not clipping — so a layer left on its
+   * initial `inset(0 0 100% 0)` would stay invisible. Dropping the clip shows
+   * the finished state immediately, which is what the preference asks for.
+   */
+  [data-reduce-clip] {
+    clip-path: none !important;
   }
 }
 

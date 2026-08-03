@@ -1,43 +1,81 @@
-import { getTranslations } from 'next-intl/server'
-import { Link } from '@/lib/i18n/navigation'
-import { Section } from '@/components/ui/Section'
+import { getLocale, getTranslations } from 'next-intl/server'
 import { SectionHeader } from '@/components/ui/SectionHeader'
-import { ProjectCard } from '@/components/ui/ProjectCard'
-import { StaggerGroup, StaggerItem } from '@/components/ui/Stagger'
-import { ArrowIcon } from '@/components/icons'
-import { featuredProjects } from '@/content/projects'
+import {
+  WorkCinematic,
+  type WorkItem,
+} from '@/components/sections/WorkCinematic'
+import {
+  featuredProjects,
+  projects,
+  type Locale,
+  type Project,
+  type ProjectLinkKind,
+} from '@/content/projects'
 
+/** Each link kind gets its own verb — "Visit the site" vs "View on Behance". */
+const linkLabelKey: Record<ProjectLinkKind, string> = {
+  live: 'viewLive',
+  behance: 'viewBehance',
+  youtube: 'viewVideo',
+}
+
+/** How many projects get the full-height cinematic treatment. */
+const HERO_COUNT = 3
+
+/**
+ * Selected work, as a cinematic sequence.
+ *
+ * Stays a Server Component: every string is resolved here — including the
+ * per-project link verb and the localised sector/summary/deliverables — so
+ * `content/projects.ts`, the locale lookup and the message catalogue all stay
+ * out of the client bundle. The client half receives plain, finished strings.
+ */
 export async function SelectedWork() {
   const t = await getTranslations('work')
+  const locale = (await getLocale()) as Locale
+
+  const toItem = (project: Project): WorkItem => ({
+    slug: project.slug,
+    client: project.client,
+    sector: project.sector[locale],
+    summary: project.summary[locale],
+    delivered: project.delivered[locale],
+    href: `/work/${project.slug}`,
+    externalUrl: project.link.url,
+    externalLabel: t(linkLabelKey[project.link.kind]),
+  })
+
+  const heroes = featuredProjects.slice(0, HERO_COUNT)
+  const heroSlugs = new Set(heroes.map((p) => p.slug))
+
+  /*
+   * The strip carries everything the heroes didn't, drawn from the full
+   * portfolio rather than just the remaining featured entries. Featured is only
+   * five, so a featured-only strip would hold two cards — not enough to scroll,
+   * which would leave the track and its progress thumb pointless. The section's
+   * "view all work" link still leads to the filterable /work index.
+   */
+  const rest = projects.filter((p) => !heroSlugs.has(p.slug))
 
   return (
-    <Section id="work">
-      <SectionHeader
-        eyebrow={t('eyebrow')}
-        title={t('title')}
-        lead={t('lead')}
-      />
-
-      <StaggerGroup
-        as="ul"
-        className="mt-section-xl grid grid-cols-1 gap-section-lg sm:grid-cols-2 lg:grid-cols-3"
-      >
-        {featuredProjects.map((project) => (
-          <StaggerItem key={project.slug} as="li">
-            <ProjectCard project={project} />
-          </StaggerItem>
-        ))}
-      </StaggerGroup>
-
-      <div className="mt-section-lg">
-        <Link
-          href="/work"
-          className="inline-flex min-h-11 items-center gap-section-xs text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-        >
-          {t('cta')}
-          <ArrowIcon className="size-4" />
-        </Link>
-      </div>
-    </Section>
+    <WorkCinematic
+      heroes={heroes.map(toItem)}
+      rest={rest.map(toItem)}
+      labels={{
+        overview: t('eyebrow'),
+        viewAll: t('cta'),
+        viewCase: t('viewCase'),
+        delivered: t('delivered'),
+        slidePrev: t('slidePrev'),
+        slideNext: t('slideNext'),
+      }}
+      header={
+        <SectionHeader
+          eyebrow={t('eyebrow')}
+          title={t('title')}
+          lead={t('lead')}
+        />
+      }
+    />
   )
 }

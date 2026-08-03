@@ -1,16 +1,16 @@
 import { getTranslations } from 'next-intl/server'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import {
-  ProcessSequence,
+  ProcessStack,
   type ProcessStep,
-} from '@/components/sections/ProcessSequence'
+} from '@/components/sections/ProcessStack'
 
 export async function Process() {
   const t = await getTranslations('process')
   const steps = t.raw('steps') as ProcessStep[]
 
   return (
-    <ProcessSequence
+    <ProcessStack
       steps={steps}
       // Rendered here so the header stays server-rendered even though the
       // sequence itself has to be a Client Component.

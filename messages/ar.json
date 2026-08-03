@@ -121,6 +121,8 @@
     "viewVideo": "شاهد الفيديو",
     "sector": "القطاع",
     "delivered": "ما أنجزناه",
+    "slidePrev": "المشروع السابق",
+    "slideNext": "المشروع التالي",
     "filters": {
       "all": "الكل",
       "websites": "مواقع ومتاجر",

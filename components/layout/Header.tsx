@@ -18,7 +18,13 @@ export async function Header() {
 
   return (
     <HeaderShell>
-      <div className="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-section-sm lg:px-8">
+      {/*
+        `relative` stays: the mobile dropdown positions against this box, and
+        the pill's width is now what defines its edges. Width capping and
+        centring moved up to the pill itself, so all that's left here is the
+        pill's internal padding.
+      */}
+      <div className="relative flex items-center justify-between gap-section-md px-section-md py-section-xs">
         {/*
           The wordmark is a proper noun, not copy — it is not translated in any
           locale, so it comes from the SITE_NAME constant rather than messages/.

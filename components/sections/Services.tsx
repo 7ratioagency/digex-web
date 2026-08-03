@@ -1,33 +1,133 @@
-import { getTranslations } from 'next-intl/server'
+import { getLocale, getTranslations } from 'next-intl/server'
 import { Link } from '@/lib/i18n/navigation'
 import { Section } from '@/components/ui/Section'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { ServiceCard } from '@/components/ui/ServiceCard'
-import { StaggerGroup, StaggerItem } from '@/components/ui/Stagger'
+import {
+  HoverSlider,
+  HoverSliderPanel,
+  HoverSliderPanels,
+  HoverSliderTrigger,
+  HoverSliderTriggerList,
+} from '@/components/ui/HoverSlider'
 import { ArrowIcon } from '@/components/icons'
 import { services } from '@/content/services'
 
 export async function Services() {
   const t = await getTranslations('services')
+  const locale = await getLocale()
+
+  /*
+   * Arabic is cursive, so its labels are split on whitespace rather than on
+   * letters — a per-letter split severs the joins and the word falls apart.
+   * See the note on `SegmentMode` in HoverSlider. Latin scripts keep the
+   * reference's per-character ripple.
+   *
+   * Decided here, on the server, from the request locale: it has to be the
+   * same value on both sides of hydration, and reading `dir` after mount would
+   * change the markup once the client caught up.
+   */
+  const segmentBy = locale === 'ar' ? 'word' : 'grapheme'
 
   return (
-    <Section id="services">
+    /*
+      The panel behind this section grows to full bleed as the section scrolls
+      in (`.panel-grow`, globals.css) — the "everything under one roof" claim
+      arrives as a slab rather than fading in like the sections around it.
+
+      `isolate` keeps the panel's negative z-index from escaping behind the
+      page; `panel-grow-scope` is what declares the view timeline the panel
+      reads its progress from.
+    */
+    <Section
+      id="services"
+      className="isolate panel-grow-scope"
+      backdrop={<div aria-hidden="true" className="panel-grow" />}
+    >
       <SectionHeader
         eyebrow={t('eyebrow')}
         title={t('title')}
         lead={t('lead')}
       />
 
-      <StaggerGroup
-        as="ul"
-        className="mt-section-xl grid grid-cols-1 gap-section-md sm:grid-cols-2 lg:grid-cols-3"
-      >
-        {services.map((service) => (
-          <StaggerItem key={service.key} as="li">
-            <ServiceCard service={service} />
-          </StaggerItem>
-        ))}
-      </StaggerGroup>
+      {/*
+        Names on the reading-start side, the matching card on the reading-end
+        side — the reference's layout with its image swapped for the card the
+        section already had. Both columns are laid out logically, so /ar mirrors
+        the whole arrangement without a direction-specific rule.
+
+        The card content is untouched: `ServiceCard` is passed in whole, still
+        rendered on the server, so its copy and its icon never enter the client
+        bundle.
+      */}
+      <HoverSlider className="mt-section-xl">
+        {/*
+          The card is centred against the list rather than stretched to match
+          it. Stretching did align the column edges, but `ServiceCard`'s body is
+          `flex-1`, so it absorbed every spare pixel and opened ~250px between
+          the copy and the CTA. Since the card's own content is fixed, letting
+          it keep its designed proportions and sit optically centred reads far
+          better than a tidy edge with a hollow middle.
+        */}
+        <div className="grid gap-section-xl lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center lg:gap-section-2xl">
+          {/*
+            Read as a navigable index, not a stack of loose headings. Each row
+            is a divider plus real vertical padding, which takes the optical
+            separation between titles from 16px to 48px — the gap was the whole
+            complaint, and at this type size 16px had the rows almost touching.
+            The divider also gives every row a consistent hit area rather than
+            leaving the target the exact height of its glyphs.
+          */}
+          <HoverSliderTriggerList
+            label={t('eyebrow')}
+            className="flex flex-col border-b border-border"
+          >
+            {services.map((service, index) => (
+              <HoverSliderTrigger
+                key={service.key}
+                index={index}
+                text={t(`items.${service.key}.title`)}
+                segmentBy={segmentBy}
+                className="border-t border-border py-section-md text-xl font-semibold text-balance sm:text-2xl lg:text-3xl ltr:tracking-tight"
+                leading={
+                  <span
+                    aria-hidden="true"
+                    className="text-xs font-medium tabular-nums text-muted-foreground transition-colors duration-200 group-data-[active=true]:text-accent-blue motion-reduce:transition-none"
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                }
+                trailing={
+                  /*
+                    The selected row needs an affordance beyond a colour shift —
+                    colour alone is not a reliable indicator. Only opacity
+                    animates: a horizontal nudge would need mirroring at /ar,
+                    and the arrow already flips direction on its own.
+                  */
+                  <ArrowIcon
+                    aria-hidden="true"
+                    className="size-5 text-accent-blue opacity-0 transition-opacity duration-200 group-data-[active=true]:opacity-100 motion-reduce:transition-none"
+                  />
+                }
+              />
+            ))}
+          </HoverSliderTriggerList>
+
+          {/*
+            The panels share one grid cell, so the stack is as tall as the
+            longest card and every card fills that height — the panel never
+            resizes as you move between services, which is what stops the
+            layout twitching mid-swap.
+          */}
+          <HoverSliderPanels>
+            {services.map((service, index) => (
+              <HoverSliderPanel key={service.key} index={index}>
+                <ServiceCard service={service} />
+              </HoverSliderPanel>
+            ))}
+          </HoverSliderPanels>
+        </div>
+      </HoverSlider>
 
       <div className="mt-section-lg">
         <Link

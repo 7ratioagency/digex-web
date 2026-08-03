@@ -55,8 +55,23 @@ function IconShell({
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
-      initial={active ? 'hidden' : false}
+      /*
+       * `initial` is branched on `animate` (a prop, identical on both sides)
+       * and never on the motion preference. It is rendered into the markup,
+       * and the server cannot know the preference, so branching it emitted
+       * `opacity="0" pathLength="1" stroke-dasharray="0 1"` on the server and
+       * nothing on the client for reduced-motion users — a hydration mismatch
+       * the dev server logs on every load. Same rule as <Reveal>.
+       *
+       * `whileInView` is safe to branch: it only applies once the element
+       * intersects, well after hydration. With it withheld the icon stays on
+       * the `hidden` variant, and the `[data-draw-safe]` rule in globals.css
+       * paints the finished icon instead — so reduced motion still gets the
+       * final state immediately, without any of it reaching the server HTML.
+       */
+      initial={animate ? 'hidden' : false}
       whileInView={active ? 'visible' : undefined}
+      data-draw-safe={animate ? '' : undefined}
       // Bottom edge only. '-15%' on its own is shorthand for all four sides,
       // which shrank the box horizontally too — icons in a grid's first column
       // sat outside it and never drew.
@@ -199,6 +214,26 @@ export function ArrowUpIcon(props: SVGProps<SVGSVGElement>) {
       {...props}
     >
       <path d="M12 20V4M6 10l6-6 6 6" />
+    </svg>
+  )
+}
+
+/* ---------------------------------------------------------------
+   Eye — "view" affordance on work covers. Hand-drawn rather than
+   pulled from an icon package, per the no-icon-library rule.
+   Symmetrical, so it needs no RTL flip.
+   --------------------------------------------------------------- */
+export function EyeIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width={24} height={24} viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" strokeWidth={1.5}
+      strokeLinecap="round" strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" />
+      <circle cx="12" cy="12" r="3" />
     </svg>
   )
 }
