@@ -1,92 +1,77 @@
-# Digex — Design Language (Round 0)
+# Digex — Visual Language V2 (matched to Instagram brand)
 
-This is the single source of visual truth. Every UI prompt after this one references this file instead of re-deciding style. Save as `DESIGN.md` in the repo root, next to `CLAUDE.md`.
-
-**Direction:** clean, premium, glassy. Signature electric-blue gradient derived from the Digex logo. Not playful, not corporate-boring — confident and a little cinematic.
+Derived from the agency's actual Instagram posters. **This supersedes the dark-canvas direction in DESIGN.md** — that was chasing other agencies' aesthetics. This one matches the brand that already exists.
 
 ---
 
-## 1. Colour system
+## The core realisation
 
-Derived from the logo gradient (adjust hex values with an eyedropper on the real logo file for exact match — these are close approximations):
+The posters are **light-based, not dark**. Off-white / light grey backgrounds with electric blue and deep navy as the accent colours — the opposite of the near-black canvas we'd been building. That mismatch is why the dark experiments never felt "right" for Digex specifically.
 
-```css
-:root {
-  /* Brand blue ramp */
-  --brand-100: #E8EDFF;
-  --brand-300: #A8B9FF;
-  --brand-400: #6E8CFF;
-  --brand-500: #3B63FF;   /* primary */
-  --brand-600: #2645E0;
-  --brand-700: #1B3AD6;
-  --brand-900: #14259C;
+There is a dark variant in the system (the ERP poster: deep navy gradient, white type), but it's the *exception*, used for specific heavier topics — not the default.
 
-  /* Signature gradient — use for hero bg, key accents, CTA glow */
-  --gradient-signature: linear-gradient(135deg, var(--brand-400) 0%, var(--brand-500) 45%, var(--brand-900) 100%);
+---
 
-  /* Neutrals — never pure black/white, always slightly tinted toward brand */
-  --ink-950: #05060D;   /* dark bg */
-  --ink-900: #0B0E1A;
-  --ink-100: #F5F7FF;   /* light bg, faint blue tint, NOT pure white */
-  --ink-0:   #FFFFFF;
-
-  /* Glass surface tokens */
-  --glass-bg-dark: rgba(255,255,255,0.05);
-  --glass-bg-light: rgba(255,255,255,0.55);
-  --glass-border: rgba(255,255,255,0.14);
-  --glass-blur: 20px;
-}
-```
-
-Rule: text on the hero must always resolve to a contrast ratio of at least 7:1 against whatever sits behind it at that scroll position. This is the exact bug spotted in the current build — fix it as part of this pass, not as an afterthought.
-
-## 2. Glass panel spec (the signature texture)
-
-Every card, nav bar, and floating element uses this recipe — this consistency is what reads as "designed" rather than "assembled":
+## 1. Palette (read from the posters)
 
 ```css
-.glass {
-  background: var(--glass-bg-dark);
-  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  box-shadow:
-    0 1px 0 rgba(255,255,255,0.08) inset,
-    0 20px 40px -20px rgba(20,37,156,0.35);
-}
+--paper:        #F2F2F0;  /* off-white poster base — NOT pure white */
+--paper-warm:   #EDEDEB;
+--blue-500:     #2B4BFF;  /* electric brand blue — the hero accent */
+--blue-600:     #1E3AE0;
+--navy-900:     #0A1E5C;  /* deep navy — device screens, dark sections */
+--navy-950:     #061436;
+--ink:          #0B0B0D;  /* near-black display type */
+--highlight-yellow: #FFE81A; /* marker highlight behind key words */
 ```
 
-On light mode, swap `--glass-bg-dark` for `--glass-bg-light` and soften the shadow.
+Ratio in practice: ~70% light paper, ~20% navy/dark elements, ~10% electric blue accent. Blue is used as a *punch*, not as a wash.
 
-## 3. Background treatment
+---
 
-No flat solid backgrounds anywhere. The hero and section transitions use one of:
+## 2. Signature elements (the "vibe")
 
-- A slow-moving animated gradient mesh (2-3 soft blurred blobs in `--brand-400`/`--brand-700`, drifting, on a `--ink-950` or `--ink-100` base)
-- A subtle grain/noise overlay at ~4% opacity over everything (single repeating SVG/PNG texture, mix-blend-mode: overlay) — this alone is what makes flat digital gradients look premium instead of cheap
-- Optional: a faint version of the logo's fold-geometry as an oversized, low-opacity watermark shape in a back layer
+These are what make a poster instantly recognisable as Digex. Each needs a web equivalent.
 
-## 4. Typography
+### a. Glass bubbles ⭐ (the one the client specifically loved)
+Photoreal transparent glass spheres with real refraction, caustics and soft contact shadows — floating at varying scales, some large and cropped by the frame, some small. They read as premium because they're *rendered*, not CSS circles.
 
-- Display/headlines: a font with real character — **Clash Display**, **General Sans**, or **Satoshi** for Latin; **IBM Plex Sans Arabic** (bold/black weight) for Arabic headlines — avoid default Inter/system-ui for anything above body text
-- Body: Inter (Latin) / IBM Plex Sans Arabic (Arabic) at regular weight
-- Headline sizing: dramatic scale jump from body — hero headline should be huge (clamp(2.5rem, 6vw, 6rem)), not a modest bump
-- Tight letter-spacing on large headlines (-0.02em), never default tracking at display size
+Web translation: use actual PNG/WebP renders with transparency, floating and drifting slowly with parallax on scroll. A CSS circle with a blur will not reproduce this — it needs the real asset.
 
-## 5. Motion signature
+### b. Blue spiral vortex orbs
+Swirling concentric blue spiral shapes, motion-blurred, like a vortex or ripple. Usually paired opposite a glass bubble for balance.
 
-- Buttons: magnetic hover (slight pull toward cursor) + glow that follows cursor on the primary CTA
-- Custom cursor on desktop only: small dot + trailing ring, snaps to a larger circle on interactive elements
-- Section reveals: content rises 24px + fades in, once, on scroll — already defined in CLAUDE.md, keep it
-- Hero background: continuous slow ambient motion (the gradient blobs), independent of scroll — this is what makes a hero feel "alive" instead of a static image
+Web translation: PNG render, slow continuous rotation, low-opacity, behind content.
 
-## 6. What "premium" means here, concretely
+### c. Marker highlights on key words
+Three variants seen across posters:
+- Yellow marker swipe behind an Arabic word (`براند`)
+- Solid electric-blue block behind a word, white text knocked out (`بيع`)
+- Heavy underline beneath a word (`?Online`)
 
-If a reviewer can't articulate why it looks premium, it isn't specific enough. The concrete, buildable answers are: depth (glass layering + soft coloured shadows, not flat cards), texture (grain overlay, never perfectly flat colour), restraint (one signature gradient reused everywhere, not five different colours), and motion quality (slow, physical easing — not linear, not bouncy).
+Web translation: animate the highlight *drawing in* on scroll — the swipe wipes across, the block scales in. This is a cheap, very high-impact signature.
 
-## 7. Non-goals
+### d. 3D device mockups
+Floating laptops/monitors/phones showing real Digex work, with soft realistic shadows, often at a slight angle or in a fanned multi-screen arrangement.
 
-- No confetti/bouncy animations
-- No more than one accent gradient in the whole palette
-- No stock-photo-style illustrations
-- Never sacrifice text contrast for aesthetic — fix the current hero contrast bug as part of Round 0
+Web translation: these become the portfolio/service page hero imagery. Reuse actual poster renders where they exist.
+
+### e. Bold bilingual display type
+Heavy black Arabic set against Latin, mixed within a single headline. High weight, tight spacing, strong size contrast between the two scripts.
+
+---
+
+## 3. Rules
+
+1. **Light is the default.** Sections default to `--paper`, not white and not black. Dark navy sections are an accent used sparingly for contrast/rhythm — roughly one dark section per two or three light ones.
+2. **Blue is a punch, not a background.** No full-page blue gradients — electric blue appears in highlight blocks, CTAs, icons, spiral orbs, and type accents.
+3. **Every floating object must have a real shadow.** The posters' depth comes from contact shadows under bubbles and devices — flat elements will immediately look off-brand.
+4. **Use the real renders.** Glass bubbles and spiral orbs must be exported PNGs from the poster source files, not CSS approximations.
+
+---
+
+## 4. Open items (need input / assets)
+
+- Source files or high-res exports of: glass bubbles, blue spiral orbs, device mockups
+- Real service pricing (must not be invented)
+- Which service pages get which existing project work
