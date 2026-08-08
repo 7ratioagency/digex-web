@@ -39,10 +39,12 @@ const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
 })
 
 /**
- * Sets `dark` on <html> before first paint using the stored preference
- * (falling back to system), so there is no light-mode flash for dark users.
+ * Sets `dark` on <html> before first paint, but ONLY when the visitor has
+ * explicitly chosen it. DESIGN.md §3 rule 1: light is the default — the
+ * brand is paper-based, so the OS preference no longer decides. The navy
+ * variant is the exception, reached through the toggle.
  */
-const themeInitScript = `(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.classList.toggle('dark',d)}catch(e){}})()`
+const themeInitScript = `(function(){try{document.documentElement.classList.toggle('dark',localStorage.getItem('theme')==='dark')}catch(e){}})()`
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))

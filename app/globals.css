@@ -4,89 +4,97 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ==========================================================================
-   1. Brand ramp — DESIGN.md §1
-   Raw palette. These are pigments, not decisions: use them for gradients,
-   glows and fills. For anything that renders *text*, use the semantic tokens
-   in §3, which are picked per mode to clear the contrast bar.
+   1. Palette — DESIGN.md §1 (V2, read from the Instagram posters)
+   Light-based, not dark: off-white paper with electric blue and deep navy as
+   accents. ~70% paper / ~20% navy / ~10% blue. Blue is a punch, never a wash.
    ========================================================================== */
 :root {
-  --brand-100: #e8edff;
-  --brand-300: #a8b9ff;
-  --brand-400: #6e8cff;
-  --brand-500: #3b63ff; /* primary — fills and gradients only, see §3 */
-  --brand-600: #2645e0;
-  --brand-700: #1b3ad6;
-  --brand-900: #14259c;
+  --paper: #f2f2f0; /* off-white poster base — NOT pure white */
+  --paper-warm: #ededeb;
+  --blue-500: #2b4bff; /* electric brand blue — the hero accent */
+  --blue-600: #1e3ae0;
+  --navy-900: #0a1e5c; /* deep navy — device screens, dark sections */
+  --navy-950: #061436;
+  /*
+   * Not in DESIGN.md §1 — a derived step, needed only in dark mode. There,
+   * the page base is already `--navy-950`, so an alternating band at
+   * `--navy-900` separates from it by a luminance ratio of just 1.16 and the
+   * rhythm reads as one flat navy page. This lifted navy restores the beat
+   * (ratio 1.58) and keeps white type at 11.4:1. In light mode the band
+   * stays `--navy-900` exactly as specified.
+   */
+  --navy-800: #16357d;
+  --ink: #0b0b0d; /* near-black display type */
+  --highlight-yellow: #ffe81a; /* marker highlight behind key words */
 
-  /* The one signature gradient (DESIGN.md §7: never a second one). */
+  /*
+   * Legacy ramp names, remapped onto the V2 palette above.
+   *
+   * These are aliases, not a second palette: every value below resolves to a
+   * V2 colour. They exist so the components that already reference
+   * `--brand-*` / `--ink-*` (the meshes, the panel tint, the logo-mark, the
+   * signature gradient) pick up V2 without those files being edited — this
+   * pass is scoped to tokens, backgrounds and text colours, not to section
+   * internals. Prefer the V2 names above for anything new.
+   */
+  --brand-100: #dde2ff;
+  --brand-300: #9fb2ff; /* light blue — accents on navy, where blue-500 is too dark */
+  --brand-400: #6e86ff;
+  --brand-500: var(--blue-500);
+  --brand-600: var(--blue-600);
+  --brand-700: var(--blue-600);
+  --brand-900: var(--navy-900);
+  --ink-950: var(--ink);
+  --ink-900: var(--navy-950);
+  --ink-100: var(--paper);
+  --ink-0: var(--paper-warm); /* never #FFFFFF — DESIGN.md §1 */
+
+  /* The one signature gradient, rebuilt on V2 stops. */
   --gradient-signature: linear-gradient(
     135deg,
     var(--brand-400) 0%,
-    var(--brand-500) 45%,
-    var(--brand-900) 100%
+    var(--blue-500) 45%,
+    var(--navy-900) 100%
   );
-
-  /* Neutrals — tinted toward brand, never pure black/white. */
-  --ink-950: #05060d;
-  --ink-900: #0b0e1a;
-  --ink-100: #f5f7ff;
-  --ink-0: #ffffff;
 
   /* ------------------------------------------------------------------
      2. Glass — DESIGN.md §2
      ------------------------------------------------------------------ */
-  --glass-bg-dark: rgba(255, 255, 255, 0.05);
-  /*
-   * 0.4, not the 0.55 this ran at before light mode's canvas got its own
-   * confidently-coloured shapes (root layout, DESIGN.md §3). At 0.55 the
-   * white wash was opaque enough that a card read as a flat white surface
-   * with a border — the backdrop-blur was technically doing its job, but
-   * blurring 45% canvas through 55% solid white barely shows. 0.4 lets
-   * more of what's actually behind a card come through while it's still
-   * unmistakably frosted, not a window.
-   */
-  --glass-bg-light: rgba(255, 255, 255, 0.4);
+  --glass-bg-dark: rgba(255, 255, 255, 0.06);
+  --glass-bg-light: rgba(255, 255, 255, 0.55);
   --glass-border: rgba(255, 255, 255, 0.14);
   --glass-blur: 20px;
 
-  /* Resolved per mode; the `.dark` block below overrides these. */
+  /* Resolved per surface; `.dark` and `.on-navy` below override these. */
   --glass-bg: var(--glass-bg-light);
-  --glass-border-color: rgba(20, 37, 156, 0.1);
-  /*
-   * The drop-shadow layer is `color-mix(var(--brand-700) 20%, transparent)`
-   * rather than a hand-picked rgba: same visual weight as the rgba(20,37,156,
-   * 0.18) it replaced, but tied to an actual token instead of a hardcoded
-   * triplet, and named to the specific ramp step the glass recipe asks for.
-   */
+  --glass-border-color: rgba(10, 30, 92, 0.12);
   --glass-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.6) inset,
-    0 20px 40px -24px color-mix(in srgb, var(--brand-700) 20%, transparent);
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 20px 40px -24px rgba(10, 30, 92, 0.22);
 
   /* ------------------------------------------------------------------
      3. Semantic tokens — the contrast-safe layer
+     ------------------------------------------------------------------
+     Paper is the default surface (DESIGN.md §3 rule 1: "Light is the
+     default"). `.on-navy` flips this whole block for the navy sections, so
+     components can keep using `text-foreground` / `text-muted-foreground` /
+     `border-border` and resolve correctly on either background without
+     knowing which one they're sitting on.
      ------------------------------------------------------------------ */
-  --background: var(--ink-100);
-  --foreground: var(--ink-950);
-  --surface: var(--ink-0);
-  --border: #c7d0ee;
-  --muted-foreground: #4a5270;
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --surface: var(--paper-warm);
+  --border: #d4d5d0;
+  --muted-foreground: #4c4f5a;
 
   /*
-   * `--accent-blue` is text, so it is NOT --brand-500.
-   *
-   * This is the contrast bug DESIGN.md §1 calls out. The brand primary
-   * (#3B63FF) measures 4.45:1 on this light background and 4.25:1 on the dark
-   * one — under the 7:1 the same section mandates, and the direct cause of a
-   * headline accent that looks washed out on dark and barely there on light.
-   * The old #2563EB was no better at 5.17:1.
-   *
-   * These two are the nearest ramp values that clear 7:1 while staying a
-   * saturated blue rather than a pale grey:
-   *   light  #1B3AD6 (brand-700) on #F5F7FF -> 7.48:1
-   *   dark   #7C9BFF               on #05060D -> 7.69:1
-   * Verified with the WCAG formula, not by eye.
+   * Text blue is `--blue-600`, not `--blue-500`: the electric primary
+   * measures 5.27:1 on paper, fine for a fill or a large accent but thin for
+   * body-sized type. #1E3AE0 lands at 6.84:1 while still reading as the
+   * brand blue rather than a navy. `--blue-500` stays the punch colour for
+   * fills, highlight blocks, icons and CTAs.
    */
-  --accent-blue: var(--brand-700);
+  --accent-blue: var(--blue-600);
 
   --accent-violet: #6d28d9;
   --accent-cyan: #0e7490;
@@ -125,27 +133,94 @@
   --tracking-display: 0em;
 }
 
+/*
+ * The dark variant — DESIGN.md §"core realisation": the ERP-poster look, a
+ * deep *navy* with white type. Deliberately not the old near-black canvas;
+ * that direction is gone. This is the exception, reachable via the theme
+ * toggle, not the default.
+ */
 .dark {
-  --background: var(--ink-950);
-  --foreground: var(--ink-100);
-  --surface: var(--ink-900);
-  --border: #242b4d;
-  --muted-foreground: #9aa3c0;
+  --background: var(--navy-950);
+  --foreground: #ffffff;
+  --surface: var(--navy-900);
+  --border: #1c3167;
+  --muted-foreground: #b4bfd9;
 
-  /* 7.69:1 on --ink-950. See the note above for why this isn't --brand-500. */
-  --accent-blue: #7c9bff;
+  /* `--blue-600` is 2.6:1 on navy — unusable. The light ramp step is the
+     only one that separates from this background. */
+  --accent-blue: var(--brand-300);
 
   --accent-violet: #a78bfa;
   --accent-cyan: #22d3ee;
   --accent-amber: #fbbf24;
   --accent-rose: #fb7185;
 
-  /* Glass inverts to the dark recipe from DESIGN.md §2. */
   --glass-bg: var(--glass-bg-dark);
   --glass-border-color: var(--glass-border);
   --glass-shadow:
     0 1px 0 rgba(255, 255, 255, 0.08) inset,
-    0 20px 40px -20px rgba(20, 37, 156, 0.35);
+    0 20px 40px -20px rgba(6, 20, 54, 0.55);
+}
+
+/*
+ * A navy section — DESIGN.md §3 rule 1's "one dark section per two or three
+ * light ones", which is what gives the scroll its rhythm.
+ *
+ * This is a scoped copy of the `.dark` token block rather than a one-off
+ * background utility, and that is the whole point: every descendant keeps
+ * using the same semantic classes it already had (`text-foreground`,
+ * `text-muted-foreground`, `border-border`, `.glass`) and they simply
+ * resolve to the navy set inside here. So a section moves from paper to navy
+ * by gaining one class — no edits to its markup, copy or structure.
+ *
+ * Applies in both themes: in dark mode the surrounding sections are navy-950
+ * and these are navy-900, so the alternation survives rather than flattening.
+ */
+.on-navy {
+  --background: var(--navy-900);
+  --foreground: #ffffff;
+  --surface: var(--navy-950);
+  --border: #1c3167;
+  --muted-foreground: #b4bfd9;
+  --accent-blue: var(--brand-300);
+
+  --glass-bg: var(--glass-bg-dark);
+  --glass-border-color: var(--glass-border);
+  --glass-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 20px 40px -20px rgba(6, 20, 54, 0.55);
+
+  background-color: var(--navy-900);
+  color: var(--foreground);
+}
+
+/*
+ * The navy band, lifted for dark mode.
+ *
+ * Without this the three `.on-navy` sections are identical in both themes —
+ * they were already navy, so toggling the theme visibly changed every other
+ * section and left these three untouched, which reads as a broken toggle.
+ * It also flattened the rhythm: against dark mode's `--navy-950` base, a
+ * `--navy-900` band is only 1.16x in luminance, effectively invisible.
+ *
+ * `--surface` drops to `--navy-900` so cards inside still sit *below* the
+ * section they're on, preserving the same figure/ground order as light mode
+ * rather than inverting it.
+ */
+.dark .on-navy {
+  --background: var(--navy-800);
+  --surface: var(--navy-900);
+
+  /*
+   * Lighter than the `.on-navy` default, because lifting the band to
+   * `--navy-800` also lifts the translucent glass cards sitting on it: card
+   * body copy measured 4.74:1 against the lightened card, down from 6.42:1
+   * on `--navy-900`. Still AA, but thin for body text. This restores
+   * 5.8:1 on cards and 7.6:1 directly on the band.
+   */
+  --muted-foreground: #cbd3e6;
+
+  background-color: var(--navy-800);
 }
 
 @theme inline {
@@ -161,7 +236,19 @@
   --color-accent-amber: var(--accent-amber);
   --color-accent-rose: var(--accent-rose);
 
-  /* Ramp exposed for gradients/fills, e.g. `from-brand-400`. */
+  /* V2 palette, exposed for utilities — e.g. `bg-highlight-yellow`,
+     `text-blue-500`, `bg-navy-900`. */
+  --color-paper: var(--paper);
+  --color-paper-warm: var(--paper-warm);
+  --color-blue-500: var(--blue-500);
+  --color-blue-600: var(--blue-600);
+  --color-navy-800: var(--navy-800);
+  --color-navy-900: var(--navy-900);
+  --color-navy-950: var(--navy-950);
+  --color-ink: var(--ink);
+  --color-highlight-yellow: var(--highlight-yellow);
+
+  /* Legacy ramp aliases — every one resolves to a V2 colour, see :root. */
   --color-brand-100: var(--brand-100);
   --color-brand-300: var(--brand-300);
   --color-brand-400: var(--brand-400);
@@ -311,14 +398,31 @@
     margin: 16px auto 0;
     padding: 12px 24px;
     border-radius: 9999px;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    /*
+     * Tuned for paper, not for the old near-black canvas. A near-white fill
+     * on an off-white page needs a real border and a soft navy-tinted
+     * shadow to read as a floating object — the previous white-on-white
+     * border and heavy pure-black shadow were both wrong here: one was
+     * invisible, the other looked like a drop shadow from a different
+     * design. Geometry (1100px, pill radius, 12/24 padding, sticky 16px) is
+     * unchanged.
+     *
+     * The pill deliberately keeps `:root`'s ink-on-paper tokens even while
+     * floating over a navy section — it is outside `main`, so `.on-navy`
+     * never scopes it. A light pill with dark type stays legible over both
+     * backgrounds; re-tinting it per section underneath would need scroll
+     * tracking and would flicker at every boundary.
+     */
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(24px) saturate(140%);
+    border: 1px solid rgba(10, 30, 92, 0.1);
+    box-shadow: 0 8px 32px rgba(10, 30, 92, 0.14);
   }
 
   .dark .nav-pill {
     background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 8px 32px rgba(6, 20, 54, 0.5);
   }
 
   @media (max-width: 640px) {

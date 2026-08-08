@@ -17,7 +17,9 @@ export async function ContactCTA() {
   ]
 
   return (
-    <Section id="contact">
+    // `on-navy` (globals.css) — a navy beat in the paper rhythm, DESIGN.md
+    // §3 rule 1. Background/token flip only; nothing inside changes.
+    <Section id="contact" className="on-navy">
       <SectionHeader
         eyebrow={t('eyebrow')}
         title={t('title')}

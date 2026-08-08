@@ -43,7 +43,9 @@ export async function Services() {
     */
     <Section
       id="services"
-      className="isolate panel-grow-scope"
+      // `on-navy` (globals.css) — a navy beat in the paper rhythm, DESIGN.md
+      // §3 rule 1. Background/token flip only; nothing inside changes.
+      className="isolate panel-grow-scope on-navy"
       backdrop={
         <div aria-hidden="true" className="panel-grow overflow-hidden">
           <ServicesMesh />
