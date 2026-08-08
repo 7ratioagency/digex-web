@@ -36,47 +36,64 @@
      2. Glass — DESIGN.md §2
      ------------------------------------------------------------------ */
   --glass-bg-dark: rgba(255, 255, 255, 0.05);
-  --glass-bg-light: rgba(255, 255, 255, 0.55);
+  /*
+   * 0.4, not the 0.55 this ran at before light mode's canvas got its own
+   * confidently-coloured shapes (root layout, DESIGN.md §3). At 0.55 the
+   * white wash was opaque enough that a card read as a flat white surface
+   * with a border — the backdrop-blur was technically doing its job, but
+   * blurring 45% canvas through 55% solid white barely shows. 0.4 lets
+   * more of what's actually behind a card come through while it's still
+   * unmistakably frosted, not a window.
+   */
+  --glass-bg-light: rgba(255, 255, 255, 0.4);
   --glass-border: rgba(255, 255, 255, 0.14);
   --glass-blur: 20px;
 
-  /* Resolved per mode; light mode overrides these two below. */
-  --glass-bg: var(--glass-bg-light);
-  --glass-border-color: rgba(20, 37, 156, 0.1);
+  /*
+   * Single-canvas era: the site background is the same near-black radial
+   * burst in BOTH themes (`.site-canvas` below has no `.dark` variant), so
+   * these resolved glass values are the dark recipe in `:root` too. The old
+   * light-glass values (`--glass-bg-light`, the white inset + blue-tinted
+   * drop shadow) are kept as raw tokens above in case a real light canvas
+   * ever returns, but nothing resolves to them right now.
+   */
+  --glass-bg: var(--glass-bg-dark);
+  --glass-border-color: var(--glass-border);
   --glass-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.6) inset,
-    0 20px 40px -24px rgba(20, 37, 156, 0.18);
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 20px 40px -20px rgba(20, 37, 156, 0.35);
 
   /* ------------------------------------------------------------------
      3. Semantic tokens — the contrast-safe layer
+     ------------------------------------------------------------------
+     These are the DARK values in `:root`, not just in `.dark`. The canvas
+     is near-black in both themes now, and these tokens paint text that sits
+     directly on it — a light-mode set anchored to `--ink-950` text on a
+     white page would be invisible here. The `.dark` block below carries the
+     identical values; it is the seam to reintroduce a real light theme at
+     if the single-canvas decision is ever reversed. The theme toggle
+     therefore currently changes nothing visually — kept per instruction,
+     not an oversight.
      ------------------------------------------------------------------ */
-  --background: var(--ink-100);
-  --foreground: var(--ink-950);
-  --surface: var(--ink-0);
-  --border: #c7d0ee;
-  --muted-foreground: #4a5270;
+  --background: var(--ink-950);
+  --foreground: var(--ink-100);
+  --surface: var(--ink-900);
+  --border: #242b4d;
+  --muted-foreground: #9aa3c0;
 
   /*
-   * `--accent-blue` is text, so it is NOT --brand-500.
-   *
-   * This is the contrast bug DESIGN.md §1 calls out. The brand primary
-   * (#3B63FF) measures 4.45:1 on this light background and 4.25:1 on the dark
-   * one — under the 7:1 the same section mandates, and the direct cause of a
-   * headline accent that looks washed out on dark and barely there on light.
-   * The old #2563EB was no better at 5.17:1.
-   *
-   * These two are the nearest ramp values that clear 7:1 while staying a
-   * saturated blue rather than a pale grey:
-   *   light  #1B3AD6 (brand-700) on #F5F7FF -> 7.48:1
-   *   dark   #7C9BFF               on #05060D -> 7.69:1
-   * Verified with the WCAG formula, not by eye.
+   * `--accent-blue` is text, so it is NOT --brand-500: the brand primary
+   * (#3B63FF) measures only 4.25:1 on this near-black base, under the 7:1
+   * DESIGN.md §1 mandates. #7C9BFF is the nearest value that clears it
+   * (7.69:1 on #05060D, verified with the WCAG formula, not by eye) while
+   * staying a saturated blue rather than a pale grey.
    */
-  --accent-blue: var(--brand-700);
+  --accent-blue: #7c9bff;
 
-  --accent-violet: #6d28d9;
-  --accent-cyan: #0e7490;
-  --accent-amber: #b45309;
-  --accent-rose: #be123c;
+  --accent-violet: #a78bfa;
+  --accent-cyan: #22d3ee;
+  --accent-amber: #fbbf24;
+  --accent-rose: #fb7185;
 
   /* ------------------------------------------------------------------
      4. Typography — DESIGN.md §4
@@ -220,6 +237,11 @@
   /*
    * Backdrop blur is a compositing cost on every scrolled frame, and the
    * effect is decorative. Drop to an opaque surface when motion is reduced.
+   *
+   * The header pill no longer uses `.glass` at all (see `.nav-pill` below),
+   * so it no longer goes through this fallback — it never had the opaque-
+   * `--surface` bug this rule exists to accept elsewhere, because it isn't
+   * built from this recipe any more.
    */
   @media (prefers-reduced-motion: reduce) {
     .glass {
@@ -274,6 +296,69 @@
 
 @layer components {
   /*
+   * Site canvas — the reference snippet's exact gradient, one hex changed
+   * (its #6633ee purple → Digex #4633e6). One rule, both themes: there is
+   * deliberately NO `.dark` variant and no pale light-mode version — this
+   * near-black burst *is* the canvas regardless of the toggle, and the
+   * theme system's remaining job is card/text tokens only (see :root).
+   * No grain, no blobs, no extra layers — a single gradient, literal
+   * values, so there is exactly one thing to read when checking this
+   * against its spec.
+   *
+   * Rendered once behind the whole page (a `position: fixed`, `inset-0`
+   * element in the root layout — not `h-screen`), so it covers the full
+   * page height continuously with no per-section reset or repeat.
+   * `background-attachment: fixed` is on the rule itself too, even though
+   * the element is already `position: fixed` — belt and suspenders, not a
+   * substitute for one another.
+   */
+  .site-canvas {
+    background: radial-gradient(125% 125% at 50% 10%, #000 40%, #4633e6 100%);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  /*
+   * Nav pill — a standalone recipe, deliberately not `.glass`. Every value
+   * here is the literal spec, not a design token: `.glass`'s own reduced-
+   * motion fallback (opaque `--surface`, no blur) was the exact cause of a
+   * visible-seam bug when this pill floated over a coloured background, and
+   * the simplest way to guarantee that class of bug can't recur here is to
+   * not depend on `.glass` — or any token requiring a reader to go look up
+   * what it resolves to — at all.
+   */
+  .nav-pill {
+    position: sticky;
+    top: 16px;
+    z-index: 50;
+    max-width: 1100px;
+    margin: 16px auto 0;
+    padding: 12px 24px;
+    border-radius: 9999px;
+    /*
+     * 0.08 white in BOTH themes now (was 0.6 in light / 0.08 dark). The
+     * canvas is the same near-black burst regardless of the toggle, and the
+     * text tokens inside this pill are light in both themes — the old 0.6
+     * white light-mode fill would put near-white text on a near-white pill.
+     * Background value only; geometry, blur, border and shadow untouched.
+     */
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  }
+
+  @media (max-width: 640px) {
+    .nav-pill {
+      margin-inline: 12px;
+      max-width: calc(100% - 24px);
+    }
+  }
+}
+
+@layer components {
+  /*
    * Tints an arbitrary logo asset brand blue regardless of the source file's
    * own colours, by using it as an alpha mask over a flat fill instead of
    * rendering it directly — DESIGN.md §3's floating-mark ambient layer.
@@ -285,34 +370,24 @@
    */
   .logo-mark {
     /*
-     * Not a flat --brand-400 in both modes. --brand-400 is a pale, light
-     * blue — measured against --ink-100 (light mode's base) that's a
-     * light-on-near-white pairing, so at ambient-texture opacity (8-15%) it
-     * all but disappears, even though the identical pixel delta against
-     * --ink-950 (dark mode's near-black base) reads clearly. Same principle
-     * as --accent-blue above: the pigment has to change per mode, tuning
-     * opacity alone can't fix a luminance-proximity problem.
-     *
-     * The colour swap alone still wasn't enough — measured contrast against
-     * the light background stayed under 1.3:1, imperceptible in practice
-     * even once it's the "right" colour. `--mark-opacity` is the raw
-     * per-instance random value FloatingLogos.tsx picks (kept as a custom
-     * property instead of the `opacity` shorthand directly, precisely so
-     * this multiplier can scale it per mode); light mode needs roughly
-     * double the alpha of dark mode to read as comparably present.
+     * One rule, both themes — the canvas is the same near-black burst
+     * regardless of the toggle now, so the old per-mode pigment swap and
+     * the light mode ~2x opacity multiplier (both of which existed to keep
+     * the marks visible against a near-white page) are gone with the page
+     * they compensated for. `--brand-300` is the pale end of the ramp: on
+     * black it reads clearly at ambient opacity without competing with the
+     * headline. `--mark-opacity` is the raw per-instance random value
+     * FloatingLogos.tsx picks (kept as a custom property rather than the
+     * `opacity` shorthand so a scale factor can be reintroduced per-theme
+     * later if a light canvas ever returns).
      */
-    --logo-mark-opacity-scale: 1.9;
-    background-color: var(--brand-600);
+    --logo-mark-opacity-scale: 1;
+    background-color: var(--brand-300);
     opacity: calc(var(--mark-opacity, 1) * var(--logo-mark-opacity-scale));
     mask-image: url("/logo-mark.png");
     mask-size: contain;
     mask-repeat: no-repeat;
     mask-position: center;
-  }
-
-  .dark .logo-mark {
-    --logo-mark-opacity-scale: 1;
-    background-color: var(--brand-400);
   }
 }
 
@@ -349,8 +424,8 @@
    * The tint is mixed rather than picked from a neutral token on purpose. The
    * panel has to read as distinct from two different surfaces at once: the page
    * background showing through the side gaps while it grows, and the section
-   * directly above it, which is already `--surface`. A few percent of brand
-   * blue separates it from both in either theme without introducing a colour.
+   * directly above it. A few percent of brand blue separates it from both in
+   * either theme without introducing a colour.
    */
   /*
    * This base rule is deliberately the animation's *end* state, not its start:
@@ -363,12 +438,23 @@
     inset: 0;
     z-index: -1;
     /*
-     * 6%, matching the deepest stage in ProcessStack, for the same reason:
-     * tinting toward brand lifts the light surface's luminance and eats into
-     * `--muted-foreground`. At 7% the resting service labels measured exactly
-     * 7.00:1 — passing, but with no margin at all. 6% restores a little.
+     * Two nested mixes, not one. The inner one is the *same* 6% brand tint as
+     * before — matching the deepest stage in ProcessStack, because tinting
+     * toward brand lifts the light surface's luminance and eats into
+     * `--muted-foreground`; at 7% the resting service labels measured exactly
+     * 7.00:1, passing with no margin at all — just re-based on `--background`
+     * instead of `--surface` now that this panel is one part of the site's
+     * single continuous canvas (DESIGN.md §3) rather than its own opaque
+     * surface. The outer mix is what makes it *part of* that canvas instead of
+     * covering it: at 55% this panel still reads as a distinct growing shape
+     * (the point of the animation below), while the other 45% lets the shared
+     * canvas's own glow and grain show through it, same as everywhere else.
      */
-    background: color-mix(in srgb, var(--brand-500) 6%, var(--surface));
+    background: color-mix(
+      in srgb,
+      color-mix(in srgb, var(--brand-500) 6%, var(--background)) 55%,
+      transparent
+    );
     border-radius: 0;
   }
 

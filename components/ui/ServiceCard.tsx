@@ -15,14 +15,47 @@ export async function ServiceCard({ service }: { service: Service }) {
     <>
       <Link
         href={`/services/${slug}`}
-        className="group flex h-full flex-col rounded-2xl border border-border p-section-md transition-colors hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+        /*
+         * `glass` replaces the old `rounded-2xl border border-border` —
+         * DESIGN.md §2's actual recipe (blur, border, layered shadow) instead
+         * of a bare outline. `hover:bg-surface` is gone with it: a flat
+         * colour swap doesn't compose with a translucent surface the way it
+         * did with a solid one, and the lift + accent glow below replace it
+         * as the hover affordance.
+         *
+         * `--service-accent` is a plain CSS custom property, not a Motion
+         * value — this stays a Server Component precisely so `ServiceCard`'s
+         * copy and icon never enter the client bundle (see Services.tsx), and
+         * hover here is native `:hover`, which needs no JS at all. It cascades
+         * to every descendant, including the icon below, so it only needs
+         * setting once, here.
+         *
+         * `transition-[transform,box-shadow]`, never `transition-all`: this
+         * card sits inside a `.panel-grow` ancestor whose own `scale` is
+         * mid-animation on first scroll-in, and animating `all` would fight
+         * that. Only the two properties this component itself owns transition.
+         */
+        style={
+          {
+            '--service-accent': accent,
+            backgroundImage: `radial-gradient(140% 120% at 20% -10%, color-mix(in srgb, ${accent} 14%, transparent), transparent 60%)`,
+          } as React.CSSProperties
+        }
+        className="group glass relative flex h-full flex-col p-section-md transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-[var(--glass-shadow),0_20px_45px_-20px_var(--service-accent)] motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
       >
         {/*
           accent comes from the token declared in content/services.ts.
           `animate` draws the icon's paths in on scroll — the icons handle
-          reduced motion themselves inside IconShell.
+          reduced motion themselves inside IconShell. The drop-shadow glow on
+          hover is the same accent as the resting stroke colour, just made to
+          bloom — `group-hover` rather than its own hover means it always
+          tracks the card, never the icon's own (much smaller) hit area.
         */}
-        <Icon className="size-7" style={{ color: accent }} animate />
+        <Icon
+          className="size-7 transition-[filter] duration-300 group-hover:drop-shadow-[0_0_10px_var(--service-accent)] motion-reduce:transition-none"
+          style={{ color: accent }}
+          animate
+        />
 
         <h3 className="mt-section-md text-lg font-semibold">
           {t(`items.${key}.title`)}

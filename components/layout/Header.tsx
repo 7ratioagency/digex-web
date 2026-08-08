@@ -19,12 +19,12 @@ export async function Header() {
   return (
     <HeaderShell>
       {/*
-        `relative` stays: the mobile dropdown positions against this box, and
-        the pill's width is now what defines its edges. Width capping and
-        centring moved up to the pill itself, so all that's left here is the
-        pill's internal padding.
+        `relative` stays: the mobile dropdown positions against this box.
+        No padding here — `.nav-pill` (globals.css) owns the pill's own
+        12px/24px padding directly now, so this is just the internal
+        row layout.
       */}
-      <div className="relative flex items-center justify-between gap-section-md px-section-md py-section-xs">
+      <div className="relative flex items-center justify-between gap-section-md">
         {/*
           The wordmark is a proper noun, not copy — it is not translated in any
           locale, so it comes from the SITE_NAME constant rather than messages/.

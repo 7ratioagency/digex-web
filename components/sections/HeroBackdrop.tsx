@@ -5,6 +5,16 @@ import { motion, useReducedMotion } from 'motion/react'
 /**
  * Ambient gradient mesh for the hero — DESIGN.md §3.
  *
+ * 0.16, not the 0.32 this ran at before the root layout grew a single fixed
+ * canvas (DESIGN.md §3, `app/[locale]/layout.tsx`) that now sits behind
+ * every section, including this one. This mesh's job changed with it: it
+ * used to *be* the hero's background; now the canvas is, and this is that
+ * canvas's own accent for this one section — motion and colour unchanged
+ * (DESIGN.md §5 still wants the hero feeling "alive"), just no longer
+ * carrying the section alone. Halving it only helps the contrast guarantee
+ * below, never hurts it: the measurements it documents were taken at 0.32
+ * and 0.25, both above this.
+ *
  * ─── Why every blob sits in the end-side / edge margin ──────────────────────
  * The headline's accent word is brand blue, and the blobs are brand blue. Blue
  * text on a blue wash tops out around 4.9:1 in light and 5.5:1 in dark *at only
@@ -77,7 +87,7 @@ export function HeroBackdrop() {
       {BLOBS.map((blob) => (
         <motion.div
           key={blob.position}
-          className={`absolute rounded-full opacity-[0.32] ${blob.position}`}
+          className={`absolute rounded-full opacity-[0.16] ${blob.position}`}
           style={{
             background: `radial-gradient(circle at center, ${blob.color} 0%, transparent 70%)`,
           }}

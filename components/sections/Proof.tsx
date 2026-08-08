@@ -12,7 +12,7 @@ export async function Proof() {
   const stats = t.raw('stats') as Stat[]
 
   return (
-    <Section className="bg-surface">
+    <Section>
       <SectionHeader
         eyebrow={t('eyebrow')}
         title={t('title')}

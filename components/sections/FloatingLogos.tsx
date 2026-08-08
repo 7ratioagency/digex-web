@@ -48,15 +48,14 @@ function makeMarks(): Mark[] {
     /*
      * The mark's own alpha coverage is sparse (~19% of its bounding box —
      * it's a thin fold-bracket shape, not a filled blob), so small + faint
-     * reads as imperceptible rather than intentional. Verified against a
-     * temporarily boosted 80-140px / 25-35% pass (confirmed the mask, tint,
-     * count and animation all work), then settled on a size/opacity pair
-     * that reads as clearly-present ambient motion without competing with
-     * the headline — see the `.logo-mark` contrast note in globals.css for
-     * why light mode also needs its own opacity multiplier on top of this.
+     * reads as imperceptible rather than intentional. 8-14% in `--brand-300`
+     * (see `.logo-mark`, globals.css — one rule for both themes now that
+     * the canvas is the same near-black burst in both) reads as
+     * clearly-present ambient motion against black without competing with
+     * the headline.
      */
     size: between(40, 90),
-    opacity: between(0.1, 0.18),
+    opacity: between(0.08, 0.14),
     // Slow and calm, and varied enough that no two instances ever fall in sync.
     fallDuration: between(20, 40),
     fallDelay: between(0, 10),

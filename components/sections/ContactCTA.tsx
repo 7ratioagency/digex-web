@@ -17,7 +17,7 @@ export async function ContactCTA() {
   ]
 
   return (
-    <Section id="contact" className="bg-surface">
+    <Section id="contact">
       <SectionHeader
         eyebrow={t('eyebrow')}
         title={t('title')}

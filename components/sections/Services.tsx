@@ -3,6 +3,8 @@ import { Link } from '@/lib/i18n/navigation'
 import { Section } from '@/components/ui/Section'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { ServiceCard } from '@/components/ui/ServiceCard'
+import { Reveal } from '@/components/ui/Reveal'
+import { ServicesMesh } from '@/components/sections/ServicesMesh'
 import {
   HoverSlider,
   HoverSliderPanel,
@@ -42,7 +44,11 @@ export async function Services() {
     <Section
       id="services"
       className="isolate panel-grow-scope"
-      backdrop={<div aria-hidden="true" className="panel-grow" />}
+      backdrop={
+        <div aria-hidden="true" className="panel-grow overflow-hidden">
+          <ServicesMesh />
+        </div>
+      }
     >
       <SectionHeader
         eyebrow={t('eyebrow')}
@@ -59,8 +65,17 @@ export async function Services() {
         The card content is untouched: `ServiceCard` is passed in whole, still
         rendered on the server, so its copy and its icon never enter the client
         bundle.
+
+        Wrapped as one `<Reveal>` block rather than staggering the five rows in
+        individually — matching `SectionHeader`'s own reasoning immediately
+        above it ("one movement per section reads as deliberate; staggered ones
+        read as fussy"). This is also the only place a stagger *could* attach
+        without editing `HoverSlider.tsx`: `HoverSliderTrigger` renders straight
+        to a `<button>` with no per-item wrapper, and touching that shared
+        primitive to add one would reach outside this section for a single
+        entrance flourish.
       */}
-      <HoverSlider className="mt-section-xl">
+      <Reveal className="mt-section-xl">
         {/*
           The card is centred against the list rather than stretched to match
           it. Stretching did align the column edges, but `ServiceCard`'s body is
@@ -69,7 +84,7 @@ export async function Services() {
           it keep its designed proportions and sit optically centred reads far
           better than a tidy edge with a hollow middle.
         */}
-        <div className="grid gap-section-xl lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center lg:gap-section-2xl">
+        <HoverSlider className="grid gap-section-xl lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center lg:gap-section-2xl">
           {/*
             Read as a navigable index, not a stack of loose headings. Each row
             is a divider plus real vertical padding, which takes the optical
@@ -118,8 +133,8 @@ export async function Services() {
               </HoverSliderPanel>
             ))}
           </HoverSliderPanels>
-        </div>
-      </HoverSlider>
+        </HoverSlider>
+      </Reveal>
 
       <div className="mt-section-lg">
         <Link
