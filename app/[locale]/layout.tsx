@@ -39,13 +39,10 @@ const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
 })
 
 /**
- * Sets `dark` on <html> before first paint. Dark is the DEFAULT theme now —
- * the site canvas is the same near-black burst in both themes, so absent an
- * explicit stored 'light' choice the page starts dark rather than deferring
- * to the OS preference. The catch branch also lands on dark: if storage is
- * unavailable the default should still apply.
+ * Sets `dark` on <html> before first paint using the stored preference
+ * (falling back to system), so there is no light-mode flash for dark users.
  */
-const themeInitScript = `(function(){try{var s=localStorage.getItem('theme');document.documentElement.classList.toggle('dark',s!=='light')}catch(e){document.documentElement.classList.add('dark')}})()`
+const themeInitScript = `(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.classList.toggle('dark',d)}catch(e){}})()`
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
@@ -130,34 +127,6 @@ export default async function LocaleLayout({ children, params }: Props) {
         />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
-        {/*
-          The site canvas — one radial gradient (`.site-canvas`, globals.css)
-          and nothing else: no grain child, no scrim, no extra layers. One
-          div, one rule, both themes.
-
-          `position: fixed` + `inset-0` (not `h-screen` or any other
-          viewport-height-capped box, and not relying on
-          `background-attachment: fixed` alone to pin it) so this always
-          covers the full viewport regardless of how tall the page's actual
-          content is — a fixed element shows the same patch of itself at a
-          given screen position no matter how far the page has scrolled,
-          which is what makes the gradient read as continuous all the way to
-          the footer instead of cutting off after the first 100vh.
-          `background-attachment: fixed` has a long-standing rendering bug on
-          iOS Safari where the image detaches from the viewport during
-          scroll; a positioned element has no such bug. `.site-canvas` still
-          carries `background-attachment: fixed` itself too — redundant on a
-          viewport-sized element, kept so the rule matches its own name.
-
-          `-z-50`: behind literally everything, including the header pill's
-          own `z-50` and every section's own local accent mesh (unchanged,
-          out of scope for this pass).
-        */}
-        <div
-          aria-hidden="true"
-          className="site-canvas pointer-events-none fixed inset-0 -z-50"
-        />
-
         <NextIntlClientProvider>
           <LenisProvider>
             <Header />

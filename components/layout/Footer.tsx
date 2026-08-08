@@ -35,11 +35,7 @@ export async function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    // No `bg-surface` — the footer sits at the exact bottom of the page,
-    // which is where the site canvas's blue bloom is strongest; an opaque
-    // fill here was the one thing still covering it. The border alone
-    // separates the footer from the last section.
-    <footer className="border-t border-border">
+    <footer className="border-t border-border bg-surface">
       <div className="mx-auto max-w-7xl px-6 py-section-3xl lg:px-8">
         <div className="grid grid-cols-1 gap-section-2xl sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
