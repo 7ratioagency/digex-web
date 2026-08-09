@@ -10,7 +10,6 @@
     "contact": "Contact",
     "cta": "Start a project",
     "language": "Language",
-    "theme": "Dark mode",
     "menu": "Menu"
   },
   "hero": {
@@ -23,7 +22,7 @@
   },
   "problem": {
     "eyebrow": "Why us",
-    "title": "In Algeria, the product isn't the problem. Visibility is.",
+    "title": "In Algeria, the product isn't the problem. <mark>Visibility</mark> is.",
     "lead": "A good product with weak branding stays invisible. That's exactly what we fix.",
     "items": [
       {
@@ -46,7 +45,7 @@
   },
   "services": {
     "eyebrow": "Our services",
-    "title": "Everything your brand needs, under one roof",
+    "title": "Everything your brand needs, under one <mark>roof</mark>",
     "lead": "Five connected services. No more coordinating four freelancers.",
     "cta": "Explore the service",
     "viewAll": "View all services",
@@ -80,7 +79,7 @@
   },
   "process": {
     "eyebrow": "How we work",
-    "title": "Five clear stages, no surprises",
+    "title": "Five <mark>clear</mark> stages, no surprises",
     "lead": "You always know where your project stands and what happens next.",
     "steps": [
       {
@@ -112,7 +111,7 @@
   },
   "work": {
     "eyebrow": "Our work",
-    "title": "Projects we shipped — you can visit them right now",
+    "title": "Projects we <mark>shipped</mark> — you can visit them right now",
     "lead": "Every project here is real and live. Click through and judge for yourself.",
     "cta": "View all work",
     "viewLive": "Visit the site",
@@ -134,7 +133,7 @@
   },
   "proof": {
     "eyebrow": "By the numbers",
-    "title": "Brands that trust us",
+    "title": "Brands that <mark>trust</mark> us",
     "lead": "Algerian brands we've taken from identity through to launch.",
     "stats": [
       {
@@ -161,7 +160,7 @@
   },
   "parfio": {
     "eyebrow": "Our product",
-    "title": "Parfio — we don't just build sites, we build software",
+    "title": "Parfio — we don't just build sites, we build <mark>software</mark>",
     "lead": "Parfio is our own management system for perfume retailers: inventory, sales, loyalty. Proof that we build real products, not just pages.",
     "features": [
       {
@@ -182,7 +181,7 @@
   },
   "contact": {
     "eyebrow": "Contact",
-    "title": "Got a project? Let's start it.",
+    "title": "Got a project? Let's <mark>start</mark> it.",
     "lead": "Send us your idea. We reply within 24 hours with a clear proposal.",
     "phoneLabel": "Phone",
     "emailLabel": "Email",

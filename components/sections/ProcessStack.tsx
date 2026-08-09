@@ -60,12 +60,10 @@ const MAX_TINT = 6
  * brand (up to 6%, see MAX_TINT), so the same blob strength would stack two
  * brand-leaning layers and read heavier than either section alone.
  *
- * `dark:opacity-[0.1]`/`[0.08]` is this section's local accent on top of the
- * shared canvas (root layout, DESIGN.md §3) — brought back down from an
- * earlier pass's 0.24/0.2, which was tuned for this mesh being the primary
- * dark-mode glow. It no longer is; the canvas is, and this mesh stacks on
- * top of both that and the panel's own brand tint, so the same peak opacity
- * would read heavier here than anywhere else.
+ * These opacities are the light values of what used to be a light/dark pair;
+ * the dark half went with dark mode. They stay low because this mesh stacks
+ * on top of the panel's own brand tint, so the same peak opacity would read
+ * heavier here than anywhere else.
  */
 function ProcessMesh() {
   const reduce = useReducedMotion()
@@ -76,7 +74,7 @@ function ProcessMesh() {
       className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
     >
       <motion.div
-        className="absolute inset-x-0 top-[-55%] mx-auto size-136 rounded-full opacity-[0.06] dark:opacity-[0.1]"
+        className="absolute inset-x-0 top-[-55%] mx-auto size-136 rounded-full opacity-[0.06]"
         style={{
           background:
             'radial-gradient(circle at center, var(--brand-400) 0%, transparent 70%)',
@@ -93,7 +91,7 @@ function ProcessMesh() {
         }
       />
       <motion.div
-        className="absolute inset-x-0 bottom-[-55%] mx-auto size-120 rounded-full opacity-[0.05] dark:opacity-[0.08]"
+        className="absolute inset-x-0 bottom-[-55%] mx-auto size-120 rounded-full opacity-[0.05]"
         style={{
           background:
             'radial-gradient(circle at center, var(--brand-700) 0%, transparent 70%)',
@@ -113,14 +111,22 @@ function ProcessMesh() {
       {/*
         Added alongside the panel's own background moving from an opaque
         `--surface` mix to a transparent one: the glass card's contrast
-        margin on the deepest panel is already thin (see the note on
-        `dark:[--glass-bg:...]` below), so now that the shared canvas's own
-        glow can reach this section too, that margin needs the same
-        protection every other section's mesh gives its text.
+        margin on the deepest panel is already thin (see the glass note
+        below), so that margin needs the same protection every other
+        section's mesh gives its text.
       */}
       <div className="absolute inset-0 contrast-scrim" />
 
       <div className="absolute inset-0 grain" />
+
+      {/*
+        Colour behind the glass — DESIGN.md §2f (a). Sits above the scrim on
+        purpose: the scrim's job is to protect *text* contrast, and these
+        fields exist precisely so the card in front has something to pick
+        up. Fading them along with the mesh would defeat the point.
+      */}
+      <div className="colour-field colour-field-blue top-[4%] inset-s-[-10%] size-136" />
+      <div className="colour-field colour-field-violet bottom-[-6%] inset-e-[-4%] size-112" />
     </div>
   )
 }
@@ -215,26 +221,17 @@ function Panel({
          * clips its own border, radius and shadow off screen — the whole
          * point of the treatment only reads with a little air around it.
          *
-         * `dark:[--glass-bg:...]` scopes the recipe's dark alpha from 5% down
-         * to 1% — the same fix and the same cause as `CycleItem`'s in
-         * ProblemCycle.tsx. Measured before this override: the body copy
-         * (`--muted-foreground`) dropped from its documented 7.33:1 baseline
-         * (see MAX_TINT above) to 6.29-6.58:1 across the five panels, because
-         * the white wash lightens the dark tinted background sitting behind
-         * it. 1% restores 7.05-7.60:1 on panels 0-3, and 6.94:1 on the
-         * deepest, most-tinted panel — a small, disclosed dip below the
-         * 7.33:1 baseline rather than a full restore, still comfortably
-         * clear of the 4.5:1 AA floor. Going further (0% — no wash at all)
-         * did reach 7:1 everywhere, but at that point the card had no visible
-         * fill left, only a border, which undercuts the "give it visual
-         * weight" goal this pass exists for.
+         * An earlier version scoped a `dark:` override here to thin the glass
+         * alpha, because on a dark tinted panel the white wash dropped body
+         * copy to 6.29-6.58:1. That tradeoff left with dark mode — on paper
+         * this is the DESIGN.md §2 recipe unmodified.
          */
         data-reduce-safe=""
         style={{
           rotate,
           transformOrigin: rtl ? 'bottom right' : 'bottom left',
         }}
-        className="glass absolute inset-3 flex flex-col px-6 py-section-2xl sm:inset-4 lg:inset-6 lg:px-8 dark:[--glass-bg:rgba(255,255,255,0.01)]"
+        className="glass absolute inset-3 flex flex-col px-6 py-section-2xl sm:inset-4 lg:inset-6 lg:px-8"
       >
         {/*
           The reference's rhythm: label, rule, oversized headline, rule, and the

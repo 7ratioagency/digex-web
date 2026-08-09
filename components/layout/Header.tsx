@@ -3,7 +3,6 @@ import { Link } from '@/lib/i18n/navigation'
 import { SITE_NAME } from '@/lib/seo'
 import { HeaderShell } from './HeaderShell'
 import { LanguageSwitcher } from './LanguageSwitcher'
-import { ThemeToggle } from './ThemeToggle'
 import { MobileMenu } from './MobileMenu'
 
 export async function Header() {
@@ -50,11 +49,9 @@ export async function Header() {
 
         <div className="hidden items-center gap-section-md md:flex">
           <LanguageSwitcher />
-          <ThemeToggle />
         </div>
 
         <div className="flex items-center gap-section-xs md:hidden">
-          <ThemeToggle />
           <MobileMenu links={links} />
         </div>
       </div>

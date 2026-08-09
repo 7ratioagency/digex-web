@@ -1,23 +1,25 @@
-import { getLocale, getTranslations } from 'next-intl/server'
-import { Link } from '@/lib/i18n/navigation'
-import { Section } from '@/components/ui/Section'
-import { SectionHeader } from '@/components/ui/SectionHeader'
-import { ServiceCard } from '@/components/ui/ServiceCard'
-import { Reveal } from '@/components/ui/Reveal'
-import { ServicesMesh } from '@/components/sections/ServicesMesh'
+import { getLocale, getTranslations } from "next-intl/server";
+import { Link } from "@/lib/i18n/navigation";
+import { Section } from "@/components/ui/Section";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Highlight } from "@/components/ui/Highlight";
+import { ServiceCard } from "@/components/ui/ServiceCard";
+import { Reveal } from "@/components/ui/Reveal";
+import { ServicesMesh } from "@/components/sections/ServicesMesh";
+import { DecorLayer, GlassBubble, SpiralOrb } from "@/components/ui/Decor";
 import {
   HoverSlider,
   HoverSliderPanel,
   HoverSliderPanels,
   HoverSliderTrigger,
   HoverSliderTriggerList,
-} from '@/components/ui/HoverSlider'
-import { ArrowIcon } from '@/components/icons'
-import { services } from '@/content/services'
+} from "@/components/ui/HoverSlider";
+import { ArrowIcon } from "@/components/icons";
+import { services } from "@/content/services";
 
 export async function Services() {
-  const t = await getTranslations('services')
-  const locale = await getLocale()
+  const t = await getTranslations("services");
+  const locale = await getLocale();
 
   /*
    * Arabic is cursive, so its labels are split on whitespace rather than on
@@ -29,7 +31,7 @@ export async function Services() {
    * same value on both sides of hydration, and reading `dir` after mount would
    * change the markup once the client caught up.
    */
-  const segmentBy = locale === 'ar' ? 'word' : 'grapheme'
+  const segmentBy = locale === "ar" ? "word" : "grapheme";
 
   return (
     /*
@@ -49,13 +51,40 @@ export async function Services() {
       backdrop={
         <div aria-hidden="true" className="panel-grow overflow-hidden">
           <ServicesMesh />
+          {/*
+            Poster composition — DESIGN.md §2a/§2b. Two elements only: the
+            service list already carries five large headings on the
+            reading-start side, so decor stays on the end side where the
+            glass card sits and lets the card frost it.
+
+            `zIndex=""` rather than the default `-z-10`: this renders inside
+            `.panel-grow`, which is itself `z-index: -1` with its own fill —
+            going negative again would drop the decor behind that fill and it
+            would never be seen. Same reason the colour fields here don't go
+            negative either.
+          */}
+          <DecorLayer zIndex="">
+            <GlassBubble
+              size={300}
+              position="bottom-[-13%] inset-e-[-6%]"
+              seed="svc-a"
+            />
+            <SpiralOrb
+              size={190}
+              position="top-[7%] inset-e-[9%]"
+              opacity={0.7}
+              seed="svc-b"
+            />
+          </DecorLayer>
         </div>
       }
     >
       <SectionHeader
-        eyebrow={t('eyebrow')}
-        title={t('title')}
-        lead={t('lead')}
+        eyebrow={t("eyebrow")}
+        title={t.rich("title", {
+          mark: (chunks) => <Highlight variant="block">{chunks}</Highlight>,
+        })}
+        lead={t("lead")}
       />
 
       {/*
@@ -96,7 +125,7 @@ export async function Services() {
             leaving the target the exact height of its glyphs.
           */}
           <HoverSliderTriggerList
-            label={t('eyebrow')}
+            label={t("eyebrow")}
             className="flex flex-col"
           >
             {services.map((service, index) => (
@@ -143,10 +172,10 @@ export async function Services() {
           href="/services"
           className="inline-flex min-h-11 items-center gap-section-xs text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
         >
-          {t('viewAll')}
+          {t("viewAll")}
           <ArrowIcon className="size-4" />
         </Link>
       </div>
     </Section>
-  )
+  );
 }

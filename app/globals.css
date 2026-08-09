@@ -1,7 +1,12 @@
 @import "tailwindcss";
 
-/* Dark mode toggled by a `.dark` class on <html>, not by OS preference. */
-@custom-variant dark (&:where(.dark, .dark *));
+/*
+ * There is no dark mode — DESIGN.md §3 rule 1. The brand is light-based, so
+ * the site is light-only and the `dark` variant is deliberately not
+ * registered: a `dark:` class left anywhere would now silently do nothing,
+ * and having it fail loudly at build time is better than having it rot.
+ * Navy survives as a *section accent* (`.on-navy`), not as a mode.
+ */
 
 /* ==========================================================================
    1. Palette — DESIGN.md §1 (V2, read from the Instagram posters)
@@ -15,17 +20,16 @@
   --blue-600: #1e3ae0;
   --navy-900: #0a1e5c; /* deep navy — device screens, dark sections */
   --navy-950: #061436;
-  /*
-   * Not in DESIGN.md §1 — a derived step, needed only in dark mode. There,
-   * the page base is already `--navy-950`, so an alternating band at
-   * `--navy-900` separates from it by a luminance ratio of just 1.16 and the
-   * rhythm reads as one flat navy page. This lifted navy restores the beat
-   * (ratio 1.58) and keeps white type at 11.4:1. In light mode the band
-   * stays `--navy-900` exactly as specified.
-   */
-  --navy-800: #16357d;
   --ink: #0b0b0d; /* near-black display type */
   --highlight-yellow: #ffe81a; /* marker highlight behind key words */
+  /*
+   * Not a palette colour and never used for type or fills — it exists only
+   * to give the colour fields behind glass a second hue to bend toward, so
+   * a card picks up a gradient rather than one flat blue. Leaning violet
+   * off `--blue-500` keeps it inside the brand's own hue neighbourhood
+   * rather than introducing a second accent (DESIGN.md §3 rule 2).
+   */
+  --violet-500: #6a3cf0;
 
   /*
    * Legacy ramp names, remapped onto the V2 palette above.
@@ -58,19 +62,21 @@
   );
 
   /* ------------------------------------------------------------------
-     2. Glass — DESIGN.md §2
+     2. Glass — DESIGN.md §2f
+     ------------------------------------------------------------------
+     The shadow is blue-tinted, never grey. That is a large part of what
+     reads as premium: a neutral drop shadow under a near-white card on
+     near-white paper just looks like a printing error, whereas a soft blue
+     one reads as an object lit by the same scene the rest of the page is in.
      ------------------------------------------------------------------ */
-  --glass-bg-dark: rgba(255, 255, 255, 0.06);
-  --glass-bg-light: rgba(255, 255, 255, 0.55);
-  --glass-border: rgba(255, 255, 255, 0.14);
-  --glass-blur: 20px;
+  --glass-blur: 24px;
 
-  /* Resolved per surface; `.dark` and `.on-navy` below override these. */
-  --glass-bg: var(--glass-bg-light);
-  --glass-border-color: rgba(10, 30, 92, 0.12);
+  /* Resolved per surface; `.on-navy` inverts this whole group. */
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-border-color: rgba(255, 255, 255, 0.9);
   --glass-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.7) inset,
-    0 20px 40px -24px rgba(10, 30, 92, 0.22);
+    0 8px 32px -8px rgba(43, 75, 255, 0.18),
+    0 2px 8px -2px rgba(10, 30, 92, 0.08);
 
   /* ------------------------------------------------------------------
      3. Semantic tokens — the contrast-safe layer
@@ -134,93 +140,38 @@
 }
 
 /*
- * The dark variant — DESIGN.md §"core realisation": the ERP-poster look, a
- * deep *navy* with white type. Deliberately not the old near-black canvas;
- * that direction is gone. This is the exception, reachable via the theme
- * toggle, not the default.
- */
-.dark {
-  --background: var(--navy-950);
-  --foreground: #ffffff;
-  --surface: var(--navy-900);
-  --border: #1c3167;
-  --muted-foreground: #b4bfd9;
-
-  /* `--blue-600` is 2.6:1 on navy — unusable. The light ramp step is the
-     only one that separates from this background. */
-  --accent-blue: var(--brand-300);
-
-  --accent-violet: #a78bfa;
-  --accent-cyan: #22d3ee;
-  --accent-amber: #fbbf24;
-  --accent-rose: #fb7185;
-
-  --glass-bg: var(--glass-bg-dark);
-  --glass-border-color: var(--glass-border);
-  --glass-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.08) inset,
-    0 20px 40px -20px rgba(6, 20, 54, 0.55);
-}
-
-/*
  * A navy section — DESIGN.md §3 rule 1's "one dark section per two or three
- * light ones", which is what gives the scroll its rhythm.
+ * light ones", which is what gives the scroll its rhythm. This is the ERP
+ * poster: one navy piece in a mostly-light set, an *accent*, not a mode.
  *
- * This is a scoped copy of the `.dark` token block rather than a one-off
- * background utility, and that is the whole point: every descendant keeps
- * using the same semantic classes it already had (`text-foreground`,
- * `text-muted-foreground`, `border-border`, `.glass`) and they simply
- * resolve to the navy set inside here. So a section moves from paper to navy
- * by gaining one class — no edits to its markup, copy or structure.
- *
- * Applies in both themes: in dark mode the surrounding sections are navy-950
- * and these are navy-900, so the alternation survives rather than flattening.
+ * It works by re-pointing the semantic tokens rather than by painting a
+ * background, and that is the whole point: every descendant keeps using the
+ * same classes it already had (`text-foreground`, `text-muted-foreground`,
+ * `border-border`, `.glass`) and they simply resolve to the navy set inside
+ * here. So a section moves from paper to navy by gaining one class — no
+ * edits to its markup, copy or structure.
  */
 .on-navy {
   --background: var(--navy-900);
   --foreground: #ffffff;
   --surface: var(--navy-950);
   --border: #1c3167;
-  --muted-foreground: #b4bfd9;
+  --muted-foreground: #cbd3e6;
+
+  /* `--blue-600` is 2.6:1 on navy — unusable. The light ramp step is the
+     only one that separates from this background. */
   --accent-blue: var(--brand-300);
 
-  --glass-bg: var(--glass-bg-dark);
-  --glass-border-color: var(--glass-border);
+  /* DESIGN.md §2f (c): the card recipe inverts on navy — a white *wash*
+     instead of a white *pane* — while the blur stays. */
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border-color: rgba(255, 255, 255, 0.16);
   --glass-shadow:
     0 1px 0 rgba(255, 255, 255, 0.08) inset,
-    0 20px 40px -20px rgba(6, 20, 54, 0.55);
+    0 8px 32px -8px rgba(6, 20, 54, 0.55);
 
   background-color: var(--navy-900);
   color: var(--foreground);
-}
-
-/*
- * The navy band, lifted for dark mode.
- *
- * Without this the three `.on-navy` sections are identical in both themes —
- * they were already navy, so toggling the theme visibly changed every other
- * section and left these three untouched, which reads as a broken toggle.
- * It also flattened the rhythm: against dark mode's `--navy-950` base, a
- * `--navy-900` band is only 1.16x in luminance, effectively invisible.
- *
- * `--surface` drops to `--navy-900` so cards inside still sit *below* the
- * section they're on, preserving the same figure/ground order as light mode
- * rather than inverting it.
- */
-.dark .on-navy {
-  --background: var(--navy-800);
-  --surface: var(--navy-900);
-
-  /*
-   * Lighter than the `.on-navy` default, because lifting the band to
-   * `--navy-800` also lifts the translucent glass cards sitting on it: card
-   * body copy measured 4.74:1 against the lightened card, down from 6.42:1
-   * on `--navy-900`. Still AA, but thin for body text. This restores
-   * 5.8:1 on cards and 7.6:1 directly on the band.
-   */
-  --muted-foreground: #cbd3e6;
-
-  background-color: var(--navy-800);
 }
 
 @theme inline {
@@ -242,11 +193,11 @@
   --color-paper-warm: var(--paper-warm);
   --color-blue-500: var(--blue-500);
   --color-blue-600: var(--blue-600);
-  --color-navy-800: var(--navy-800);
   --color-navy-900: var(--navy-900);
   --color-navy-950: var(--navy-950);
   --color-ink: var(--ink);
   --color-highlight-yellow: var(--highlight-yellow);
+  --color-violet-500: var(--violet-500);
 
   /* Legacy ramp aliases — every one resolves to a V2 colour, see :root. */
   --color-brand-100: var(--brand-100);
@@ -297,6 +248,73 @@
   --spacing-section-3xl: 8rem;
 }
 
+@layer components {
+  /*
+   * Colour behind glass — DESIGN.md §2f (a).
+   *
+   * This is the load-bearing half of the glass treatment, not decoration.
+   * `backdrop-filter` can only blur and saturate what is actually behind the
+   * pane; on bare `--paper` there is nothing to pick up, so a 55%-white card
+   * on an off-white page renders as a near-invisible white rectangle. These
+   * fields put large, very soft blue and violet washes *partly* behind each
+   * card group so the pane has colour to bend — which is what makes the
+   * material read at all.
+   *
+   * Deliberately blurred to an extreme (`blur(90px)`) and kept under 25%
+   * opacity: at that radius the shapes stop being legible as shapes and
+   * become a colour *gradient in the air*, which is the poster look. Sharper
+   * or stronger and they read as stray blobs competing with the content —
+   * DESIGN.md §3 rule 2 is explicit that blue is a punch, never a wash.
+   *
+   * Deliberately sets no `z-index`: where the field has to sit varies by
+   * section. Behind a plain section it wants `-z-10` (with `isolate` on the
+   * section so the negative layer stays scoped); nested inside an existing
+   * backdrop layer like `.panel-grow` it must NOT go negative or it would
+   * fall behind that layer's own background and disappear. Callers say
+   * which.
+   */
+  .colour-field {
+    position: absolute;
+    pointer-events: none;
+    border-radius: 9999px;
+    filter: blur(90px);
+  }
+
+  .colour-field-blue {
+    background: radial-gradient(
+      circle at center,
+      color-mix(in srgb, var(--blue-500) 78%, transparent) 0%,
+      color-mix(in srgb, var(--blue-500) 30%, transparent) 45%,
+      transparent 72%
+    );
+    opacity: 0.22;
+  }
+
+  .colour-field-violet {
+    background: radial-gradient(
+      circle at center,
+      color-mix(in srgb, var(--violet-500) 74%, transparent) 0%,
+      color-mix(in srgb, var(--violet-500) 28%, transparent) 45%,
+      transparent 72%
+    );
+    opacity: 0.18;
+  }
+
+  /*
+   * On navy the fields would only muddy an already-dark, already-coloured
+   * background — the cards there invert to a white wash and read on their
+   * own. Lifted rather than removed so the same markup works in both
+   * places.
+   */
+  .on-navy .colour-field-blue {
+    opacity: 0.32;
+  }
+
+  .on-navy .colour-field-violet {
+    opacity: 0.26;
+  }
+}
+
 /*
  * The signature glass texture — DESIGN.md §2.
  *
@@ -313,7 +331,14 @@
      * supports only the unprefixed form, so glass lost its blur there
      * entirely. Prefixes are the build's job, driven by browser targets.
      */
-    backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    /*
+     * saturate(180%), up from 140%. The saturation boost is doing real work
+     * now: it is what pulls the colour out of the soft blue/violet fields
+     * sitting behind each card group (`.colour-field`, below — DESIGN.md
+     * §2f (a)) so the pane has something to actually pick up. Without colour
+     * behind it, glass on paper is just a white rectangle on a white page.
+     */
+    backdrop-filter: blur(var(--glass-blur)) saturate(180%);
     border: 1px solid var(--glass-border-color);
     border-radius: var(--radius-glass);
     box-shadow: var(--glass-shadow);
@@ -419,12 +444,6 @@
     box-shadow: 0 8px 32px rgba(10, 30, 92, 0.14);
   }
 
-  .dark .nav-pill {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.14);
-    box-shadow: 0 8px 32px rgba(6, 20, 54, 0.5);
-  }
-
   @media (max-width: 640px) {
     .nav-pill {
       margin-inline: 12px;
@@ -471,10 +490,6 @@
     mask-position: center;
   }
 
-  .dark .logo-mark {
-    --logo-mark-opacity-scale: 1;
-    background-color: var(--brand-400);
-  }
 }
 
 @layer components {

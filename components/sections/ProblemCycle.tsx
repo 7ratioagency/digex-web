@@ -96,34 +96,13 @@ function CycleItem({
         whatever the card's actual rendered position is gets picked up
         automatically.
 
-        `dark:[--glass-bg:...]` overrides the recipe's dark alpha from 5% down
-        to 1%, scoped to just this card. The lit title is `--brand-500`
-        (rgb(59,99,255)), and measured, even the *unmodified* 5% white wash
-        was enough to lighten dark mode's effective card background from
-        rgb(11,14,26) to rgb(23,26,37) — dropping lit-title contrast from
-        4.04:1 to 3.68:1.
-
-        That 4.04:1 is a ceiling, not a target passed on the way to 4.5 —
-        solved analytically, `--brand-500` text tops out at ~4.09:1 on this
-        surface even with *zero* white wash at all, glass or none. It was
-        already under the WCAG AA text minimum before any change in this
-        pass, which is a pre-existing gap between this token and
-        `--accent-blue` (the safe alternative used elsewhere) rather than
-        something this pass introduces or is scoped to fix. The goal here is
-        narrower and achievable: this card must not make an already-known
-        weak spot worse. 1% brings measured contrast to 4.01:1, at parity
-        with the ceiling rather than below it, while the border, blur and
-        shadow — the parts of the recipe DESIGN.md §2 actually asks for —
-        stay exactly as specified.
-
-        Not the mesh: halving its opacity changed the measured contrast by
-        nothing, since blobs are kept off the text on purpose (see
-        ProblemMesh) — the glass wash itself is the whole effect. Scoped
-        locally rather than changed in the shared `.glass` recipe globally,
-        since nothing else on the site sits `--brand-500` text directly on
-        dark glass the way this one does.
+        This card used to carry a `dark:` override dropping the glass alpha
+        for dark mode, because `--brand-500` on a white-washed dark card was
+        already at its ~4.04:1 ceiling. That whole problem left with dark
+        mode: on paper the lit title is `--brand-500` over a 55%-white pane,
+        which is a completely different (and much healthier) pairing.
       */}
-      <div className="glass p-section-lg dark:[--glass-bg:rgba(255,255,255,0.01)]">
+      <div className="glass p-section-lg">
         {/* `relative` anchors the lit copy. Both copies inherit alignment and
             direction from the ancestor, so this needs no RTL-specific rule. */}
         <h3
@@ -155,6 +134,28 @@ function CycleItem({
         </p>
       </div>
     </li>
+  )
+}
+
+/**
+ * The colour behind the glass — DESIGN.md §2f (a).
+ *
+ * Not decoration: `backdrop-filter` can only blur what is actually behind
+ * the pane, and on bare `--paper` there is nothing there, so a 55%-white
+ * card renders as a near-invisible white rectangle on an off-white page.
+ * These two washes sit partly behind the card column so each card has real
+ * colour to pick up and separate from.
+ *
+ * Placed on the vertical axis with `start`-relative offsets so they follow
+ * the card column when it mirrors at /ar — the cards are in the
+ * inline-start column in both directions.
+ */
+function ProblemColourFields() {
+  return (
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+      <div className="colour-field colour-field-blue top-[6%] inset-s-[-8%] size-136" />
+      <div className="colour-field colour-field-violet bottom-[2%] inset-s-[16%] size-112" />
+    </div>
   )
 }
 
@@ -218,7 +219,9 @@ function RailTick({
  * §3), and this section is transparent over it, so the token to fade toward
  * is the same `--background` every other section now shares.
  *
- * `dark:opacity-[0.1]` is this section's local accent, on top of the shared
+ * Single opacity now that the site is light-only — this was the light value
+ * of a pair; the dark counterpart went with the mode. This is the section's
+ * local accent, on top of the shared
  * canvas's own glow — deliberately far short of Services/Process's. This is
  * the one section where that isn't just restraint: 0.12 is already measured,
  * above, as the point where the lit title regresses from its already-thin
@@ -234,7 +237,7 @@ function ProblemMesh() {
       className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
     >
       <motion.div
-        className="absolute inset-x-0 top-[-55%] mx-auto size-136 rounded-full opacity-[0.07] dark:opacity-[0.1]"
+        className="absolute inset-x-0 top-[-55%] mx-auto size-136 rounded-full opacity-[0.07]"
         style={{
           background:
             'radial-gradient(circle at center, var(--brand-400) 0%, transparent 70%)',
@@ -251,7 +254,7 @@ function ProblemMesh() {
         }
       />
       <motion.div
-        className="absolute inset-x-0 bottom-[-55%] mx-auto size-120 rounded-full opacity-[0.07] dark:opacity-[0.1]"
+        className="absolute inset-x-0 bottom-[-55%] mx-auto size-120 rounded-full opacity-[0.07]"
         style={{
           background:
             'radial-gradient(circle at center, var(--brand-700) 0%, transparent 70%)',
@@ -298,6 +301,7 @@ function StaticProblem({ items, header }: Props) {
     */
     <section className="relative isolate scroll-mt-24 overflow-hidden px-6 py-section-2xl lg:px-8">
       <ProblemMesh />
+      <ProblemColourFields />
       {/*
         `relative` is load-bearing, not decorative — see the identical note in
         Hero.tsx. `ProblemMesh` is positioned; without this the content stays
@@ -319,7 +323,7 @@ function StaticProblem({ items, header }: Props) {
                 `--brand-500`-on-dark-glass combination on narrow viewports and
                 under reduced motion, so it needs the identical fix.
               */}
-              <div className="glass p-section-lg dark:[--glass-bg:rgba(255,255,255,0.01)]">
+              <div className="glass p-section-lg">
                 <h3
                   className={`text-3xl font-semibold text-balance sm:text-4xl ltr:tracking-tight ${
                     // Reduced motion resolves to the end of the sequence, which is
@@ -471,6 +475,7 @@ function TravellingProblem({ items, header }: Props) {
       */}
       <div className="sticky top-0 isolate flex h-dvh items-center overflow-hidden px-6 lg:px-8">
         <ProblemMesh />
+        <ProblemColourFields />
         {/* `relative` is load-bearing — see the identical note on
             StaticProblem's content wrapper; the reasoning is the same here. */}
         <div className="relative mx-auto grid w-full max-w-7xl items-center gap-section-2xl lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">

@@ -31,11 +31,11 @@ import { motion, useReducedMotion } from 'motion/react'
  * reason theirs does: vertical-only offsets don't mirror under RTL, so this
  * needs no direction-specific rule either.
  *
- * `dark:opacity-[0.12]`/`[0.1]` is this section's local accent on top of the
- * shared canvas (root layout, DESIGN.md §3) — the canvas is now the page's
- * primary glow, so this stays close to its light-mode strength rather than
- * competing with it as a second full background the way an earlier pass here
- * pushed it to 0.3/0.28.
+ * These opacities are the light values of what used to be a light/dark pair;
+ * the dark half went with dark mode. Note this mesh now sits inside an
+ * `.on-navy` section, so it reads as texture *on* the navy band rather than
+ * as the section's own background — the colour fields (DESIGN.md §2a) are
+ * what the glass cards here actually pick up.
  */
 export function ServicesMesh() {
   const reduce = useReducedMotion()
@@ -44,7 +44,7 @@ export function ServicesMesh() {
     <>
       <motion.div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-[-50%] mx-auto size-124 rounded-full opacity-[0.065] dark:opacity-[0.12]"
+        className="pointer-events-none absolute inset-x-0 top-[-50%] mx-auto size-124 rounded-full opacity-[0.065]"
         style={{
           background:
             'radial-gradient(circle at center, var(--brand-700) 0%, transparent 70%)',
@@ -62,7 +62,7 @@ export function ServicesMesh() {
       />
       <motion.div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-[-50%] mx-auto size-112 rounded-full opacity-[0.055] dark:opacity-[0.1]"
+        className="pointer-events-none absolute inset-x-0 bottom-[-50%] mx-auto size-112 rounded-full opacity-[0.055]"
         style={{
           background:
             'radial-gradient(circle at center, var(--brand-400) 0%, transparent 70%)',
@@ -104,6 +104,23 @@ export function ServicesMesh() {
       />
 
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 grain" />
+
+      {/*
+        Colour behind the glass — DESIGN.md §2f (a). No negative z-index here,
+        unlike Problem's and Process's: this renders *inside* `.panel-grow`,
+        which is itself already at `z-index: -1` with its own background, so
+        going negative again would drop these behind that background and
+        they would never be seen. Default stacking puts them above the
+        panel's fill and still below the section's content.
+      */}
+      <div
+        aria-hidden="true"
+        className="colour-field colour-field-blue top-[10%] inset-e-[2%] size-136"
+      />
+      <div
+        aria-hidden="true"
+        className="colour-field colour-field-violet bottom-[6%] inset-e-[24%] size-112"
+      />
     </>
   )
 }

@@ -27,6 +27,42 @@ import { motion, useReducedMotion } from 'motion/react'
  * instance on the page, and no post-mount flash.
  */
 
+/**
+ * The layer decor lives in: above the section's background, below all of its
+ * content, clipped to the section, and never interactive.
+ *
+ * `-z-10` is what puts it in the right place, and it relies on a CSS painting
+ * rule worth stating explicitly: a negative-z-index child paints above its
+ * parent's *background* but below the parent's in-flow content. So one class
+ * satisfies both halves of "above the background, below the content" —
+ * provided the section carries `isolate`, which keeps the negative layer from
+ * escaping behind the page entirely.
+ *
+ * `overflow-hidden` is load-bearing, not tidiness: the compositions
+ * deliberately crop large bubbles past the section edge, and without clipping
+ * those would widen the document and produce horizontal scroll.
+ *
+ * `zIndex` is overridable for the one case that needs it — nesting inside a
+ * backdrop layer that is *already* negative (Services' `.panel-grow`), where
+ * going negative again would drop the decor behind that layer's own fill.
+ */
+export function DecorLayer({
+  children,
+  zIndex = '-z-10',
+}: {
+  children: React.ReactNode
+  zIndex?: string
+}) {
+  return (
+    <div
+      aria-hidden="true"
+      className={`pointer-events-none absolute inset-0 overflow-hidden ${zIndex}`}
+    >
+      {children}
+    </div>
+  )
+}
+
 type DecorProps = {
   /** Rendered box, in px. The object is square; the shadow extends below it. */
   size?: number
@@ -72,7 +108,7 @@ function seededRandom(seed: string) {
 
 /**
  * Slow, continuous, and deliberately not in phase with anything else on the
- * page — DESIGN.md §5 asks for "slow, physical easing", and two objects
+ * page — DESIGN.md §6 asks for "motion quality (slow, physical easing)", and two objects
  * drifting in lockstep instantly reads as a loop rather than as ambience.
  * Only `x`/`y`/`scale` move: all three are compositor-only, so this never
  * triggers layout (CLAUDE.md's animation rule).

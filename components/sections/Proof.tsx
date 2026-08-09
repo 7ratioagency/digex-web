@@ -1,22 +1,25 @@
-import { getTranslations } from 'next-intl/server'
-import { Section } from '@/components/ui/Section'
-import { SectionHeader } from '@/components/ui/SectionHeader'
-import { StaggerGroup, StaggerItem } from '@/components/ui/Stagger'
-import { CountUp } from '@/components/ui/CountUp'
-import { clients } from '@/content/projects'
+import { getTranslations } from "next-intl/server";
+import { Section } from "@/components/ui/Section";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Highlight } from "@/components/ui/Highlight";
+import { StaggerGroup, StaggerItem } from "@/components/ui/Stagger";
+import { CountUp } from "@/components/ui/CountUp";
+import { clients } from "@/content/projects";
 
-type Stat = { value: string; suffix: string; label: string }
+type Stat = { value: string; suffix: string; label: string };
 
 export async function Proof() {
-  const t = await getTranslations('proof')
-  const stats = t.raw('stats') as Stat[]
+  const t = await getTranslations("proof");
+  const stats = t.raw("stats") as Stat[];
 
   return (
     <Section>
       <SectionHeader
-        eyebrow={t('eyebrow')}
-        title={t('title')}
-        lead={t('lead')}
+        eyebrow={t("eyebrow")}
+        title={t.rich("title", {
+          mark: (chunks) => <Highlight variant="marker">{chunks}</Highlight>,
+        })}
+        lead={t("lead")}
       />
 
       <StaggerGroup
@@ -26,8 +29,9 @@ export async function Proof() {
         {stats.map((stat) => {
           // Values come from messages/ as strings; anything non-numeric is
           // rendered verbatim rather than counted.
-          const numeric = Number(stat.value)
-          const countable = stat.value.trim() !== '' && Number.isFinite(numeric)
+          const numeric = Number(stat.value);
+          const countable =
+            stat.value.trim() !== "" && Number.isFinite(numeric);
 
           return (
             <StaggerItem
@@ -52,7 +56,7 @@ export async function Proof() {
                 {stat.label}
               </dd>
             </StaggerItem>
-          )
+          );
         })}
       </StaggerGroup>
 
@@ -71,5 +75,5 @@ export async function Proof() {
         ))}
       </ul>
     </Section>
-  )
+  );
 }

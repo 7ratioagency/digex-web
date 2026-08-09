@@ -10,7 +10,6 @@
     "contact": "Contact",
     "cta": "Démarrer un projet",
     "language": "Langue",
-    "theme": "Mode sombre",
     "menu": "Menu"
   },
   "hero": {
@@ -23,7 +22,7 @@
   },
   "problem": {
     "eyebrow": "Pourquoi nous",
-    "title": "En Algérie, ce n'est pas le produit qui manque. C'est la visibilité.",
+    "title": "En Algérie, ce n'est pas le produit qui manque. C'est la <mark>visibilité</mark>.",
     "lead": "Un bon produit avec une image faible reste invisible. C'est exactement ce que nous corrigeons.",
     "items": [
       {
@@ -46,7 +45,7 @@
   },
   "services": {
     "eyebrow": "Nos services",
-    "title": "Tout ce dont votre marque a besoin, sous un même toit",
+    "title": "Tout ce dont votre marque a besoin, sous un même <mark>toit</mark>",
     "lead": "Cinq services connectés. Plus besoin de coordonner quatre freelances.",
     "cta": "Découvrir le service",
     "viewAll": "Voir tous les services",
@@ -80,7 +79,7 @@
   },
   "process": {
     "eyebrow": "Notre méthode",
-    "title": "Cinq étapes claires, sans mauvaise surprise",
+    "title": "Cinq étapes <mark>claires</mark>, sans mauvaise surprise",
     "lead": "Vous savez à tout moment où en est votre projet et quelle est la prochaine étape.",
     "steps": [
       {
@@ -112,7 +111,7 @@
   },
   "work": {
     "eyebrow": "Réalisations",
-    "title": "Des projets livrés, que vous pouvez visiter maintenant",
+    "title": "Des projets <mark>livrés</mark>, que vous pouvez visiter maintenant",
     "lead": "Chaque projet ici est réel et en ligne. Cliquez et jugez par vous-même.",
     "cta": "Voir toutes les réalisations",
     "viewLive": "Visiter le site",
@@ -134,7 +133,7 @@
   },
   "proof": {
     "eyebrow": "En chiffres",
-    "title": "Ils nous font confiance",
+    "title": "Ils nous font <mark>confiance</mark>",
     "lead": "Des marques algériennes accompagnées de l'identité jusqu'au lancement.",
     "stats": [
       {
@@ -161,7 +160,7 @@
   },
   "parfio": {
     "eyebrow": "Notre produit",
-    "title": "Parfio — nous ne faisons pas que des sites, nous faisons du logiciel",
+    "title": "Parfio — nous ne faisons pas que des sites, nous faisons du <mark>logiciel</mark>",
     "lead": "Parfio est notre propre système de gestion pour parfumeries : stock, ventes, fidélité. La preuve que nous construisons de vrais produits, pas seulement des pages.",
     "features": [
       {
@@ -182,7 +181,7 @@
   },
   "contact": {
     "eyebrow": "Contact",
-    "title": "Un projet en tête ? Parlons-en.",
+    "title": "Un projet en tête ? <mark>Parlons-en</mark>.",
     "lead": "Envoyez-nous votre idée. Réponse sous 24 h avec une proposition claire.",
     "phoneLabel": "Téléphone",
     "emailLabel": "E-mail",

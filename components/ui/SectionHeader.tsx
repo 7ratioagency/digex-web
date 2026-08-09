@@ -2,7 +2,12 @@ import { Reveal } from '@/components/ui/Reveal'
 
 type SectionHeaderProps = {
   eyebrow: string
-  title: string
+  /**
+   * `ReactNode`, not `string`, so a section can pass `t.rich(...)` and mark
+   * one word with `<Highlight>` (DESIGN.md §2c). Plain strings still work
+   * unchanged — this only widens what's accepted.
+   */
+  title: React.ReactNode
   lead?: string
   /** Centre the header (used by the closing CTA sections) */
   centered?: boolean

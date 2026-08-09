@@ -4,6 +4,7 @@ import { MagneticButton } from '@/components/ui/MagneticButton'
 import { SplitText } from '@/components/ui/SplitText'
 import { HeroBackdrop } from '@/components/sections/HeroBackdrop'
 import { FloatingLogos } from '@/components/sections/FloatingLogos'
+import { DecorLayer, GlassBubble, SpiralOrb } from '@/components/ui/Decor'
 import { ArrowIcon } from '@/components/icons'
 
 export async function Hero() {
@@ -19,6 +20,44 @@ export async function Hero() {
         HeroBackdrop's -z-10 mesh and below the content div that follows it.
       */}
       <FloatingLogos />
+
+      {/*
+        Poster composition — DESIGN.md §2a/§2b: one large bubble cropped by a
+        corner, a small one as counterpoint, and a spiral orb on the opposite
+        side for balance.
+
+        Everything is placed on logical `inset-s`/`inset-e`, so the whole
+        arrangement mirrors at /ar and the large bubble stays on the reading-
+        start corner in both directions rather than jumping sides.
+
+        Kept to the vertical extremes on purpose: the middle of this section
+        is the headline, and decor belongs around it, not behind it.
+
+        `zIndex=""` instead of the default `-z-10`, and placed after
+        `FloatingLogos` rather than before it. At `-z-10` the bubbles rendered
+        beneath that component's `.contrast-scrim` — a ~94%-opaque band
+        protecting the headline — which washed them to almost nothing, while
+        the same components read cleanly in Parfio and Contact where no scrim
+        sits over them. Ordering them after it instead lets them paint at
+        full strength; the content div that follows is `relative`, so DOM
+        order still keeps every bubble below the copy. Headline contrast was
+        re-measured after the change rather than assumed.
+      */}
+      <DecorLayer zIndex="">
+        <GlassBubble size={320} position="top-[-9%] inset-s-[-7%]" seed="hero-a" />
+        <GlassBubble
+          size={104}
+          position="bottom-[9%] inset-s-[14%]"
+          opacity={0.85}
+          seed="hero-b"
+        />
+        <SpiralOrb
+          size={250}
+          position="top-[4%] inset-e-[-5%]"
+          opacity={0.75}
+          seed="hero-c"
+        />
+      </DecorLayer>
 
       {/*
         `relative` here is load-bearing, not decorative.

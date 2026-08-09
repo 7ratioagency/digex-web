@@ -38,14 +38,6 @@ const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
    */
 })
 
-/**
- * Sets `dark` on <html> before first paint, but ONLY when the visitor has
- * explicitly chosen it. DESIGN.md §3 rule 1: light is the default — the
- * brand is paper-based, so the OS preference no longer decides. The navy
- * variant is the exception, reached through the toggle.
- */
-const themeInitScript = `(function(){try{document.documentElement.classList.toggle('dark',localStorage.getItem('theme')==='dark')}catch(e){}})()`
-
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
 }
@@ -104,11 +96,16 @@ export default async function LocaleLayout({ children, params }: Props) {
        * ships either way — and applying it means the "ع" in the language
        * switcher renders in the real face rather than a system fallback.
        */
+      /*
+       * No `suppressHydrationWarning` any more: it was here only because the
+       * theme init script mutated `<html>`'s class list before React
+       * hydrated. With the site light-only nothing rewrites this element
+       * before hydration, so suppressing the warning would now only hide
+       * real mismatches.
+       */
       className={`${inter.variable} ${ibmPlexSansArabic.variable} h-full antialiased`}
-      suppressHydrationWarning
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         {/*
           Animated elements ship as opacity:0 and are revealed by JS. If JS
           never runs they'd stay invisible, so without it we opt out of the
