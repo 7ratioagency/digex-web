@@ -10,6 +10,7 @@ import {
   useState,
 } from 'react'
 import { MotionConfig, motion, useReducedMotion } from 'motion/react'
+import { Link } from '@/lib/i18n/navigation'
 
 /**
  * A hover/focus-driven slider: a column of labels on one side, a stack of
@@ -147,6 +148,7 @@ export function HoverSliderTriggerList({
 export function HoverSliderTrigger({
   index,
   text,
+  href,
   segmentBy = 'grapheme',
   className = '',
   leading,
@@ -154,6 +156,14 @@ export function HoverSliderTrigger({
 }: {
   index: number
   text: string
+  /**
+   * When set, the row is a real `<Link>` to this destination instead of a
+   * plain `<button>` — clicking it navigates. Hover, focus and the reveal
+   * animation are unchanged either way: both render the identical markup
+   * below and share the exact same handlers, so `setActive` still fires on
+   * `mouseEnter`/`focus`/`click` regardless of which tag renders.
+   */
+  href?: string
   segmentBy?: SegmentMode
   className?: string
   /** Slot before the label — an ordinal, a bullet, an icon. */
@@ -166,23 +176,26 @@ export function HoverSliderTrigger({
   const isActive = activeIndex === index
   const segments = useMemo(() => segment(text, segmentBy), [text, segmentBy])
 
-  return (
-    <button
-      type="button"
-      role="tab"
-      id={`${baseId}-tab-${index}`}
-      aria-controls={`${baseId}-panel-${index}`}
-      aria-selected={isActive}
-      // Roving tabindex: one stop for the whole list, arrows move within it.
-      tabIndex={isActive ? 0 : -1}
-      onMouseEnter={() => setActive(index)}
-      onFocus={() => setActive(index)}
-      onClick={() => setActive(index)}
-      // Exposed so callers can style their own slots off the selected state
-      // with `group-data-[active=true]:` variants.
-      data-active={isActive}
-      className={`group flex w-full cursor-pointer items-center gap-section-md text-start focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-blue ${className}`}
-    >
+  // Shared across both the `<Link>` and `<button>` branches below, so the
+  // two can never drift apart on role, keyboard, or reveal behaviour.
+  const sharedProps = {
+    role: 'tab' as const,
+    id: `${baseId}-tab-${index}`,
+    'aria-controls': `${baseId}-panel-${index}`,
+    'aria-selected': isActive,
+    // Roving tabindex: one stop for the whole list, arrows move within it.
+    tabIndex: isActive ? 0 : -1,
+    onMouseEnter: () => setActive(index),
+    onFocus: () => setActive(index),
+    onClick: () => setActive(index),
+    // Exposed so callers can style their own slots off the selected state
+    // with `group-data-[active=true]:` variants.
+    'data-active': isActive,
+    className: `group flex w-full cursor-pointer items-center gap-section-md text-start focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-blue ${className}`,
+  }
+
+  const content = (
+    <>
       {/*
         The label is announced once, from here. Every segment below is
         aria-hidden so assistive tech reads "Web development" rather than
@@ -238,6 +251,20 @@ export function HoverSliderTrigger({
       </span>
 
       {trailing && <span className="ms-auto">{trailing}</span>}
+    </>
+  )
+
+  if (href) {
+    return (
+      <Link href={href} {...sharedProps}>
+        {content}
+      </Link>
+    )
+  }
+
+  return (
+    <button type="button" {...sharedProps}>
+      {content}
     </button>
   )
 }

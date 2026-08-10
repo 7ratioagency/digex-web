@@ -133,6 +133,7 @@ export async function Services() {
                 key={service.key}
                 index={index}
                 text={t(`items.${service.key}.title`)}
+                href={`/services/${service.slug}`}
                 segmentBy={segmentBy}
                 className="py-4 text-3xl font-semibold text-balance leading-none sm:text-4xl lg:text-5xl ltr:tracking-tight"
                 trailing={
