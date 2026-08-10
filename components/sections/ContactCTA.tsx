@@ -19,11 +19,11 @@ export async function ContactCTA() {
   ];
 
   return (
-    // `on-navy` (globals.css) — a navy beat in the paper rhythm, DESIGN.md
+    // `section-alt` (globals.css) — a navy beat in the paper rhythm, DESIGN.md
     // §3 rule 1. Background/token flip only; nothing inside changes.
     <Section
       id="contact"
-      className="isolate on-navy"
+      className="isolate section-alt"
       backdrop={
         // Poster composition — DESIGN.md §2a/§2b. Two bubbles, no orb: this is
         // the closing section and the WhatsApp glass card is the thing that

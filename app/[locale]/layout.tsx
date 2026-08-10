@@ -38,6 +38,16 @@ const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
    */
 })
 
+/**
+ * Applies the stored theme to `<html>` before first paint, so a visitor who
+ * chose dark never sees a frame of paper first.
+ *
+ * Light stays the default — DESIGN.md's core realisation is that the brand is
+ * light-based — so this only opts *in* to dark on an explicit stored choice
+ * and deliberately does not follow the OS preference.
+ */
+const themeInitScript = `(function(){try{document.documentElement.classList.toggle('dark',localStorage.getItem('theme')==='dark')}catch(e){}})()`
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
 }
@@ -97,15 +107,18 @@ export default async function LocaleLayout({ children, params }: Props) {
        * switcher renders in the real face rather than a system fallback.
        */
       /*
-       * No `suppressHydrationWarning` any more: it was here only because the
-       * theme init script mutated `<html>`'s class list before React
-       * hydrated. With the site light-only nothing rewrites this element
-       * before hydration, so suppressing the warning would now only hide
-       * real mismatches.
+       * `suppressHydrationWarning` is required again, and only for this
+       * element: `themeInitScript` adds the `dark` class before React
+       * hydrates, so the server's className and the client's genuinely differ
+       * by design. It is scoped to `<html>` — nothing below inherits the
+       * suppression, so real mismatches deeper in the tree still surface.
        */
       className={`${inter.variable} ${ibmPlexSansArabic.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <head>
+        {/* Must stay first in <head> — it has to run before first paint. */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         {/*
           Animated elements ship as opacity:0 and are revealed by JS. If JS
           never runs they'd stay invisible, so without it we opt out of the

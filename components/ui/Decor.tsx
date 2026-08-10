@@ -201,7 +201,7 @@ export function GlassBubble({
               height: size * 0.14,
               marginInlineStart: -size * 0.39,
               background:
-                'radial-gradient(ellipse at center, rgba(6,20,54,0.30) 0%, rgba(6,20,54,0.14) 45%, transparent 72%)',
+                'radial-gradient(ellipse at center, var(--bubble-contact) 0%, var(--bubble-contact-mid) 45%, transparent 72%)',
               filter: `blur(${size * 0.035}px)`,
             }}
           />
@@ -213,23 +213,23 @@ export function GlassBubble({
               backdropFilter: `blur(${size * 0.035}px) saturate(130%)`,
               background: [
                 // lit side, top-left
-                'radial-gradient(115% 115% at 30% 24%, rgba(255,255,255,0.50) 0%, rgba(255,255,255,0.14) 24%, rgba(255,255,255,0.03) 46%, transparent 62%)',
+                'radial-gradient(115% 115% at 30% 24%, var(--bubble-lit) 0%, var(--bubble-lit-soft) 24%, transparent 46%, transparent 62%)',
                 // brand refraction pooling in the lower half
-                'radial-gradient(95% 95% at 68% 76%, rgba(43,75,255,0.30) 0%, rgba(43,75,255,0.10) 40%, transparent 68%)',
+                'radial-gradient(95% 95% at 68% 76%, var(--bubble-tint) 0%, var(--bubble-tint-soft) 40%, transparent 68%)',
                 // faint overall body so it still reads on a busy backdrop
                 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 70%, rgba(255,255,255,0.05) 100%)',
               ].join(','),
               boxShadow: [
                 // crisp outer edge
-                'inset 0 0 0 1px rgba(255,255,255,0.30)',
+                'inset 0 0 0 1px var(--bubble-edge)',
                 // rim light, bottom-right — the transparency cue
-                `inset ${-size * 0.05}px ${-size * 0.07}px ${size * 0.13}px rgba(255,255,255,0.48)`,
+                `inset ${-size * 0.05}px ${-size * 0.07}px ${size * 0.13}px var(--bubble-rim)`,
                 // soft inner bounce, top-left
-                `inset ${size * 0.07}px ${size * 0.09}px ${size * 0.17}px rgba(255,255,255,0.16)`,
+                `inset ${size * 0.07}px ${size * 0.09}px ${size * 0.17}px var(--bubble-inner)`,
                 // brand tint deep in the bottom of the sphere
-                `inset ${-size * 0.02}px ${-size * 0.1}px ${size * 0.2}px rgba(43,75,255,0.22)`,
+                `inset ${-size * 0.02}px ${-size * 0.1}px ${size * 0.2}px var(--bubble-pool)`,
                 // ambient occlusion against the page
-                `0 ${size * 0.05}px ${size * 0.11}px rgba(6,20,54,0.16)`,
+                `0 ${size * 0.05}px ${size * 0.11}px var(--bubble-ao)`,
               ].join(','),
             }}
           />
@@ -246,7 +246,7 @@ export function GlassBubble({
               height: size * 0.19,
               rotate: '-24deg',
               background:
-                'radial-gradient(ellipse at center, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.45) 40%, transparent 72%)',
+                'radial-gradient(ellipse at center, var(--bubble-lit) 0%, var(--bubble-lit-soft) 40%, transparent 72%)',
               filter: `blur(${size * 0.012}px)`,
             }}
           />
@@ -261,7 +261,7 @@ export function GlassBubble({
               height: size * 0.07,
               rotate: '18deg',
               background:
-                'radial-gradient(ellipse at center, rgba(255,255,255,0.65) 0%, transparent 70%)',
+                'radial-gradient(ellipse at center, var(--bubble-spark) 0%, transparent 70%)',
               filter: `blur(${size * 0.01}px)`,
             }}
           />
@@ -371,10 +371,17 @@ export function SpiralOrb({
               className="absolute rounded-full"
               style={{
                 inset: `${ring.inset}%`,
-                border: `${ring.width}px solid rgba(43,75,255,${ring.alpha})`,
+                border: `${ring.width}px solid rgba(var(--orb-ring), ${ring.alpha})`,
                 filter: ring.blur ? `blur(${ring.blur}px)` : undefined,
                 rotate: `${ring.rotate}deg`,
                 scale: `1 ${ring.squash}`,
+                /*
+                 * Resolves to a no-op shadow on paper and a real bloom on
+                 * navy (`--orb-glow`). A glow needs darkness to read against
+                 * — on off-white it just muddies the ring — so this is the
+                 * one property that genuinely only exists in dark mode.
+                 */
+                boxShadow: 'var(--orb-glow)',
               }}
             />
           ))}
@@ -385,7 +392,7 @@ export function SpiralOrb({
             style={{
               inset: '38%',
               background:
-                'radial-gradient(circle at center, rgba(43,75,255,0.55) 0%, rgba(43,75,255,0.16) 55%, transparent 75%)',
+                'radial-gradient(circle at center, var(--orb-core) 0%, var(--orb-core-soft) 55%, transparent 75%)',
               filter: `blur(${size * 0.02}px)`,
             }}
           />

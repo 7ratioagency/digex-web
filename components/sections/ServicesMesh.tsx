@@ -33,7 +33,7 @@ import { motion, useReducedMotion } from 'motion/react'
  *
  * These opacities are the light values of what used to be a light/dark pair;
  * the dark half went with dark mode. Note this mesh now sits inside an
- * `.on-navy` section, so it reads as texture *on* the navy band rather than
+ * `.section-alt` section, so it reads as texture *on* the navy band rather than
  * as the section's own background — the colour fields (DESIGN.md §2a) are
  * what the glass cards here actually pick up.
  */
@@ -115,11 +115,11 @@ export function ServicesMesh() {
       */}
       <div
         aria-hidden="true"
-        className="colour-field colour-field-blue top-[10%] inset-e-[2%] size-136"
+        className="colour-field colour-field-violet top-[10%] inset-e-[2%] size-136"
       />
       <div
         aria-hidden="true"
-        className="colour-field colour-field-violet bottom-[6%] inset-e-[24%] size-112"
+        className="colour-field colour-field-blue bottom-[6%] inset-e-[24%] size-112"
       />
     </>
   )

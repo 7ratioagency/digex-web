@@ -88,7 +88,7 @@ export function Highlight({
         <motion.span
           {...wipe}
           aria-hidden="true"
-          className={`${wipe.className} absolute inset-x-0 bottom-[-0.08em] h-[0.13em] rounded-full bg-blue-500`}
+          className={`${wipe.className} absolute inset-x-0 bottom-[-0.08em] h-[0.13em] rounded-full bg-blue-500 dark:bg-brand-300`}
         />
       </span>
     )
@@ -152,9 +152,9 @@ export function Highlight({
          * Sized past the glyph box on both axes so the swipe overshoots the
          * word the way a hand-drawn one does.
          */
-        className={`${wipe.className} absolute inset-x-[-0.16em] inset-y-[-0.04em] bg-highlight-yellow mix-blend-multiply`}
+        className={`${wipe.className} absolute inset-x-[-0.16em] inset-y-[-0.04em] bg-highlight-yellow mix-blend-multiply dark:mix-blend-normal`}
       />
-      <span className="relative">{children}</span>
+      <span className="relative dark:text-ink">{children}</span>
     </span>
   )
 }

@@ -1,12 +1,19 @@
 @import "tailwindcss";
 
 /*
- * There is no dark mode — DESIGN.md §3 rule 1. The brand is light-based, so
- * the site is light-only and the `dark` variant is deliberately not
- * registered: a `dark:` class left anywhere would now silently do nothing,
- * and having it fail loudly at build time is better than having it rot.
- * Navy survives as a *section accent* (`.on-navy`), not as a mode.
+ * Two complete modes, toggled by a `.dark` class on <html>.
+ *
+ * The split is by *mode*, not by section. Navy used to be a per-section
+ * accent inside light mode, which made the toggle nearly pointless — the
+ * navy sections were already navy, so flipping the theme changed only the
+ * sections between them. Now light is paper end to end and dark is navy end
+ * to end, so every section on the page changes when you toggle.
+ *
+ * Section rhythm survives in both, as a *tone* rather than a colour block:
+ * `.section-alt` is `--paper-warm` on paper and `--navy-900` on navy. It is
+ * a soft warm/cool shift within the current mode, never a jump out of it.
  */
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* ==========================================================================
    1. Palette — DESIGN.md §1 (V2, read from the Instagram posters)
@@ -71,7 +78,7 @@
      ------------------------------------------------------------------ */
   --glass-blur: 24px;
 
-  /* Resolved per surface; `.on-navy` inverts this whole group. */
+  /* Resolved per mode; the `.dark` block inverts this whole group. */
   --glass-bg: rgba(255, 255, 255, 0.55);
   --glass-border-color: rgba(255, 255, 255, 0.9);
   --glass-shadow:
@@ -79,10 +86,38 @@
     0 2px 8px -2px rgba(10, 30, 92, 0.08);
 
   /* ------------------------------------------------------------------
+     2b. Decor materials — DESIGN.md §2a/§2b
+     ------------------------------------------------------------------
+     `Decor.tsx` builds its spheres and orbs from computed inline styles, so
+     Tailwind's `dark:` variant can't reach them. Routing every colour through
+     a token instead is what lets the same components restyle per mode: on
+     paper a glass sphere is a pale, low-contrast object that must not shout;
+     on navy it has real darkness to catch light against, so the specular and
+     rim both come up and the brand refraction saturates.
+     ------------------------------------------------------------------ */
+  --bubble-lit: rgba(255, 255, 255, 0.5);
+  --bubble-lit-soft: rgba(255, 255, 255, 0.14);
+  --bubble-tint: rgba(43, 75, 255, 0.3);
+  --bubble-tint-soft: rgba(43, 75, 255, 0.1);
+  --bubble-edge: rgba(255, 255, 255, 0.3);
+  --bubble-rim: rgba(255, 255, 255, 0.48);
+  --bubble-inner: rgba(255, 255, 255, 0.16);
+  --bubble-pool: rgba(43, 75, 255, 0.22);
+  --bubble-ao: rgba(6, 20, 54, 0.16);
+  --bubble-contact: rgba(6, 20, 54, 0.3);
+  --bubble-contact-mid: rgba(6, 20, 54, 0.14);
+  --bubble-spark: rgba(255, 255, 255, 0.65);
+
+  --orb-ring: 43, 75, 255; /* raw channels — the ring alpha varies per ring */
+  --orb-core: rgba(43, 75, 255, 0.55);
+  --orb-core-soft: rgba(43, 75, 255, 0.16);
+  --orb-glow: 0 0 0 rgba(0, 0, 0, 0); /* no bloom on paper */
+
+  /* ------------------------------------------------------------------
      3. Semantic tokens — the contrast-safe layer
      ------------------------------------------------------------------
      Paper is the default surface (DESIGN.md §3 rule 1: "Light is the
-     default"). `.on-navy` flips this whole block for the navy sections, so
+     default"). The `.dark` block flips this whole set, so
      components can keep using `text-foreground` / `text-muted-foreground` /
      `border-border` and resolve correctly on either background without
      knowing which one they're sitting on.
@@ -140,26 +175,23 @@
 }
 
 /*
- * A navy section — DESIGN.md §3 rule 1's "one dark section per two or three
- * light ones", which is what gives the scroll its rhythm. This is the ERP
- * poster: one navy piece in a mostly-light set, an *accent*, not a mode.
+ * Dark mode — the ERP poster's variant, applied to the whole site rather
+ * than to selected sections: deep navy, white type, electric blue accents.
  *
- * It works by re-pointing the semantic tokens rather than by painting a
- * background, and that is the whole point: every descendant keeps using the
- * same classes it already had (`text-foreground`, `text-muted-foreground`,
- * `border-border`, `.glass`) and they simply resolve to the navy set inside
- * here. So a section moves from paper to navy by gaining one class — no
- * edits to its markup, copy or structure.
+ * Every token the sections already consume is re-pointed here, so no section
+ * needs a `dark:` class of its own to change. That is what makes the toggle
+ * a complete shift instead of a partial one.
  */
-.on-navy {
-  --background: var(--navy-900);
+.dark {
+  --background: var(--navy-950);
   --foreground: #ffffff;
-  --surface: var(--navy-950);
+  --surface: var(--navy-900);
   --border: #1c3167;
   --muted-foreground: #cbd3e6;
 
-  /* `--blue-600` is 2.6:1 on navy — unusable. The light ramp step is the
-     only one that separates from this background. */
+  /* `--blue-600` is 2.6:1 on navy — unusable for type. The light ramp step
+     is the only one that separates from this background. `--blue-500` stays
+     the punch colour for fills, blocks and icons, where it reads fine. */
   --accent-blue: var(--brand-300);
 
   /* DESIGN.md §2f (c): the card recipe inverts on navy — a white *wash*
@@ -170,8 +202,53 @@
     0 1px 0 rgba(255, 255, 255, 0.08) inset,
     0 8px 32px -8px rgba(6, 20, 54, 0.55);
 
+  /*
+   * Decor, restyled for navy. The spheres get a brighter specular and a
+   * cooler, stronger rim because there is finally something dark for light
+   * to separate against — on paper the same values blew out to white mush.
+   * The orbs gain an actual bloom (`--orb-glow`), which is the one thing
+   * that reads as *lit* rather than merely drawn, and is only affordable
+   * against a dark base.
+   */
+  --bubble-lit: rgba(255, 255, 255, 0.72);
+  --bubble-lit-soft: rgba(198, 216, 255, 0.2);
+  --bubble-tint: rgba(43, 75, 255, 0.52);
+  --bubble-tint-soft: rgba(43, 75, 255, 0.2);
+  --bubble-edge: rgba(255, 255, 255, 0.42);
+  --bubble-rim: rgba(168, 196, 255, 0.8);
+  --bubble-inner: rgba(255, 255, 255, 0.22);
+  --bubble-pool: rgba(43, 75, 255, 0.42);
+  --bubble-ao: rgba(2, 8, 26, 0.5);
+  --bubble-contact: rgba(2, 8, 26, 0.55);
+  --bubble-contact-mid: rgba(2, 8, 26, 0.28);
+  --bubble-spark: rgba(255, 255, 255, 0.9);
+
+  --orb-ring: 122, 152, 255;
+  --orb-core: rgba(110, 140, 255, 0.75);
+  --orb-core-soft: rgba(43, 75, 255, 0.3);
+  --orb-glow: 0 0 26px rgba(64, 104, 255, 0.45);
+}
+
+/*
+ * The alternating section tone — the page's scroll rhythm.
+ *
+ * Only a surface shift, never a mode shift: `--paper-warm` against `--paper`
+ * in light, `--navy-900` against `--navy-950` in dark. Both are deliberately
+ * small steps (a few percent of luminance), because the rhythm is supposed
+ * to be felt rather than seen — the old version swapped all the way to navy
+ * inside light mode, which read as a different page rather than a different
+ * beat.
+ *
+ * Nothing else is re-pointed here. Text, borders and glass all come from the
+ * mode, so an alt section inherits whichever mode is active and needs no
+ * per-section token block of its own.
+ */
+.section-alt {
+  background-color: var(--paper-warm);
+}
+
+.dark .section-alt {
   background-color: var(--navy-900);
-  color: var(--foreground);
 }
 
 @theme inline {
@@ -301,17 +378,18 @@
   }
 
   /*
-   * On navy the fields would only muddy an already-dark, already-coloured
-   * background — the cards there invert to a white wash and read on their
-   * own. Lifted rather than removed so the same markup works in both
-   * places.
+   * Lifted in dark mode, where they do double duty: still the colour the
+   * glass cards pick up, and also the "subtle glowing accent points" that
+   * keep a full-navy page from reading flat. A wash that is barely there on
+   * paper reads as a genuine glow against navy, so the same markup gets more
+   * of the job done rather than needing a separate glow layer.
    */
-  .on-navy .colour-field-blue {
-    opacity: 0.32;
+  .dark .colour-field-blue {
+    opacity: 0.4;
   }
 
-  .on-navy .colour-field-violet {
-    opacity: 0.26;
+  .dark .colour-field-violet {
+    opacity: 0.32;
   }
 }
 
@@ -432,16 +510,23 @@
      * design. Geometry (1100px, pill radius, 12/24 padding, sticky 16px) is
      * unchanged.
      *
-     * The pill deliberately keeps `:root`'s ink-on-paper tokens even while
-     * floating over a navy section — it is outside `main`, so `.on-navy`
-     * never scopes it. A light pill with dark type stays legible over both
-     * backgrounds; re-tinting it per section underneath would need scroll
-     * tracking and would flicker at every boundary.
+     * It now flips with the mode (see `.dark .nav-pill` below) rather than
+     * staying light over everything. That used to be the right call when navy
+     * was a per-section accent — the pill floats over whatever section
+     * happens to be under it, and re-tinting per section would need scroll
+     * tracking and would flicker at every boundary. With navy as a whole
+     * mode there is only one background to match, so it can simply match it.
      */
     background: rgba(255, 255, 255, 0.72);
     backdrop-filter: blur(24px) saturate(140%);
     border: 1px solid rgba(10, 30, 92, 0.1);
     box-shadow: 0 8px 32px rgba(10, 30, 92, 0.14);
+  }
+
+  .dark .nav-pill {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.16);
+    box-shadow: 0 8px 32px rgba(2, 8, 26, 0.55);
   }
 
   @media (max-width: 640px) {
@@ -649,4 +734,20 @@
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+/*
+ * Dark mode's base is a gradient, not a flat fill — `--navy-950` at the top
+ * easing to `--navy-900` at the bottom. Paper doesn't need this (an off-white
+ * page reads as paper precisely because it is even), but a flat near-black
+ * navy over a very long page reads as dead space, and the poster's dark
+ * variant is a gradient rather than a block.
+ *
+ * `fixed` attachment so the ramp is anchored to the viewport rather than
+ * repeating down an 18,000px document, and so it never scrolls out from
+ * under the `.section-alt` bands that sit on top of it.
+ */
+.dark body {
+  background:
+    linear-gradient(180deg, var(--navy-950) 0%, var(--navy-900) 100%) fixed;
 }

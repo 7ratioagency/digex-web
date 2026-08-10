@@ -8,9 +8,13 @@ Derived from the agency's actual Instagram posters. **This supersedes the dark-c
 
 The posters are **light-based, not dark**. Off-white / light grey backgrounds with electric blue and deep navy as the accent colours — the opposite of the near-black canvas we'd been building. That mismatch is why the dark experiments never felt "right" for Digex specifically.
 
-**The site is light-only. There is no dark mode.** Navy (the ERP poster: deep navy, white type) survives as a *section accent* — one navy band in a mostly-light set, exactly as it is one poster in a mostly-light feed — not as a second mode the whole site can flip into. A dark mode is a second visual identity, and Digex does not have one; every attempt to maintain one caused problems and drifted away from the brand.
+**Light is the default and the brand's true face. Dark mode is the ERP poster, applied to the whole site.**
 
-Concretely, that means: no theme toggle, no theme provider, no stored preference, no `dark:` variants, and no dark token block. The `dark` variant is deliberately *not registered* in `globals.css`, so a stray `dark:` class fails at build time rather than silently doing nothing.
+The split is by *mode*, never by section. An earlier version made navy a per-section accent *inside* light mode, which had a fatal flaw: the navy sections were already navy, so toggling the theme changed only the sections between them and the toggle read as broken. Navy is now the entire dark mode — deep navy base, white type, electric blue accents — and light mode contains no navy section backgrounds at all.
+
+Section rhythm survives in both modes as a *tone*, not a colour block. `.section-alt` is `--paper-warm` on paper and `--navy-900` on navy: a soft warm/cool shift within the current mode, never a jump out of it. Services, Work and Contact carry it.
+
+**The test for any theme change:** toggle on the homepage and confirm no section looks identical in both modes.
 
 ---
 
@@ -111,7 +115,7 @@ border: 1px solid rgba(255, 255, 255, 0.16);
 
 ## 3. Rules
 
-1. **Light is the only mode.** Sections default to `--paper`, not white and not black. Navy sections are an accent used sparingly for contrast/rhythm — roughly one navy per two or three paper. There is no dark mode, no toggle, and no `dark:` variant; navy is a property of a *section*, never of the site.
+1. **Light is the default; dark is a whole mode, not a section.** Light mode is `--paper` end to end, with `.section-alt` (`--paper-warm`) for rhythm — no navy anywhere. Dark mode is navy end to end, with `.section-alt` (`--navy-900`) for the same rhythm. Navy is never a section accent *inside* light mode: that is what made the toggle read as broken.
 2. **Blue is a punch, not a background.** No full-page blue gradients — electric blue appears in highlight blocks, CTAs, icons, spiral orbs, and type accents. The soft colour fields behind glass (§2f a) are the one deliberate exception, and only because they are blurred past recognition and capped at low opacity.
 3. **Every floating object must have a real shadow.** The posters' depth comes from contact shadows under bubbles and devices — flat elements will immediately look off-brand. Card shadows are blue-tinted, never grey (§2f b).
 4. **Use the real renders.** Glass bubbles and spiral orbs must be exported PNGs from the poster source files, not CSS approximations.

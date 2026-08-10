@@ -639,9 +639,9 @@ export function WorkCinematic({ heroes, rest, labels, header }: Props) {
   const reduce = useReducedMotion()
 
   return (
-    // `on-navy` (globals.css) — a navy beat in the paper rhythm, DESIGN.md
+    // `section-alt` (globals.css) — a navy beat in the paper rhythm, DESIGN.md
     // §3 rule 1. Background/token flip only; nothing inside changes.
-    <section id="work" className="on-navy scroll-mt-24">
+    <section id="work" className="section-alt scroll-mt-24">
       <div className="px-6 pt-section-2xl lg:px-8">
         <div className="mx-auto max-w-7xl">{header}</div>
       </div>

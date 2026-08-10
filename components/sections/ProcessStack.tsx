@@ -125,8 +125,8 @@ function ProcessMesh() {
         fields exist precisely so the card in front has something to pick
         up. Fading them along with the mesh would defeat the point.
       */}
-      <div className="colour-field colour-field-blue top-[4%] inset-s-[-10%] size-136" />
-      <div className="colour-field colour-field-violet bottom-[-6%] inset-e-[-4%] size-112" />
+      <div className="colour-field colour-field-violet top-[4%] inset-s-[-10%] size-136" />
+      <div className="colour-field colour-field-blue bottom-[-6%] inset-e-[-4%] size-112" />
     </div>
   )
 }
