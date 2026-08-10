@@ -731,6 +731,25 @@
   }
 }
 
+/*
+ * `<html>` had no background of its own — only `body` did. Nothing in this
+ * codebase paints a wrapper above the nav pill (the `<header>` element *is*
+ * `.nav-pill`, full stop), but with `<html>` left transparent, any sub-pixel
+ * gap between the viewport edge and `body` — display scaling, zoom rounding,
+ * a sticky-positioned first child, all real browser-rendering edge cases —
+ * exposes the browser's own default canvas colour as a hairline seam at the
+ * very top of the page. Matching it to `body` removes that class of seam
+ * regardless of cause.
+ */
+html {
+  background: var(--background);
+  color-scheme: light;
+}
+
+.dark html {
+  color-scheme: dark;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

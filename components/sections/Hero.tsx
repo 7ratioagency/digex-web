@@ -11,9 +11,28 @@ export async function Hero() {
   const t = await getTranslations('hero')
 
   return (
-    // `isolate` gives the backdrop's -z-10 a local stacking context, so it
-    // layers behind this section's content without escaping behind the page.
-    <section className="relative isolate overflow-hidden px-6 pt-section-2xl pb-section-xl lg:px-8">
+    /*
+     * `isolate` gives the backdrop's -z-10 a local stacking context, so it
+     * layers behind this section's content without escaping behind the page.
+     *
+     * `-mt-[78px] pt-[174px]` (instead of plain `pt-section-2xl` / 96px):
+     * the sticky nav pill is a sibling *before* this section, not inside it,
+     * so without this the section's own box — and every `inset-0` decor
+     * layer scoped to it (HeroBackdrop, FloatingLogos, DecorLayer) — started
+     * only below the header's reserved 78px, leaving a flat, undecorated
+     * `--paper`/`--navy` strip behind and above the pill instead of the
+     * hero's mesh/bubbles/orbs.
+     *
+     * Pulling the section up by exactly the header's own measured outer
+     * height (78px at every locale and breakpoint — the pill never wraps to
+     * a second line) puts its top, and therefore its decor layers, at the
+     * true top of the page. Padding-top grows by that same 78px so the
+     * headline lands at the identical pixel position as before; the two
+     * changes cancel exactly, so nothing after this section shifts either.
+     * The header keeps its own unchanged `z-index: 50` in `.nav-pill`, so it
+     * still paints over this section's background, not the other way round.
+     */
+    <section className="relative isolate -mt-19.5 overflow-hidden px-6 pt-43.5 pb-section-xl lg:px-8">
       <HeroBackdrop />
       {/*
         No z-index utility here on purpose: DOM order alone puts this above
