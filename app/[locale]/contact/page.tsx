@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { buildMetadata } from '@/lib/seo'
 import { Section } from '@/components/ui/Section'
+import { Highlight } from '@/components/ui/Highlight'
 import { Button } from '@/components/ui/Button'
 import { ContactForm } from '@/components/contact/ContactForm'
 import { ArrowIcon } from '@/components/icons'
@@ -19,7 +20,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return buildMetadata({
     locale,
     path: '/contact',
-    title: `${t('title')} — Digex`,
+    // `contact.title` carries a `<mark>` — `t()` throws FORMATTING_ERROR on a
+    // string with an unhandled tag, and metadata can't take JSX anyway, so
+    // `t.markup` (not `t.rich`) resolves it to a plain string.
+    title: `${t.markup('title', { mark: (chunks) => chunks })} — Digex`,
     description: t('lead'),
   })
 }
@@ -39,7 +43,14 @@ export default async function ContactPage({ params }: Props) {
             {t('eyebrow')}
           </p>
           <h1 className="mt-section-xs text-4xl font-semibold text-balance sm:text-5xl ltr:tracking-tight">
-            {t('title')}
+            {/*
+              Same key, same `mark` render prop as the homepage Contact
+              section — this page is that section's full version, not
+              different copy.
+            */}
+            {t.rich('title', {
+              mark: (chunks) => <Highlight variant="block">{chunks}</Highlight>,
+            })}
           </h1>
           <p className="mt-section-sm text-lg leading-relaxed text-pretty text-muted-foreground">
             {t('lead')}

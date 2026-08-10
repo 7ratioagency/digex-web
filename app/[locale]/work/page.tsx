@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { buildMetadata } from '@/lib/seo'
 import { Section } from '@/components/ui/Section'
 import { SectionHeader } from '@/components/ui/SectionHeader'
+import { Highlight } from '@/components/ui/Highlight'
 import { ProjectCard } from '@/components/ui/ProjectCard'
 import { ContactCTA } from '@/components/sections/ContactCTA'
 import { WorkFilter, type FilterKey } from '@/components/work/WorkFilter'
@@ -28,7 +29,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return buildMetadata({
     locale,
     path: '/work',
-    title: `${t('title')} — Digex`,
+    // `work.title` carries a `<mark>` — `t()` throws FORMATTING_ERROR on a
+    // string with an unhandled tag, and metadata can't take JSX anyway, so
+    // `t.markup` (not `t.rich`) resolves it to a plain string.
+    title: `${t.markup('title', { mark: (chunks) => chunks })} — Digex`,
     description: t('lead'),
   })
 }
@@ -55,7 +59,11 @@ export default async function WorkPage({ params }: Props) {
       <Section>
         <SectionHeader
           eyebrow={t('eyebrow')}
-          title={t('title')}
+          // Same key, same `mark` render prop as the homepage Work section —
+          // this page is that section's full listing, not different copy.
+          title={t.rich('title', {
+            mark: (chunks) => <Highlight variant="block">{chunks}</Highlight>,
+          })}
           lead={t('lead')}
         />
 

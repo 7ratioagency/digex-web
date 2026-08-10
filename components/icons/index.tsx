@@ -239,6 +239,27 @@ export function EyeIcon(props: SVGProps<SVGSVGElement>) {
 }
 
 /* ---------------------------------------------------------------
+   Check — the "included" mark in pricing feature lists. Just the
+   tick, no enclosing circle: it sits inline before a line of text
+   at 16px, where a ring would close up into a blob. Symmetrical
+   enough in reading terms that it needs no RTL flip — a tick means
+   the same thing either direction.
+   --------------------------------------------------------------- */
+export function CheckIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width={24} height={24} viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" strokeWidth={1.5}
+      strokeLinecap="round" strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M4.5 12.5l5 5 10-11" />
+    </svg>
+  )
+}
+
+/* ---------------------------------------------------------------
    Social icons — simple line-art marks, same stroke language as
    the service icons above. Not literal logo redraws.
    --------------------------------------------------------------- */

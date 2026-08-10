@@ -89,7 +89,11 @@ export async function Footer() {
                     href={`/services/${service.slug}`}
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
-                    {tServices(`${service.key}.title`)}
+                    {/* `t.markup` — these titles carry a `<mark>`; a nav link
+                        wants the bare words. */}
+                    {tServices.markup(`${service.key}.title`, {
+                      mark: (chunks) => chunks,
+                    })}
                   </Link>
                 </li>
               ))}

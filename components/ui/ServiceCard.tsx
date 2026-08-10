@@ -57,8 +57,15 @@ export async function ServiceCard({ service }: { service: Service }) {
           animate
         />
 
+        {/*
+          `t.markup` resolves the `<mark>` these titles carry away to plain
+          text. The highlight is for the service page's own h1, where the
+          title is the headline; at this size, inside a card that already has
+          an accent icon and an accent tagline under it, a marker swipe would
+          be the third accent competing in one box.
+        */}
         <h3 className="mt-section-md text-lg font-semibold">
-          {t(`items.${key}.title`)}
+          {t.markup(`items.${key}.title`, { mark: (chunks) => chunks })}
         </h3>
         <p className="mt-1 text-sm font-medium" style={{ color: accent }}>
           {t(`items.${key}.tagline`)}

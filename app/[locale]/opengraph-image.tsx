@@ -12,12 +12,21 @@ export const contentType = 'image/png'
  * satori resolves no CSS custom properties, so the design tokens in
  * globals.css are unreachable here — these mirror them by hand and must be
  * updated alongside. Left-hand side is the token each value corresponds to.
+ *
+ * These are the *light* values, and that is the point: this card was still on
+ * the pre-V2 near-black canvas (`#0a0a0a` ground, `#60a5fa` accent) long after
+ * the site moved to paper. DESIGN.md's core realisation is that the brand is
+ * light-based, so the share card — often the first Digex surface anyone sees —
+ * has to be paper too, not a dark artefact of the old system.
+ *
+ * The accent is `--blue-600`, not `--blue-500`: DESIGN.md §1 notes 500 is only
+ * 5.27:1 on paper, and 600 is the step reserved for accent *text*.
  */
 const COLORS = {
-  background: '#0a0a0a', // --background (dark)
-  foreground: '#fafafa', // --foreground (dark)
-  accent: '#60a5fa', // --accent-blue (dark)
-  muted: '#a1a1aa', // --muted-foreground (dark)
+  background: '#f2f2f0', // --paper  (= --background, light)
+  foreground: '#0b0b0d', // --ink    (= --foreground, light)
+  accent: '#1e3ae0', // --blue-600   (= --accent-blue, light)
+  muted: '#4c4f5a', // --muted-foreground (light)
 } as const
 
 /**

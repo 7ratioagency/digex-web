@@ -152,7 +152,15 @@ export function Highlight({
          * Sized past the glyph box on both axes so the swipe overshoots the
          * word the way a hand-drawn one does.
          */
-        className={`${wipe.className} absolute inset-x-[-0.16em] inset-y-[-0.04em] bg-highlight-yellow mix-blend-multiply dark:mix-blend-normal`}
+        /*
+         * Bottom bleed is a token (`--marker-bleed-bottom`, globals.css), not
+         * a fixed inset: on paper the word stays `--ink` and is legible even
+         * where the swipe's wavy clip misses it, but on navy the word turns
+         * `--ink` against an opaque yellow, so anything the swipe misses is
+         * near-black on navy. Dark mode re-points the token to clear
+         * descenders; the top edge is the same in both.
+         */
+        className={`${wipe.className} absolute inset-x-[-0.16em] top-[var(--marker-bleed-top)] bottom-[var(--marker-bleed-bottom)] bg-highlight-yellow mix-blend-multiply dark:mix-blend-normal`}
       />
       <span className="relative dark:text-ink">{children}</span>
     </span>

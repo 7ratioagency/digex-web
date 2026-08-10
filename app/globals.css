@@ -95,6 +95,23 @@
      on navy it has real darkness to catch light against, so the specular and
      rim both come up and the brand refraction saturates.
      ------------------------------------------------------------------ */
+  /* ------------------------------------------------------------------
+     2c. Marker highlight bleed — DESIGN.md §2c
+     ------------------------------------------------------------------
+     How far the yellow marker swipe overshoots the *bottom* of the word it
+     sits behind. A token rather than a `dark:` utility because the base value
+     ships as `bottom-[…]` on the same element: `@custom-variant dark` wraps
+     in `:where()`, which contributes no specificity, so a `dark:bottom-*`
+     utility would tie with the base rule and be decided by stylesheet order.
+     Re-pointing the value the base rule already reads has no such race.
+
+     Light needs almost none — outside the swipe the word is still `--ink` on
+     `--paper`, which is perfectly legible. See `.dark` for why dark needs
+     much more.
+     ------------------------------------------------------------------ */
+  --marker-bleed-top: -0.04em;
+  --marker-bleed-bottom: -0.04em;
+
   --bubble-lit: rgba(255, 255, 255, 0.5);
   --bubble-lit-soft: rgba(255, 255, 255, 0.14);
   --bubble-tint: rgba(43, 75, 255, 0.3);
@@ -210,6 +227,42 @@
    * that reads as *lit* rather than merely drawn, and is only affordable
    * against a dark base.
    */
+  /*
+   * The marker has to fully enclose the word here, which it does not need to
+   * do on paper.
+   *
+   * On navy the swipe turns opaque (`dark:mix-blend-normal`) and the word
+   * turns `--ink` so it reads against the yellow. That makes any glyph pixel
+   * the yellow *misses* near-black on navy — measured 1.14:1, i.e. invisible.
+   * And it does miss: the hand-drawn clip polygon cuts up to 17% off the
+   * bottom edge, and the -1.4deg tilt drops the ends further still, so
+   * descenders (the "p" in "development") hung below the band.
+   *
+   * 0.34em clears the deepest descender plus the tilt at the widest word
+   * measured on the site. Only the bottom grows — the top edge is unchanged,
+   * so the swipe still reads as a marker rather than a block.
+   */
+  --marker-bleed-bottom: -0.34em;
+}
+
+/*
+ * Arabic needs the swipe taller at the top as well, and only on navy.
+ *
+ * IBM Plex Sans Arabic paints well outside its inline box: the ascenders of
+ * "ال" and the dot over "ظ" sit above the box the swipe is sized from, so the
+ * clip's top wave left them uncovered — measured 83 near-black pixels on navy
+ * across the top 7 rows of the marked word, at 1.09:1.
+ *
+ * Scoped to `[lang]` rather than applied to every script, for the same reason
+ * `tracking-display`, `rtl:leading-tight` and HoverSlider's `segmentBy` are
+ * script-scoped: Latin does not have this overhang and a band this tall on it
+ * would read as a block rather than a marker. Light mode needs none of it —
+ * there the word stays `--ink` on `--paper` and is legible wherever the swipe
+ * misses.
+ */
+html[lang="ar"].dark {
+  --marker-bleed-top: -0.44em;
+
   --bubble-lit: rgba(255, 255, 255, 0.72);
   --bubble-lit-soft: rgba(198, 216, 255, 0.2);
   --bubble-tint: rgba(43, 75, 255, 0.52);

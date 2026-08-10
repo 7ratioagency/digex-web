@@ -132,7 +132,17 @@ export async function Services() {
               <HoverSliderTrigger
                 key={service.key}
                 index={index}
-                text={t(`items.${service.key}.title`)}
+                /*
+                  `t.markup`, not `t()`: these titles carry a `<mark>` for the
+                  service page's own headline (Highlight, DESIGN.md §2c), and
+                  `t()` throws FORMATTING_ERROR on a string with an unhandled
+                  tag. This row needs a bare string — `HoverSliderTrigger`
+                  segments it per grapheme for the reveal — so the tag is
+                  resolved away rather than rendered.
+                */
+                text={t.markup(`items.${service.key}.title`, {
+                  mark: (chunks) => chunks,
+                })}
                 href={`/services/${service.slug}`}
                 segmentBy={segmentBy}
                 /*
