@@ -21,7 +21,6 @@ function routePaths() {
       changeFrequency: 'yearly' as const,
     })),
     { path: '/contact', priority: 0.8, changeFrequency: 'yearly' as const },
-    { path: '/parfio', priority: 0.6, changeFrequency: 'yearly' as const },
   ]
 }
 

@@ -159,27 +159,6 @@
       }
     ]
   },
-  "parfio": {
-    "eyebrow": "Notre produit",
-    "title": "Parfio — nous ne faisons pas que des sites, nous faisons du <mark>logiciel</mark>",
-    "lead": "Parfio est notre propre système de gestion pour parfumeries : stock, ventes, fidélité. La preuve que nous construisons de vrais produits, pas seulement des pages.",
-    "features": [
-      {
-        "title": "Gestion du stock",
-        "body": "Chaque flacon suivi, avec alerte avant rupture."
-      },
-      {
-        "title": "Programme de fidélité",
-        "body": "Points et récompenses qui font revenir le client."
-      },
-      {
-        "title": "Analytique",
-        "body": "Rapports de ventes et de marges clairs, jour après jour."
-      }
-    ],
-    "ctaPrimary": "Découvrir Parfio",
-    "ctaSecondary": "Chaîne Parfio"
-  },
   "contact": {
     "eyebrow": "Contact",
     "title": "Un projet en tête ? <mark>Parlons-en</mark>.",

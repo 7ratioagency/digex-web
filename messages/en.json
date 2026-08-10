@@ -159,27 +159,6 @@
       }
     ]
   },
-  "parfio": {
-    "eyebrow": "Our product",
-    "title": "Parfio — we don't just build sites, we build <mark>software</mark>",
-    "lead": "Parfio is our own management system for perfume retailers: inventory, sales, loyalty. Proof that we build real products, not just pages.",
-    "features": [
-      {
-        "title": "Inventory management",
-        "body": "Every bottle tracked, with alerts before you run out."
-      },
-      {
-        "title": "Loyalty programme",
-        "body": "Points and rewards that bring the customer back."
-      },
-      {
-        "title": "Analytics",
-        "body": "Clear sales and margin reports, day by day."
-      }
-    ],
-    "ctaPrimary": "Explore Parfio",
-    "ctaSecondary": "Parfio channel"
-  },
   "contact": {
     "eyebrow": "Contact",
     "title": "Got a project? Let's <mark>start</mark> it.",

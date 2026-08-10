@@ -5,7 +5,6 @@ import { Services } from '@/components/sections/Services'
 import { Process } from '@/components/sections/Process'
 import { SelectedWork } from '@/components/sections/SelectedWork'
 import { Proof } from '@/components/sections/Proof'
-import { Parfio } from '@/components/sections/Parfio'
 import { ContactCTA } from '@/components/sections/ContactCTA'
 
 type Props = {
@@ -24,7 +23,6 @@ export default async function HomePage({ params }: Props) {
       <Process />
       <SelectedWork />
       <Proof />
-      <Parfio />
       <ContactCTA />
     </main>
   )

@@ -135,7 +135,20 @@ export async function Services() {
                 text={t(`items.${service.key}.title`)}
                 href={`/services/${service.slug}`}
                 segmentBy={segmentBy}
-                className="py-4 text-3xl font-semibold text-balance leading-none sm:text-4xl lg:text-5xl ltr:tracking-tight"
+                /*
+                  `rtl:leading-tight` (1.25), not a blanket change to
+                  `leading-none` (1): measured via computed style, IBM Plex
+                  Sans Arabic's glyphs need ~1.25x their font-size to clear
+                  descenders and diacritics without the line box clipping
+                  them — scrollHeight ran to 60px inside a 48px box at
+                  `lg:text-5xl`. Latin in `leading-none` was never clipped, so
+                  /en and /fr keep the tighter box; only /ar (the only `dir`
+                  this can apply to) gets the taller one. Unscoped, it cascades
+                  identically to both overlapping spans in HoverSliderTrigger's
+                  reveal animation below, so they stay aligned to each other
+                  without any change to their own positioning rules.
+                */
+                className="py-4 text-3xl font-semibold text-balance leading-none rtl:leading-tight sm:text-4xl lg:text-5xl ltr:tracking-tight"
                 trailing={
                   /*
                     The selected row needs an affordance beyond a colour shift —

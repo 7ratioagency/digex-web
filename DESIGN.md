@@ -40,9 +40,9 @@ Ratio in practice: ~70% light paper, ~20% navy/dark elements, ~10% electric blue
 
 Sections alternate paper and navy so scrolling has contrast — roughly one navy per two or three paper:
 
-| Hero | Problem | Services | Process | Work | Proof | Parfio | Contact |
-|---|---|---|---|---|---|---|---|
-| paper | paper | **navy** | paper | **navy** | paper | paper | **navy** |
+| Hero | Problem | Services | Process | Work | Proof | Contact |
+|---|---|---|---|---|---|---|
+| paper | paper | **navy** | paper | **navy** | paper | **navy** |
 
 Proof is paper deliberately: it is the client logo wall, and client logos are almost always supplied for light backgrounds — on navy, dark logos disappear.
 

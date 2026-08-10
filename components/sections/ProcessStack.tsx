@@ -250,20 +250,41 @@ function Panel({
         <StaggerGroup as="div" className="flex h-full w-full flex-col">
           <StaggerItem
             as="div"
-            className="mx-auto flex w-full max-w-7xl items-baseline justify-between gap-section-md"
+            className="mx-auto flex w-full max-w-7xl flex-wrap items-baseline justify-between gap-x-section-md gap-y-section-sm"
           >
             {/*
+              Number and title as one reading-order group: a plain `flex` row
+              (no `flex-row-reverse`, no `rtl:` override) already places its
+              first DOM child at the reading-start side under both `dir`s, so
+              "number before title" holds at /ar without a direction-specific
+              rule. `flex-wrap` is the fallback for long titles at large
+              viewports (French `Accompagnement` at up to 8rem next to the
+              number does not fit one line even on a wide panel) — same
+              content, same sizes, it just drops to its own line instead of
+              overflowing.
+
               The step number was a `text-sm` label easy to miss against a
               full-viewport panel. `--gradient-signature` (DESIGN.md §1/§7 —
               "the one signature gradient... never a second one") is unused
               elsewhere in the codebase, so this is that one use, exactly
               where DESIGN.md §1 names "key accents" as the intended target.
+
+              Title's own size is unchanged from when it had its row to
+              itself — larger than `--text-display` (which tops out at 6rem)
+              on purpose. That token is sized for a headline sharing a
+              viewport with sub-copy and a CTA row; here a single word owns a
+              full-height panel, and at 6rem the panel read as mostly empty.
             */}
-            <span
-              className="bg-clip-text font-display text-6xl leading-none font-bold tabular-nums text-transparent sm:text-7xl lg:text-8xl"
-              style={{ backgroundImage: 'var(--gradient-signature)' }}
-            >
-              {step.step}
+            <span className="flex flex-wrap items-baseline gap-x-section-sm gap-y-0">
+              <span
+                className="bg-clip-text font-display text-6xl leading-none font-bold tabular-nums text-transparent sm:text-7xl lg:text-8xl"
+                style={{ backgroundImage: 'var(--gradient-signature)' }}
+              >
+                {step.step}
+              </span>
+              <h3 className="font-display text-[clamp(3rem,9vw,8rem)] leading-[1.05] font-semibold text-balance tracking-display">
+                {step.title}
+              </h3>
             </span>
             <span className="text-sm font-medium tabular-nums text-muted-foreground">
               {index + 1} / {total}
@@ -271,29 +292,16 @@ function Panel({
           </StaggerItem>
 
           {/*
-            The two rules are plain divs, not StaggerItems: they're hairline
-            dividers, not content, and `StaggerItem` requires children (it
-            always has something to fade in) — these have none.
+            One rule now, not two: the title used to sit in its own row
+            between a pair of dividers, and merging it into the row above
+            removed that row, not this divider. Kept as a plain div, not a
+            StaggerItem — it's a hairline separator, not content, and
+            `StaggerItem` always has something to fade in.
           */}
-          <div className="mx-auto mt-section-md w-full max-w-7xl border-t border-border" />
-
-          {/*
-            Larger than `--text-display` (which tops out at 6rem) on purpose. That
-            token is sized for a headline sharing a viewport with sub-copy and a
-            CTA row; here a single word owns a full-height panel, and at 6rem the
-            panel read as mostly empty. Still well short of the reference's 14rem,
-            which at this word length would break onto two lines in French.
-          */}
-          <StaggerItem as="div" className="mx-auto mt-section-lg w-full max-w-7xl">
-            <h3 className="font-display text-[clamp(3rem,9vw,8rem)] leading-[1.05] font-semibold text-balance tracking-display">
-              {step.title}
-            </h3>
-          </StaggerItem>
-
           <div className="mx-auto mt-section-lg w-full max-w-7xl border-t border-border" />
 
-          <StaggerItem as="div" className="mx-auto mt-auto w-full max-w-7xl pt-section-lg">
-            <p className="text-lg leading-relaxed text-pretty text-muted-foreground">
+          <StaggerItem as="div" className="mx-auto mt-auto w-full max-w-7xl">
+            <p className="text-xl leading-relaxed text-pretty text-muted-foreground">
               <span className="block max-w-prose">{step.body}</span>
             </p>
           </StaggerItem>

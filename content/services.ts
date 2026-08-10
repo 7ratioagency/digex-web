@@ -91,8 +91,4 @@ export const contactDetails = {
     youtube: 'https://www.youtube.com/@digex_agency',
     tiktok: 'https://tiktok.com/@digex_agency',
   },
-  parfio: {
-    page: '/parfio',
-    telegram: 'https://t.me/+NQSwq4qwpuE3Zjg0',
-  },
 } as const

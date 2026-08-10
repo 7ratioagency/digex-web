@@ -56,8 +56,8 @@ export async function Hero() {
         `FloatingLogos` rather than before it. At `-z-10` the bubbles rendered
         beneath that component's `.contrast-scrim` — a ~94%-opaque band
         protecting the headline — which washed them to almost nothing, while
-        the same components read cleanly in Parfio and Contact where no scrim
-        sits over them. Ordering them after it instead lets them paint at
+        the same components read cleanly in Contact where no scrim sits over
+        them. Ordering them after it instead lets them paint at
         full strength; the content div that follows is `relative`, so DOM
         order still keeps every bubble below the copy. Headline contrast was
         re-measured after the change rather than assumed.
