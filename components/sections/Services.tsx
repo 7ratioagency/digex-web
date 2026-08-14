@@ -165,10 +165,24 @@ export async function Services() {
                     colour alone is not a reliable indicator. Only opacity
                     animates: a horizontal nudge would need mirroring at /ar,
                     and the arrow already flips direction on its own.
+
+                    `max-lg:opacity-100` — below `lg` (1024px, the same cutoff
+                    the section's own responsive stacking already uses) there
+                    is no hover, so `opacity-0` defaulting every row to hidden
+                    except whichever one happens to be `active` (row 0 on
+                    load, since nothing has been hovered/tapped yet) read as
+                    four rows silently missing their affordance rather than
+                    one row highlighted among five. Forcing it on for every
+                    row there — instead of on desktop, where the hidden/shown
+                    contrast between the resting and the hovered row is the
+                    whole point of the affordance — restores it without
+                    touching that behaviour: `lg:` and up still resolve to
+                    plain `opacity-0` plus the existing active-state variant,
+                    completely unchanged.
                   */
                   <ArrowIcon
                     aria-hidden="true"
-                    className="size-5 text-accent-blue opacity-0 transition-opacity duration-200 group-data-[active=true]:opacity-100 motion-reduce:transition-none"
+                    className="size-5 text-accent-blue opacity-0 max-lg:opacity-100 transition-opacity duration-200 group-data-[active=true]:opacity-100 motion-reduce:transition-none"
                   />
                 }
               />

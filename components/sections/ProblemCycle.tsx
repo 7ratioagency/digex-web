@@ -310,9 +310,22 @@ function StaticProblem({ items, header }: Props) {
         over the text instead of behind it.
       */}
       <div className="relative mx-auto grid max-w-7xl gap-section-xl lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-section-2xl">
+        {/*
+          `order-2 lg:order-1` / `order-1 lg:order-2` below — visual order
+          only, source order is untouched (cards still come first in the DOM,
+          exactly as before). Below `lg` (1024px, `WIDE_QUERY` above — the
+          same cutoff `TravellingProblem` uses, so both versions agree on
+          where "mobile" ends) the header needs to read before the cards;
+          at `lg` and up this resets to the existing arrangement, unchanged.
+
+          This only ever needs to cover `StaticProblem`: `TravellingProblem`
+          is gated by that same 1024px `matchMedia` check in `ProblemCycle`
+          below, so it can never mount under `lg` regardless of CSS — nothing
+          there needs touching.
+        */}
         <StaggerGroup
           as="ul"
-          className="flex flex-col gap-section-xl lg:order-1"
+          className="order-2 flex flex-col gap-section-xl lg:order-1"
         >
           {items.map((item, index) => (
             <StaggerItem key={item.title} as="li">
@@ -342,7 +355,7 @@ function StaticProblem({ items, header }: Props) {
             </StaggerItem>
           ))}
         </StaggerGroup>
-        <div className="lg:order-2">{header}</div>
+        <div className="order-1 lg:order-2">{header}</div>
       </div>
     </section>
   )
