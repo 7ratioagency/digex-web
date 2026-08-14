@@ -190,18 +190,70 @@ export async function Services() {
           </HoverSliderTriggerList>
 
           {/*
+            `hidden lg:block` — not a class appended onto `HoverSliderPanels`
+            itself, which already hardcodes `grid` unconditionally; stacking
+            `hidden`/`lg:grid` on top of that would leave two same-specificity
+            rules fighting over `display` with no reliable winner. Wrapping it
+            instead means `HoverSliderPanels` never changes, and the toggle
+            lives entirely on an element that owns it outright.
+
             The panels share one grid cell, so the stack is as tall as the
             longest card and every card fills that height — the panel never
             resizes as you move between services, which is what stops the
             layout twitching mid-swap.
           */}
-          <HoverSliderPanels>
-            {services.map((service, index) => (
-              <HoverSliderPanel key={service.key} index={index}>
+          <div className="hidden lg:block">
+            <HoverSliderPanels>
+              {services.map((service, index) => (
+                <HoverSliderPanel key={service.key} index={index}>
+                  <ServiceCard service={service} />
+                </HoverSliderPanel>
+              ))}
+            </HoverSliderPanels>
+          </div>
+
+          {/*
+            Mobile only (`lg:hidden` — same cutoff as the wrapper above, so
+            exactly one of the two is ever in the layout): a native
+            scroll-snap slider instead of the crossfade. The crossfade's
+            single-active-card model is a hover affordance, and there is no
+            hover here — below `lg` it was defaulting to whichever service
+            happened to be `index === 0`, silently hiding the other four
+            rather than actually adapting.
+
+            No JS carousel, no scroll-position tracking: `snap-x
+            snap-mandatory` plus `snap-start` on each slide is the entire
+            mechanism, so this is exactly as cheap as any other native
+            scroller and needs no client boundary of its own. Cards sit at
+            85% width on purpose — the remaining 15% is the "there's more"
+            affordance the section otherwise gets from dots, without adding
+            state to track which dot is lit.
+
+            Direction is never set explicitly. A `flex` row with no
+            `flex-row-reverse` and no `rtl:` override already lays its first
+            DOM child at the reading-start edge under either `dir` — the same
+            reasoning `HoverSliderTrigger`'s number+title group and every
+            other logically-positioned row in this codebase relies on — so
+            the first service starts at the start/right edge at /ar with no
+            direction-specific class, and scrolling toward the end reveals
+            the rest. Confirmed empirically (Playwright `scrollLeft` probe
+            across /ar /fr /en), not assumed: see the verification notes for
+            this change.
+
+            `ServiceCard` itself is untouched and unaware this exists — same
+            component, same props, as the desktop panels above.
+          */}
+          <div
+            role="region"
+            aria-label={t("eyebrow")}
+            className="no-scrollbar -mx-6 flex snap-x snap-mandatory gap-section-md overflow-x-auto px-6 pb-1 lg:hidden"
+          >
+            {services.map((service) => (
+              <div key={service.key} className="w-[85%] shrink-0 snap-start">
                 <ServiceCard service={service} />
-              </HoverSliderPanel>
+              </div>
             ))}
-          </HoverSliderPanels>
+          </div>
         </HoverSlider>
       </Reveal>
 
