@@ -73,8 +73,21 @@ function ProcessMesh() {
       aria-hidden="true"
       className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
     >
+      {/*
+        `max-lg:will-change-transform` on both blobs — mobile only (`<
+        1024px`, this section's own pin cutoff), same fix and same reasoning
+        as `Decor.tsx`'s bubbles/orbs: each is a continuous `x`/`y`/`scale`
+        rewrite via Motion's inline `style`, and without a `will-change`
+        hint the browser has no advance notice to promote it to its own
+        compositor layer, so a frame can fall back to repainting this
+        element's actual content on the main thread instead of just
+        re-compositing a cached layer. Five panels stay mounted
+        simultaneously (see the file-level note above), so this is ten such
+        blobs animating at once on mobile, not two — the same class of cost
+        Hero's bubbles had, at roughly five times the count.
+      */}
       <motion.div
-        className="absolute inset-x-0 top-[-55%] mx-auto size-136 rounded-full opacity-[0.06]"
+        className="absolute inset-x-0 top-[-55%] mx-auto size-136 rounded-full opacity-[0.06] max-lg:will-change-transform"
         style={{
           background:
             'radial-gradient(circle at center, var(--brand-400) 0%, transparent 70%)',
@@ -91,7 +104,7 @@ function ProcessMesh() {
         }
       />
       <motion.div
-        className="absolute inset-x-0 bottom-[-55%] mx-auto size-120 rounded-full opacity-[0.05]"
+        className="absolute inset-x-0 bottom-[-55%] mx-auto size-120 rounded-full opacity-[0.05] max-lg:will-change-transform"
         style={{
           background:
             'radial-gradient(circle at center, var(--brand-700) 0%, transparent 70%)',
@@ -225,13 +238,23 @@ function Panel({
          * alpha, because on a dark tinted panel the white wash dropped body
          * copy to 6.29-6.58:1. That tradeoff left with dark mode — on paper
          * this is the DESIGN.md §2 recipe unmodified.
+         *
+         * `max-lg:will-change-transform` — mobile only, same reasoning as
+         * `ProcessMesh`'s blobs above: `rotate` rewrites this element's own
+         * `transform` on every scroll frame via Motion's inline `style`,
+         * and this card additionally carries `backdrop-filter` (`.glass`),
+         * so an unpromoted layer here means re-blurring live content on the
+         * main thread on every such frame, not just repainting a flat fill.
+         * Harmless alongside `data-reduce-safe`: that rule forces the
+         * `transform` value itself to `none`, a completely separate
+         * property from the `will-change` hint here.
          */
         data-reduce-safe=""
         style={{
           rotate,
           transformOrigin: rtl ? 'bottom right' : 'bottom left',
         }}
-        className="glass absolute inset-3 flex flex-col px-6 py-section-2xl sm:inset-4 lg:inset-6 lg:px-8"
+        className="glass absolute inset-3 flex flex-col px-6 py-section-2xl max-lg:will-change-transform sm:inset-4 lg:inset-6 lg:px-8"
       >
         {/*
           The reference's rhythm: label, rule, oversized headline, rule, and the
@@ -300,7 +323,19 @@ function Panel({
           */}
           <div className="mx-auto mt-section-lg w-full max-w-7xl border-t border-border" />
 
-          <StaggerItem as="div" className="mx-auto mt-auto w-full max-w-7xl">
+          {/*
+            `mt-section-md lg:mt-auto` — on mobile this sits a fixed,
+            proportionate distance below the divider instead of `mt-auto`
+            pinning it to the foot of a `h-dvh` panel: measured, that pin
+            produced a ~79-128px gap that scaled with *viewport height*, not
+            with the title above it (a phone with more empty space below a
+            short title just showed a bigger gap), which is why it read as
+            disproportionate rather than as a fixed, felt gap the way the
+            divider's own `mt-section-lg` above does. `lg:mt-auto` restores
+            the exact original desktop rule — "supporting line pushed to the
+            foot of the panel" — untouched at `lg` and up.
+          */}
+          <StaggerItem as="div" className="mx-auto mt-section-md w-full max-w-7xl lg:mt-auto">
             <p className="text-xl leading-relaxed text-pretty text-muted-foreground">
               <span className="block max-w-prose">{step.body}</span>
             </p>
@@ -322,6 +357,13 @@ function Panel({
  *
  * Scroll-linked motion is bidirectional by nature, so this replays when
  * scrolling back up. That is what a pinned sequence is, not an oversight.
+ *
+ * Same mechanism on every viewport, mobile included: a mobile-specific
+ * fallback (a plain reveal-on-scroll grid) was tried and reverted — the
+ * interaction itself is meant to match desktop everywhere, and mobile's
+ * reported stutter and title/body gap are fixed in place instead, inside
+ * `ProcessMesh` and `Panel` below (search `max-lg:will-change-transform`
+ * and `lg:mt-auto`).
  */
 export function ProcessStack({ steps, header }: Props) {
   const [rtl, setRtl] = useState(false)
