@@ -165,7 +165,24 @@ export function GlassBubble({
   return (
     <motion.div
       aria-hidden="true"
-      className={`pointer-events-none absolute ${position} ${className}`}
+      /*
+       * `max-md:will-change-transform` — mobile only (`< 768px`; Tailwind's
+       * `max-md:`), desktop/tablet untouched.
+       *
+       * This div's `transform` is rewritten every frame by the `animate`
+       * below, and without a `will-change` hint the browser has no advance
+       * notice to promote it to its own compositor layer — so each frame can
+       * fall back to repainting this element's actual content (backdrop-blur,
+       * multiple gradients, multiple inset shadows) on the main thread rather
+       * than just re-compositing a cached layer. Desktop GPUs absorb that
+       * fine; mobile GPUs/CPUs are where it was reported as visible stutter.
+       * `will-change` is the correct tool for exactly this — a persistent
+       * `transform: translateZ(0)` fallback would not help here even if
+       * added: Motion drives `transform` via this same element's inline
+       * `style`, which always overrides a stylesheet rule for the same
+       * property, so a CSS-class translateZ(0) would never actually apply.
+       */
+      className={`pointer-events-none absolute max-md:will-change-transform ${position} ${className}`}
       style={{ width: size, height: size, opacity }}
       animate={
         reduce ? undefined : { x: drift.x, y: drift.y, scale: drift.scale }
@@ -320,7 +337,10 @@ export function SpiralOrb({
   return (
     <motion.div
       aria-hidden="true"
-      className={`pointer-events-none absolute ${position} ${className}`}
+      // `max-md:will-change-transform` — same mobile-only compositor-layer
+      // hint as `GlassBubble`, and for the same reason: this wrapper's
+      // `transform` is rewritten every frame by the `animate` below.
+      className={`pointer-events-none absolute max-md:will-change-transform ${position} ${className}`}
       style={{ width: size, height: size, opacity }}
       animate={
         reduce ? undefined : { x: drift.x, y: drift.y, scale: drift.scale }
@@ -357,7 +377,10 @@ export function SpiralOrb({
          * any non-linear curve makes it visibly pulse once per revolution.
          */
         <motion.div
-          className="absolute inset-0"
+          // Same mobile-only compositor-layer hint as the wrapper above —
+          // this element's own `transform` (the continuous rotation) is
+          // rewritten every frame too, independently of the drift.
+          className="absolute inset-0 max-md:will-change-transform"
           animate={reduce ? undefined : { rotate: 360 }}
           transition={
             reduce
