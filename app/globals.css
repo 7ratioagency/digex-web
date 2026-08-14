@@ -563,6 +563,40 @@
       max-width: calc(100% - 24px);
     }
   }
+
+  /*
+   * Mobile-only blur cut, separate from the 640px block above (that one is
+   * geometry for small phones; this is the `< 768px` mobile/desktop split
+   * used everywhere else in this pass, e.g. `max-md:will-change-transform`
+   * on `Decor.tsx`'s bubbles) — kept as its own query so the two concerns
+   * don't get tangled if either threshold ever needs to move independently.
+   *
+   * `backdrop-filter` has to genuinely re-sample whatever is currently
+   * behind the pill on every composited frame — it isn't a one-time paint.
+   * This pill is `position: sticky` right at the top of the Hero, so on any
+   * frame where a drifting `GlassBubble`/`SpiralOrb` (also `will-change:
+   * transform` on mobile, previous pass) is under it, the browser is
+   * continuously re-blurring live, moving, gradient-and-shadow-heavy content
+   * — reported and reproduced as visible stutter on throttled mobile,
+   * independent of that earlier compositing fix (this is filter-sampling
+   * cost, not transform-layer cost).
+   *
+   * 10px keeps the pane reading as frosted glass (still well above the
+   * "barely there" range) at roughly 40% of the sampling cost of 24px — blur
+   * cost scales with the sampling radius, not linearly with the CSS px
+   * value, so a ~58% radius cut is a much larger real compute cut than the
+   * percentage suggests. `saturate(140%)` is untouched: it doesn't carry the
+   * same per-frame re-sampling cost `blur()` does, and changing it wasn't
+   * asked for.
+   *
+   * Desktop keeps `blur(24px)` from the base rule above, completely
+   * unedited — this query cannot match at 768px and up.
+   */
+  @media (max-width: 767.98px) {
+    .nav-pill {
+      backdrop-filter: blur(10px) saturate(140%);
+    }
+  }
 }
 
 @layer components {
