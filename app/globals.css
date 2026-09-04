@@ -334,6 +334,40 @@
    * regression, not a design change.
    */
   --text-display--font-weight: 600;
+
+  /*
+   * Section headings — the eyebrow + h2 pair `SectionHeader` renders for every
+   * section on the site. Fluid like `--text-display` above rather than the
+   * stepped `text-3xl sm:text-4xl` these used to be, so the jump between a
+   * phone and a wide desktop is continuous instead of landing in one place at
+   * 640px and then never moving again.
+   *
+   * 2rem → 3.5rem (was a fixed 1.875rem → 2.25rem): noticeably larger on
+   * desktop, where these were reading small against full-bleed sections, while
+   * the floor only moves 30px → 32px so nothing gets cramped on a phone. Still
+   * comfortably below `--text-display`'s 6rem cap, so the hero keeps its place
+   * at the top of the hierarchy.
+   *
+   * Font-size only — deliberately no paired `--text-section--line-height`.
+   * Tailwind's `text-3xl`/`text-4xl` bundled their own (1.2 / 1.11), and
+   * bundling it here would put line-height inside the same utility as
+   * font-size, where a separate `rtl:leading-*` override would be competing
+   * with it at equal specificity. `SectionHeader` sets leading as its own
+   * standalone utility pair instead, which is the arrangement already proven
+   * on the services list (`leading-none rtl:leading-tight`).
+   */
+  --text-section: clamp(2rem, 4.5vw, 3.5rem);
+
+  /*
+   * The eyebrow scales with its headline rather than staying pinned at 14px,
+   * which is what kept the pair feeling proportional before. 0.9375rem →
+   * 1.1875rem holds roughly the ratio the stepped version had (~2.1x on a
+   * phone) while stopping short of the ~22px that preserving the desktop ratio
+   * exactly would demand — at that size an uppercase, tracked label stops
+   * reading as a label.
+   */
+  --text-eyebrow: clamp(0.9375rem, 1.3vw, 1.1875rem);
+
   --tracking-display: var(--tracking-display);
 
   --radius-glass: 20px;

@@ -32,10 +32,34 @@ export function SectionHeader({
     <Reveal
       className={centered ? 'mx-auto max-w-3xl text-center' : 'max-w-3xl'}
     >
-      <p className="text-sm font-medium uppercase text-muted-foreground ltr:tracking-wide">
+      {/*
+        `text-eyebrow` / `text-section` (globals.css) replace the fixed
+        `text-sm` and the stepped `text-3xl sm:text-4xl`. Size only — font,
+        weight, colour, tracking, alignment and the `<Highlight>` treatment
+        the title may carry are all unchanged. `text-section` also carries its
+        own 1.25 line-height, which is what keeps Arabic descenders clear at
+        the larger size; see the token's note for why that matters here.
+      */}
+      <p className="text-eyebrow font-medium uppercase text-muted-foreground ltr:tracking-wide">
         {eyebrow}
       </p>
-      <h2 className="mt-section-xs text-3xl font-semibold text-balance sm:text-4xl ltr:tracking-tight">
+      {/*
+        `leading-[1.25] rtl:leading-[1.45]` — two standalone utilities, not a
+        line-height bundled into `text-section`, so the RTL variant reliably
+        wins at /ar (same arrangement as the services list's
+        `leading-none rtl:leading-tight`).
+
+        1.45 rather than Latin's 1.25 because of a collision these headings
+        only have in Arabic, and only once they wrap: `ج` carries a far deeper
+        descender than the ~0.125em the script averages, and `Highlight`'s
+        block variant bleeds 0.08em above its own line. At 1.25 the gap
+        between lines was 0.25em, so a `ج` on one line landed underneath the
+        next line's highlight block and was painted over — legible letters,
+        covered by a blue rectangle. 1.45 opens the gap to 0.45em, which
+        clears it. Latin keeps 1.25: no descender there is deep enough to
+        reach, and the looser value would read as slack at this size.
+      */}
+      <h2 className="mt-section-xs text-section font-semibold leading-[1.25] text-balance rtl:leading-[1.45] ltr:tracking-tight">
         {title}
       </h2>
       {lead && (
