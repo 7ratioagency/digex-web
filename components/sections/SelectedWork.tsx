@@ -42,8 +42,11 @@ export async function SelectedWork() {
     summary: project.summary[locale],
     delivered: project.delivered[locale],
     href: `/work/${project.slug}`,
-    externalUrl: project.link.url,
-    externalLabel: t(linkLabelKey[project.link.kind]),
+    cover: project.cover,
+    // Both absent together, for work with no online destination — signage,
+    // print. <WorkCinematic> falls back to the case study in that case.
+    externalUrl: project.link?.url,
+    externalLabel: project.link && t(linkLabelKey[project.link.kind]),
   });
 
   const heroes = featuredProjects.slice(0, HERO_COUNT);

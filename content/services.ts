@@ -170,6 +170,10 @@ export const services: Service[] = [
     slug: 'interior-exterior',
     Icon: InteriorIcon,
     accent: 'var(--accent-blue)',
+    // Storefront signage and vitrine work — filed under 'design' because it is
+    // the closest bucket the portfolio has: not a website, not a brand system,
+    // and not a print run, but the designed-and-installed space itself.
+    projectCategory: 'design',
     deliverableKeys: [
       'exteriorSignage',
       'storefronts',

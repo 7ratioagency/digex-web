@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { getLocale, getTranslations } from 'next-intl/server'
 import { Link } from '@/lib/i18n/navigation'
 import { ArrowIcon } from '@/components/icons'
@@ -21,14 +22,29 @@ export async function ProjectCard({ project }: { project: Project }) {
   return (
     <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-border">
       {/*
-        TODO: swap for <Image src={project.cover} fill /> once the real exports
-        land in /public/work/. Until then this reserves the same aspect ratio so
-        adding them causes no layout shift.
+        A fixed 4:3 tile either way, because this component lays out a grid and
+        a grid of mismatched heights is not a grid. Real covers are `cover`-fit
+        into it; the ones still waiting on assets keep the plate that reserves
+        exactly the same box, so dropping a file in shifts nothing.
+
+        `sizes` matters here: without it Next serves the full-width candidate to
+        every card, and this grid is three columns on a large screen. The values
+        track the /work and related-work grids (1 / 2 / 3 columns).
       */}
-      <div className="flex aspect-4/3 items-center justify-center bg-surface">
-        <span className="px-section-sm text-center text-sm font-medium text-muted-foreground">
-          {project.client}
-        </span>
+      <div className="relative flex aspect-4/3 items-center justify-center bg-surface">
+        {project.cover ? (
+          <Image
+            src={project.cover}
+            alt=""
+            fill
+            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            className="object-cover"
+          />
+        ) : (
+          <span className="px-section-sm text-center text-sm font-medium text-muted-foreground">
+            {project.client}
+          </span>
+        )}
       </div>
 
       <div className="flex flex-1 flex-col p-section-md">
@@ -62,14 +78,21 @@ export async function ProjectCard({ project }: { project: Project }) {
             {t('viewCase')}
             <ArrowIcon className="size-4" />
           </Link>
-          <a
-            href={project.link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-11 items-center gap-section-xs text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
-          >
-            {t(linkLabelKey[project.link.kind])}
-          </a>
+          {/*
+            Only for work that lives somewhere online. A shopfront's signage
+            has no URL to visit, so the card carries the case study alone
+            rather than a second link pointing nowhere.
+          */}
+          {project.link && (
+            <a
+              href={project.link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-11 items-center gap-section-xs text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+            >
+              {t(linkLabelKey[project.link.kind])}
+            </a>
+          )}
         </div>
       </div>
     </div>

@@ -146,14 +146,21 @@ export async function ServiceWork({
                   {t('viewCase')}
                   <ArrowIcon className="size-4" />
                 </Link>
-                <a
-                  href={project.link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center text-sm text-muted-foreground transition-colors hover:text-foreground motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
-                >
-                  {t(linkLabelKey[project.link.kind])}
-                </a>
+                {/*
+                  Only where the work lives somewhere online. Signage and print
+                  have no URL to visit, so those rows carry the case study
+                  alone rather than a second link pointing nowhere.
+                */}
+                {project.link && (
+                  <a
+                    href={project.link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-11 items-center text-sm text-muted-foreground transition-colors hover:text-foreground motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+                  >
+                    {t(linkLabelKey[project.link.kind])}
+                  </a>
+                )}
               </div>
             </div>
           </StaggerItem>

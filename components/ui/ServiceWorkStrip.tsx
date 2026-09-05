@@ -1,4 +1,5 @@
 import { getLocale, getTranslations } from 'next-intl/server'
+import { Link } from '@/lib/i18n/navigation'
 import type { Locale, Project, ProjectLinkKind } from '@/content/projects'
 
 /** Each link kind gets its own verb — "Visit the site" vs "View on Behance". */
@@ -60,15 +61,9 @@ export async function ServiceWorkStrip({ projects }: { projects: Project[] }) {
       </p>
 
       <ul className="mt-section-sm grid gap-section-sm sm:grid-cols-2">
-        {shown.map((project) => (
-          <li key={project.slug}>
-            <a
-              href={project.link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${project.client} — ${tWork(linkLabelKey[project.link.kind])}`}
-              className="block h-full rounded-xl border border-border p-section-sm transition-colors duration-200 hover:border-accent-blue motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
-            >
+        {shown.map((project) => {
+          const block = (
+            <>
               {/* The rule the catalogue sets above every project title. */}
               <span
                 aria-hidden="true"
@@ -85,9 +80,43 @@ export async function ServiceWorkStrip({ projects }: { projects: Project[] }) {
               <span className="mt-0.5 block text-[0.6875rem] font-medium uppercase leading-snug text-accent-blue ltr:tracking-wide">
                 {project.sector[locale]}
               </span>
-            </a>
-          </li>
-        ))}
+            </>
+          )
+
+          const className =
+            'block h-full rounded-xl border border-border p-section-sm transition-colors duration-200 hover:border-accent-blue motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue'
+
+          return (
+            <li key={project.slug}>
+              {/*
+                Straight out to the client's own site, gallery or video where
+                there is one. Signage and print work has no such destination —
+                a shopfront is not a URL — so those blocks lead to the case
+                study instead, which is where their photographs live. Either
+                way the block is a real link to something real.
+              */}
+              {project.link ? (
+                <a
+                  href={project.link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${project.client} — ${tWork(linkLabelKey[project.link.kind])}`}
+                  className={className}
+                >
+                  {block}
+                </a>
+              ) : (
+                <Link
+                  href={`/work/${project.slug}`}
+                  aria-label={`${project.client} — ${tWork('viewCase')}`}
+                  className={className}
+                >
+                  {block}
+                </Link>
+              )}
+            </li>
+          )
+        })}
       </ul>
     </div>
   )

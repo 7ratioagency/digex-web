@@ -32,12 +32,23 @@ export interface Project {
   summary: Localized
   /** Concrete deliverables — the antidote to generic copy */
   delivered: LocalizedList
-  link: {
+  /**
+   * Where the work can be seen for itself. Optional, because not all of it
+   * lives at a URL: a shopfront's illuminated lettering or a printed vitrine
+   * has no link to follow, only the photographs of it. Every entry that CAN
+   * be linked must be — the rule at the top of this file stands for anything
+   * with an online destination.
+   */
+  link?: {
     kind: ProjectLinkKind
     url: string
   }
-  /** Cover image in /public. Replace with real exported assets. */
-  cover: string
+  /**
+   * Cover image under /public. Optional: only set it where the file actually
+   * exists, so the components can render a designed placeholder instead of a
+   * broken <Image> for the projects still waiting on assets.
+   */
+  cover?: string
   /** Gallery images for the case study page */
   gallery: string[]
   /** Show on the homepage "selected work" section */
@@ -67,8 +78,11 @@ export const projects: Project[] = [
       en: ['Full brand identity', 'E-commerce store', 'Product photography', 'Social media templates'],
     },
     link: { kind: 'live', url: 'https://eveaccessoires.com' },
-    cover: '/work/eve/cover.webp',
-    gallery: ['/work/eve/1.webp', '/work/eve/2.webp', '/work/eve/3.webp'],
+    cover: '/work/eve-accessoires/cover.webp',
+    // Empty until real gallery exports arrive. These three used to name
+    // /work/eve/1..3.webp, files that never existed — invisible while the
+    // page drew placeholders, three 400s the moment it drew <Image>.
+    gallery: [],
     featured: true,
   },
   {
@@ -91,7 +105,6 @@ export const projects: Project[] = [
       en: ['E-commerce store', 'Product catalogue', 'Admin dashboard'],
     },
     link: { kind: 'live', url: 'https://expertinformatique.store' },
-    cover: '/work/expert/cover.webp',
     gallery: [],
     featured: true,
   },
@@ -115,7 +128,6 @@ export const projects: Project[] = [
       en: ['Corporate website', 'Product pages', 'Contact form'],
     },
     link: { kind: 'live', url: 'https://sarldadas.com' },
-    cover: '/work/dadas/cover.webp',
     gallery: [],
     featured: true,
   },
@@ -139,7 +151,6 @@ export const projects: Project[] = [
       en: ['Commercial website', 'Product showcase', 'WhatsApp integration'],
     },
     link: { kind: 'live', url: 'https://etsmammeri.com' },
-    cover: '/work/mammeri/cover.webp',
     gallery: [],
     featured: false,
   },
@@ -163,7 +174,6 @@ export const projects: Project[] = [
       en: ['E-commerce store', 'Technical catalogue', 'Order system'],
     },
     link: { kind: 'live', url: 'https://gpl-dz.store' },
-    cover: '/work/gpl/cover.webp',
     gallery: [],
     featured: false,
   },
@@ -187,7 +197,6 @@ export const projects: Project[] = [
       en: ['Corporate website', 'Project gallery', 'References page'],
     },
     link: { kind: 'live', url: 'https://www.beet-batna.dz' },
-    cover: '/work/etb/cover.webp',
     gallery: [],
     featured: false,
   },
@@ -216,7 +225,6 @@ export const projects: Project[] = [
       kind: 'behance',
       url: 'https://www.behance.net/gallery/212509663/EVE-Accessoire',
     },
-    cover: '/work/eve-brand/cover.webp',
     gallery: [],
     featured: true,
   },
@@ -251,7 +259,6 @@ export const projects: Project[] = [
       kind: 'behance',
       url: 'https://www.behance.net/gallery/211312043/delmoosh-branding-v2',
     },
-    cover: '/work/delmoosh/cover.webp',
     gallery: [],
     featured: true,
   },
@@ -282,7 +289,6 @@ export const projects: Project[] = [
       kind: 'behance',
       url: 'https://www.behance.net/gallery/211312673/shuttle-click-branding',
     },
-    cover: '/work/shuttle-click/cover.webp',
     gallery: [],
     featured: true,
   },
@@ -309,7 +315,74 @@ export const projects: Project[] = [
       kind: 'behance',
       url: 'https://www.behance.net/gallery/211320045/silvira',
     },
-    cover: '/work/silvira/cover.webp',
+    gallery: [],
+    featured: false,
+  },
+  /*
+   * Signage and vitrine work, added from the photographs the client sent.
+   * Neither has a link: an illuminated storefront is not a URL. Everything
+   * below is read off the photographs themselves — the names on the signs, the
+   * trade each shop is in, and the pieces actually installed. No results, no
+   * dates and no claims beyond what is visible.
+   */
+  {
+    slug: 'dari-shop',
+    client: 'Dari Shop',
+    category: 'design',
+    sector: {
+      ar: 'لوازم الحلويات والأفراح',
+      fr: 'Articles de pâtisserie & fêtes',
+      en: 'Pastry & party supplies',
+    },
+    summary: {
+      ar: 'واجهة محل كاملة: حروف بارزة مضيئة، شعار مجسّم فوقها، ولوحة داخلية بإضاءة خلفية.',
+      fr: "Habillage complet de façade : lettres boîtier lumineuses, logo en relief au-dessus et enseigne intérieure rétroéclairée.",
+      en: 'A complete storefront: illuminated box letters, a raised logo sign above them, and a backlit sign inside.',
+    },
+    delivered: {
+      ar: ['حروف مضيئة', 'لوحة الواجهة', 'شعار مجسّم', 'لوحة داخلية بإضاءة خلفية'],
+      fr: [
+        'Lettres boîtier lumineuses',
+        'Enseigne de façade',
+        'Logo en relief',
+        'Enseigne intérieure rétroéclairée',
+      ],
+      en: [
+        'Illuminated box letters',
+        'Facade sign',
+        'Raised logo sign',
+        'Backlit interior sign',
+      ],
+    },
+    cover: '/work/dari-shop/cover.webp',
+    gallery: [
+      '/work/dari-shop/facade-day.webp',
+      '/work/dari-shop/interior-sign.webp',
+    ],
+    featured: true,
+  },
+  {
+    slug: 'barbecue-el-hadje',
+    // Spelled as the window itself spells it. The logo beside it reads
+    // "مشاوي الحاج"; the Latin lettering is the one the shopfront leads with.
+    client: 'Barbecue El Hadje',
+    category: 'design',
+    sector: {
+      ar: 'مطعم ومشاوي',
+      fr: 'Restauration & grillades',
+      en: 'Restaurant & grill',
+    },
+    summary: {
+      ar: 'تغليف كامل للواجهة الزجاجية: ألواح مطبوعة بصور الأطباق، وشعار المحل في القلب.',
+      fr: "Habillage complet de la vitrine : panneaux imprimés aux visuels des plats, logo de l'enseigne au centre.",
+      en: 'A full window wrap: printed panels carrying the dishes, with the restaurant logo at the centre.',
+    },
+    delivered: {
+      ar: ['تغليف الواجهة الزجاجية', 'ألواح مطبوعة', 'شعار على الواجهة'],
+      fr: ['Habillage de vitrine', 'Panneaux imprimés', 'Logo en façade'],
+      en: ['Window wrap', 'Printed panels', 'Storefront logo'],
+    },
+    cover: '/work/barbecue-el-hadje/cover.webp',
     gallery: [],
     featured: false,
   },

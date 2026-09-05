@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { getLocale, getTranslations, setRequestLocale } from 'next-intl/server'
 import { buildMetadata } from '@/lib/seo'
@@ -78,14 +79,25 @@ export default async function CaseStudyPage({ params }: Props) {
         </div>
 
         {/*
-          TODO: swap for <Image src={project.cover} fill priority /> once the
-          real exports land in /public/work/. The box reserves the final aspect
-          ratio so dropping them in causes no layout shift.
+          A 16:9 plate either way, so a project gaining its photograph does not
+          move the rest of the page. `priority` because this is the page's LCP
+          element on every case study that has one.
         */}
-        <div className="mt-section-lg flex aspect-video items-center justify-center overflow-hidden rounded-2xl border border-border bg-surface">
-          <span className="px-section-md text-center text-sm font-medium text-muted-foreground">
-            {project.client}
-          </span>
+        <div className="relative mt-section-lg flex aspect-video items-center justify-center overflow-hidden rounded-2xl border border-border bg-surface">
+          {project.cover ? (
+            <Image
+              src={project.cover}
+              alt=""
+              fill
+              priority
+              sizes="(min-width: 1280px) 1152px, 100vw"
+              className="object-cover"
+            />
+          ) : (
+            <span className="px-section-md text-center text-sm font-medium text-muted-foreground">
+              {project.client}
+            </span>
+          )}
         </div>
 
         <div className="mt-section-lg grid grid-cols-1 gap-section-lg lg:grid-cols-3">
@@ -120,32 +132,42 @@ export default async function CaseStudyPage({ params }: Props) {
             </div>
           </dl>
 
-          {/* The point of the page: send people to the real, live result. */}
-          <div className="rounded-2xl border border-border bg-surface p-section-md">
-            <p className="text-sm text-muted-foreground">{project.client}</p>
-            <div className="mt-section-md">
-              <Button href={project.link.url}>
-                {t(linkLabelKey[project.link.kind])}
-                <ArrowIcon className="size-4" />
-              </Button>
+          {/*
+            The point of the page: send people to the real, live result — where
+            there is one to send them to. Signage and printed work have no
+            online destination, and the photographs above are the result, so
+            the whole panel is omitted rather than shown with a dead button.
+          */}
+          {project.link && (
+            <div className="rounded-2xl border border-border bg-surface p-section-md">
+              <p className="text-sm text-muted-foreground">{project.client}</p>
+              <div className="mt-section-md">
+                <Button href={project.link.url}>
+                  {t(linkLabelKey[project.link.kind])}
+                  <ArrowIcon className="size-4" />
+                </Button>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </Section>
 
-      {/* Gallery only renders where real images exist (currently EVE only). */}
+      {/* Only projects with real photographs carry a gallery. */}
       {project.gallery.length > 0 && (
         <Section className="bg-surface">
           <ul className="grid grid-cols-1 gap-section-md sm:grid-cols-2 lg:grid-cols-3">
             {project.gallery.map((image) => (
               <li
                 key={image}
-                className="flex aspect-4/3 items-center justify-center overflow-hidden rounded-2xl border border-border bg-background"
+                className="relative flex aspect-4/3 items-center justify-center overflow-hidden rounded-2xl border border-border bg-background"
               >
-                {/* TODO: <Image src={image} fill /> once assets exist. */}
-                <span className="px-section-sm text-center text-xs text-muted-foreground">
-                  {project.client}
-                </span>
+                <Image
+                  src={image}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  className="object-cover"
+                />
               </li>
             ))}
           </ul>

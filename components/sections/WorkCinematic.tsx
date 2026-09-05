@@ -8,6 +8,7 @@ import {
   useTransform,
   type MotionValue,
 } from 'motion/react'
+import Image from 'next/image'
 import { Link } from '@/lib/i18n/navigation'
 import { ArrowIcon, EyeIcon } from '@/components/icons'
 import { DURATION, EASE, RISE, STAGGER, VIEWPORT } from '@/lib/motion'
@@ -24,8 +25,11 @@ export type WorkItem = {
   summary: string
   delivered: string[]
   href: string
-  externalUrl: string
-  externalLabel: string
+  /** Cover image under /public, where one has been shot yet. */
+  cover?: string
+  /** Absent for work with no online destination — signage, print. */
+  externalUrl?: string
+  externalLabel?: string
 }
 
 type Labels = {
@@ -62,22 +66,42 @@ const EDGE_EPSILON = 0.02
 
 /*
  * ─── On the covers ──────────────────────────────────────────────────────────
- * The reference reveals a colour photograph out of a greyscale one. There are
- * no project photographs in this repo yet — `/public/work/` does not exist, and
- * `ProjectCard` still carries a TODO about it — so the same reveal runs on a
- * typographic cover instead: a neutral plate that resolves into a brand-tinted
- * one. The mechanic, timing and direction are identical, so dropping real
- * exports in later means swapping these two plates for two <Image> layers and
- * changing nothing else.
+ * The reference reveals a colour photograph out of a greyscale one. Where the
+ * client has sent a photograph, that is now exactly what runs: the same frame
+ * twice, desaturated underneath and full colour on top, with the clip wiping
+ * one into the other.
+ *
+ * Where no photograph has arrived yet the two plates stay typographic — a
+ * neutral plate resolving into a brand-tinted one. Same mechanic, same timing,
+ * same direction, so a project gains its photograph without this file changing
+ * again.
  *
  * Stock photography was deliberately not used to fill the gap. These are real
  * Algerian clients; an Unsplash photo sitting under "EVE Accessoires" would be
  * fabricated evidence of work, which is a different and worse problem than an
  * unstyled placeholder.
+ *
+ * `sizes` is an upper bound covering both callers: a hero cover is about half
+ * the viewport from `lg` up, and the strip cards below are smaller again.
  */
+const COVER_SIZES = '(min-width: 1024px) 50vw, 100vw'
 
 /** The dimmed, "before" state of a cover. */
 function CoverBase({ item }: { item: WorkItem }) {
+  if (item.cover) {
+    return (
+      <div className="absolute inset-0 bg-surface">
+        <Image
+          src={item.cover}
+          alt=""
+          fill
+          sizes={COVER_SIZES}
+          className="object-cover grayscale brightness-90"
+        />
+      </div>
+    )
+  }
+
   return (
     <div className="absolute inset-0 flex flex-col items-center justify-center gap-section-sm bg-surface px-section-md text-center">
       <span className="text-xs font-medium uppercase text-muted-foreground ltr:tracking-wide">
@@ -90,8 +114,22 @@ function CoverBase({ item }: { item: WorkItem }) {
   )
 }
 
-/** The lit, "after" state — same layout, brand tint, so the reveal reads. */
+/** The lit, "after" state — same frame, full colour, so the reveal reads. */
 function CoverLit({ item }: { item: WorkItem }) {
+  if (item.cover) {
+    return (
+      <div className="absolute inset-0 bg-surface">
+        <Image
+          src={item.cover}
+          alt=""
+          fill
+          sizes={COVER_SIZES}
+          className="object-cover"
+        />
+      </div>
+    )
+  }
+
   return (
     <div
       className="absolute inset-0 flex flex-col items-center justify-center gap-section-sm px-section-md text-center"
@@ -299,14 +337,17 @@ function CinematicProject({
                   {labels.viewCase}
                   <EyeIcon className="size-4" />
                 </Link>
-                <a
-                  href={item.externalUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center gap-section-xs text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
-                >
-                  {item.externalLabel}
-                </a>
+                {/* Absent for signage and print — a shopfront is not a URL. */}
+                {item.externalUrl && (
+                  <a
+                    href={item.externalUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-11 items-center gap-section-xs text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+                  >
+                    {item.externalLabel}
+                  </a>
+                )}
               </RevealStep>
             </div>
           </div>
@@ -396,15 +437,30 @@ function OverviewCard({
           {item.sector}
         </p>
         <h3 className="mt-1 text-base font-semibold">{item.client}</h3>
-        <a
-          href={item.externalUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-section-sm inline-flex min-h-11 items-center gap-section-xs text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
-        >
-          {item.externalLabel}
-          <ArrowIcon className="size-4" />
-        </a>
+        {/*
+          Signage and print have no external destination, so the card falls
+          back to its case study — the cover above already links there too, but
+          only on hover, and this row is the card's only always-visible link.
+        */}
+        {item.externalUrl ? (
+          <a
+            href={item.externalUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-section-sm inline-flex min-h-11 items-center gap-section-xs text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+          >
+            {item.externalLabel}
+            <ArrowIcon className="size-4" />
+          </a>
+        ) : (
+          <Link
+            href={item.href}
+            className="mt-section-sm inline-flex min-h-11 items-center gap-section-xs text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+          >
+            {labels.viewCase}
+            <ArrowIcon className="size-4" />
+          </Link>
+        )}
       </div>
     </div>
   )
