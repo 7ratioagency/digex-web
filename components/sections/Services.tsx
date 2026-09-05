@@ -53,10 +53,12 @@ export async function Services() {
         <div aria-hidden="true" className="panel-grow overflow-hidden">
           <ServicesMesh />
           {/*
-            Poster composition — DESIGN.md §2a/§2b. Two elements only, both on
-            the reading-end side: the list is capped at `max-w-3xl` on the
-            reading-start side, exactly as the catalogue's own column is, so
-            the decor has the open half of the section to itself.
+            Poster composition — DESIGN.md §2a/§2b. Two elements only, both
+            cropped by the reading-end edge and both sitting outside the rows:
+            the list now spans the full width in two columns, so there is no
+            open half to fill, and decor has to stay clear of type rather than
+            occupy space beside it. The orb sits above the first row, the
+            bubble below the last.
 
             `zIndex=""` rather than the default `-z-10`: this renders inside
             `.panel-grow`, which is itself `z-index: -1` with its own fill —
@@ -88,6 +90,19 @@ export async function Services() {
       />
 
       {/*
+        Two columns from `lg` up: five services in the first, four in the
+        second. `grid-flow-col` with an explicit five-row track is what splits
+        them that way — filling column-first means DOM order 1–9 lands as 1–5
+        then 6–9, so the reading order and the visual order agree and the
+        markup stays one flat list. A row-flow grid would have alternated the
+        two columns instead, which is not the same list at all.
+
+        Columns run along the inline axis, so the first column is the
+        reading-start one without a direction rule: five on the right and four
+        on the left at /ar, mirrored at /fr and /en.
+
+        Below `lg` it collapses to the single column it was, in the same order.
+
         Staggered by row rather than revealed as one block. Nine rows arriving
         together is a lot of movement at once; 0.08s apart (the house interval,
         set in lib/motion) reads as the list assembling itself. StaggerItem
@@ -95,7 +110,7 @@ export async function Services() {
       */}
       <StaggerGroup
         as="ul"
-        className="mt-section-xl flex max-w-3xl flex-col gap-section-xs"
+        className="mt-section-xl grid gap-x-section-2xl gap-y-section-xs lg:grid-flow-col lg:grid-cols-2 lg:grid-rows-5"
       >
         {services.map((service) => {
           const { key, slug, Icon } = service;
