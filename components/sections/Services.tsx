@@ -1,43 +1,44 @@
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/lib/i18n/navigation";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Highlight } from "@/components/ui/Highlight";
-import { ServiceCard } from "@/components/ui/ServiceCard";
-import { Reveal } from "@/components/ui/Reveal";
+import { StaggerGroup, StaggerItem } from "@/components/ui/Stagger";
 import { ServicesMesh } from "@/components/sections/ServicesMesh";
 import { DecorLayer, GlassBubble, SpiralOrb } from "@/components/ui/Decor";
-import {
-  HoverSlider,
-  HoverSliderPanel,
-  HoverSliderPanels,
-  HoverSliderTrigger,
-  HoverSliderTriggerList,
-} from "@/components/ui/HoverSlider";
 import { ArrowIcon } from "@/components/icons";
 import { services } from "@/content/services";
 
+/**
+ * The services index, laid out as the client's catalogue lays it out (p6).
+ *
+ * That page is a single column of rows: the service's own line-art icon on the
+ * reading-start side, the title beside it in indigo, and a second line under
+ * the title in near-black. No cards, no dividers, nothing revealed on hover —
+ * the whole list is legible at once. It replaces the hover slider this section
+ * used to be, where eight of nine services showed a title and nothing else
+ * until you pointed at them.
+ *
+ * One deliberate difference. The catalogue's second line is the Arabic title,
+ * because the book is bilingual on every page; here it is the service's own
+ * tagline, resolved per locale. Printing French over Arabic would read as the
+ * catalogue at /ar and as a mistake at /en, whereas the tagline keeps the
+ * two-line rhythm the layout is built on and says something in every locale.
+ *
+ * Server Component throughout, which the hover slider could not be: with no
+ * hover state to track there is no client boundary here at all, so every
+ * service title, tagline and icon stays out of the browser bundle.
+ */
 export async function Services() {
   const t = await getTranslations("services");
-  const locale = await getLocale();
-
-  /*
-   * Arabic is cursive, so its labels are split on whitespace rather than on
-   * letters — a per-letter split severs the joins and the word falls apart.
-   * See the note on `SegmentMode` in HoverSlider. Latin scripts keep the
-   * reference's per-character ripple.
-   *
-   * Decided here, on the server, from the request locale: it has to be the
-   * same value on both sides of hydration, and reading `dir` after mount would
-   * change the markup once the client caught up.
-   */
-  const segmentBy = locale === "ar" ? "word" : "grapheme";
 
   return (
     /*
       The panel behind this section grows to full bleed as the section scrolls
       in (`.panel-grow`, globals.css) — the "everything under one roof" claim
-      arrives as a slab rather than fading in like the sections around it.
+      arrives as a slab rather than fading in like the sections around it. It
+      is also the closest thing the site has to the catalogue's own device: p6
+      sets its list on a grey panel inset from the page.
 
       `isolate` keeps the panel's negative z-index from escaping behind the
       page; `panel-grow-scope` is what declares the view timeline the panel
@@ -52,16 +53,15 @@ export async function Services() {
         <div aria-hidden="true" className="panel-grow overflow-hidden">
           <ServicesMesh />
           {/*
-            Poster composition — DESIGN.md §2a/§2b. Two elements only: the
-            service list already carries nine large headings on the
-            reading-start side, so decor stays on the end side where the
-            glass card sits and lets the card frost it.
+            Poster composition — DESIGN.md §2a/§2b. Two elements only, both on
+            the reading-end side: the list is capped at `max-w-3xl` on the
+            reading-start side, exactly as the catalogue's own column is, so
+            the decor has the open half of the section to itself.
 
             `zIndex=""` rather than the default `-z-10`: this renders inside
             `.panel-grow`, which is itself `z-index: -1` with its own fill —
             going negative again would drop the decor behind that fill and it
-            would never be seen. Same reason the colour fields here don't go
-            negative either.
+            would never be seen.
           */}
           <DecorLayer zIndex="">
             <GlassBubble
@@ -88,179 +88,84 @@ export async function Services() {
       />
 
       {/*
-        Names on the reading-start side, the matching card on the reading-end
-        side — the reference's layout with its image swapped for the card the
-        section already had. Both columns are laid out logically, so /ar mirrors
-        the whole arrangement without a direction-specific rule.
-
-        The card content is untouched: `ServiceCard` is passed in whole, still
-        rendered on the server, so its copy and its icon never enter the client
-        bundle.
-
-        Wrapped as one `<Reveal>` block rather than staggering the five rows in
-        individually — matching `SectionHeader`'s own reasoning immediately
-        above it ("one movement per section reads as deliberate; staggered ones
-        read as fussy"). This is also the only place a stagger *could* attach
-        without editing `HoverSlider.tsx`: `HoverSliderTrigger` renders straight
-        to a `<button>` with no per-item wrapper, and touching that shared
-        primitive to add one would reach outside this section for a single
-        entrance flourish.
+        Staggered by row rather than revealed as one block. Nine rows arriving
+        together is a lot of movement at once; 0.08s apart (the house interval,
+        set in lib/motion) reads as the list assembling itself. StaggerItem
+        handles reduced motion.
       */}
-      <Reveal className="mt-section-xl">
-        {/*
-          The card is centred against the list rather than stretched to match
-          it. Stretching did align the column edges, but `ServiceCard`'s body is
-          `flex-1`, so it absorbed every spare pixel and opened ~250px between
-          the copy and the CTA. Since the card's own content is fixed, letting
-          it keep its designed proportions and sit optically centred reads far
-          better than a tidy edge with a hollow middle.
-        */}
-        <HoverSlider className="grid gap-section-xl lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center lg:gap-section-2xl">
-          {/*
-            Read as a navigable index, not a stack of loose headings. Each row
-            is a divider plus real vertical padding, which takes the optical
-            separation between titles from 16px to 48px — the gap was the whole
-            complaint, and at this type size 16px had the rows almost touching.
-            The divider also gives every row a consistent hit area rather than
-            leaving the target the exact height of its glyphs.
-          */}
-          <HoverSliderTriggerList
-            label={t("eyebrow")}
-            className="flex flex-col"
-          >
-            {services.map((service, index) => (
-              <HoverSliderTrigger
-                key={service.key}
-                index={index}
+      <StaggerGroup
+        as="ul"
+        className="mt-section-xl flex max-w-3xl flex-col gap-section-xs"
+      >
+        {services.map((service) => {
+          const { key, slug, Icon } = service;
+
+          return (
+            <StaggerItem as="li" key={key}>
+              <Link
+                href={`/services/${slug}`}
                 /*
-                  `t.markup`, not `t()`: these titles carry a `<mark>` for the
-                  service page's own headline (Highlight, DESIGN.md §2c), and
-                  `t()` throws FORMATTING_ERROR on a string with an unhandled
-                  tag. This row needs a bare string — `HoverSliderTrigger`
-                  segments it per grapheme for the reveal — so the tag is
-                  resolved away rather than rendered.
+                  `-mx-3 px-3` pulls the row's own padding out past the text
+                  column, so the hover tint reads as a band while the type
+                  stays aligned with the header above it. The row is ~64px
+                  tall, comfortably past the 44px touch target, without the
+                  dividers the previous layout needed to create a hit area —
+                  the catalogue has none and does not need them.
                 */
-                text={t.markup(`items.${service.key}.title`, {
-                  mark: (chunks) => chunks,
-                })}
-                href={`/services/${service.slug}`}
-                segmentBy={segmentBy}
-                /*
-                  `rtl:leading-tight` (1.25), not a blanket change to
-                  `leading-none` (1): measured via computed style, IBM Plex
-                  Sans Arabic's glyphs need ~1.25x their font-size to clear
-                  descenders and diacritics without the line box clipping
-                  them — scrollHeight ran to 60px inside a 48px box at
-                  `lg:text-5xl`. Latin in `leading-none` was never clipped, so
-                  /en and /fr keep the tighter box; only /ar (the only `dir`
-                  this can apply to) gets the taller one. Unscoped, it cascades
-                  identically to both overlapping spans in HoverSliderTrigger's
-                  reveal animation below, so they stay aligned to each other
-                  without any change to their own positioning rules.
-                */
-                className="py-4 text-3xl font-semibold text-balance leading-none rtl:leading-tight sm:text-4xl lg:text-5xl ltr:tracking-tight"
-                trailing={
-                  /*
-                    The selected row needs an affordance beyond a colour shift —
-                    colour alone is not a reliable indicator. Only opacity
-                    animates: a horizontal nudge would need mirroring at /ar,
-                    and the arrow already flips direction on its own.
+                className="group -mx-3 flex items-center gap-section-md rounded-2xl px-3 py-3 transition-colors duration-200 hover:bg-surface/60 motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+              >
+                {/*
+                  40px, matching the catalogue's icon scale on p6 — large
+                  enough that the drawing reads, small enough that the title
+                  still leads the row. `animate` draws the paths in on scroll;
+                  the icons handle reduced motion themselves inside IconShell.
+                */}
+                <Icon className="size-10 shrink-0 text-accent-blue" animate />
 
-                    `max-lg:opacity-100` — below `lg` (1024px, the same cutoff
-                    the section's own responsive stacking already uses) there
-                    is no hover, so `opacity-0` defaulting every row to hidden
-                    except whichever one happens to be `active` (row 0 on
-                    load, since nothing has been hovered/tapped yet) read as
-                    four rows silently missing their affordance rather than
-                    one row highlighted among five. Forcing it on for every
-                    row there — instead of on desktop, where the hidden/shown
-                    contrast between the resting and the hovered row is the
-                    whole point of the affordance — restores it without
-                    touching that behaviour: `lg:` and up still resolve to
-                    plain `opacity-0` plus the existing active-state variant,
-                    completely unchanged.
-                  */
-                  <ArrowIcon
-                    aria-hidden="true"
-                    className="size-5 text-accent-blue opacity-0 max-lg:opacity-100 transition-opacity duration-200 group-data-[active=true]:opacity-100 motion-reduce:transition-none"
-                  />
-                }
-              />
-            ))}
-          </HoverSliderTriggerList>
+                <div className="min-w-0">
+                  {/*
+                    Indigo and bold, as the catalogue sets every service title.
+                    `text-accent-blue` rather than the raw `--blue-500`: that
+                    step measures 2.6:1 on navy and is unusable for type in
+                    dark mode, and the token already resolves to the light ramp
+                    step there.
 
-          {/*
-            `hidden lg:block` — not a class appended onto `HoverSliderPanels`
-            itself, which already hardcodes `grid` unconditionally; stacking
-            `hidden`/`lg:grid` on top of that would leave two same-specificity
-            rules fighting over `display` with no reliable winner. Wrapping it
-            instead means `HoverSliderPanels` never changes, and the toggle
-            lives entirely on an element that owns it outright.
+                    `t.markup` resolves away the `<mark>` these titles carry for
+                    the service page's own headline — `t()` throws
+                    FORMATTING_ERROR on an unhandled tag, and a marker swipe at
+                    this size would fight the icon beside it.
+                  */}
+                  <p className="text-lg font-semibold text-balance text-accent-blue sm:text-xl">
+                    {t.markup(`items.${key}.title`, {
+                      mark: (chunks) => chunks,
+                    })}
+                  </p>
+                  <p className="mt-0.5 text-base text-pretty text-muted-foreground">
+                    {t(`items.${key}.tagline`)}
+                  </p>
+                </div>
 
-            The panels share one grid cell, so the stack is as tall as the
-            longest card and every card fills that height — the panel never
-            resizes as you move between services, which is what stops the
-            layout twitching mid-swap.
-          */}
-          <div className="hidden lg:block">
-            <HoverSliderPanels>
-              {services.map((service, index) => (
-                <HoverSliderPanel key={service.key} index={index}>
-                  <ServiceCard service={service} />
-                </HoverSliderPanel>
-              ))}
-            </HoverSliderPanels>
-          </div>
-
-          {/*
-            Mobile only (`lg:hidden` — same cutoff as the wrapper above, so
-            exactly one of the two is ever in the layout): a native
-            scroll-snap slider instead of the crossfade. The crossfade's
-            single-active-card model is a hover affordance, and there is no
-            hover here — below `lg` it was defaulting to whichever service
-            happened to be `index === 0`, silently hiding the other four
-            rather than actually adapting.
-
-            No JS carousel, no scroll-position tracking: `snap-x
-            snap-mandatory` plus `snap-start` on each slide is the entire
-            mechanism, so this is exactly as cheap as any other native
-            scroller and needs no client boundary of its own. Cards sit at
-            85% width on purpose — the remaining 15% is the "there's more"
-            affordance the section otherwise gets from dots, without adding
-            state to track which dot is lit.
-
-            Direction is never set explicitly. A `flex` row with no
-            `flex-row-reverse` and no `rtl:` override already lays its first
-            DOM child at the reading-start edge under either `dir` — the same
-            reasoning `HoverSliderTrigger`'s number+title group and every
-            other logically-positioned row in this codebase relies on — so
-            the first service starts at the start/right edge at /ar with no
-            direction-specific class, and scrolling toward the end reveals
-            the rest. Confirmed empirically (Playwright `scrollLeft` probe
-            across /ar /fr /en), not assumed: see the verification notes for
-            this change.
-
-            `ServiceCard` itself is untouched and unaware this exists — same
-            component, same props, as the desktop panels above.
-          */}
-          <div
-            role="region"
-            aria-label={t("eyebrow")}
-            className="no-scrollbar -mx-6 flex snap-x snap-mandatory gap-section-md overflow-x-auto px-6 pb-1 lg:hidden"
-          >
-            {services.map((service) => (
-              <div key={service.key} className="w-[85%] shrink-0 snap-start">
-                <ServiceCard service={service} />
-              </div>
-            ))}
-          </div>
-        </HoverSlider>
-      </Reveal>
+                {/*
+                  `ms-auto` pushes it to the inline-end under either direction;
+                  ArrowIcon flips itself. Hidden until the row is pointed at or
+                  focused on desktop, always visible below `lg` where there is
+                  no hover to reveal it — the same rule this section has carried
+                  since the arrows were first made unconditional on mobile.
+                */}
+                <ArrowIcon
+                  aria-hidden="true"
+                  className="ms-auto size-5 shrink-0 text-accent-blue opacity-0 transition-opacity duration-200 max-lg:opacity-100 group-hover:opacity-100 group-focus-visible:opacity-100 motion-reduce:transition-none"
+                />
+              </Link>
+            </StaggerItem>
+          );
+        })}
+      </StaggerGroup>
 
       <div className="mt-section-lg">
         <Link
           href="/services"
-          className="inline-flex min-h-11 items-center gap-section-xs text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          className="inline-flex min-h-11 items-center gap-section-xs text-sm font-medium text-muted-foreground transition-colors hover:text-foreground motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
         >
           {t("viewAll")}
           <ArrowIcon className="size-4" />
