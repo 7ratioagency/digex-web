@@ -21,7 +21,7 @@ type Props = {
   params: Promise<{ locale: string; slug: string }>
 }
 
-/** All eight services, prerendered per locale. */
+/** All nine services, prerendered per locale. */
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }))
 }

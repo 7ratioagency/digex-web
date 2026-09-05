@@ -91,7 +91,11 @@
       "socialVideo": "Vidéo pour les réseaux sociaux",
       "promoVideos": "Vidéos promotionnelles",
       "reels": "Reels",
-      "artDirection": "Direction artistique"
+      "artDirection": "Direction artistique",
+      "inapiFiling": "Dépôt et protection de la marque (INAPI)",
+      "gs1Barcode": "Code-barres officiel GS1 Algeria",
+      "clicheFile": "Préparation du fichier du cliché",
+      "renewalProtection": "Suivi des renouvellements et des droits"
     },
     "items": {
       "branding": {
@@ -123,6 +127,11 @@
         "title": "<mark>Packaging</mark> et étiquette",
         "tagline": "Un packaging puissant attire, séduit et convainc",
         "body": "Grâce à un design créatif et stratégique, votre produit se démarque en rayon, renforce l'image de votre marque et booste vos ventes."
+      },
+      "trademark": {
+        "title": "Dépôt de <mark>marque</mark> et code-barres",
+        "tagline": "Un produit prêt, légalement et commercialement",
+        "body": "Votre marque est le socle de l'identité de votre entreprise. Nous vous accompagnons sur tout ce qu'il lui faut pour être prête, légalement et commercialement : dépôt à l'INAPI — préparation du dossier, dépôt et suivi de la procédure jusqu'au certificat d'enregistrement — puis enregistrement auprès de GS1 Algeria, obtention des codes GTIN officiels, création du code-barres aux normes internationales et son placement correct sur le packaging. Nous suivons ensuite les renouvellements et la protection de vos droits, pour que vos produits soient prêts pour la grande distribution et les marchés locaux."
       },
       "interiorExterior": {
         "title": "Design <mark>intérieur</mark> et extérieur",

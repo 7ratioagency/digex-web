@@ -273,6 +273,32 @@ export function InteriorIcon({ animate, ...props }: IconProps) {
 }
 
 /* ---------------------------------------------------------------
+   Trademark registration & barcodes — a shield with a barcode
+   inside it.
+
+   The catalogue's own page draws this service as a five-step strip
+   (LOGO → INAPI → PACKAGING → GS1 → CLICHÉ) with a shield under the
+   INAPI step and a barcode under the GS1 one. Those two are the whole
+   proposition — legal protection, and a code that scans at the till —
+   so the icon is the two combined rather than one of the five picked
+   arbitrarily.
+   --------------------------------------------------------------- */
+export function TrademarkIcon({ animate, ...props }: IconProps) {
+  return (
+    <IconShell animate={animate} {...props}>
+      <motion.path
+        d="M12 3l7.5 2.5v6.25c0 4.25-3.25 6.75-7.5 8.75-4.25-2-7.5-4.5-7.5-8.75V5.5z"
+        variants={draw} custom={0}
+      />
+      {/* Barcode bars, short-long-short so it reads as a code, not a grille. */}
+      <motion.path d="M9.25 9.5v5.25" variants={draw} custom={1} />
+      <motion.path d="M12 8.75v6.75" variants={draw} custom={2} />
+      <motion.path d="M14.75 9.5v5.25" variants={draw} custom={3} />
+    </IconShell>
+  )
+}
+
+/* ---------------------------------------------------------------
    Directional arrow — flips automatically in RTL
    --------------------------------------------------------------- */
 export function ArrowIcon({

@@ -91,7 +91,11 @@
       "socialVideo": "Social video content",
       "promoVideos": "Promotional videos",
       "reels": "Reels",
-      "artDirection": "Art direction"
+      "artDirection": "Art direction",
+      "inapiFiling": "Trademark filing and protection (INAPI)",
+      "gs1Barcode": "Official GS1 Algeria barcode",
+      "clicheFile": "Cliché file preparation",
+      "renewalProtection": "Renewals and rights follow-up"
     },
     "items": {
       "branding": {
@@ -123,6 +127,11 @@
         "title": "<mark>Packaging</mark> and labels",
         "tagline": "Strong packaging attracts, tempts and convinces",
         "body": "With creative, strategic design your product stands out on the shelf, strengthens your brand image and lifts your sales."
+      },
+      "trademark": {
+        "title": "<mark>Trademark</mark> registration and barcodes",
+        "tagline": "A product that is ready — legally and commercially",
+        "body": "Your trademark is the foundation of your company’s identity. We handle everything it needs to be ready, legally and commercially: filing with INAPI — preparing the dossier, lodging it and following the procedure through to the registration certificate — then registering you with GS1 Algeria, obtaining the official GTIN codes, generating the barcode to international standards and placing it correctly on the packaging. We follow the renewals and the protection of your rights after that, so your products are ready for supermarkets and local markets alike."
       },
       "interiorExterior": {
         "title": "<mark>Interior</mark> and exterior design",

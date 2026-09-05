@@ -212,32 +212,77 @@ export const projects: Project[] = [
       fr: ['Logo', 'Palette & typographies', 'Packaging', 'Charte graphique'],
       en: ['Logo', 'Colour & type system', 'Packaging', 'Brand guidelines'],
     },
-    link: { kind: 'behance', url: 'https://www.behance.net/gallery/212509663' },
+    link: {
+      kind: 'behance',
+      url: 'https://www.behance.net/gallery/212509663/EVE-Accessoire',
+    },
     cover: '/work/eve-brand/cover.webp',
     gallery: [],
     featured: true,
   },
+  /*
+   * Was "Delmouche", an agrifood brand, linked to Behance gallery 243804263.
+   * All three were wrong. The client's own catalogue spells it Delmoosh and
+   * describes a pet centre — "accessoires, nourriture, jouets" — and 243804263
+   * is a different project entirely (a recycling app logo). The real gallery
+   * is 211312043, "delmoosh branding v2", on the agency's own profile. Name,
+   * sector, summary and link all now come from those two sources.
+   */
   {
-    slug: 'delmouche',
-    client: 'Delmouche',
+    slug: 'delmoosh',
+    client: 'Delmoosh',
     category: 'branding',
     sector: {
-      ar: 'أغذية ومنتجات استهلاكية',
-      fr: 'Agroalimentaire',
-      en: 'Food & consumer goods',
+      ar: 'مستلزمات الحيوانات الأليفة',
+      fr: 'Animalerie',
+      en: 'Pet care',
     },
     summary: {
-      ar: 'بناء هوية بصرية وتغليف لعلامة منتجات غذائية، من الشعار حتى رفوف البيع.',
-      fr: "Création d'identité et de packaging pour une marque agroalimentaire, du logo au linéaire.",
-      en: 'Brand identity and packaging for a food brand, from logo to shelf.',
+      ar: 'هوية بصرية لمركز حيوانات أليفة: قُرب ولطف وثقة، من الشعار إلى الأجواء العامة.',
+      fr: "Identité de marque pour un centre animalier : proximité, douceur et confiance, du logo à l'ambiance.",
+      en: 'Brand identity for a pet centre: closeness, warmth and trust, from the logo outward.',
     },
     delivered: {
-      ar: ['شعار', 'تغليف المنتجات', 'هوية بصرية', 'مواد تسويقية'],
-      fr: ['Logo', 'Packaging produits', 'Identité visuelle', 'Supports marketing'],
-      en: ['Logo', 'Product packaging', 'Visual identity', 'Marketing collateral'],
+      ar: ['شعار', 'هوية بصرية', 'عالم بصري للعلامة'],
+      fr: ['Logo', 'Identité visuelle', 'Univers de marque'],
+      en: ['Logo', 'Visual identity', 'Brand world'],
     },
-    link: { kind: 'behance', url: 'https://www.behance.net/gallery/243804263' },
-    cover: '/work/delmouche/cover.webp',
+    link: {
+      kind: 'behance',
+      url: 'https://www.behance.net/gallery/211312043/delmoosh-branding-v2',
+    },
+    cover: '/work/delmoosh/cover.webp',
+    gallery: [],
+    featured: true,
+  },
+  /*
+   * From the catalogue's Nos Projets chapter, which shows three projects —
+   * EVE, Delmoosh and Shuttle Click — and only the first two were here.
+   */
+  {
+    slug: 'shuttle-click',
+    client: 'Shuttle Click',
+    category: 'branding',
+    sector: {
+      ar: 'نقل بسائق',
+      fr: 'VTC & mobilité',
+      en: 'Ride-hailing & mobility',
+    },
+    summary: {
+      ar: 'شركة نقل بسائق في فرنسا: هوية تجارية مبنية من الألف إلى الياء، من التموضع إلى الشكل البصري.',
+      fr: "Entreprise de VTC en France : identité de marque construite de A à Z, du positionnement au visuel.",
+      en: 'A French ride-hailing company: brand identity built end to end, from positioning to the visuals.',
+    },
+    delivered: {
+      ar: ['التموضع', 'هوية العلامة', 'نظام بصري'],
+      fr: ['Positionnement', 'Identité de marque', 'Système visuel'],
+      en: ['Positioning', 'Brand identity', 'Visual system'],
+    },
+    link: {
+      kind: 'behance',
+      url: 'https://www.behance.net/gallery/211312673/shuttle-click-branding',
+    },
+    cover: '/work/shuttle-click/cover.webp',
     gallery: [],
     featured: true,
   },
@@ -260,7 +305,10 @@ export const projects: Project[] = [
       fr: ['Logo', 'Système visuel', 'Packaging', 'Gabarits réseaux sociaux'],
       en: ['Logo', 'Visual system', 'Packaging', 'Social templates'],
     },
-    link: { kind: 'behance', url: 'https://www.behance.net/gallery/211320045' },
+    link: {
+      kind: 'behance',
+      url: 'https://www.behance.net/gallery/211320045/silvira',
+    },
     cover: '/work/silvira/cover.webp',
     gallery: [],
     featured: false,

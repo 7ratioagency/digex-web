@@ -3,11 +3,17 @@
 // Structure only. All human-readable copy lives in messages/{ar,fr,en}.json
 // under `services.items.<key>` so translators never touch code.
 //
-// The eight services below are the client's own catalogue (catalogue digex
-// new.pdf), which lists them identically on its contents page and its services
-// index. That replaced an earlier set of five: the catalogue splits Branding
-// from Identité Visuelle, splits Packaging from Impression, and adds Intérieur
-// & extérieur Design, which had no equivalent here at all.
+// The nine services below are the client's own catalogue (catalogue digex
+// new.pdf). Eight of them are listed identically on its contents page and its
+// services index; that replaced an earlier set of five, since the catalogue
+// splits Branding from Identité Visuelle, splits Packaging from Impression,
+// and adds Intérieur & extérieur Design, which had no equivalent here at all.
+//
+// The ninth, trademark registration, appears on neither list — it sits on a
+// page of its own between Packaging and Intérieur, written only in Arabic, and
+// the client confirmed it is a service and not an aside. Its page is a
+// five-step strip (LOGO → INAPI → DESIGN PACKAGING → GS1 → CLICHÉ), which is
+// where its deliverables come from.
 
 import type { ComponentType, SVGProps } from 'react'
 import type { ProjectCategory } from './projects'
@@ -18,6 +24,7 @@ import {
   DevelopmentIcon,
   PrintIcon,
   PackagingIcon,
+  TrademarkIcon,
   InteriorIcon,
   ProductionIcon,
 } from '@/components/icons'
@@ -29,6 +36,7 @@ export type ServiceKey =
   | 'digitalSolutions'
   | 'printing'
   | 'packaging'
+  | 'trademark'
   | 'interiorExterior'
   | 'photoVideo'
 
@@ -64,9 +72,9 @@ export interface Service {
  * first, then the digital services, then the production ones.
  *
  * Every service carries the same `--accent-blue`. That is the catalogue's
- * choice, not a shortcut — its services index draws all eight icons and all
- * eight titles in the one indigo. Giving each a different accent would have
- * meant inventing seven colours the brand does not use.
+ * choice, not a shortcut — its services index draws every icon and every title
+ * in the one indigo. Giving each a different accent would have meant inventing
+ * eight colours the brand does not use.
  */
 export const services: Service[] = [
   {
@@ -141,6 +149,21 @@ export const services: Service[] = [
     Icon: PackagingIcon,
     accent: 'var(--accent-blue)',
     deliverableKeys: ['packagingDesign', 'labels', 'shelfReady'],
+  },
+  {
+    key: 'trademark',
+    slug: 'trademark-registration',
+    Icon: TrademarkIcon,
+    accent: 'var(--accent-blue)',
+    // Nothing in the portfolio evidences a filing, so no related work.
+    deliverableKeys: [
+      'logoDesign',
+      'inapiFiling',
+      'packagingDesign',
+      'gs1Barcode',
+      'clicheFile',
+      'renewalProtection',
+    ],
   },
   {
     key: 'interiorExterior',
