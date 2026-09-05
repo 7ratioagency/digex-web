@@ -55,7 +55,7 @@ export default async function ServiceDetailPage({ params }: Props) {
   /*
    * Selected work for this service, via the category already declared on the
    * service itself (content/services.ts): digitalSolutions→websites,
-   * branding and visualIdentity→branding, photoVideo→video. The other four
+   * branding and visualIdentity→branding, photoVideo→video. The other five
    * carry no `projectCategory` because the portfolio has no category that
    * evidences them.
    *

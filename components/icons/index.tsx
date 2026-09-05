@@ -114,7 +114,7 @@ export function DevelopmentIcon({ animate, ...props }: IconProps) {
    plants a flag; visual identity is *drawing*, so it keeps the nib.
 
    The small open circle at the foot is the catalogue's signature icon
-   detail — it terminates several of its eight icons the same way.
+   detail — it terminates several of the catalogue's icons the same way.
    --------------------------------------------------------------- */
 export function BrandingIcon({ animate, ...props }: IconProps) {
   return (
