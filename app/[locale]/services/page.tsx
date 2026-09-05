@@ -33,7 +33,34 @@ export default async function ServicesPage({ params }: Props) {
 
   return (
     <main className="flex flex-1 flex-col">
-      <Section>
+      <Section
+        // `isolate` scopes the colour fields' `-z-10` to this section.
+        className="isolate"
+        backdrop={
+          // `overflow-hidden` is load-bearing, not tidiness: the fields sit on
+          // negative insets so they bleed in from outside the section, and
+          // unclipped that extends the document and produces a horizontal
+          // scrollbar. Same clip `DecorLayer` carries.
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+            {/*
+              Required by the glass recipe, not decoration — DESIGN.md §2f (a)
+              and rule 5. This page had none at all, so every card on it was
+              `backdrop-filter` with nothing to filter: a white pane on white
+              paper, and on navy an 8% wash over a flat ground, which is the
+              "frosted glass over flat navy looks like nothing" case exactly.
+
+              Three rather than the usual two because this grid is three rows
+              deep — two fields at the section's ends leave the middle row
+              with nothing behind it. Staggered start/end/start so no column
+              is consistently the one that misses out, and so they read as a
+              diagonal drift rather than a stack.
+            */}
+            <div className="colour-field colour-field-blue top-[10%] inset-s-[-6%] size-120" />
+            <div className="colour-field colour-field-violet top-[40%] inset-e-[-4%] size-112" />
+            <div className="colour-field colour-field-blue bottom-[4%] inset-s-[14%] size-112" />
+          </div>
+        }
+      >
         <SectionHeader
           eyebrow={t('eyebrow')}
           // Same key, same `mark` render prop as the homepage Services

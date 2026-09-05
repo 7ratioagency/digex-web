@@ -109,6 +109,15 @@
     0 8px 32px -8px rgba(43, 75, 255, 0.18),
     0 2px 8px -2px rgba(10, 30, 92, 0.08);
 
+  /*
+   * What `.glass` falls back to when the blur is dropped under reduced
+   * motion. On paper an opaque `--surface` is the right answer: the fields
+   * behind a card are a pale wash on a pale page, so showing them through an
+   * unblurred pane gains nothing and a solid surface at least stays crisp.
+   * The `.dark` block chooses differently — see the note there.
+   */
+  --glass-reduced-bg: var(--surface);
+
   /* ------------------------------------------------------------------
      2b. Decor materials — DESIGN.md §2a/§2b
      ------------------------------------------------------------------
@@ -242,6 +251,22 @@
   --glass-shadow:
     0 1px 0 rgba(255, 255, 255, 0.08) inset,
     0 8px 32px -8px rgba(6, 20, 54, 0.55);
+
+  /*
+   * The reduced-motion fallback stays translucent here, unlike on paper.
+   *
+   * `--surface` in dark mode is `--navy-900`, and dropping a card to it
+   * turned every service card into a solid navy slab sitting on navy — while
+   * `.nav-pill`, which deliberately opts out of this fallback, went on
+   * looking like frosted glass a few hundred pixels above it. One frosted
+   * element over a page of opaque slabs is not a material system.
+   *
+   * The blur still goes (that is the whole point of the fallback: it is
+   * `backdrop-filter`'s per-frame re-sampling that costs, not the alpha), but
+   * an 8% white wash still lets the colour fields behind read through, so the
+   * card stays a pane rather than becoming a block. Light mode is untouched.
+   */
+  --glass-reduced-bg: rgba(255, 255, 255, 0.08);
 
   /*
    * Marker bleed is intentionally NOT overridden here. `--marker-bleed-top`/
@@ -520,7 +545,9 @@
   @media (prefers-reduced-motion: reduce) {
     .glass {
       backdrop-filter: none;
-      background: var(--surface);
+      /* Per mode — opaque on paper, still a translucent wash on navy. See
+         `--glass-reduced-bg` where it is set in both blocks. */
+      background: var(--glass-reduced-bg);
     }
   }
 }
