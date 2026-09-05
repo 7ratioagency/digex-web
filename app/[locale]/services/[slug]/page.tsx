@@ -6,9 +6,9 @@ import { Link } from '@/lib/i18n/navigation'
 import { Section } from '@/components/ui/Section'
 import { Reveal } from '@/components/ui/Reveal'
 import { Highlight } from '@/components/ui/Highlight'
-import { ProjectCard } from '@/components/ui/ProjectCard'
 import { DecorLayer, GlassBubble, SpiralOrb } from '@/components/ui/Decor'
 import { ServiceIncluded } from '@/components/sections/ServiceIncluded'
+import { ServiceWork } from '@/components/sections/ServiceWork'
 import { ProcessCompact } from '@/components/sections/ProcessCompact'
 import { Pricing } from '@/components/sections/Pricing'
 import { ContactCTA } from '@/components/sections/ContactCTA'
@@ -51,20 +51,22 @@ export default async function ServiceDetailPage({ params }: Props) {
   if (!service) notFound()
 
   const t = await getTranslations('services')
-  const tWork = await getTranslations('work')
 
   /*
    * Selected work for this service, via the category already declared on the
    * service itself (content/services.ts): digitalSolutions→websites,
    * branding and visualIdentity→branding, photoVideo→video. The other four
    * carry no `projectCategory` because the portfolio has no category that
-   * evidences them — so `related` is empty and the whole section is omitted
-   * rather than rendered as an empty state.
+   * evidences them.
+   *
+   * Counted here, not just checked for a category: `video` exists but holds
+   * no projects, so photoVideo declares a category and still has nothing to
+   * show. <ServiceWork> omits itself in that case, and the tone rhythm below
+   * has to agree with it about which sections actually render.
    */
-  const related = service.projectCategory
-    ? projectsByCategory(service.projectCategory)
-    : []
-  const hasWork = related.length > 0
+  const hasWork =
+    (service.projectCategory ? projectsByCategory(service.projectCategory) : [])
+      .length > 0
 
   /*
    * Deliverables come from the service itself now, not from pricing — see
@@ -182,43 +184,7 @@ export default async function ServiceDetailPage({ params }: Props) {
       <ProcessCompact alt={isAlt('process')} />
 
       {/* ── 4. Selected work ────────────────────────────────────────────── */}
-      {hasWork && (
-        <Section className={isAlt('work') ? 'section-alt' : ''}>
-          <Reveal>
-            <p className="text-sm font-medium uppercase text-muted-foreground ltr:tracking-wide">
-              {tWork('eyebrow')}
-            </p>
-            <h2 className="mt-section-xs text-3xl font-semibold text-balance sm:text-4xl ltr:tracking-tight">
-              {/* Same key and variant as the homepage Work section. */}
-              {tWork.rich('title', {
-                mark: (chunks) => <Highlight variant="block">{chunks}</Highlight>,
-              })}
-            </h2>
-          </Reveal>
-
-          {/*
-            Real clients, real links — every card carries the client's actual
-            name and a live URL from content/projects.ts. No placeholders.
-          */}
-          <ul className="mt-section-xl grid grid-cols-1 gap-section-lg sm:grid-cols-2 lg:grid-cols-3">
-            {related.map((project) => (
-              <li key={project.slug}>
-                <ProjectCard project={project} />
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-section-lg">
-            <Link
-              href="/work"
-              className="inline-flex min-h-11 items-center gap-section-xs text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {tWork('cta')}
-              <ArrowIcon className="size-4" />
-            </Link>
-          </div>
-        </Section>
-      )}
+      <ServiceWork service={service} alt={isAlt('work')} />
 
       {/* ── 5. Pricing ──────────────────────────────────────────────────── */}
       <Pricing serviceSlug={service.slug} alt={isAlt('pricing')} />
