@@ -23,12 +23,34 @@
 :root {
   --paper: #f2f2f0; /* off-white poster base — NOT pure white */
   --paper-warm: #ededeb;
-  --blue-500: #2b4bff; /* electric brand blue — the hero accent */
-  --blue-600: #1e3ae0;
+  /*
+   * Sampled from the client's own catalogue (catalogue digex new.pdf), which
+   * supersedes the Instagram-derived electric blue that was here: the printed
+   * brand runs a muted indigo, not #2B4BFF. Measured off the rendered pages —
+   * #4058A8 is the single colour every service icon, service title and rule in
+   * the catalogue uses, at ~146k pixels across the pages sampled.
+   *
+   * Same hue as `--navy-900` below (both ~226deg), just far less saturated, so
+   * the dark-mode grounds still sit in this colour's family and did not need
+   * inventing a second dark palette the catalogue never specifies.
+   */
+  --blue-500: #4058a8; /* catalogue indigo — fills, blocks, icons, punch */
+  /*
+   * The catalogue indigo is 5.89:1 on paper: fine for a fill, thin for type,
+   * and under the 7:1 the rest of the site holds. #384D94 is the same hue
+   * stepped down until it clears that bar (7.02:1) — the same relationship
+   * `--blue-600` had to the old `--blue-500`, rebuilt on the new base.
+   */
+  --blue-600: #384d94;
   --navy-900: #0a1e5c; /* deep navy — device screens, dark sections */
   --navy-950: #061436;
   --ink: #0b0b0d; /* near-black display type */
-  --highlight-yellow: #ffe81a; /* marker highlight behind key words */
+  /* Catalogue yellow — deeper and warmer than the #FFE81A read off the
+     Instagram posters. It is the catalogue's one accent against the indigo:
+     the tab above every service title, the chip before each sub-heading, the
+     quote marks, the bars bleeding off the page edge. Ink on it measures
+     13.13:1. */
+  --highlight-yellow: #f8d018; /* marker highlight behind key words */
   /*
    * Not a palette colour and never used for type or fills — it exists only
    * to give the colour fields behind glass a second hue to bend toward, so
@@ -50,7 +72,9 @@
    */
   --brand-100: #dde2ff;
   --brand-300: #9fb2ff; /* light blue — accents on navy, where blue-500 is too dark */
-  --brand-400: #6e86ff;
+  /* Re-stepped onto the catalogue indigo — as a lighter tint of the old
+     electric blue it would have read as a different hue family next to it. */
+  --brand-400: #7c8fd0;
   --brand-500: var(--blue-500);
   --brand-600: var(--blue-600);
   --brand-700: var(--blue-600);

@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Client source material — extracted into content/services.ts and messages/.
+# Kept locally for reference, never committed or shipped in the build.
+*.pdf

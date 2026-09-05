@@ -53,7 +53,7 @@ export async function Services() {
           <ServicesMesh />
           {/*
             Poster composition — DESIGN.md §2a/§2b. Two elements only: the
-            service list already carries five large headings on the
+            service list already carries eight large headings on the
             reading-start side, so decor stays on the end side where the
             glass card sits and lets the card frost it.
 

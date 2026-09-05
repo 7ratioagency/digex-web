@@ -47,35 +47,91 @@
   "services": {
     "eyebrow": "Nos services",
     "title": "Tout ce dont votre marque a besoin, sous un même <mark>toit</mark>",
-    "lead": "Cinq services connectés. Plus besoin de coordonner quatre freelances.",
+    "lead": "Huit services connectés. Plus besoin de coordonner quatre freelances.",
     "cta": "Découvrir le service",
     "viewAll": "Voir tous les services",
     "included": "Ce qui est inclus",
+    "deliverables": {
+      "marketStudy": "Étude de marché",
+      "targetAudience": "Audience cible",
+      "positioning": "Positionnement",
+      "customerExperience": "Expérience client",
+      "visionValues": "Vision et valeurs",
+      "strategicPlanning": "Planification stratégique",
+      "logoDesign": "Conception du logo",
+      "graphicElements": "Ensemble des éléments graphiques",
+      "brandUniverse": "Univers de marque cohérent",
+      "dataDrivenStrategy": "Stratégie fondée sur la donnée",
+      "highValueContent": "Contenu à forte valeur",
+      "channelManagement": "Gestion de vos canaux sociaux",
+      "showcaseSites": "Sites vitrines et d'entreprise",
+      "ecommerceSeo": "Boutiques en ligne optimisées pour le référencement",
+      "landingPages": "Landing pages de conversion",
+      "erp": "ERP : ventes, stock, comptabilité",
+      "cloudStorage": "Stockage réseau sécurisé",
+      "dataProtection": "Protection et continuité des données",
+      "rollUps": "Roll-up et kakémonos",
+      "banners": "Bannières et oriflammes",
+      "largePosters": "Affiches grand format",
+      "advertisingTarps": "Bâches publicitaires",
+      "businessCards": "Cartes de visite",
+      "flyers": "Flyers",
+      "brochures": "Brochures",
+      "catalogues": "Catalogues",
+      "packagingDesign": "Design du packaging",
+      "labels": "Étiquettes",
+      "shelfReady": "Produit prêt pour le rayon",
+      "exteriorSignage": "Signalétique extérieure",
+      "storefronts": "Vitrines",
+      "spacePlanning": "Agencement intérieur",
+      "furniture": "Mobilier",
+      "lighting": "Éclairage et ambiance",
+      "productPhotography": "Photographie produit",
+      "socialVideo": "Vidéo pour les réseaux sociaux",
+      "promoVideos": "Vidéos promotionnelles",
+      "reels": "Reels",
+      "artDirection": "Direction artistique"
+    },
     "items": {
-      "development": {
-        "title": "Développement <mark>web</mark>",
-        "tagline": "Des sites et boutiques qui vendent vraiment",
-        "body": "Boutiques rapides, pensées mobile d'abord, connectées au paiement à la livraison et aux transporteurs algériens, avec un back-office que vous pilotez sans développeur."
+      "branding": {
+        "title": "<mark>Branding</mark> et création de marque",
+        "tagline": "Une marque, ce n'est pas qu'un logo",
+        "body": "Une marque, c'est une vision, une promesse, une expérience. Notre approche stratégique couvre l'étude de marché, l'audience cible, le positionnement, l'expérience client, la vision et les valeurs, et la planification stratégique."
       },
-      "brand": {
+      "visualIdentity": {
         "title": "Identité <mark>visuelle</mark>",
-        "tagline": "Une marque reconnaissable au premier coup d'œil",
-        "body": "Logo, palette, typographies, packaging et gabarits réseaux sociaux — livrés avec une charte complète, utilisable par n'importe quelle équipe après nous."
+        "tagline": "Construisez une marque qui marque les esprits",
+        "body": "Nous concevons un univers de marque cohérent et mémorable, aligné avec vos valeurs et votre audience. Du logo à l'ensemble des éléments graphiques, nous transformons votre nom en une identité forte, reconnaissable et inspirante."
       },
-      "marketing": {
-        "title": "Marketing <mark>digital</mark>",
-        "tagline": "Des campagnes qui touchent les bons clients",
-        "body": "Campagnes Meta et TikTok construites pour le marché algérien : ciblage par wilaya, contenu en darija, et suivi hebdomadaire des résultats."
+      "digitalMarketing": {
+        "title": "<mark>Marketing digital</mark> et réseaux sociaux",
+        "tagline": "Présents là où votre audience est active",
+        "body": "Nous plaçons votre marque au cœur des plateformes fréquentées par votre public cible. Stratégie fondée sur la donnée, contenu à forte valeur et gestion rigoureuse de vos canaux : votre présence digitale devient un vrai levier de croissance et de fidélisation."
       },
-      "production": {
-        "title": "Photo & <mark>production</mark>",
-        "tagline": "Du contenu qui arrête le scroll",
-        "body": "Photographie produit, vidéos courtes pour Reels et TikTok, montage livré prêt à publier."
+      "digitalSolutions": {
+        "title": "Solutions <mark>numériques</mark>",
+        "tagline": "Votre présence en ligne, au service de vos objectifs",
+        "body": "Sans présence digitale, votre entreprise perd des clients et de la visibilité. Sites vitrines, boutiques en ligne optimisées pour le référencement et connectées au paiement et à la livraison, landing pages — puis l'ERP et le stockage réseau qui font tourner l'activité derrière."
       },
-      "print": {
-        "title": "Impression & <mark>packaging</mark>",
-        "tagline": "Du fichier au produit fini",
-        "body": "Packaging, enseignes, cartes et supports imprimés — qualité contrôlée du design jusqu'à la livraison."
+      "printing": {
+        "title": "<mark>Impression</mark> professionnelle",
+        "tagline": "La qualité qui fait la différence",
+        "body": "Des solutions d'impression adaptées à tous vos besoins, du grand au petit format. Roll-up, bannières, affiches et bâches pour vos événements et vos vitrines ; cartes de visite, flyers, brochures et catalogues pour présenter votre activité au quotidien."
+      },
+      "packaging": {
+        "title": "<mark>Packaging</mark> et étiquette",
+        "tagline": "Un packaging puissant attire, séduit et convainc",
+        "body": "Grâce à un design créatif et stratégique, votre produit se démarque en rayon, renforce l'image de votre marque et booste vos ventes."
+      },
+      "interiorExterior": {
+        "title": "Design <mark>intérieur</mark> et extérieur",
+        "tagline": "Un espace qui raconte l'histoire de votre marque",
+        "body": "De la façade à l'agencement intérieur, chaque élément reflète votre identité. Signalétique extérieure, vitrines, agencement, mobilier, éclairage et ambiance : vos points de vente deviennent de véritables extensions visuelles de votre marque."
+      },
+      "photoVideo": {
+        "title": "<mark>Photographie</mark> et vidéo",
+        "tagline": "Nous racontons votre marque à travers l'objectif",
+        "body": "De la séance photo produit aux contenus vidéo pour vos réseaux, en passant par les vidéos promotionnelles et les reels : un contenu visuel professionnel, avec une direction artistique cohérente avec votre identité."
       }
     }
   },
@@ -88,68 +144,7 @@
     "perUnit": "/ pack",
     "currency": "DA",
     "featured": "Le plus demandé",
-    "cta": "Demander un devis",
-    "tiers": {
-      "vitrine": "Site vitrine",
-      "ecommerce": "Boutique en ligne",
-      "custom": "Sur mesure",
-      "logo": "Logo",
-      "identity": "Identité complète",
-      "starter": "Démarrage",
-      "growth": "Croissance",
-      "photoPack": "Pack photo",
-      "videoPack": "Pack vidéo",
-      "printQuote": "Impression et packaging"
-    },
-    "features": {
-      "pages5": "Jusqu'à 5 pages",
-      "bilingual": "Bilingue (arabe et français)",
-      "responsive": "Adapté à tous les écrans",
-      "domain": "Nom de domaine inclus",
-      "emails5": "5 adresses e-mail professionnelles",
-      "contactForm": "Formulaire de contact",
-      "basicSeo": "Référencement de base",
-      "everythingVitrine": "Tout le site vitrine",
-      "productCatalogue": "Catalogue produits",
-      "cashOnDelivery": "Paiement à la livraison",
-      "courierIntegration": "Intégration des transporteurs algériens",
-      "adminDashboard": "Tableau de bord",
-      "orderManagement": "Gestion des commandes",
-      "stockTracking": "Suivi du stock",
-      "customPlatform": "Plateforme sur mesure",
-      "apiIntegrations": "Intégrations API",
-      "dedicatedSupport": "Support dédié",
-      "scalableArchitecture": "Architecture évolutive",
-      "logoConcepts": "Plusieurs pistes de logo",
-      "colourPalette": "Palette de couleurs",
-      "typography": "Typographies",
-      "fileFormats": "Tous les formats de fichiers livrés",
-      "everythingLogo": "Tout le pack logo",
-      "brandGuidelines": "Charte graphique complète",
-      "packaging": "Conception du packaging",
-      "socialTemplates": "Gabarits réseaux sociaux",
-      "stationery": "Cartes de visite et papeterie",
-      "campaignSetup": "Mise en place des campagnes",
-      "wilayaTargeting": "Ciblage par wilaya",
-      "monthlyReport": "Rapport mensuel",
-      "adCreatives4": "4 visuels publicitaires par mois",
-      "everythingStarter": "Tout le pack Démarrage",
-      "multiPlatform": "Meta et TikTok ensemble",
-      "weeklyReport": "Rapport hebdomadaire",
-      "adCreatives12": "12 visuels publicitaires par mois",
-      "abTesting": "Tests A/B",
-      "productShots20": "20 photos produit",
-      "retouching": "Retouche professionnelle",
-      "webReady": "Fichiers optimisés pour le web",
-      "shortFormVideo": "Vidéo format court",
-      "editing": "Montage",
-      "subtitles": "Sous-titres",
-      "platformFormats": "Formats pour chaque plateforme",
-      "signage": "Enseignes et signalétique",
-      "businessCards": "Cartes de visite",
-      "largeFormat": "Impression grand format",
-      "qualityControl": "Contrôle qualité jusqu'à la livraison"
-    }
+    "cta": "Demander un devis"
   },
   "process": {
     "eyebrow": "Notre méthode",

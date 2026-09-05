@@ -21,7 +21,7 @@ type Props = {
   params: Promise<{ locale: string; slug: string }>
 }
 
-/** All five services, prerendered per locale. */
+/** All eight services, prerendered per locale. */
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }))
 }
@@ -55,17 +55,26 @@ export default async function ServiceDetailPage({ params }: Props) {
 
   /*
    * Selected work for this service, via the category already declared on the
-   * service itself (content/services.ts): development→websites,
-   * brand→branding, production→video, print→print. Marketing has no
-   * `projectCategory` because no marketing category exists in the portfolio —
-   * so `related` is empty there and the whole section is omitted rather than
-   * rendered as an empty state.
+   * service itself (content/services.ts): digitalSolutions→websites,
+   * branding and visualIdentity→branding, photoVideo→video. The other four
+   * carry no `projectCategory` because the portfolio has no category that
+   * evidences them — so `related` is empty and the whole section is omitted
+   * rather than rendered as an empty state.
    */
   const related = service.projectCategory
     ? projectsByCategory(service.projectCategory)
     : []
   const hasWork = related.length > 0
-  const hasIncluded = Boolean(getPricing(service.slug))
+
+  /*
+   * Deliverables come from the service itself now, not from pricing — see
+   * ServiceIncluded. `hasPricing` is separate and currently false for every
+   * service: content/pricing.ts is empty until the client sends real rates.
+   * Both are computed here rather than inside the components so the
+   * alternating tone below counts only the sections that actually render.
+   */
+  const hasIncluded = service.deliverableKeys.length > 0
+  const hasPricing = Boolean(getPricing(service.slug))
 
   /*
    * Alternating paper/navy tone down the page — DESIGN.md §3 rule 1, where
@@ -81,9 +90,13 @@ export default async function ServiceDetailPage({ params }: Props) {
    * paints `.section-alt` itself, and two alt bands touching would read as
    * one double-height band instead of a beat.
    */
-  const rendered = ['hero', hasIncluded && 'included', 'process', hasWork && 'work', 'pricing'].filter(
-    Boolean,
-  ) as string[]
+  const rendered = [
+    'hero',
+    hasIncluded && 'included',
+    'process',
+    hasWork && 'work',
+    hasPricing && 'pricing',
+  ].filter(Boolean) as string[]
   const isAlt = (name: string) => {
     const i = rendered.indexOf(name)
     return i % 2 === 1 && i !== rendered.length - 1

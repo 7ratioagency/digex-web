@@ -1,15 +1,25 @@
 // Destination in repo: content/pricing.ts
 //
-// ⚠️  ALL PRICES BELOW ARE PLACEHOLDERS INVENTED FOR LAYOUT PURPOSES.
-//     They are NOT real Digex rates. Replace every `price` value before launch.
+// ⚠️  NO PRICES YET — the array below is deliberately empty.
 //
-//     The `pricesConfirmed` flag below is a safety switch: while it is false,
-//     the UI must render "على الطلب / Sur devis / On request" instead of the
-//     number. Flip to true ONLY after every price has been reviewed and
-//     replaced with a real figure.
+//     Every figure this file used to carry was a placeholder invented for
+//     layout, and the client's catalogue (the source the eight services were
+//     rebuilt from) prints no prices at all. Rather than keep inventing
+//     numbers, there is nothing here until the client sends real rates.
 //
-//     Package CONTENTS (the feature lists) are real — taken from the agency's
-//     own Instagram posts. Only the numbers are placeholder.
+//     While the array is empty, `getPricing()` returns undefined for every
+//     slug and <Pricing> renders nothing — no empty block, no "from 0 DA".
+//
+//     To bring pricing back: add one ServicePricing entry per slug (slugs live
+//     in content/services.ts), restore the tier and feature strings under
+//     `pricing.tiers.*` / `pricing.features.*` in messages/{ar,fr,en}.json, and
+//     flip `pricesConfirmed` to true ONLY once every figure has been reviewed.
+//
+//     Deliverables no longer live here. "What's included" used to flatten each
+//     tier's `featureKeys`, which tied a service's capabilities to its having
+//     a price — so emptying this file would have silently deleted that section
+//     from every service page. They now come from `deliverableKeys` in
+//     content/services.ts, straight out of the catalogue.
 
 export const pricesConfirmed = false as boolean
 
@@ -17,7 +27,7 @@ export type Currency = 'DZD'
 
 export interface PricingTier {
   key: string
-  /** PLACEHOLDER — replace with real figure. null = always quote-only. */
+  /** null = always quote-only. */
   price: number | null
   currency: Currency
   /** true = show "starting from" prefix */
@@ -26,7 +36,7 @@ export interface PricingTier {
   billing: 'once' | 'monthly' | 'perUnit'
   /** Highlight as the recommended tier */
   featured?: boolean
-  /** i18n key under pricing.tiers.<key> in messages/ */
+  /** i18n key under pricing.features.<key> in messages/ */
   featureKeys: string[]
 }
 
@@ -35,151 +45,8 @@ export interface ServicePricing {
   tiers: PricingTier[]
 }
 
-export const pricing: ServicePricing[] = [
-  {
-    serviceSlug: 'development',
-    tiers: [
-      {
-        key: 'vitrine',
-        price: 90000, // PLACEHOLDER
-        currency: 'DZD',
-        from: true,
-        billing: 'once',
-        // Real package contents, from the agency's Instagram post
-        featureKeys: [
-          'pages5',
-          'bilingual',
-          'responsive',
-          'domain',
-          'emails5',
-          'contactForm',
-          'basicSeo',
-        ],
-      },
-      {
-        key: 'ecommerce',
-        price: 180000, // PLACEHOLDER
-        currency: 'DZD',
-        from: true,
-        billing: 'once',
-        featured: true,
-        featureKeys: [
-          'everythingVitrine',
-          'productCatalogue',
-          'cashOnDelivery',
-          'courierIntegration',
-          'adminDashboard',
-          'orderManagement',
-          'stockTracking',
-        ],
-      },
-      {
-        key: 'custom',
-        price: null, // quote-only by design
-        currency: 'DZD',
-        from: false,
-        billing: 'once',
-        featureKeys: [
-          'customPlatform',
-          'apiIntegrations',
-          'dedicatedSupport',
-          'scalableArchitecture',
-        ],
-      },
-    ],
-  },
-  {
-    serviceSlug: 'brand',
-    tiers: [
-      {
-        key: 'logo',
-        price: 35000, // PLACEHOLDER
-        currency: 'DZD',
-        from: true,
-        billing: 'once',
-        featureKeys: ['logoConcepts', 'colourPalette', 'typography', 'fileFormats'],
-      },
-      {
-        key: 'identity',
-        price: 85000, // PLACEHOLDER
-        currency: 'DZD',
-        from: true,
-        billing: 'once',
-        featured: true,
-        featureKeys: [
-          'everythingLogo',
-          'brandGuidelines',
-          'packaging',
-          'socialTemplates',
-          'stationery',
-        ],
-      },
-    ],
-  },
-  {
-    serviceSlug: 'marketing',
-    tiers: [
-      {
-        key: 'starter',
-        price: 35000, // PLACEHOLDER
-        currency: 'DZD',
-        from: true,
-        billing: 'monthly',
-        featureKeys: ['campaignSetup', 'wilayaTargeting', 'monthlyReport', 'adCreatives4'],
-      },
-      {
-        key: 'growth',
-        price: 70000, // PLACEHOLDER
-        currency: 'DZD',
-        from: true,
-        billing: 'monthly',
-        featured: true,
-        featureKeys: [
-          'everythingStarter',
-          'multiPlatform',
-          'weeklyReport',
-          'adCreatives12',
-          'abTesting',
-        ],
-      },
-    ],
-  },
-  {
-    serviceSlug: 'production',
-    tiers: [
-      {
-        key: 'photoPack',
-        price: 25000, // PLACEHOLDER
-        currency: 'DZD',
-        from: true,
-        billing: 'perUnit',
-        featureKeys: ['productShots20', 'retouching', 'webReady'],
-      },
-      {
-        key: 'videoPack',
-        price: 45000, // PLACEHOLDER
-        currency: 'DZD',
-        from: true,
-        billing: 'perUnit',
-        featured: true,
-        featureKeys: ['shortFormVideo', 'editing', 'subtitles', 'platformFormats'],
-      },
-    ],
-  },
-  {
-    serviceSlug: 'print',
-    tiers: [
-      {
-        key: 'printQuote',
-        price: null, // genuinely quote-based — depends on run size and material
-        currency: 'DZD',
-        from: false,
-        billing: 'once',
-        featureKeys: ['packaging', 'signage', 'businessCards', 'largeFormat', 'qualityControl'],
-      },
-    ],
-  },
-]
+/** Empty until the client sends real rates — see the note at the top. */
+export const pricing: ServicePricing[] = []
 
 export const getPricing = (serviceSlug: string) =>
   pricing.find((p) => p.serviceSlug === serviceSlug)

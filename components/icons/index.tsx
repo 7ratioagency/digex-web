@@ -103,18 +103,53 @@ export function DevelopmentIcon({ animate, ...props }: IconProps) {
 }
 
 /* ---------------------------------------------------------------
-   Brand — a bezier pen path with control points
+   Branding — a pennant planted on a pole, not a curve-and-plus.
+
+   Branding and visual identity sit next to each other in the list, and
+   the first drafts of both were a node, a rising stroke and a small
+   plus — at 28px they were indistinguishable from each other, which is
+   the one thing two adjacent icons must not be. They are now split by
+   what each service actually is: branding is *positioning* (its own
+   deliverables: market study, positioning, vision and values), so it
+   plants a flag; visual identity is *drawing*, so it keeps the nib.
+
+   The small open circle at the foot is the catalogue's signature icon
+   detail — it terminates several of its eight icons the same way.
    --------------------------------------------------------------- */
-export function BrandIcon({ animate, ...props }: IconProps) {
+export function BrandingIcon({ animate, ...props }: IconProps) {
   return (
     <IconShell animate={animate} {...props}>
+      <motion.circle cx="6.75" cy="19.5" r="1.75" variants={draw} custom={0} />
+      <motion.path d="M6.75 17.75V3.5" variants={draw} custom={1} />
       <motion.path
-        d="M3 19c0-8 5-13 11-13 3 0 5 1.5 5 4 0 4-4 6-8 6"
-        variants={draw} custom={0}
+        d="M6.75 4.5h10l-2.75 3.25L16.75 11h-10z"
+        variants={draw} custom={2}
       />
-      <motion.circle cx="3" cy="19" r="1.75" variants={draw} custom={1} />
-      <motion.circle cx="19" cy="10" r="1.75" variants={draw} custom={2} />
-      <motion.path d="M14 16h6M17 13v6" variants={draw} custom={3} />
+    </IconShell>
+  )
+}
+
+/* ---------------------------------------------------------------
+   Visual identity — a nib drawing over two bare shapes.
+
+   The catalogue pairs a framed image mark with a pen nib: the identity
+   being *drawn*, not just owned. The circle and square are the "full set
+   of graphic elements" this service's own copy promises — the shapes the
+   nib is there to make. See BrandingIcon above for why this one no longer
+   shares that icon's silhouette.
+   --------------------------------------------------------------- */
+export function VisualIdentityIcon({ animate, ...props }: IconProps) {
+  return (
+    <IconShell animate={animate} {...props}>
+      <motion.circle cx="7.25" cy="7.25" r="3.5" variants={draw} custom={0} />
+      <motion.path
+        d="M4.5 13.75h5.5v5.5H4.5z"
+        variants={draw} custom={1}
+      />
+      <motion.path
+        d="M13.25 14.25l5.25-5.25a1.75 1.75 0 012.5 2.5l-5.25 5.25-3 .5z"
+        variants={draw} custom={2}
+      />
     </IconShell>
   )
 }
@@ -174,6 +209,65 @@ export function PrintIcon({ animate, ...props }: IconProps) {
       />
       <motion.path d="M9.5 17h5M9.5 19.5h3" variants={draw} custom={3} />
       <motion.path d="M18.5 10.75h.01" variants={draw} custom={3} />
+    </IconShell>
+  )
+}
+
+/* ---------------------------------------------------------------
+   Packaging & étiquette — the catalogue draws an open box with a
+   hanging swing tag and a roll of label stock beside it, which is
+   exactly the pair its copy covers: the pack and the label on it.
+   --------------------------------------------------------------- */
+export function PackagingIcon({ animate, ...props }: IconProps) {
+  return (
+    <IconShell animate={animate} {...props}>
+      {/* Open box: body, then the two lifted flaps. */}
+      <motion.path
+        d="M2.75 10.5l6 3v7l-6-3z"
+        variants={draw} custom={0}
+      />
+      <motion.path
+        d="M8.75 13.5l6-3v7l-6 3z"
+        variants={draw} custom={0}
+      />
+      <motion.path
+        d="M2.75 10.5l6-2.75 6 2.75"
+        variants={draw} custom={1}
+      />
+      {/* Swing tag, hung from the corner. */}
+      <motion.path
+        d="M16.5 4.25h3.75a1 1 0 011 1V9l-4.75 4.75L13 10z"
+        variants={draw} custom={2}
+      />
+      <motion.path d="M18.75 6.75h.01" variants={draw} custom={3} />
+      {/* Label roll. */}
+      <motion.circle cx="18.25" cy="17.5" r="2.75" variants={draw} custom={3} />
+      <motion.path d="M18.25 17.5h3.25" variants={draw} custom={3} />
+    </IconShell>
+  )
+}
+
+/* ---------------------------------------------------------------
+   Intérieur & extérieur design — the catalogue's storefront: an
+   awning over a glazed front, with the interior implied behind it.
+   Its copy runs "de la façade à l'agencement intérieur", so the icon
+   has to carry both halves rather than being a plain building.
+   --------------------------------------------------------------- */
+export function InteriorIcon({ animate, ...props }: IconProps) {
+  return (
+    <IconShell animate={animate} {...props}>
+      <motion.circle cx="3.25" cy="19.5" r="1.5" variants={draw} custom={0} />
+      {/* Awning sweeping over the front. */}
+      <motion.path
+        d="M4.5 9.5c2.5-3.5 6-5.25 10.5-5.25 2.75 0 4.5 1 5.25 2.5"
+        variants={draw} custom={1}
+      />
+      {/* Facade box and its floor line. */}
+      <motion.path d="M5.5 9.75V19.5h13V9.75" variants={draw} custom={2} />
+      <motion.path d="M4.75 19.5h15" variants={draw} custom={2} />
+      {/* Glazing and a counter inside. */}
+      <motion.path d="M8.5 12.5h3.25v3.5H8.5z" variants={draw} custom={3} />
+      <motion.path d="M14.5 16h2.25v3.5H14.5z" variants={draw} custom={3} />
     </IconShell>
   )
 }

@@ -3,42 +3,24 @@ import { Section } from '@/components/ui/Section'
 import { Reveal } from '@/components/ui/Reveal'
 import { StaggerGroup, StaggerItem } from '@/components/ui/Stagger'
 import { CheckIcon } from '@/components/icons'
-import { getPricing } from '@/content/pricing'
+import { getService } from '@/content/services'
 
 /**
- * The service's deliverables, flattened out of content/pricing.ts.
+ * "What's included" — the service's deliverables as cards.
  *
- * That file is the only place real deliverables live — its own header says the
- * package CONTENTS are real (taken from the agency's Instagram) and only the
- * numbers are placeholder — so this reads the same `featureKeys` the pricing
- * block does rather than introducing a second, invented list.
+ * The list comes from `deliverableKeys` in content/services.ts, which holds
+ * the catalogue's own wording: the bolded terms in its running text and the
+ * bulleted lists under Solution Numérique and Impression.
  *
- * `everything*` keys are dropped. They are tier roll-ups ("Everything in the
- * showcase site") that only mean something *relative to another tier*; in a
- * flat capability list they'd point at nothing. Every feature they roll up is
- * already in this union from the tier it belongs to, so nothing is lost.
+ * It used to be flattened out of content/pricing.ts instead, because that
+ * file's tier `featureKeys` were the only place real deliverables existed.
+ * That tied a service's capabilities to its having a price — and pricing is
+ * now empty until the client sends real figures, which would have deleted
+ * this section from every page. What a service delivers and what it costs are
+ * separate facts, so they now live apart.
  *
- * Deduplicated because features legitimately repeat across tiers — `packaging`
- * appears under both brand identity and print.
- */
-function deliverableKeys(serviceSlug: string): string[] {
-  const servicePricing = getPricing(serviceSlug)
-  if (!servicePricing) return []
-
-  return [
-    ...new Set(
-      servicePricing.tiers
-        .flatMap((tier) => tier.featureKeys)
-        .filter((key) => !key.startsWith('everything')),
-    ),
-  ]
-}
-
-/**
- * "What's included" — the deliverables as cards.
- *
- * Renders nothing when the service has no pricing entry, so a service without
- * documented deliverables gets no empty section rather than a hollow one.
+ * Renders nothing when a service declares no deliverables, so such a service
+ * gets no section rather than a hollow one.
  */
 export async function ServiceIncluded({
   serviceSlug,
@@ -48,11 +30,10 @@ export async function ServiceIncluded({
   /** Paint the alternating section tone (`--paper-warm` / `--navy-900`). */
   alt?: boolean
 }) {
-  const keys = deliverableKeys(serviceSlug)
+  const keys = getService(serviceSlug)?.deliverableKeys ?? []
   if (keys.length === 0) return null
 
   const t = await getTranslations('services')
-  const tPricing = await getTranslations('pricing')
 
   return (
     <Section
@@ -100,7 +81,7 @@ export async function ServiceIncluded({
             */}
             <CheckIcon className="mt-0.5 size-5 shrink-0 text-accent-blue" />
             <span className="leading-relaxed text-pretty">
-              {tPricing(`features.${key}`)}
+              {t(`deliverables.${key}`)}
             </span>
           </StaggerItem>
         ))}

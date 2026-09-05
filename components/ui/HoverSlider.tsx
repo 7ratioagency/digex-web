@@ -59,11 +59,26 @@ export type SegmentMode = 'grapheme' | 'word'
  * which is Node's default on the server and the browser's on the client — a
  * quiet route to a hydration mismatch. Both branches below are pure string
  * operations that produce identical output everywhere.
+ *
+ * Returns words, not one flat list of pieces. Every piece renders as an
+ * `inline-block` so it can slide on its own, and a browser will happily break a
+ * line between two adjacent inline-blocks — so a flat per-character list wrapped
+ * labels mid-word: the catalogue's longer titles came out as "Interior and e /
+ * xterior design". Grouping each word into one nowrap box puts the only break
+ * opportunities back between words. Trailing whitespace is folded into the word
+ * it follows, so a wrapped line can never open with a stray space.
  */
-function segment(text: string, mode: SegmentMode): string[] {
-  // The capturing group keeps whitespace as its own segment, so spacing
-  // survives the split instead of being reconstructed.
-  return mode === 'word' ? text.split(/(\s+)/) : Array.from(text)
+function segment(text: string, mode: SegmentMode): string[][] {
+  // Split on whitespace keeping it, then re-attach each run to the word before
+  // it: ['Digital', ' ', 'marketing'] becomes ['Digital ', 'marketing'].
+  const words: string[] = []
+  for (const part of text.split(/(\s+)/)) {
+    if (part === '') continue
+    if (/^\s+$/.test(part) && words.length > 0) words[words.length - 1] += part
+    else words.push(part)
+  }
+
+  return words.map((word) => (mode === 'grapheme' ? Array.from(word) : [word]))
 }
 
 export function HoverSlider({
@@ -174,7 +189,17 @@ export function HoverSliderTrigger({
   const { activeIndex, setActive, baseId } = useHoverSlider()
   const reduce = useReducedMotion()
   const isActive = activeIndex === index
-  const segments = useMemo(() => segment(text, segmentBy), [text, segmentBy])
+  /*
+   * Words of pieces, each piece carrying its position across the whole label —
+   * the stagger has to ripple continuously from the first glyph to the last, so
+   * the delay counts through the words rather than restarting inside each.
+   */
+  const words = useMemo(() => {
+    let order = 0
+    return segment(text, segmentBy).map((pieces) =>
+      pieces.map((piece) => ({ piece, order: order++ })),
+    )
+  }, [text, segmentBy])
 
   // Shared across both the `<Link>` and `<button>` branches below, so the
   // two can never drift apart on role, keyboard, or reveal behaviour.
@@ -206,46 +231,52 @@ export function HoverSliderTrigger({
       {leading}
 
       <span aria-hidden="true" className="relative inline-block">
-        {segments.map((piece, pieceIndex) => (
-          <span
-            key={`${piece}-${pieceIndex}`}
-            className="relative inline-block overflow-hidden whitespace-pre"
-          >
-            {/*
-              Only `transition` branches on the motion preference — it never
-              reaches the DOM, so markup stays identical between server and
-              client. Reduced motion gets the same swap at zero duration
-              instead of a suppressed one that could strand a layer mid-slide.
-            */}
-            <MotionConfig
-              transition={
-                reduce
-                  ? { duration: 0 }
-                  : {
-                      delay: pieceIndex * 0.025,
-                      duration: 0.3,
-                      ease: [0.25, 0.46, 0.45, 0.94],
-                    }
-              }
-            >
-              {/* Resting copy, rising out of frame when selected. */}
-              <motion.span
-                className="inline-block text-muted-foreground"
-                initial={{ y: '0%' }}
-                animate={isActive ? { y: '-110%' } : { y: '0%' }}
+        {words.map((pieces, wordIndex) => (
+          // A line may break between these boxes, never inside one.
+          <span key={wordIndex} className="inline-block whitespace-nowrap">
+            {pieces.map(({ piece, order }) => (
+              <span
+                key={order}
+                className="relative inline-block overflow-hidden whitespace-pre"
               >
-                {piece}
-              </motion.span>
+                {/*
+                  Only `transition` branches on the motion preference — it never
+                  reaches the DOM, so markup stays identical between server and
+                  client. Reduced motion gets the same swap at zero duration
+                  instead of a suppressed one that could strand a layer
+                  mid-slide.
+                */}
+                <MotionConfig
+                  transition={
+                    reduce
+                      ? { duration: 0 }
+                      : {
+                          delay: order * 0.025,
+                          duration: 0.3,
+                          ease: [0.25, 0.46, 0.45, 0.94],
+                        }
+                  }
+                >
+                  {/* Resting copy, rising out of frame when selected. */}
+                  <motion.span
+                    className="inline-block text-muted-foreground"
+                    initial={{ y: '0%' }}
+                    animate={isActive ? { y: '-110%' } : { y: '0%' }}
+                  >
+                    {piece}
+                  </motion.span>
 
-              {/* Selected copy, arriving from below. */}
-              <motion.span
-                className="absolute inset-s-0 top-0 inline-block text-foreground"
-                initial={{ y: '110%' }}
-                animate={isActive ? { y: '0%' } : { y: '110%' }}
-              >
-                {piece}
-              </motion.span>
-            </MotionConfig>
+                  {/* Selected copy, arriving from below. */}
+                  <motion.span
+                    className="absolute inset-s-0 top-0 inline-block text-foreground"
+                    initial={{ y: '110%' }}
+                    animate={isActive ? { y: '0%' } : { y: '110%' }}
+                  >
+                    {piece}
+                  </motion.span>
+                </MotionConfig>
+              </span>
+            ))}
           </span>
         ))}
       </span>
