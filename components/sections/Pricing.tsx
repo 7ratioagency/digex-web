@@ -157,9 +157,16 @@ function TierCard({
 /**
  * Pricing packages for one service — DESIGN.md §2f.
  *
- * Renders nothing when the service has no entry in content/pricing.ts, so a
- * service without packages simply has no pricing block rather than an empty
- * one.
+ * Every service carries a price block, because a service page that says what
+ * it delivers and then says nothing about what it costs sends the reader off
+ * to ask. Three of the nine have packages; the rest are quoted per project, so
+ * they get a quote panel with the same heading and the same CTA rather than
+ * silence.
+ *
+ * Printing is the one exception, and it is not silence either — it has a rate
+ * card of its own (<PrintPrices>), which is a better answer than a quote panel
+ * for a trade sold by the unit. That fact lives here rather than in the page,
+ * the same way <PrintPrices> owns the other half of it.
  */
 export async function Pricing({
   serviceSlug,
@@ -170,7 +177,8 @@ export async function Pricing({
   alt?: boolean
 }) {
   const servicePricing = getPricing(serviceSlug)
-  if (!servicePricing) return null
+  // See the note above: printing answers this question with its rate card.
+  if (!servicePricing && serviceSlug === 'printing') return null
 
   const t = await getTranslations('pricing')
   const tContact = await getTranslations('contact')
@@ -239,24 +247,49 @@ export async function Pricing({
         </p>
       </Reveal>
 
-      <StaggerGroup
-        as="ul"
-        className={`mt-section-xl grid grid-cols-1 items-stretch gap-section-md ${gridFor(
-          servicePricing.tiers.length,
-        )}`}
-      >
-        {servicePricing.tiers.map((tier) => (
-          <TierCard
-            key={tier.key}
-            tier={tier}
-            name={t(`tiers.${tier.key}`)}
-            features={tier.featureKeys.map((k) => t(`features.${k}`))}
-            labels={labels}
-            ctaHref={ctaHref}
-            formatNumber={formatNumber}
+      {servicePricing ? (
+        <StaggerGroup
+          as="ul"
+          className={`mt-section-xl grid grid-cols-1 items-stretch gap-section-md ${gridFor(
+            servicePricing.tiers.length,
+          )}`}
+        >
+          {servicePricing.tiers.map((tier) => (
+            <TierCard
+              key={tier.key}
+              tier={tier}
+              name={t(`tiers.${tier.key}`)}
+              features={tier.featureKeys.map((k) => t(`features.${k}`))}
+              labels={labels}
+              ctaHref={ctaHref}
+              formatNumber={formatNumber}
+            />
+          ))}
+        </StaggerGroup>
+      ) : (
+        /*
+          Quoted per project. Capped and left at the reading-start edge for the
+          same reason a single tier is (see `gridFor`): one panel stretched
+          across a 1280px grid reads as a banner, not as an answer.
+        */
+        <div className="glass mt-section-xl max-w-md p-section-lg">
+          <span
+            aria-hidden="true"
+            className="block h-1.5 w-10 rounded-full bg-highlight-yellow"
           />
-        ))}
-      </StaggerGroup>
+          <p className="mt-section-md text-3xl font-semibold ltr:tracking-tight">
+            {labels.onRequest}
+          </p>
+          <p className="mt-section-sm text-sm leading-relaxed text-pretty text-muted-foreground">
+            {t('quoteLead')}
+          </p>
+          <div className="mt-section-lg">
+            <Button href={ctaHref} variant="primary" className="w-full">
+              {labels.cta}
+            </Button>
+          </div>
+        </div>
+      )}
     </Section>
   )
 }

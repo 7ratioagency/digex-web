@@ -17,7 +17,6 @@ import { Pricing } from '@/components/sections/Pricing'
 import { ContactCTA } from '@/components/sections/ContactCTA'
 import { ArrowIcon } from '@/components/icons'
 import { services, getService } from '@/content/services'
-import { getPricing } from '@/content/pricing'
 import { estimatorEnabled } from '@/content/estimator'
 import { projectsByCategory } from '@/content/projects'
 
@@ -80,7 +79,7 @@ export default async function ServiceDetailPage({ params }: Props) {
    * alternating tone below counts only the sections that actually render.
    */
   const hasIncluded = service.deliverableKeys.length > 0
-  const hasPricing = Boolean(getPricing(service.slug))
+  const hasPricing = service.key !== 'printing'
   // The eight-step method belongs to digital marketing alone — see
   // <ServiceStrategy>, which owns that fact. Mirrored here only so the tone
   // rhythm below counts the same sections the page actually renders.
@@ -110,12 +109,12 @@ export default async function ServiceDetailPage({ params }: Props) {
   const rendered = [
     'hero',
     hasIncluded && 'included',
+    hasPricing && 'pricing',
+    hasPrintPrices && 'printPrices',
+    hasEstimator && 'estimator',
     hasStrategy && 'strategy',
     'process',
     hasWork && 'work',
-    hasPrintPrices && 'printPrices',
-    hasEstimator && 'estimator',
-    hasPricing && 'pricing',
   ].filter(Boolean) as string[]
   const isAlt = (name: string) => {
     const i = rendered.indexOf(name)
@@ -198,23 +197,26 @@ export default async function ServiceDetailPage({ params }: Props) {
       {/* ── 2. What's included ──────────────────────────────────────────── */}
       <ServiceIncluded serviceSlug={service.slug} alt={isAlt('included')} />
 
-      {/* ── 3. How this service is practised (digital marketing only) ───── */}
-      <ServiceStrategy serviceKey={service.key} alt={isAlt('strategy')} />
+      {/*
+        ── 3–5. What it costs ────────────────────────────────────────────
 
-      {/* ── 4. Process ──────────────────────────────────────────────────── */}
-      <ProcessCompact alt={isAlt('process')} />
-
-      {/* ── 5. Selected work ────────────────────────────────────────────── */}
-      <ServiceWork service={service} alt={isAlt('work')} />
-
-      {/* ── 6. Print rate card (printing only) ─────────────────────────── */}
+        Directly after "what's included", which is the question the reader has
+        just been given the answer to half of. Every service reaches at least
+        one of these three: packages where they exist, the rate card for
+        printing, the estimator for websites, and a quote panel otherwise.
+      */}
+      <Pricing serviceSlug={service.slug} alt={isAlt('pricing')} />
       <PrintPrices serviceKey={service.key} alt={isAlt('printPrices')} />
-
-      {/* ── 7. Website estimator (digital solutions only) ──────────────── */}
       <EstimatorSection serviceKey={service.key} alt={isAlt('estimator')} />
 
-      {/* ── 8. Pricing ──────────────────────────────────────────────────── */}
-      <Pricing serviceSlug={service.slug} alt={isAlt('pricing')} />
+      {/* ── 6. How this service is practised (digital marketing only) ───── */}
+      <ServiceStrategy serviceKey={service.key} alt={isAlt('strategy')} />
+
+      {/* ── 7. Process ──────────────────────────────────────────────────── */}
+      <ProcessCompact alt={isAlt('process')} />
+
+      {/* ── 8. Selected work ────────────────────────────────────────────── */}
+      <ServiceWork service={service} alt={isAlt('work')} />
 
       {/* ── 9. CTA — WhatsApp, plus the route through to the form ───────── */}
       <ContactCTA showFormLink />

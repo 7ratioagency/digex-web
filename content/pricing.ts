@@ -20,7 +20,7 @@
 //     Feature lists are the packs' own contents, verbatim apart from two typos
 //     the old CMS carried ("iclues", "inclues" → "incluses").
 
-export const pricesConfirmed = false as boolean
+export const pricesConfirmed = true as boolean
 
 export type Currency = 'DZD'
 

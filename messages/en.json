@@ -234,6 +234,7 @@
   "pricing": {
     "title": "Packages",
     "lead": "Price depends on scope. Tell us what you need and we'll send you a precise quote.",
+    "quoteLead": "This service is quoted per project — scope, quantities and deadlines. Tell us what you need and we send a precise quote within 24 hours.",
     "onRequest": "On request",
     "from": "From",
     "monthly": "/ month",

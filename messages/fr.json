@@ -234,6 +234,7 @@
   "pricing": {
     "title": "Formules",
     "lead": "Le prix dépend du périmètre. Dites-nous ce dont vous avez besoin et nous vous envoyons un devis précis.",
+    "quoteLead": "Cette prestation se chiffre au projet : ampleur, quantités et délais. Dites-nous ce qu'il vous faut et nous vous envoyons un devis précis sous 24 h.",
     "onRequest": "Sur devis",
     "from": "À partir de",
     "monthly": "/ mois",
