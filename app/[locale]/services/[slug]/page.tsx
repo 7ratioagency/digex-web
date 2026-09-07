@@ -12,6 +12,7 @@ import { ServiceWork } from '@/components/sections/ServiceWork'
 import { ServiceStrategy } from '@/components/sections/ServiceStrategy'
 import { PrintPrices } from '@/components/sections/PrintPrices'
 import { EstimatorSection } from '@/components/sections/EstimatorSection'
+import { VideoShowcase } from '@/components/sections/VideoShowcase'
 import { ProcessCompact } from '@/components/sections/ProcessCompact'
 import { Pricing } from '@/components/sections/Pricing'
 import { ContactCTA } from '@/components/sections/ContactCTA'
@@ -91,6 +92,12 @@ export default async function ServiceDetailPage({ params }: Props) {
   // confirmed at all. <EstimatorSection> owns both; this mirrors them so the
   // tone rhythm counts only what renders.
   const hasEstimator = service.key === 'digitalSolutions' && estimatorEnabled
+  /*
+   * The video showcase, on photo & video. That service has a project category
+   * and one entry in it, while twelve published films sat unreferenced in the
+   * repo — this is the work the page was missing.
+   */
+  const hasVideos = service.key === 'photoVideo'
 
   /*
    * Alternating paper/navy tone down the page — DESIGN.md §3 rule 1, where
@@ -115,6 +122,7 @@ export default async function ServiceDetailPage({ params }: Props) {
     hasStrategy && 'strategy',
     'process',
     hasWork && 'work',
+    hasVideos && 'videos',
   ].filter(Boolean) as string[]
   const isAlt = (name: string) => {
     const i = rendered.indexOf(name)
@@ -218,7 +226,10 @@ export default async function ServiceDetailPage({ params }: Props) {
       {/* ── 8. Selected work ────────────────────────────────────────────── */}
       <ServiceWork service={service} alt={isAlt('work')} />
 
-      {/* ── 9. CTA — WhatsApp, plus the route through to the form ───────── */}
+      {/* ── 9. Video work (photo & video only) ──────────────────────────── */}
+      {hasVideos && <VideoShowcase alt={isAlt('videos')} />}
+
+      {/* ── 10. CTA — WhatsApp, plus the route through to the form ──────── */}
       <ContactCTA showFormLink />
     </main>
   )

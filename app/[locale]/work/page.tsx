@@ -5,6 +5,7 @@ import { Section } from '@/components/ui/Section'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Highlight } from '@/components/ui/Highlight'
 import { ProjectCard } from '@/components/ui/ProjectCard'
+import { VideoShowcase } from '@/components/sections/VideoShowcase'
 import { ContactCTA } from '@/components/sections/ContactCTA'
 import { WorkFilter, type FilterKey } from '@/components/work/WorkFilter'
 import { projects, type ProjectCategory } from '@/content/projects'
@@ -89,6 +90,15 @@ export default async function WorkPage({ params }: Props) {
           />
         </div>
       </Section>
+
+      {/*
+        The video work, below the grid rather than inside its filter. These are
+        real published films, but content/projects.ts requires a sector, a
+        summary and what was delivered for every entry, and for these twelve
+        only the client is known — the title says so and nothing else does.
+        Showing them here keeps them findable without inventing the rest.
+      */}
+      <VideoShowcase alt />
 
       <ContactCTA />
     </main>

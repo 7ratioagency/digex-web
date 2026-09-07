@@ -834,22 +834,11 @@ export const clients = [
   // TODO: add remaining logos from the old site with their real names.
 ] as const
 
-/** YouTube Shorts produced by the agency. */
-export const videos = [
-  'YWwl8FQcMjg',
-  'WHVWLsHj0QI',
-  'oeL7ejQkSYI',
-  'Cxt4N1TeXQ0',
-  '-nN3BEaTEvI',
-  'IIeTersdVUo',
-  'PS1JReoKygE',
-  'Rr6xvKzkLx4',
-  'DGAA5zX4v6k',
-  'Vr8i_fDBBsk',
-  'a9uUFCcDZHM',
-  'gP1-YXGgNSs',
-] as const
-
+/*
+ * The video work moved to content/videos.ts, where each ID carries the title
+ * YouTube actually returns for it and the client named in that title. It sat
+ * here as a bare list of twelve IDs that nothing imported.
+ */
 export const featuredProjects = projects.filter((p) => p.featured)
 
 export const getProject = (slug: string) =>
