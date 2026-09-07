@@ -4,6 +4,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Highlight } from "@/components/ui/Highlight";
 import { StaggerGroup, StaggerItem } from "@/components/ui/Stagger";
 import { CountUp } from "@/components/ui/CountUp";
+import { TestimonialWall } from "@/components/ui/TestimonialWall";
 import { clients } from "@/content/projects";
 
 type Stat = { value: string; suffix: string; label: string };
@@ -13,7 +14,23 @@ export async function Proof() {
   const stats = t.raw("stats") as Stat[];
 
   return (
-    <Section>
+    /*
+      `isolate` scopes the colour fields below to this section; they are here
+      because <TestimonialWall>'s cards are `.glass`, and a backdrop-filter
+      with nothing behind it is an invisible rectangle — DESIGN.md §2f rule 5.
+    */
+    <Section
+      className="isolate"
+      backdrop={
+        // `overflow-hidden`: the fields sit on negative insets so they bleed in
+        // from off-section; unclipped they extend the document and produce a
+        // horizontal scrollbar.
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <div className="colour-field colour-field-blue bottom-[18%] inset-s-[-6%] size-120" />
+          <div className="colour-field colour-field-violet bottom-[2%] inset-e-[-4%] size-112" />
+        </div>
+      }
+    >
       <SectionHeader
         eyebrow={t("eyebrow")}
         title={t.rich("title", {
@@ -74,6 +91,8 @@ export async function Proof() {
           </li>
         ))}
       </ul>
+
+      <TestimonialWall />
     </Section>
   );
 }

@@ -1,0 +1,2875 @@
+{
+  "brand": {
+    "name": "DIGEX",
+    "domain": "digex.agency",
+    "tagline_fr": "Concevoir l’avenir numérique de l’Algérie.",
+    "colors": {
+      "primary": "#2343F2",
+      "secondary": "#6C8FE8",
+      "accent_yellow": "#F4D00A",
+      "light_grey": "#E6E6E6",
+      "dark": "#1F1F1F",
+      "grey_light": "#303030",
+      "bg2": "#F8F8F8",
+      "grey": "#A7A7A7",
+      "red": "#F21E1E",
+      "white": "#FFFFFF",
+      "black": "#000000",
+      "overlay_white_10": "#FFFFFF1A",
+      "body_background": "#000000"
+    },
+    "typography": {
+      "primary_h1": {
+        "family": "Kanit",
+        "weight": 700,
+        "size_px": 120
+      },
+      "secondary_h2": {
+        "family": "Kanit",
+        "weight": 400,
+        "size_px": 36
+      },
+      "text": {
+        "family": "Kanit",
+        "weight": 600,
+        "size_px": 16
+      },
+      "accent": {
+        "family": "Kanit",
+        "weight": 400,
+        "size_px": 18
+      },
+      "hero": {
+        "family": "Beatrice Trial",
+        "weight": 700,
+        "size_px": 120
+      },
+      "head2": {
+        "family": "Beatrice Trial",
+        "weight": 400,
+        "size_px": 30
+      }
+    },
+    "custom_fonts_in_backup": [
+      {
+        "name": "Acens",
+        "file": "2024/12/Acens.ttf"
+      },
+      {
+        "name": "Telegraph",
+        "file": "2024/12/Telegraph.ttf"
+      },
+      {
+        "name": "Telegraf Regular",
+        "file": "2024/12/PPTelegraf-Regular.ttf"
+      },
+      {
+        "name": "Telegraf Bold",
+        "file": "2024/12/PPTelegraf-UltraBold.ttf"
+      },
+      {
+        "name": "Telegraf Light",
+        "file": "2024/12/PPTelegraf-UltraLight.ttf"
+      },
+      {
+        "name": "Techead Free Light",
+        "file": "2024/11/TecheadFree-Light.ttf"
+      },
+      {
+        "name": "Beatrice Trial",
+        "file": "(referenced in kit, font file not located in uploads)"
+      }
+    ],
+    "container_width_px": 1240,
+    "breakpoints": {
+      "md": 768,
+      "lg": 1025
+    },
+    "logo": "2024/09/logoRGB.png",
+    "favicon": "2024/09/favicon-32x32-2.png",
+    "other_logo_files": [
+      "2024/10/dig.png",
+      "2024/10/logodigex.png",
+      "2024/10/logo-grey-1.png",
+      "2024/09/logo-GB.png",
+      "2024/11/logoGreen.png"
+    ]
+  },
+  "contact": {
+    "email_public": "contact@digex.agency",
+    "email_admin": "7ratioagency@gmail.com",
+    "phones": [
+      "0662560998",
+      "033249698"
+    ],
+    "address": "Cité Park à Fourrage, en face lycée Salah Eddine — Batna, Algérie",
+    "social": {
+      "facebook": "https://www.facebook.com/profile.php?id=61565742478008",
+      "instagram": "https://www.instagram.com/digex.agency",
+      "behance": "https://www.behance.net/digexagencyD",
+      "whatsapp": "https://wa.me/qr/AYJRDROYULXMA1"
+    },
+    "copyright": "© digex 2024. All rights reserved"
+  },
+  "navigation": {
+    "main": [
+      {
+        "label": "Accueil",
+        "url": "/"
+      },
+      {
+        "label": "Portfolio",
+        "url": "/services"
+      },
+      {
+        "label": "Marketing Digital",
+        "url": "/marketing"
+      },
+      {
+        "label": "Boutique",
+        "url": "/shop"
+      },
+      {
+        "label": "À Propos",
+        "url": "/aboutus"
+      },
+      {
+        "label": "Contactez-Nous",
+        "url": "/contactus"
+      }
+    ],
+    "footer_services": [
+      {
+        "label": "Portfolio",
+        "url": "/services"
+      },
+      {
+        "label": "Marketing Digital",
+        "url": "/marketing"
+      },
+      {
+        "label": "Contactez-Nous",
+        "url": "/contactus"
+      }
+    ],
+    "header_cta": "Discutons",
+    "footer_cta": "Contactez Nous"
+  },
+  "home": {
+    "hero": {
+      "line1": "Bienvenue à Digex - Concevoir l’avenir numérique de l’Algérie.",
+      "line2": "-DIGEX- Renforcer les marques algériennes"
+    },
+    "services_section": {
+      "eyebrow": "DES SERVICES RÉVOLUTIONNAIRES",
+      "title": "Boostez votre entreprise."
+    },
+    "services": [
+      {
+        "n": "01",
+        "name": "MARKETING",
+        "headline": "BOOSTEZ VOTRE MARKETING",
+        "cta": "ESTIMATION",
+        "bullets": [
+          "MARKETING DIGITAL SUR MESURE",
+          "Création de contenu captivant",
+          "Gestion des réseaux sociaux",
+          "Campagnes publicitaires ciblées",
+          "Design professionnel (flyers, roll-ups, posts)"
+        ]
+      },
+      {
+        "n": "02",
+        "name": "IMPRESSION",
+        "headline": "IMPRESSION HAUTE QUALITÉ",
+        "cta": "VOIR BOUTIQUE",
+        "bullets": [
+          "Stickers microperforés",
+          "Effet transparent & miroir",
+          "Bannières publicitaires",
+          "Roll-Ups & Desks personnalisés",
+          "Flyers & cartes de visite",
+          "Flags"
+        ]
+      },
+      {
+        "n": "03",
+        "name": "PACKAGING",
+        "headline": "PACKAGING SUR MESURE",
+        "cta": "ESTIMATION",
+        "bullets": [
+          "Design unique & custom die-cuts",
+          "Génération des codes-barres",
+          "Cliché suivi"
+        ]
+      },
+      {
+        "n": "04",
+        "name": "DESIGN",
+        "headline": "DÉMARQUEZ-VOUS AVEC DES DESIGNS UNIQUES",
+        "cta": "ESTIMATION",
+        "bullets": [
+          "Stratégie de marque et analyse concurrentielle",
+          "Flyers / Roll-Ups / Flags",
+          "Cartes de visite et cartes de fidélité",
+          "Custom stickers"
+        ]
+      },
+      {
+        "n": "05",
+        "name": "SITE WEB",
+        "headline": "AMÉLIOREZ VOTRE VISIBILITÉ EN LIGNE",
+        "cta": "ESTIMATION",
+        "highlight": "E-commerce à partir de 60 000 DA",
+        "bullets": [
+          "Site Vitrine | Landing Page",
+          "E-commerce à partir de 30 000 DA",
+          "Hébergement + 1 an de support",
+          "Sauvegardes quotidiennes",
+          "Sécurité SSL",
+          "Site bilingue"
+        ]
+      },
+      {
+        "n": "06",
+        "name": "DESIGN INTÉRIEUR",
+        "headline": "VISUALISEZ AVANT DE CONSTRUIRE",
+        "cta": "ESTIMATION",
+        "bullets": [
+          "Rendus 3D ultra-réalistes",
+          "Maisons et espaces commerciaux",
+          "Placement des meubles et de la décoration"
+        ]
+      }
+    ],
+    "about_block": {
+      "kicker": "On est fiers",
+      "title": "d’explorer, créer & réaliser",
+      "text": "Nous sommes une agence de marketing et de développement dynamique dédiée à aider les entreprises à se démarquer, croître et réussir."
+    },
+    "counters": [
+      {
+        "value": 240,
+        "label": "PROJECTS",
+        "sub": "Réalisés"
+      },
+      {
+        "value": 200,
+        "label": "CLIENT",
+        "sub": "Satisfaits"
+      },
+      {
+        "value": 7,
+        "label": "Ans",
+        "sub": "D'expérience"
+      },
+      {
+        "value": 4,
+        "label": "CLIENTS",
+        "sub": "Mondiaux"
+      }
+    ],
+    "pricing_section_title": "Nos Packs Tarifaires",
+    "testimonials_section_title": "Témoignages de nos clients"
+  },
+  "pricing": {
+    "currency": "DZD",
+    "tabs": [
+      "Marketing Digital",
+      "Sites Web",
+      "Branding"
+    ],
+    "packs": [
+      {
+        "category": "Marketing Digital",
+        "name": "PACK ESSENTIEL",
+        "audience": "Startups & TPE en lancement",
+        "price": "45 000 DZD",
+        "period": "/Mois",
+        "cta": "Commencer",
+        "badge": "Populaire",
+        "features": [
+          "Audit marketing gratuit",
+          "Stratégie digitale sur 3 mois",
+          "Gestion des réseaux sociaux (8 posts/mois)",
+          "Campagne Google Ads (budget exclu)",
+          "Bonus : 1 formation offerte à votre équipe"
+        ],
+        "price_dzd": 45000,
+        "price_display": "45 000 DZD"
+      },
+      {
+        "category": "Marketing Digital",
+        "name": "PACK PERFORMANCE",
+        "audience": "PME en expansion",
+        "price": "110 000 DZD",
+        "period": "/Mois",
+        "cta": "Commencer",
+        "badge": "Populaire",
+        "features": [
+          "Tout le Pack Essentiel +",
+          "SEO complet (optimisation technique & contenu)",
+          "Email marketing automatisé (2 campagnes/mois)",
+          "Reporting mensuel détaillé",
+          "Bonus : Accès prioritaire aux experts"
+        ],
+        "price_dzd": 110000,
+        "price_display": "110 000 DZD"
+      },
+      {
+        "category": "Marketing Digital",
+        "name": "PACK ENTERPRISE",
+        "audience": "Grands comptes & besoins complexes",
+        "price": "Sur devis",
+        "period": "/mois",
+        "cta": "Commencer",
+        "badge": "Populaire",
+        "features": [
+          "Accompagnement 360° (stratégie + exécution)",
+          "Equipe dédiée (CMO virtuel, designer, etc.)",
+          "Analyse concurrentielle avancée",
+          "Gestion de crise incluse",
+          "Bonus : Réunion trimestrielle avec votre direction"
+        ],
+        "price_dzd": null,
+        "price_display": "Sur devis"
+      },
+      {
+        "category": "Sites Web",
+        "name": "SITE VITRINE",
+        "audience": "",
+        "price": "40 000 DZD",
+        "period": "",
+        "cta": "Commencer",
+        "badge": "Populaire",
+        "features": [
+          "Hébergement & nom de domaine (1 an inclus ou assistance à la configuration)",
+          "Responsive design (mobile & tablette)",
+          "3 pages iclues",
+          "Sécurité de base (anti-spam)",
+          "Intégration d’un formulaire de contact",
+          "Formation de base à la gestion du site"
+        ],
+        "price_dzd": 40000,
+        "price_display": "40 000 DZD"
+      },
+      {
+        "category": "Sites Web",
+        "name": "SITE ENTREPRISE",
+        "audience": "",
+        "price": "60 000 DZD",
+        "period": "",
+        "cta": "Commencer",
+        "badge": "Populaire",
+        "features": [
+          "Tout le contenu du Pack Vitrine, +",
+          "Création d’adresses e-mail professionnelles",
+          "Jusqu'à 6 pages inclues",
+          "Optimisation SEO avancée (balises, vitesse)",
+          "Maintenance & mises à jour (1 mois inclus)",
+          "Blog ou espace actualités intégré"
+        ],
+        "price_dzd": 60000,
+        "price_display": "60 000 DZD"
+      },
+      {
+        "category": "Sites Web",
+        "name": "SITE E-COMMERCE",
+        "audience": "",
+        "price": "198 000 DZD",
+        "period": "",
+        "cta": "Commencer",
+        "badge": "Populaire",
+        "features": [
+          "Tout le contenu du Pack Entreprise, +",
+          "Gestion des stocks & des commandes",
+          "Espace client sécurisé (connexion, suivi commande, compte)",
+          "Livraison (tarifs, zones, suivi)",
+          "Intégration d’une passerelle de paiement (CB, PayPal, Stripe...)",
+          "Coupons & codes promo"
+        ],
+        "price_dzd": 198000,
+        "price_display": "198 000 DZD"
+      },
+      {
+        "category": "Branding",
+        "name": "Identité Visuelle Complète",
+        "audience": "",
+        "price": "20000 DA",
+        "period": "",
+        "cta": "Commencer",
+        "badge": "Populaire",
+        "features": [
+          "Logo professionnel",
+          "Carte Visite",
+          "Roll-Up",
+          "Flyer"
+        ],
+        "price_dzd": 20000,
+        "price_display": "20 000 DZD"
+      }
+    ]
+  },
+  "website_calculator": {
+    "name": "Website Pricing",
+    "formula": "radio_field_id_0 + toggle_field_id_1 + range_field_id_2 + dropDown_field_id_3 + toggle_field_id_4",
+    "fields": [
+      {
+        "label": "Website",
+        "type": "radio",
+        "hint": "choose the type of website that suite your business",
+        "options": [
+          {
+            "label": "Landing page",
+            "value": 5000
+          },
+          {
+            "label": "Professional website",
+            "value": 30000
+          },
+          {
+            "label": "E-commerce",
+            "value": 100000
+          }
+        ]
+      },
+      {
+        "label": "Web design",
+        "type": "toggle",
+        "hint": "Custom Design — A website that reflects your brand identity: responsive, modern, user-friendly.",
+        "options": [
+          {
+            "label": "Custom Design",
+            "value": 25000
+          }
+        ]
+      },
+      {
+        "label": "Page",
+        "type": "range",
+        "hint": "number of pages",
+        "unit_price": 5000,
+        "step": 1,
+        "default": 10
+      },
+      {
+        "label": "Hosting + Domain name",
+        "type": "dropdown",
+        "hint": ".com / .dz",
+        "options": [
+          {
+            "label": "Basic hosting",
+            "value": 6000
+          },
+          {
+            "label": "Pro hosting",
+            "value": 30000
+          }
+        ]
+      },
+      {
+        "label": "Email professionnel",
+        "type": "toggle",
+        "hint": "Renforcez votre crédibilité avec une adresse email professionnelle personnalisée.",
+        "options": [
+          {
+            "label": "basic",
+            "value": 0
+          }
+        ]
+      }
+    ]
+  },
+  "shop": {
+    "currency": "DZD",
+    "page": "/shop",
+    "products": [
+      {
+        "name": "Roll-Up",
+        "slug": "rollup",
+        "price_min": 12500,
+        "price_max": 12500,
+        "note": "85 cm",
+        "description": "",
+        "attributes": {},
+        "variations": [],
+        "images": [
+          "https://digex.agency/wp-content/uploads/2025/04/409268671_45407c54-248d-4ac1-b4c2-9ebbf28316b9.jpg"
+        ]
+      },
+      {
+        "name": "X-Banner",
+        "slug": "rollup-mini",
+        "price_min": 7500,
+        "price_max": 7500,
+        "note": "",
+        "description": "",
+        "attributes": {},
+        "variations": [],
+        "images": [
+          "https://digex.agency/wp-content/uploads/2025/04/416325427_01536711-d864-4d25-9c66-5e4739d19fd3.jpg"
+        ]
+      },
+      {
+        "name": "Flyer",
+        "slug": "fleyer",
+        "price_min": 60,
+        "price_max": 60,
+        "note": "Note : le prix varie selon : format (A4, A5, A6), recto/verso.",
+        "description": "",
+        "attributes": {
+          "format": [
+            "A4 (21 x 29.7 cm)",
+            "A5 (14.8 x 21 cm)",
+            "A6 (10.5 x 14.8 cm)"
+          ]
+        },
+        "variations": [],
+        "images": [
+          "https://digex.agency/wp-content/uploads/2025/01/871905_O7DAJO1.png"
+        ]
+      },
+      {
+        "name": "Notebook",
+        "slug": "notebook",
+        "price_min": 700,
+        "price_max": 700,
+        "note": "50 feuilles\r\nNote : Le prix varie selon : Fromat (A5, A6), couverture (Simple ou rigide), Couleur ou noir et blanc. Pour plus de détails sur le prix contactez nous.",
+        "description": "",
+        "attributes": {
+          "format": [
+            "A5 (14.8 x 21 cm)",
+            "A6 (10.5 x 14.8 cm)"
+          ],
+          "couverture": [
+            "Rigide",
+            "Simple"
+          ]
+        },
+        "variations": [],
+        "images": [
+          "https://digex.agency/wp-content/uploads/2025/04/cover1.png"
+        ]
+      },
+      {
+        "name": "Bache",
+        "slug": "bache",
+        "price_min": 16000,
+        "price_max": 16000,
+        "note": "au mètre carré",
+        "description": "",
+        "attributes": {},
+        "variations": [],
+        "images": [
+          "https://digex.agency/wp-content/uploads/2025/07/bannermockup.jpg"
+        ]
+      },
+      {
+        "name": "Vitrine",
+        "slug": "vitrine",
+        "price_min": 1500,
+        "price_max": 2000,
+        "note": "au mètre carré",
+        "description": "",
+        "attributes": {
+          "autocollant": [
+            "Autocollant blanc",
+            "Autocollant one-way",
+            "Autocollant mirroir"
+          ]
+        },
+        "variations": [
+          {
+            "name": "Autocollant blanc",
+            "price": 1500
+          },
+          {
+            "name": "Autocollant one-way",
+            "price": 1500
+          },
+          {
+            "name": "Autocollant mirroir",
+            "price": 2000
+          }
+        ],
+        "images": [
+          "https://digex.agency/wp-content/uploads/2025/07/VITRINE.jpg"
+        ]
+      },
+      {
+        "name": "Backlight",
+        "slug": "backlight",
+        "price_min": 16500,
+        "price_max": 16500,
+        "note": "",
+        "description": "",
+        "attributes": {},
+        "variations": [],
+        "images": [
+          "https://digex.agency/wp-content/uploads/2025/07/357765451_8f617f50-32dc-4bcf-a0e7-764bad2c9c94.jpg",
+          "https://digex.agency/wp-content/uploads/2025/07/IMG_6510.jpg"
+        ]
+      },
+      {
+        "name": "Drapeau",
+        "slug": "drapeau",
+        "price_min": 7000,
+        "price_max": 25000,
+        "note": "",
+        "description": "",
+        "attributes": {
+          "tissu": [
+            "Double face sans support",
+            "Seule face avec support",
+            "Double face avec support",
+            "Seule face sans support"
+          ]
+        },
+        "variations": [
+          {
+            "name": "Seule face sans support",
+            "price": 7000
+          },
+          {
+            "name": "Double face sans support",
+            "price": 15000
+          },
+          {
+            "name": "Seule face avec support",
+            "price": 19000
+          },
+          {
+            "name": "Double face avec support",
+            "price": 25000
+          }
+        ],
+        "images": [
+          "https://digex.agency/wp-content/uploads/2025/07/photo_2025-07-20_12-20-47.jpg"
+        ]
+      }
+    ]
+  },
+  "testimonials_fr": [
+    {
+      "client": "EVE",
+      "role": "Boutique En ligne",
+      "quote": "Grâce à DIGEX, notre marque de bijoux a maintenant une identité étonnante et un site de commerce fluide. Le design,les fonctionnalités et les résultats ont dépassé nos attentes !",
+      "logo": "https://digex.agency/wp-content/uploads/2025/07/eve1.png"
+    },
+    {
+      "client": "BISSANELAB",
+      "role": "Marque Dermo-cosmétique",
+      "quote": "DIGEX a élevé notre marque dermocosmétique avec une stratégie de marketing forte, un emballage exceptionnel et une présence dynamique sur les réseaux sociaux. Grâce à leur travail, nos ventes ont considérablement augmenté !",
+      "logo": "https://digex.agency/wp-content/uploads/2025/07/bissanelab1.png"
+    },
+    {
+      "client": "EL ARKEM",
+      "role": "propriétaire d'entreprise",
+      "quote": "Grâce à DIGEX, notre marque de thé possède maintenant une identité raffinée et un packaging élégant qui reflètent vraiment notre qualité. Leur créativité et leur sens du détail nous ont permis de nous démarquer sur le marché !",
+      "logo": "https://digex.agency/wp-content/uploads/2025/07/arkam1.png"
+    },
+    {
+      "client": "AZAS TAPIS ROYAL",
+      "role": "propriétaire d'entreprise",
+      "quote": "Nous avons acquis une forte présence en ligne grâce à une gestion experte des réseaux sociaux et à des campagnes sponsorisées ciblées. Le dévouement de DIGEX et leur travail acharné ont véritablement valorisé notre marque !",
+      "logo": "https://digex.agency/wp-content/uploads/2025/03/azas.png"
+    },
+    {
+      "client": "CHIPS MIAW",
+      "role": "propriétaire d'entreprise",
+      "quote": "DIGEX a donné vie à Chips Miaw avec une identité visuelle audacieuse et un packaging mignon pour nos quatre délicieuses saveurs. Leur créativité et leur expertise ont permis à notre produit de se démarquer en rayon !",
+      "logo": "https://digex.agency/wp-content/uploads/2025/07/chips1.png"
+    },
+    {
+      "client": "ALMAS",
+      "role": "agence de voyage",
+      "quote": "Almas Travel dispose désormais d'une présence en ligne impressionnante avec un design distinctif qui incarne parfaitement le prestige de notre agence. Leur approche créative et leur professionnalisme ont largement dépassé nos attentes.",
+      "logo": "https://digex.agency/wp-content/uploads/2025/07/almas1.png"
+    },
+    {
+      "client": "Delmoosh",
+      "role": "Animalerie",
+      "quote": "DIGEX a donné vie à notre animalerie ! La marque, le site web et le design d’intérieur étaient tous parfaitement alignés avec notre vision.",
+      "logo": "https://digex.agency/wp-content/uploads/2025/07/delmoosh1.png"
+    }
+  ],
+  "testimonials_en": [
+    {
+      "client": "EVE",
+      "role": "Online shop",
+      "quote": "Thanks to DIGEX, our jewellery brand now has a stunning identity and a seamless eCommerce website. The design, functionality, and results exceeded our expectations!",
+      "logo": "https://digex.agency/wp-content/uploads/2025/03/evenoire.png"
+    },
+    {
+      "client": "BISSANELAB",
+      "role": "Cosmetic brand",
+      "quote": "DIGEX elevated our cosmetic brand with a strong marketing strategy, eye-catching packaging, and a dynamic social media presence. Thanks to their work, our sales have significantly increased!",
+      "logo": "https://digex.agency/wp-content/uploads/2025/03/bissanblack.png"
+    },
+    {
+      "client": "EL ARKEM",
+      "role": "Business owner",
+      "quote": "Thanks to DIGEX, our tea brand now has a refined identity and elegant packaging that truly reflects our quality. Their creativity and attention to detail helped us stand out in the market!",
+      "logo": "https://digex.agency/wp-content/uploads/2025/03/arakam.png"
+    },
+    {
+      "client": "AZAS TAPIS ROYAL",
+      "role": "Business owner",
+      "quote": "We gained a strong online presence with expert social media management and targeted sponsorships. Their dedication and hard work have truly elevated our brand!",
+      "logo": "https://digex.agency/wp-content/uploads/2025/03/azas.png"
+    },
+    {
+      "client": "CHIPS MIAW",
+      "role": "Business owner",
+      "quote": "DIGEX brought Chips Miaw to life with a bold brand identity and vibrant packaging for our four delicious flavors. Their creativity and expertise made our product stand out on the shelves!",
+      "logo": "https://digex.agency/wp-content/uploads/2025/03/chips-miaw-black.png"
+    },
+    {
+      "client": "ALAMS",
+      "role": "Travel agency",
+      "quote": "Almas Travel now has a stunning showcase with a standout design that perfectly reflects our agency’s prestige. Their creativity and professionalism exceeded our expectations!",
+      "logo": "https://digex.agency/wp-content/uploads/2025/03/almasblack.png"
+    }
+  ],
+  "clients": [
+    {
+      "name": "Eve Accessoires",
+      "sector": "Bijoux / accessoires — boutique en ligne",
+      "site": "www.eveaccessoires.com",
+      "instagram": "Eve_accessoires_onlin",
+      "case_study": true
+    },
+    {
+      "name": "BissaneLab",
+      "sector": "Laboratoire dermo-cosmétique",
+      "site": "www.bissanelab.com",
+      "instagram": "bissane.lab",
+      "case_study": true
+    },
+    {
+      "name": "El Arkem",
+      "sector": "Marque de thé — branding & packaging",
+      "case_study": false
+    },
+    {
+      "name": "Azas Tapis Royal",
+      "sector": "Tapis — social media & campagnes sponsorisées",
+      "case_study": false
+    },
+    {
+      "name": "Chips Miaw",
+      "sector": "Snacks — identité visuelle & packaging (4 saveurs)",
+      "case_study": false
+    },
+    {
+      "name": "Almas Travel",
+      "sector": "Agence de voyage — site vitrine",
+      "case_study": false
+    },
+    {
+      "name": "Delmoosh",
+      "sector": "Animalerie — branding, site web, design intérieur",
+      "case_study": false
+    },
+    {
+      "name": "Taxiclick",
+      "sector": "Site web (taxiclick.fr) — présent en portfolio média",
+      "case_study": false
+    },
+    {
+      "name": "Qaada",
+      "sector": "Présentation / branding (média portfolio)",
+      "case_study": false
+    },
+    {
+      "name": "Rozajin",
+      "sector": "Photographie produit (média portfolio)",
+      "case_study": false
+    }
+  ],
+  "case_studies": [
+    {
+      "slug": "bissanelab",
+      "client": "BissaneLab",
+      "title": "Étude de cas : Lancement digital pour un laboratoire dermo-cosmétique BissaneLab",
+      "about": "Notre client est un laboratoire spécialisé en dermo-cosmétique, proposant des soins dermatologiques haut de gamme, conçu pour répondre aux besoins des peaux sensibles et exigeantes. Avant notre intervention, la marque n’avait aucune présence digitale ni réseaux sociaux, et ne disposait pas d’un site vitrine ou e-commerce.",
+      "links": {
+        "site": "www.bissanelab.com",
+        "instagram": "bissane.lab",
+        "facebook": "bissane lab"
+      },
+      "objectives": [
+        "Créer et développer une présence digitale professionnelle.",
+        "Lancer des comptes officiels sur les principaux réseaux sociaux.",
+        "Mettre en valeur les produits via des photos attractives.",
+        "Créer un site web vitrine et une boutique e-commerce."
+      ],
+      "solution_intro": "Nous avons conçu un plan marketing digital sur 6 mois articulé autour des piliers suivants :",
+      "solution": [
+        {
+          "n": 1,
+          "title": "Stratégie de marque et identité visuelle",
+          "points": [
+            "Définition du positionnement dermo-cosmétique.",
+            "Création d’une charte visuelle cohérente pour le digital."
+          ]
+        },
+        {
+          "n": 2,
+          "title": "Photographie produit professionnelle",
+          "points": [
+            "Shooting dédié pour présenter les packagings et textures."
+          ]
+        },
+        {
+          "n": 3,
+          "title": "Social Media Marketing",
+          "points": [
+            "Création et ouverture des comptes officiels (Facebook, Instagram).",
+            "Planning éditorial sur 6 mois.",
+            "Campagnes publicitaires ciblées pour accélérer la croissance des abonnés."
+          ]
+        },
+        {
+          "n": 4,
+          "title": "Développement Web",
+          "points": [
+            "Création d’un site vitrine moderne et responsive.",
+            "Intégration d’une boutique e-commerce complète."
+          ]
+        }
+      ],
+      "results": [
+        "Croissance des abonnés sur Instagram et Facebook de 0 à 30 500 followers en 6 mois.",
+        "Vidéo CGI pour transformer la présence digitale d’une marque dermo-cosmétique depuis zéro en un véritable levier commercial et communautaire.",
+        "+150 publications créées et publiées avec shooting original.",
+        "Lancement réussi de la boutique en ligne avec première commande dès la première semaine."
+      ],
+      "testimonial": "« DIGEX a élevé notre marque dermocosmétique avec une stratégie de marketing forte, un emballage exceptionnel et une présence dynamique sur les réseaux sociaux. Grâce à leur travail, nos ventes ont considérablement augmenté ! »",
+      "cta": "Vous souhaitez obtenir des résultats similaires pour votre marque ?",
+      "media": [
+        "2025/01/Artboard-1-scaled.jpg",
+        "2025/07/before1.png",
+        "2025/07/after1.png",
+        "2025/07/phoneposte-scaled.png",
+        "2024/11/screencast-bissanelab_com-2024_11_28-10_40_04.webm",
+        "2025/07/bissanelab1.png"
+      ]
+    },
+    {
+      "slug": "eve-accessoires",
+      "client": "Eve Accessoires",
+      "title": "Création de l'identité visuelle et transformation digitale pour une boutique de bijoux Eve Accessoires",
+      "about": "Eve Accessoires est une boutique spécialisée dans la vente d’accessoires et de bijoux traditionnels et modernes. Elle propose une sélection raffinée pour une clientèle exigeante, alliant richesse culturelle et créations contemporaines.",
+      "links": {
+        "site": "www.eveaccessoires.com",
+        "instagram": "Eve_accessoires_onlin"
+      },
+      "objectives": [
+        "Moderniser l’image de la marque à travers une identité visuelle forte et cohérente.",
+        "Créer une boutique en ligne performante.",
+        "Mettre en place un système de gestion des stocks simple et efficace.",
+        "Proposer une stratégie de marketing adaptée pour accroître la visibilité."
+      ],
+      "solution_intro": "Nous avons proposé des solutions sur mesure articulées autour des piliers suivants :",
+      "solution": [
+        {
+          "n": 1,
+          "title": "Création d’une identité visuelle forte",
+          "points": [
+            "Conception d’une charte graphique élégante incluant logo, couleurs et typographies."
+          ]
+        },
+        {
+          "n": 2,
+          "title": "Développement Web",
+          "points": [
+            "Développement d’un site e-commerce sur mesure, responsive et optimisé UX."
+          ]
+        },
+        {
+          "n": 3,
+          "title": "Gestion de stocks",
+          "points": [
+            "Proposition et configuration du logiciel Odoo pour la gestion des produits et des stocks."
+          ]
+        }
+      ],
+      "results": [
+        "Une identité visuelle cohérente et distinctive.",
+        "Un site e-commerce clé en main.",
+        "Une gestion de stock centralisée et simplifiée grâce à Odoo."
+      ],
+      "testimonial": "« Grâce à DIGEX, nous avons modernisé notre image et ouvert notre boutique en ligne avec succès. Leur accompagnement sur la gestion des stocks et le marketing nous a permis de franchir un cap dans notre développement. »",
+      "cta": "Vous avez un projet similaire ?",
+      "media": [
+        "2024/11/WhatsApp-Image-2024-11-11-a-15.52.34_7ab4203d.jpg",
+        "2025/07/WhatsApp-Image-2024-11-11-a-15.52.33_12f38c19.jpg",
+        "2025/07/WhatsApp-Image-2024-11-11-a-15.52.33_d652fb1e.jpg",
+        "2025/07/WhatsApp-Image-2024-11-11-a-15.52.35_c701d482.jpg",
+        "2025/07/WhatsApp-Image-2024-11-11-a-15.52.35_47041952.jpg",
+        "2025/07/Enregistrement-de-lecran-2025-07-17-104354.mp4",
+        "2025/07/23126508_195.png",
+        "2025/07/eve1.png"
+      ]
+    }
+  ],
+  "about": {
+    "title_fr": "A Propos de DIGEX",
+    "story_title": "Notre Histoire",
+    "story": "Nous sommes une agence créative et digitale à 360°, passionnée par l'idée d'accompagner les marques dans toutes les dimensions de leur communication. Nous croyons qu'aujourd'hui, une présence forte et cohérente nécessite bien plus qu'un simple logo ou un site web : elle demande une vision globale et des solutions sur mesure.",
+    "mission_title": "Notre mission",
+    "mission": "C'est pourquoi nous avons réuni, au sein d'une même équipe, des spécialistes en marketing digital, développement web, design graphique, branding, impression, photographie et packaging design. Cette diversité est notre force : elle nous permet de proposer des stratégies complètes, cohérentes et parfaitement adaptées à chaque client.",
+    "pillars": [
+      "Marketing digital : Nous élaborons des plans stratégiques pour booster votre visibilité, engager votre audience et convertir vos prospects en clients fidèles.",
+      "Développement web : Nous concevons des sites modernes, performants et optimisés pour offrir la meilleure expérience aux utilisateurs.",
+      "Design graphique et branding : Nous construisons des identités fortes et mémorables, qui traduisent vos valeurs et captent l’attention de votre marché.",
+      "Impression et packaging : Nous vous accompagnons dans la création de supports imprimés de qualité et de packagings attractifs qui valorisent vos produits.",
+      "Photographie : Nous capturons l’essence de votre marque à travers des images professionnelles et authentiques."
+    ],
+    "en": {
+      "kicker": "Marketing & Development",
+      "title": "ABOUT US",
+      "body": "At DIGEX, we transform ideas into impactful digital experiences. As a team of creative thinkers, strategic planners, and tech enthusiasts, we specialize in delivering cutting-edge solutions that connect brands with their audience in meaningful ways.\nFrom web design and development to digital marketing and branding, we craft tailored strategies that drive growth and foster innovation. Our commitment lies in staying ahead of trends, leveraging the latest technologies, and ensuring every project exceeds expectations.",
+      "title2": "Your vision, Our concern",
+      "body2": "With a client-first approach, we build lasting partnerships by understanding your unique vision and delivering measurable results. Whether you're a startup or an established business, we’re here to elevate your digital presence and make your brand unforgettable."
+    }
+  },
+  "marketing_page": {
+    "hero_title": "L’Art de la Stratégie Digitale par DIGEX",
+    "hero_sub": "Une stratégie sur mesure pour booster votre visibilité, attirer les bons clients et augmenter vos ventes.",
+    "blocks": [
+      {
+        "n": "01",
+        "title": "ACCOMPAGNEMENT MARKETING STRATÉGIQUE",
+        "points": [
+          "Audit complet de votre écosystème.",
+          "Stratégie brand-to-demand (positionnement + génération de leads).",
+          "Plan sur 6/12 mois avec KPI personnalisés."
+        ]
+      },
+      {
+        "n": "02",
+        "title": "MARKETING DIGITAL PERFORMANT",
+        "points": [
+          "SEO 360° : optimisation technique + contenu.",
+          "Publicité ciblée (Google Ads / Meta) avec A/B testing.",
+          "Automation CRM."
+        ]
+      },
+      {
+        "n": "03",
+        "title": "COMMUNICATION & STORYTELLING",
+        "points": [
+          "Storytelling d'entreprise (interne & externe).",
+          "Formation média (interviews, réseaux sociaux).",
+          "Gestion de crise."
+        ],
+        "note": "Le titre était dupliqué de 02 sur l’ancien site — à renommer."
+      }
+    ],
+    "case_study_section": {
+      "title": "Etude de cas",
+      "sub": "Explorez les réussites signées DIGEX, leur impact concret et les transformations apportées à nos clients."
+    },
+    "strategy_title": "OUR STRATEGY",
+    "strategy_sub": "A strong brand is built through consistency, strategy, and engagement",
+    "strategy_steps": [
+      {
+        "n": 1,
+        "title": "Market Research",
+        "text": "Analyze your target audience, competitors, and industry trends."
+      },
+      {
+        "n": 2,
+        "title": "Brand Positioning",
+        "text": "Define your unique value, mission, and brand identity."
+      },
+      {
+        "n": 3,
+        "title": "Content Strategy",
+        "text": "Create engaging content that resonates with your audience."
+      },
+      {
+        "n": 4,
+        "title": "Digital Presence",
+        "text": "Build a website, optimize for SEO, and establish social media channels."
+      },
+      {
+        "n": 5,
+        "title": "Advertising & Promotion",
+        "text": "Run paid ads, influencer collaborations, and email campaigns."
+      },
+      {
+        "n": 6,
+        "title": "Traditional Marketing",
+        "text": "Complement digital efforts with traditional marketing tools to enhance public presence."
+      },
+      {
+        "n": 7,
+        "title": "Engagement & Community",
+        "text": "Foster relationships through social media and customer interactions."
+      },
+      {
+        "n": 8,
+        "title": "Analytics & Optimization",
+        "text": "Track performance and refine strategies for continuous growth."
+      }
+    ]
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "intro": "Notre incroyable équipe de designers et de développeurs a produit des œuvres remarquables.",
+    "galleries": [
+      {
+        "name": "Site Web",
+        "images": [
+          "2024/11/laptop_005_mockup.png",
+          "2024/11/18416800_rm391-pf-s73-08-mockup-1.png",
+          "2024/11/18416800_rm391-pf-s73-08-mockup.png",
+          "2024/11/359906428_1e365fbc-4ad5-41a2-a2d1-85d498789a1a.png",
+          "2025/07/1162367_ORH91S1-scaled.jpg"
+        ]
+      },
+      {
+        "name": "Branding",
+        "images": [
+          "2024/11/Artboard-1-100.jpg",
+          "2024/11/WhatsApp-Image-2024-11-11-a-15.52.33_ffa8cbb6.jpg",
+          "2024/11/delmoodbrand.png",
+          "2025/07/hmhgm-1.png",
+          "2025/07/32dae0211325091.6720ee081dfbc.jpg"
+        ]
+      },
+      {
+        "name": "Packaging",
+        "images": [
+          "2025/07/photo_2025-07-12_15-26-46.jpg",
+          "2025/07/photo_2025-07-12_15-26-48.jpg",
+          "2025/07/photo_2025-07-12_15-26-50.jpg",
+          "2025/07/photo_2025-07-12_15-26-51.jpg",
+          "2025/07/photo_2025-07-12_15-26-53.jpg",
+          "2025/07/photo_2025-07-12_15-26-55.jpg",
+          "2025/07/photo_2025-07-12_15-26-57.jpg",
+          "2025/07/photo_2025-07-12_15-26-58.jpg",
+          "2025/07/TAE-1.png",
+          "2025/07/2.png",
+          "2025/07/photo_2024-01-16_13-15-12.jpg",
+          "2025/07/small-medium-scaled.jpg",
+          "2025/07/small-medium-2-scaled.jpg",
+          "2025/07/photo_2023-04-09_00-17-00.jpg",
+          "2025/07/mockup-1.png",
+          "2025/07/Capture-decran-2022-06-15-132334.jpg",
+          "2025/07/Capture-decran-2022-06-15-132452.jpg"
+        ]
+      },
+      {
+        "name": "Impression",
+        "images": [
+          "2025/07/magasine-mockupdd-scaled.jpg",
+          "2025/07/cartevisite-mockup3-scaled.png",
+          "2025/07/sssss-scaled.jpg",
+          "2025/07/fffff-2-scaled.jpg",
+          "2025/07/fin-2-scaled.jpg",
+          "2025/07/WhatsApp-Image-2024-11-11-a-15.52.32_7d8fa73f.jpg"
+        ]
+      },
+      {
+        "name": "Photographie",
+        "images": [
+          "2025/07/ROZAJIN-9-1-of-1-scaled.jpg",
+          "2025/07/ROZAJIN-8-1-of-1-scaled.jpg",
+          "2025/07/2-1-of-1-scaled.jpg"
+        ]
+      }
+    ]
+  },
+  "forms": {
+    "contact": {
+      "page": "/contactus",
+      "heading": "LET'S GET IN TOUCH",
+      "fields": [
+        "Nom",
+        "Email",
+        "Téléphone",
+        "Message"
+      ]
+    },
+    "devis_site_web": {
+      "page": "/pricing-service",
+      "heading": "Site web",
+      "fields": [
+        "Nom",
+        "Prénom",
+        "Email",
+        "Téléphone",
+        "Nom de votre entreprise",
+        {
+          "label": "Type de site",
+          "options": [
+            "Site E-commerce",
+            "Site entreprise",
+            "Site vitrine"
+          ]
+        },
+        "Lien Instagram/Facebook",
+        "Plus de détails"
+      ]
+    },
+    "devis_branding": {
+      "page": "/pricing-service-brand",
+      "heading": "Identité Visuelle",
+      "fields": [
+        "Nom",
+        "Prénom",
+        "Email",
+        "Téléphone",
+        "Nom de votre entreprise",
+        {
+          "label": "Type de logo",
+          "options": [
+            "Texte",
+            "Symbole"
+          ]
+        },
+        "Lien Instagram/Facebook",
+        {
+          "label": "Exigences de la marque",
+          "options": [
+            "Carte de visite",
+            "Flyer",
+            "Roll-up",
+            "Stickers",
+            "Banner"
+          ]
+        },
+        {
+          "label": "Packaging design",
+          "options": [
+            "Oui",
+            "Non"
+          ]
+        },
+        "Plus de détails"
+      ]
+    },
+    "devis_marketing": {
+      "page": "/marketing-digital-pricing",
+      "heading": "Marketing Digital",
+      "fields": [
+        "Nom",
+        "Prénom",
+        "Nom de votre entreprise",
+        "Email",
+        "Téléphone",
+        {
+          "label": "Secteur d'activité",
+          "options": [
+            "Mode",
+            "Restauration",
+            "Services",
+            "E-commerce",
+            "Immobilier",
+            "Autre"
+          ]
+        },
+        {
+          "label": "Présence digitale actuelle",
+          "options": [
+            "Oui, site web uniquement",
+            "Oui, réseaux sociaux uniquement",
+            "Oui, site web + réseaux sociaux",
+            "Non, aucune présence"
+          ]
+        },
+        {
+          "label": "Objectifs marketing",
+          "options": [
+            "Augmenter la notoriété de la marque",
+            "Générer des prospects / ventes",
+            "Développer la communauté en ligne",
+            "Lancer un nouveau produit/service",
+            "Autre"
+          ]
+        },
+        {
+          "label": "Choisir le pack",
+          "options": [
+            "PACK ESSENTIEL (Startups & TPE en lancement) — 45 000 DZD/mois",
+            "PACK PERFORMANCE (PME en expansion) — 110 000 DZD/mois",
+            "PACK ENTERPRISE (Grands comptes & besoins complexes) — Sur devis"
+          ]
+        },
+        "Lien Instagram/Facebook",
+        "Plus de détails"
+      ]
+    }
+  },
+  "blog": [
+    {
+      "id": 5,
+      "date": "2024-09-24 12:27:19",
+      "title": "The Comprehensive Benefits of Partnering with a Full-Service Digital Agency",
+      "slug": "the-comprehensive-benefits-of-partnering-with-a-full-service-digital-agency",
+      "words": 626
+    },
+    {
+      "id": 6,
+      "date": "2024-09-24 12:27:21",
+      "title": "Understanding the Role of a Full-Service Digital Agency",
+      "slug": "understanding-the-role-of-a-full-service-digital-agency",
+      "words": 559
+    },
+    {
+      "id": 7,
+      "date": "2024-09-24 12:27:22",
+      "title": "Unlocking Success: The Comprehensive Guide to Full-Service Digital Agencies",
+      "slug": "unlocking-success-the-comprehensive-guide-to-full-service-digital-agencies",
+      "words": 575
+    },
+    {
+      "id": 8,
+      "date": "2024-09-24 12:27:24",
+      "title": "Unlocking Growth: The Comprehensive Benefits of a Full-Service Digital Agency",
+      "slug": "unlocking-growth-the-comprehensive-benefits-of-a-full-service-digital-agency",
+      "words": 572
+    },
+    {
+      "id": 9,
+      "date": "2024-09-24 12:29:39",
+      "title": "Understanding the Benefits of a Full-Service Digital Agency",
+      "slug": "understanding-the-benefits-of-a-full-service-digital-agency",
+      "words": 590
+    },
+    {
+      "id": 10,
+      "date": "2024-09-24 12:29:40",
+      "title": "Unlocking Success: The Benefits of Partnering with a Full-Service Digital Agency",
+      "slug": "unlocking-success-the-benefits-of-partnering-with-a-full-service-digital-agency",
+      "words": 566
+    }
+  ],
+  "blog_note": "Six near-duplicate English filler articles about \"full-service digital agencies\", all auto-generated on 2024-09-24. Not worth migrating.",
+  "media": {
+    "count": 202,
+    "backup_folder": "domains/digex.agency/public_html/wp-content/uploads/",
+    "files": [
+      {
+        "id": 139,
+        "title": "favicon-32x32",
+        "mime": "image/png",
+        "path": "2024/09/favicon-32x32-1.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/09/favicon-32x32-1.png",
+        "date": "2024-10-30 13:49:43"
+      },
+      {
+        "id": 1626,
+        "title": "favicon-32x32",
+        "mime": "image/png",
+        "path": "2024/09/favicon-32x32-2.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/09/favicon-32x32-2.png",
+        "date": "2025-03-03 14:25:47"
+      },
+      {
+        "id": 137,
+        "title": "logo-GB",
+        "mime": "image/png",
+        "path": "2024/09/logo-GB.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/09/logo-GB.png",
+        "date": "2024-10-30 13:45:45"
+      },
+      {
+        "id": 135,
+        "title": "logo",
+        "mime": "image/png",
+        "path": "2024/09/logo.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/09/logo.png",
+        "date": "2024-10-30 13:44:31"
+      },
+      {
+        "id": 1247,
+        "title": "logoRGB",
+        "mime": "image/png",
+        "path": "2024/09/logoRGB.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/09/logoRGB.png",
+        "date": "2025-01-19 11:01:32"
+      },
+      {
+        "id": 1273,
+        "title": "Artboard 1",
+        "mime": "image/png",
+        "path": "2024/10/Artboard-1.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/10/Artboard-1.png",
+        "date": "2025-01-19 12:42:03"
+      },
+      {
+        "id": 205,
+        "title": "cover-100",
+        "mime": "image/jpeg",
+        "path": "2024/10/cover-100.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2024/10/cover-100.jpg",
+        "date": "2024-10-31 13:10:49"
+      },
+      {
+        "id": 2945,
+        "title": "dig",
+        "mime": "image/png",
+        "path": "2024/10/dig.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/10/dig.png",
+        "date": "2025-07-02 09:39:08"
+      },
+      {
+        "id": 2946,
+        "title": "logo-grey",
+        "mime": "image/png",
+        "path": "2024/10/logo-grey-1.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/10/logo-grey-1.png",
+        "date": "2025-07-02 09:40:50"
+      },
+      {
+        "id": 164,
+        "title": "logo-grey",
+        "mime": "image/png",
+        "path": "2024/10/logo-grey.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/10/logo-grey.png",
+        "date": "2024-10-30 14:08:38"
+      },
+      {
+        "id": 3253,
+        "title": "logodigex",
+        "mime": "image/png",
+        "path": "2024/10/logodigex.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/10/logodigex.png",
+        "date": "2025-07-03 09:30:38"
+      },
+      {
+        "id": 673,
+        "title": "01_shipping_container",
+        "mime": "image/jpeg",
+        "path": "2024/11/01_shipping_container.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/01_shipping_container.jpg",
+        "date": "2024-11-18 15:51:17"
+      },
+      {
+        "id": 219,
+        "title": "10",
+        "mime": "image/png",
+        "path": "2024/11/10.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/10.png",
+        "date": "2024-11-02 09:15:22"
+      },
+      {
+        "id": 954,
+        "title": "18416800_rm391-pf-s73-08-mockup",
+        "mime": "image/png",
+        "path": "2024/11/18416800_rm391-pf-s73-08-mockup-1.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/18416800_rm391-pf-s73-08-mockup-1.png",
+        "date": "2024-11-28 10:16:51"
+      },
+      {
+        "id": 953,
+        "title": "18416800_rm391-pf-s73-08-mockup",
+        "mime": "image/png",
+        "path": "2024/11/18416800_rm391-pf-s73-08-mockup.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/18416800_rm391-pf-s73-08-mockup.png",
+        "date": "2024-11-28 10:09:38"
+      },
+      {
+        "id": 301,
+        "title": "32dae0211325091.6720ee081dfbc",
+        "mime": "image/jpeg",
+        "path": "2024/11/32dae0211325091.6720ee081dfbc.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/32dae0211325091.6720ee081dfbc.jpg",
+        "date": "2024-11-06 11:02:54"
+      },
+      {
+        "id": 951,
+        "title": "359906428_1e365fbc-4ad5-41a2-a2d1-85d498789a1a",
+        "mime": "image/png",
+        "path": "2024/11/359906428_1e365fbc-4ad5-41a2-a2d1-85d498789a1a.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/359906428_1e365fbc-4ad5-41a2-a2d1-85d498789a1a.png",
+        "date": "2024-11-28 09:55:09"
+      },
+      {
+        "id": 452,
+        "title": "Arfgdfg 1",
+        "mime": "image/png",
+        "path": "2024/11/Arfgdfg-1.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/Arfgdfg-1.png",
+        "date": "2024-11-10 12:09:34"
+      },
+      {
+        "id": 984,
+        "title": "Artboard 1-100",
+        "mime": "image/jpeg",
+        "path": "2024/11/Artboard-1-100.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/Artboard-1-100.jpg",
+        "date": "2024-11-28 11:09:42"
+      },
+      {
+        "id": 985,
+        "title": "Artboard 2-100",
+        "mime": "image/jpeg",
+        "path": "2024/11/Artboard-2-100.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/Artboard-2-100.jpg",
+        "date": "2024-11-28 11:09:54"
+      },
+      {
+        "id": 613,
+        "title": "CYCLE DE TRAVAIL",
+        "mime": "image/png",
+        "path": "2024/11/CYCLE-DE-TRAVAIL.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/CYCLE-DE-TRAVAIL.png",
+        "date": "2024-11-12 13:30:42"
+      },
+      {
+        "id": 835,
+        "title": "SCROLL",
+        "mime": "video/mp4",
+        "path": "2024/11/SCROLL-1.mp4",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/SCROLL-1.mp4",
+        "date": "2024-11-20 13:51:42"
+      },
+      {
+        "id": 833,
+        "title": "SCROLL",
+        "mime": "video/mp4",
+        "path": "2024/11/SCROLL.mp4",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/SCROLL.mp4",
+        "date": "2024-11-20 13:47:50"
+      },
+      {
+        "id": 675,
+        "title": "SHED 02",
+        "mime": "image/jpeg",
+        "path": "2024/11/SHED-02.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/SHED-02.jpg",
+        "date": "2024-11-18 15:52:53"
+      },
+      {
+        "id": 1063,
+        "title": "TecheadFree-Light",
+        "mime": "application/x-font-ttf",
+        "path": "2024/11/TecheadFree-Light.ttf",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/TecheadFree-Light.ttf",
+        "date": "2024-12-05 12:15:18"
+      },
+      {
+        "id": 463,
+        "title": "Unkj.j.-1",
+        "mime": "image/png",
+        "path": "2024/11/Unkj.j.-1.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/Unkj.j.-1.png",
+        "date": "2024-11-11 09:39:48"
+      },
+      {
+        "id": 451,
+        "title": "Untitled-1",
+        "mime": "image/jpeg",
+        "path": "2024/11/Untitled-1.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/Untitled-1.jpg",
+        "date": "2024-11-10 12:09:09"
+      },
+      {
+        "id": 983,
+        "title": "WhatsApp Image 2024-11-11 à 15.52.33_ffa8cbb6",
+        "mime": "image/jpeg",
+        "path": "2024/11/WhatsApp-Image-2024-11-11-a-15.52.33_ffa8cbb6.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/WhatsApp-Image-2024-11-11-a-15.52.33_ffa8cbb6.jpg",
+        "date": "2024-11-28 10:58:46"
+      },
+      {
+        "id": 664,
+        "title": "WhatsApp Image 2024-11-11 à 15.52.34_7ab4203d",
+        "mime": "image/jpeg",
+        "path": "2024/11/WhatsApp-Image-2024-11-11-a-15.52.34_7ab4203d.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/WhatsApp-Image-2024-11-11-a-15.52.34_7ab4203d.jpg",
+        "date": "2024-11-18 15:39:21"
+      },
+      {
+        "id": 666,
+        "title": "WhatsApp Image 2024-11-11 à 15.52.35_47041952",
+        "mime": "image/jpeg",
+        "path": "2024/11/WhatsApp-Image-2024-11-11-a-15.52.35_47041952.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/WhatsApp-Image-2024-11-11-a-15.52.35_47041952.jpg",
+        "date": "2024-11-18 15:45:37"
+      },
+      {
+        "id": 515,
+        "title": "balise",
+        "mime": "video/mp4",
+        "path": "2024/11/balise.mp4",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/balise.mp4",
+        "date": "2024-11-12 10:57:02"
+      },
+      {
+        "id": 728,
+        "title": "balise2",
+        "mime": "video/mp4",
+        "path": "2024/11/balise2.mp4",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/balise2.mp4",
+        "date": "2024-11-20 11:41:06"
+      },
+      {
+        "id": 221,
+        "title": "delmoodbrand",
+        "mime": "image/png",
+        "path": "2024/11/delmoodbrand.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/delmoodbrand.png",
+        "date": "2024-11-02 09:19:09"
+      },
+      {
+        "id": 514,
+        "title": "design",
+        "mime": "video/mp4",
+        "path": "2024/11/design.mp4",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/design.mp4",
+        "date": "2024-11-12 10:51:09"
+      },
+      {
+        "id": 745,
+        "title": "design2",
+        "mime": "video/mp4",
+        "path": "2024/11/design2.mp4",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/design2.mp4",
+        "date": "2024-11-20 11:47:07"
+      },
+      {
+        "id": 286,
+        "title": "favicon",
+        "mime": "image/png",
+        "path": "2024/11/favicon.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/favicon.png",
+        "date": "2024-11-06 10:29:28"
+      },
+      {
+        "id": 956,
+        "title": "laptop_005_mockup",
+        "mime": "image/png",
+        "path": "2024/11/laptop_005_mockup.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/laptop_005_mockup.png",
+        "date": "2024-11-28 10:28:28"
+      },
+      {
+        "id": 287,
+        "title": "logoGreen",
+        "mime": "image/png",
+        "path": "2024/11/logoGreen.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/logoGreen.png",
+        "date": "2024-11-06 10:30:46"
+      },
+      {
+        "id": 565,
+        "title": "marketing",
+        "mime": "video/mp4",
+        "path": "2024/11/marketing.mp4",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/marketing.mp4",
+        "date": "2024-11-12 13:02:10"
+      },
+      {
+        "id": 749,
+        "title": "marketing2",
+        "mime": "video/mp4",
+        "path": "2024/11/marketing2.mp4",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/marketing2.mp4",
+        "date": "2024-11-20 11:48:13"
+      },
+      {
+        "id": 804,
+        "title": "People Hands Working Using Laptop on White Table",
+        "mime": "image/jpeg",
+        "path": "2024/11/people-hands-working-using-laptop-white-table.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/people-hands-working-using-laptop-white-table.jpg",
+        "date": "2024-11-20 12:59:25"
+      },
+      {
+        "id": 665,
+        "title": "photo_2024-10-21_13-27-45",
+        "mime": "image/jpeg",
+        "path": "2024/11/photo_2024-10-21_13-27-45.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/photo_2024-10-21_13-27-45.jpg",
+        "date": "2024-11-18 15:43:21"
+      },
+      {
+        "id": 220,
+        "title": "qaadapresentation",
+        "mime": "image/png",
+        "path": "2024/11/qaadapresentation.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/qaadapresentation.png",
+        "date": "2024-11-02 09:18:18"
+      },
+      {
+        "id": 462,
+        "title": "screencapture-taxiclick-fr-2024-06-30-14_39_57 1",
+        "mime": "image/png",
+        "path": "2024/11/screencapture-taxiclick-fr-2024-06-30-14_39_57-1.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/screencapture-taxiclick-fr-2024-06-30-14_39_57-1.png",
+        "date": "2024-11-10 15:21:52"
+      },
+      {
+        "id": 955,
+        "title": "screencast-bissanelab_com-2024_11_28-10_40_04",
+        "mime": "video/webm",
+        "path": "2024/11/screencast-bissanelab_com-2024_11_28-10_40_04.webm",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/screencast-bissanelab_com-2024_11_28-10_40_04.webm",
+        "date": "2024-11-28 10:20:19"
+      },
+      {
+        "id": 957,
+        "title": "screencast-eveaccessoires_com-2024_11_28-11_25_27",
+        "mime": "video/webm",
+        "path": "2024/11/screencast-eveaccessoires_com-2024_11_28-11_25_27.webm",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/screencast-eveaccessoires_com-2024_11_28-11_25_27.webm",
+        "date": "2024-11-28 10:31:37"
+      },
+      {
+        "id": 952,
+        "title": "screencast-taxiclick_fr-2024_11_28-10_44_04",
+        "mime": "video/webm",
+        "path": "2024/11/screencast-taxiclick_fr-2024_11_28-10_44_04.webm",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/screencast-taxiclick_fr-2024_11_28-10_44_04.webm",
+        "date": "2024-11-28 09:57:55"
+      },
+      {
+        "id": 781,
+        "title": "screenshot-eveaccessoires_com-2024_11_17-11_45_48",
+        "mime": "image/png",
+        "path": "2024/11/screenshot-eveaccessoires_com-2024_11_17-11_45_48.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/screenshot-eveaccessoires_com-2024_11_17-11_45_48.png",
+        "date": "2024-11-20 12:21:56"
+      },
+      {
+        "id": 453,
+        "title": "siliviar",
+        "mime": "image/png",
+        "path": "2024/11/siliviar.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/siliviar.png",
+        "date": "2024-11-10 12:10:01"
+      },
+      {
+        "id": 805,
+        "title": "test22",
+        "mime": "image/png",
+        "path": "2024/11/test22.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/test22.png",
+        "date": "2024-11-20 13:10:57"
+      },
+      {
+        "id": 378,
+        "title": "wordpresscom_icon.jpeg",
+        "mime": "image/png",
+        "path": "2024/11/wordpresscom_icon.jpeg-1.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/wordpresscom_icon.jpeg-1.png",
+        "date": "2024-11-07 15:33:49"
+      },
+      {
+        "id": 335,
+        "title": "wordpresscom_icon.jpeg",
+        "mime": "image/png",
+        "path": "2024/11/wordpresscom_icon.jpeg.png",
+        "url": "https://digex.agency/wp-content/uploads/2024/11/wordpresscom_icon.jpeg.png",
+        "date": "2024-11-07 14:07:46"
+      },
+      {
+        "id": 1053,
+        "title": "Acens",
+        "mime": "application/x-font-ttf",
+        "path": "2024/12/Acens.ttf",
+        "url": "https://digex.agency/wp-content/uploads/2024/12/Acens.ttf",
+        "date": "2024-12-05 11:18:06"
+      },
+      {
+        "id": 1060,
+        "title": "PPTelegraf-Regular",
+        "mime": "application/x-font-ttf",
+        "path": "2024/12/PPTelegraf-Regular.ttf",
+        "url": "https://digex.agency/wp-content/uploads/2024/12/PPTelegraf-Regular.ttf",
+        "date": "2024-12-05 12:13:02"
+      },
+      {
+        "id": 1058,
+        "title": "PPTelegraf-UltraBold",
+        "mime": "application/x-font-ttf",
+        "path": "2024/12/PPTelegraf-UltraBold.ttf",
+        "url": "https://digex.agency/wp-content/uploads/2024/12/PPTelegraf-UltraBold.ttf",
+        "date": "2024-12-05 12:12:37"
+      },
+      {
+        "id": 1059,
+        "title": "PPTelegraf-UltraLight",
+        "mime": "application/x-font-ttf",
+        "path": "2024/12/PPTelegraf-UltraLight.ttf",
+        "url": "https://digex.agency/wp-content/uploads/2024/12/PPTelegraf-UltraLight.ttf",
+        "date": "2024-12-05 12:12:38"
+      },
+      {
+        "id": 1055,
+        "title": "Telegraph",
+        "mime": "application/x-font-ttf",
+        "path": "2024/12/Telegraph.ttf",
+        "url": "https://digex.agency/wp-content/uploads/2024/12/Telegraph.ttf",
+        "date": "2024-12-05 11:21:18"
+      },
+      {
+        "id": 1329,
+        "title": "1195487_OT12YY1",
+        "mime": "image/jpeg",
+        "path": "2025/01/1195487_OT12YY1.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/1195487_OT12YY1.jpg",
+        "date": "2025-01-20 10:46:55"
+      },
+      {
+        "id": 1402,
+        "title": "18416800_rm391-pf-s73-08-mockup",
+        "mime": "image/png",
+        "path": "2025/01/18416800_rm391-pf-s73-08-mockup.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/18416800_rm391-pf-s73-08-mockup.png",
+        "date": "2025-01-26 12:19:02"
+      },
+      {
+        "id": 1259,
+        "title": "3d-rendering-cartoon-house",
+        "mime": "image/png",
+        "path": "2025/01/3d-rendering-cartoon-house.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/3d-rendering-cartoon-house.png",
+        "date": "2025-01-19 11:40:46"
+      },
+      {
+        "id": 1260,
+        "title": "3dicons-computer-front-color",
+        "mime": "image/png",
+        "path": "2025/01/3dicons-computer-front-color.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/3dicons-computer-front-color.png",
+        "date": "2025-01-19 11:42:27"
+      },
+      {
+        "id": 1312,
+        "title": "3dicons-target-front-color",
+        "mime": "image/png",
+        "path": "2025/01/3dicons-target-front-color.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/3dicons-target-front-color.png",
+        "date": "2025-01-19 14:00:20"
+      },
+      {
+        "id": 1401,
+        "title": "871905_O7DAJO1",
+        "mime": "image/png",
+        "path": "2025/01/871905_O7DAJO1.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/871905_O7DAJO1.png",
+        "date": "2025-01-26 12:16:39"
+      },
+      {
+        "id": 1339,
+        "title": "Artboard 1",
+        "mime": "image/jpeg",
+        "path": "2025/01/Artboard-1.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/Artboard-1.jpg",
+        "date": "2025-01-20 16:33:08"
+      },
+      {
+        "id": 1213,
+        "title": "Artboard 9-100",
+        "mime": "image/jpeg",
+        "path": "2025/01/Artboard-9-100.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/Artboard-9-100.jpg",
+        "date": "2025-01-18 16:01:21"
+      },
+      {
+        "id": 1460,
+        "title": "avatar1",
+        "mime": "image/png",
+        "path": "2025/01/avatar1.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/avatar1.png",
+        "date": "2025-01-27 12:45:20"
+      },
+      {
+        "id": 1461,
+        "title": "avatar2",
+        "mime": "image/png",
+        "path": "2025/01/avatar2.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/avatar2.png",
+        "date": "2025-01-27 12:45:21"
+      },
+      {
+        "id": 1462,
+        "title": "avatar3",
+        "mime": "image/png",
+        "path": "2025/01/avatar3.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/avatar3.png",
+        "date": "2025-01-27 12:45:21"
+      },
+      {
+        "id": 1463,
+        "title": "avatar4",
+        "mime": "image/png",
+        "path": "2025/01/avatar4.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/avatar4.png",
+        "date": "2025-01-27 12:45:22"
+      },
+      {
+        "id": 1464,
+        "title": "avatar5",
+        "mime": "image/png",
+        "path": "2025/01/avatar5.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/avatar5.png",
+        "date": "2025-01-27 12:45:23"
+      },
+      {
+        "id": 1432,
+        "title": "bgmarket",
+        "mime": "image/png",
+        "path": "2025/01/bgmarket.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/bgmarket.png",
+        "date": "2025-01-27 11:07:49"
+      },
+      {
+        "id": 1410,
+        "title": "bissane lab",
+        "mime": "image/jpeg",
+        "path": "2025/01/bissane-lab.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/bissane-lab.jpg",
+        "date": "2025-01-26 12:41:47"
+      },
+      {
+        "id": 1236,
+        "title": "designdrop",
+        "mime": "image/png",
+        "path": "2025/01/designdrop.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/designdrop.png",
+        "date": "2025-01-19 10:05:19"
+      },
+      {
+        "id": 1334,
+        "title": "final",
+        "mime": "image/png",
+        "path": "2025/01/final.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/final.png",
+        "date": "2025-01-20 14:16:58"
+      },
+      {
+        "id": 1420,
+        "title": "hearticon",
+        "mime": "image/png",
+        "path": "2025/01/hearticon.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/hearticon.png",
+        "date": "2025-01-26 13:59:35"
+      },
+      {
+        "id": 1421,
+        "title": "hearticonleft",
+        "mime": "image/png",
+        "path": "2025/01/hearticonleft.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/hearticonleft.png",
+        "date": "2025-01-26 13:59:36"
+      },
+      {
+        "id": 1465,
+        "title": "image_2025-01-27_134951444",
+        "mime": "image/png",
+        "path": "2025/01/image_2025-01-27_134951444.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/image_2025-01-27_134951444.png",
+        "date": "2025-01-27 12:49:52"
+      },
+      {
+        "id": 1433,
+        "title": "marketing",
+        "mime": "image/png",
+        "path": "2025/01/marketing.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/marketing.png",
+        "date": "2025-01-27 11:07:55"
+      },
+      {
+        "id": 1437,
+        "title": "marketing2",
+        "mime": "image/png",
+        "path": "2025/01/marketing2.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/marketing2.png",
+        "date": "2025-01-27 11:25:19"
+      },
+      {
+        "id": 1442,
+        "title": "marketing3",
+        "mime": "image/png",
+        "path": "2025/01/marketing3.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/marketing3.png",
+        "date": "2025-01-27 11:28:47"
+      },
+      {
+        "id": 1386,
+        "title": "mobilemockupbissane",
+        "mime": "image/png",
+        "path": "2025/01/mobilemockupbissane.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/mobilemockupbissane.png",
+        "date": "2025-01-26 11:40:20"
+      },
+      {
+        "id": 1258,
+        "title": "packicon",
+        "mime": "image/png",
+        "path": "2025/01/packicon.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/packicon.png",
+        "date": "2025-01-19 11:28:20"
+      },
+      {
+        "id": 1262,
+        "title": "printiconsmachine",
+        "mime": "image/png",
+        "path": "2025/01/printiconsmachine.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/printiconsmachine.png",
+        "date": "2025-01-19 11:54:38"
+      },
+      {
+        "id": 1261,
+        "title": "rb_2151553990",
+        "mime": "image/png",
+        "path": "2025/01/rb_2151553990.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/rb_2151553990.png",
+        "date": "2025-01-19 11:45:40"
+      },
+      {
+        "id": 1263,
+        "title": "rb_30355",
+        "mime": "image/png",
+        "path": "2025/01/rb_30355.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/rb_30355.png",
+        "date": "2025-01-19 12:01:28"
+      },
+      {
+        "id": 1280,
+        "title": "screencast-eveaccessoires_com-2025_01_14-14_27_43",
+        "mime": "video/webm",
+        "path": "2025/01/screencast-eveaccessoires_com-2025_01_14-14_27_43.webm",
+        "url": "https://digex.agency/wp-content/uploads/2025/01/screencast-eveaccessoires_com-2025_01_14-14_27_43.webm",
+        "date": "2025-01-19 13:29:26"
+      },
+      {
+        "id": 1898,
+        "title": "40281",
+        "mime": "image/jpeg",
+        "path": "2025/03/40281.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/03/40281.jpg",
+        "date": "2025-03-06 09:49:49"
+      },
+      {
+        "id": 1896,
+        "title": "49895",
+        "mime": "image/jpeg",
+        "path": "2025/03/49895.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/03/49895.jpg",
+        "date": "2025-03-06 09:48:26"
+      },
+      {
+        "id": 1864,
+        "title": "7548e7f345f736c90ad2fde6c7864474",
+        "mime": "image/jpeg",
+        "path": "2025/03/7548e7f345f736c90ad2fde6c7864474.jpeg",
+        "url": "https://digex.agency/wp-content/uploads/2025/03/7548e7f345f736c90ad2fde6c7864474.jpeg",
+        "date": "2025-03-05 23:22:04"
+      },
+      {
+        "id": 1895,
+        "title": "8049",
+        "mime": "image/jpeg",
+        "path": "2025/03/8049.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/03/8049.jpg",
+        "date": "2025-03-06 09:47:29"
+      },
+      {
+        "id": 1613,
+        "title": "BeatriceDeckTRIAL-BoldItalic-BF64829e918c7cd",
+        "mime": "application/x-font-ttf",
+        "path": "2025/03/BeatriceDeckTRIAL-BoldItalic-BF64829e918c7cd.ttf",
+        "url": "https://digex.agency/wp-content/uploads/2025/03/BeatriceDeckTRIAL-BoldItalic-BF64829e918c7cd.ttf",
+        "date": "2025-03-03 14:03:21"
+      },
+      {
+        "id": 1616,
+        "title": "BeatriceDeckTRIAL-Extrabold-BF64829e919604b",
+        "mime": "application/x-font-ttf",
+        "path": "2025/03/BeatriceDeckTRIAL-Extrabold-BF64829e919604b.ttf",
+        "url": "https://digex.agency/wp-content/uploads/2025/03/BeatriceDeckTRIAL-Extrabold-BF64829e919604b.ttf",
+        "date": "2025-03-03 14:04:42"
+      },
+      {
+        "id": 1617,
+        "title": "BeatriceDeckTRIAL-ExtraboldItalic-BF64829e9175b11",
+        "mime": "application/x-font-ttf",
+        "path": "2025/03/BeatriceDeckTRIAL-ExtraboldItalic-BF64829e9175b11.ttf",
+        "url": "https://digex.agency/wp-content/uploads/2025/03/BeatriceDeckTRIAL-ExtraboldItalic-BF64829e9175b11.ttf",
+        "date": "2025-03-03 14:05:01"
+      },
+      {
+        "id": 1614,
+        "title": "BeatriceDeckTRIAL-Medium-BF64829e9193070",
+        "mime": "application/x-font-ttf",
+        "path": "2025/03/BeatriceDeckTRIAL-Medium-BF64829e9193070.ttf",
+        "url": "https://digex.agency/wp-content/uploads/2025/03/BeatriceDeckTRIAL-Medium-BF64829e9193070.ttf",
+        "date": "2025-03-03 14:03:56"
+      },
+      {
+        "id": 1615,
+        "title": "BeatriceDeckTRIAL-MediumItalic-BF64829e9176a56",
+        "mime": "application/x-font-ttf",
+        "path": "2025/03/BeatriceDeckTRIAL-MediumItalic-BF64829e9176a56.ttf",
+        "url": "https://digex.agency/wp-content/uploads/2025/03/BeatriceDeckTRIAL-MediumItalic-BF64829e9176a56.ttf",
+        "date": "2025-03-03 14:04:25"
+      },
+      {
+        "id": 1612,
+        "title": "BeatriceTRIAL-Bold-BF64829e8fd7dc6",
+        "mime": "application/x-font-ttf",
+        "path": "2025/03/BeatriceTRIAL-Bold-BF64829e8fd7dc6.ttf",
+        "url": "https://digex.agency/wp-content/uploads/2025/03/BeatriceTRIAL-Bold-BF64829e8fd7dc6.ttf",
+        "date": "2025-03-03 14:02:30"
+      },
+      {
+        "id": 1611,
+        "title": "BeatriceTRIAL-Regular-BF64829e8f591fb",
+        "mime": "application/x-font-ttf",
+        "path": "2025/03/BeatriceTRIAL-Regular-BF64829e8f591fb.ttf",
+        "url": "https://digex.agency/wp-content/uploads/2025/03/BeatriceTRIAL-Regular-BF64829e8f591fb.ttf",
+        "date": "2025-03-03 14:01:46"
+      },
+      {
+        "id": 1622,
+        "title": "BeatriceTRIAL-Semibold-BF64829e8f17d4c",
+        "mime": "application/x-font-ttf",
+        "path": "2025/03/BeatriceTRIAL-Semibold-BF64829e8f17d4c-1.ttf",
+        "url": "https://digex.agency/wp-content/uploads/2025/03/BeatriceTRIAL-Semibold-BF64829e8f17d4c-1.ttf",
+        "date": "2025-03-03 14:19:37"
+      },
+      {
+        "id": 1618,
+        "title": "BeatriceTRIAL-Semibold-BF64829e8f17d4c",
+        "mime": "application/x-font-ttf",
+        "path": "2025/03/BeatriceTRIAL-Semibold-BF64829e8f17d4c.ttf",
+        "url": "https://digex.agency/wp-content/uploads/2025/03/BeatriceTRIAL-Semibold-BF64829e8f17d4c.ttf",
+        "date": "2025-03-03 14:05:32"
+      },
+      {
+        "id": 1619,
+        "title": "BeatriceTRIAL-SemiboldItalic-BF64829e8ed91f7",
+        "mime": "application/x-font-ttf",
+        "path": "2025/03/BeatriceTRIAL-SemiboldItalic-BF64829e8ed91f7.ttf",
+        "url": "https://digex.agency/wp-content/uploads/2025/03/BeatriceTRIAL-SemiboldItalic-BF64829e8ed91f7.ttf",
+        "date": "2025-03-03 14:05:51"
+      },
+      {
+        "id": 1620,
+        "title": "BeatriceTRIAL-Thin-BF64829e8b08524",
+        "mime": "application/x-font-ttf",
+        "path": "2025/03/BeatriceTRIAL-Thin-BF64829e8b08524.ttf",
+        "url": "https://digex.agency/wp-content/uploads/2025/03/BeatriceTRIAL-Thin-BF64829e8b08524.ttf",
+        "date": "2025-03-03 14:06:21"
+      },
+      {
+        "id": 1621,
+        "title": "BeatriceTRIAL-ThinItalic-BF64829e8d5d50c",
+        "mime": "application/x-font-ttf",
+        "path": "2025/03/BeatriceTRIAL-ThinItalic-BF64829e8d5d50c.ttf",
+        "url": "https://digex.agency/wp-content/uploads/2025/03/BeatriceTRIAL-ThinItalic-BF64829e8d5d50c.ttf",
+        "date": "2025-03-03 14:06:42"
+      },
+      {
+        "id": 1890,
+        "title": "almasblack",
+        "mime": "image/png",
+        "path": "2025/03/almasblack.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/03/almasblack.png",
+        "date": "2025-03-06 09:37:19"
+      },
+      {
+        "id": 1888,
+        "title": "arakam",
+        "mime": "image/png",
+        "path": "2025/03/arakam.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/03/arakam.png",
+        "date": "2025-03-06 09:30:55"
+      },
+      {
+        "id": 1889,
+        "title": "azas",
+        "mime": "image/png",
+        "path": "2025/03/azas.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/03/azas.png",
+        "date": "2025-03-06 09:34:55"
+      },
+      {
+        "id": 1887,
+        "title": "bissanblack",
+        "mime": "image/png",
+        "path": "2025/03/bissanblack.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/03/bissanblack.png",
+        "date": "2025-03-06 09:26:46"
+      },
+      {
+        "id": 1891,
+        "title": "chips miaw black",
+        "mime": "image/png",
+        "path": "2025/03/chips-miaw-black.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/03/chips-miaw-black.png",
+        "date": "2025-03-06 09:42:00"
+      },
+      {
+        "id": 1880,
+        "title": "evelogo",
+        "mime": "image/png",
+        "path": "2025/03/evelogo.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/03/evelogo.png",
+        "date": "2025-03-06 09:13:52"
+      },
+      {
+        "id": 1886,
+        "title": "evenoire",
+        "mime": "image/png",
+        "path": "2025/03/evenoire.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/03/evenoire.png",
+        "date": "2025-03-06 09:23:58"
+      },
+      {
+        "id": 1519,
+        "title": "woocommerce-placeholder",
+        "mime": "image/png",
+        "path": "2025/03/woocommerce-placeholder.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/03/woocommerce-placeholder.png",
+        "date": "2025-03-01 11:22:12"
+      },
+      {
+        "id": 2180,
+        "title": "10313977_2872",
+        "mime": "image/png",
+        "path": "2025/04/10313977_2872.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/04/10313977_2872.png",
+        "date": "2025-04-22 15:58:02"
+      },
+      {
+        "id": 2174,
+        "title": "409268671_45407c54-248d-4ac1-b4c2-9ebbf28316b9",
+        "mime": "image/jpeg",
+        "path": "2025/04/409268671_45407c54-248d-4ac1-b4c2-9ebbf28316b9.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/04/409268671_45407c54-248d-4ac1-b4c2-9ebbf28316b9.jpg",
+        "date": "2025-04-22 15:52:14"
+      },
+      {
+        "id": 2175,
+        "title": "416325427_01536711-d864-4d25-9c66-5e4739d19fd3",
+        "mime": "image/jpeg",
+        "path": "2025/04/416325427_01536711-d864-4d25-9c66-5e4739d19fd3.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/04/416325427_01536711-d864-4d25-9c66-5e4739d19fd3.jpg",
+        "date": "2025-04-22 15:52:23"
+      },
+      {
+        "id": 2190,
+        "title": "IMG_5929",
+        "mime": "video/quicktime",
+        "path": "2025/04/IMG_5929.mov",
+        "url": "https://digex.agency/wp-content/uploads/2025/04/IMG_5929.mov",
+        "date": "2025-05-15 11:02:35"
+      },
+      {
+        "id": 2191,
+        "title": "IMG_5930",
+        "mime": "image/jpeg",
+        "path": "2025/04/IMG_5930.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/04/IMG_5930.jpg",
+        "date": "2025-05-15 11:03:14"
+      },
+      {
+        "id": 2181,
+        "title": "cover1",
+        "mime": "image/png",
+        "path": "2025/04/cover1.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/04/cover1.png",
+        "date": "2025-04-22 16:14:20"
+      },
+      {
+        "id": 2098,
+        "title": "dottedbg",
+        "mime": "image/png",
+        "path": "2025/04/dottedbg-1.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/04/dottedbg-1.png",
+        "date": "2025-04-06 12:50:37"
+      },
+      {
+        "id": 2097,
+        "title": "dottedbg",
+        "mime": "image/png",
+        "path": "2025/04/dottedbg.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/04/dottedbg.png",
+        "date": "2025-04-06 12:49:27"
+      },
+      {
+        "id": 2137,
+        "title": "dottedbg",
+        "mime": "image/webp",
+        "path": "2025/04/dottedbg.webp",
+        "url": "https://digex.agency/wp-content/uploads/2025/04/dottedbg.webp",
+        "date": "2025-04-06 15:13:31"
+      },
+      {
+        "id": 2100,
+        "title": "iphone-15-pro-on-white-background-top-view",
+        "mime": "image/webp",
+        "path": "2025/04/iphone-15-pro-on-white-background-top-view-1.webp",
+        "url": "https://digex.agency/wp-content/uploads/2025/04/iphone-15-pro-on-white-background-top-view-1.webp",
+        "date": "2025-04-06 14:48:44"
+      },
+      {
+        "id": 2099,
+        "title": "iphone-15-pro-on-white-background-top-view",
+        "mime": "image/webp",
+        "path": "2025/04/iphone-15-pro-on-white-background-top-view.webp",
+        "url": "https://digex.agency/wp-content/uploads/2025/04/iphone-15-pro-on-white-background-top-view.webp",
+        "date": "2025-04-06 14:33:43"
+      },
+      {
+        "id": 2567,
+        "title": "0_Glowing_Colorful_1920x1080",
+        "mime": "video/mp4",
+        "path": "2025/06/0_Glowing_Colorful_1920x1080.mp4",
+        "url": "https://digex.agency/wp-content/uploads/2025/06/0_Glowing_Colorful_1920x1080.mp4",
+        "date": "2025-06-25 13:17:45"
+      },
+      {
+        "id": 2558,
+        "title": "21735",
+        "mime": "image/jpeg",
+        "path": "2025/06/21735.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/06/21735.jpg",
+        "date": "2025-06-25 13:09:05"
+      },
+      {
+        "id": 2580,
+        "title": "73",
+        "mime": "image/jpeg",
+        "path": "2025/06/73.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/06/73.jpg",
+        "date": "2025-06-25 13:23:31"
+      },
+      {
+        "id": 3926,
+        "title": "1162367_ORH91S1",
+        "mime": "image/jpeg",
+        "path": "2025/07/1162367_ORH91S1.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/1162367_ORH91S1.jpg",
+        "date": "2025-07-12 13:42:25"
+      },
+      {
+        "id": 4275,
+        "title": "189977667_fc4906cc-3ab4-4c49-9f98-b32a666a2cc0",
+        "mime": "image/png",
+        "path": "2025/07/189977667_fc4906cc-3ab4-4c49-9f98-b32a666a2cc0.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/189977667_fc4906cc-3ab4-4c49-9f98-b32a666a2cc0.png",
+        "date": "2025-07-16 16:20:03"
+      },
+      {
+        "id": 3406,
+        "title": "2 (1 of 1)",
+        "mime": "image/jpeg",
+        "path": "2025/07/2-1-of-1.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/2-1-of-1.jpg",
+        "date": "2025-07-05 12:45:43"
+      },
+      {
+        "id": 3932,
+        "title": "2",
+        "mime": "image/png",
+        "path": "2025/07/2.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/2.png",
+        "date": "2025-07-12 14:26:31"
+      },
+      {
+        "id": 4385,
+        "title": "23126508_195",
+        "mime": "image/png",
+        "path": "2025/07/23126508_195.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/23126508_195.png",
+        "date": "2025-07-17 10:25:29"
+      },
+      {
+        "id": 4271,
+        "title": "31240747_gadget_mockup_set",
+        "mime": "image/png",
+        "path": "2025/07/31240747_gadget_mockup_set.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/31240747_gadget_mockup_set.png",
+        "date": "2025-07-16 16:12:11"
+      },
+      {
+        "id": 3955,
+        "title": "32dae0211325091.6720ee081dfbc",
+        "mime": "image/jpeg",
+        "path": "2025/07/32dae0211325091.6720ee081dfbc.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/32dae0211325091.6720ee081dfbc.jpg",
+        "date": "2025-07-12 14:53:36"
+      },
+      {
+        "id": 4053,
+        "title": "357765451_8f617f50-32dc-4bcf-a0e7-764bad2c9c94",
+        "mime": "image/jpeg",
+        "path": "2025/07/357765451_8f617f50-32dc-4bcf-a0e7-764bad2c9c94.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/357765451_8f617f50-32dc-4bcf-a0e7-764bad2c9c94.jpg",
+        "date": "2025-07-13 15:32:37"
+      },
+      {
+        "id": 2876,
+        "title": "64cb4d375fedd39d5beb487f_Group 41090",
+        "mime": "image/png",
+        "path": "2025/07/64cb4d375fedd39d5beb487f_Group-41090-1.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/64cb4d375fedd39d5beb487f_Group-41090-1.png",
+        "date": "2025-07-01 14:58:51"
+      },
+      {
+        "id": 2792,
+        "title": "64cb4d375fedd39d5beb487f_Group 41090",
+        "mime": "image/png",
+        "path": "2025/07/64cb4d375fedd39d5beb487f_Group-41090.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/64cb4d375fedd39d5beb487f_Group-41090.png",
+        "date": "2025-07-01 11:41:23"
+      },
+      {
+        "id": 2881,
+        "title": "64cb4d375fedd39d5beb487f_Group 41090",
+        "mime": "image/webp",
+        "path": "2025/07/64cb4d375fedd39d5beb487f_Group-41090.webp",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/64cb4d375fedd39d5beb487f_Group-41090.webp",
+        "date": "2025-07-01 15:04:55"
+      },
+      {
+        "id": 4019,
+        "title": "Article-img_3-13122021-1.jpg",
+        "mime": "image/jpeg",
+        "path": "2025/07/Article-img_3-13122021-1.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/Article-img_3-13122021-1.jpg",
+        "date": "2025-07-13 13:06:20"
+      },
+      {
+        "id": 3946,
+        "title": "BARBCUE BROWN",
+        "mime": "image/png",
+        "path": "2025/07/BARBCUE-BROWN-1.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/BARBCUE-BROWN-1.png",
+        "date": "2025-07-12 14:44:18"
+      },
+      {
+        "id": 3945,
+        "title": "BARBCUE BROWN",
+        "mime": "image/png",
+        "path": "2025/07/BARBCUE-BROWN.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/BARBCUE-BROWN.png",
+        "date": "2025-07-12 14:41:34"
+      },
+      {
+        "id": 3555,
+        "title": "Best Digital Growth Marketing Company in India _ Amura",
+        "mime": "image/jpeg",
+        "path": "2025/07/Best-Digital-Growth-Marketing-Company-in-India-_-Amura.jpeg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/Best-Digital-Growth-Marketing-Company-in-India-_-Amura.jpeg",
+        "date": "2025-07-08 10:44:25"
+      },
+      {
+        "id": 3951,
+        "title": "Capture d’écran 2022-06-15 132334",
+        "mime": "image/jpeg",
+        "path": "2025/07/Capture-decran-2022-06-15-132334.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/Capture-decran-2022-06-15-132334.jpg",
+        "date": "2025-07-12 14:49:36"
+      },
+      {
+        "id": 3952,
+        "title": "Capture d’écran 2022-06-15 132452",
+        "mime": "image/jpeg",
+        "path": "2025/07/Capture-decran-2022-06-15-132452.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/Capture-decran-2022-06-15-132452.jpg",
+        "date": "2025-07-12 14:49:38"
+      },
+      {
+        "id": 4245,
+        "title": "Capture d'écran 2025-07-16 160252",
+        "mime": "image/png",
+        "path": "2025/07/Capture-decran-2025-07-16-160252.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/Capture-decran-2025-07-16-160252.png",
+        "date": "2025-07-16 15:05:29"
+      },
+      {
+        "id": 4349,
+        "title": "Enregistrement de l'écran 2025-07-17 104354",
+        "mime": "video/mp4",
+        "path": "2025/07/Enregistrement-de-lecran-2025-07-17-104354.mp4",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/Enregistrement-de-lecran-2025-07-17-104354.mp4",
+        "date": "2025-07-17 09:50:10"
+      },
+      {
+        "id": 4054,
+        "title": "IMG_6510",
+        "mime": "image/jpeg",
+        "path": "2025/07/IMG_6510.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/IMG_6510.jpg",
+        "date": "2025-07-13 15:34:42"
+      },
+      {
+        "id": 3947,
+        "title": "PIZZA ORANGE",
+        "mime": "image/png",
+        "path": "2025/07/PIZZA-ORANGE.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/PIZZA-ORANGE.png",
+        "date": "2025-07-12 14:47:35"
+      },
+      {
+        "id": 4342,
+        "title": "Panthenox CGI",
+        "mime": "video/quicktime",
+        "path": "2025/07/Panthenox-CGI-.mov",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/Panthenox-CGI-.mov",
+        "date": "2025-07-17 09:38:23"
+      },
+      {
+        "id": 3407,
+        "title": "ROZAJIN 8 (1 of 1)",
+        "mime": "image/jpeg",
+        "path": "2025/07/ROZAJIN-8-1-of-1.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/ROZAJIN-8-1-of-1.jpg",
+        "date": "2025-07-05 12:46:39"
+      },
+      {
+        "id": 3408,
+        "title": "ROZAJIN 9 (1 of 1)",
+        "mime": "image/jpeg",
+        "path": "2025/07/ROZAJIN-9-1-of-1.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/ROZAJIN-9-1-of-1.jpg",
+        "date": "2025-07-05 12:47:17"
+      },
+      {
+        "id": 3933,
+        "title": "TAE 1",
+        "mime": "image/png",
+        "path": "2025/07/TAE-1.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/TAE-1.png",
+        "date": "2025-07-12 14:27:04"
+      },
+      {
+        "id": 2850,
+        "title": "Untitled-1",
+        "mime": "image/webp",
+        "path": "2025/07/Untitled-1.webp",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/Untitled-1.webp",
+        "date": "2025-07-01 14:26:41"
+      },
+      {
+        "id": 4048,
+        "title": "VITRINE",
+        "mime": "image/jpeg",
+        "path": "2025/07/VITRINE.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/VITRINE.jpg",
+        "date": "2025-07-13 15:12:31"
+      },
+      {
+        "id": 3438,
+        "title": "WhatsApp Image 2024-11-11 à 15.52.32_7d8fa73f",
+        "mime": "image/jpeg",
+        "path": "2025/07/WhatsApp-Image-2024-11-11-a-15.52.32_7d8fa73f.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/WhatsApp-Image-2024-11-11-a-15.52.32_7d8fa73f.jpg",
+        "date": "2025-07-05 15:42:29"
+      },
+      {
+        "id": 4444,
+        "title": "WhatsApp Image 2024-11-11 à 15.52.33_12f38c19",
+        "mime": "image/jpeg",
+        "path": "2025/07/WhatsApp-Image-2024-11-11-a-15.52.33_12f38c19.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/WhatsApp-Image-2024-11-11-a-15.52.33_12f38c19.jpg",
+        "date": "2025-07-17 12:04:54"
+      },
+      {
+        "id": 4442,
+        "title": "WhatsApp Image 2024-11-11 à 15.52.33_d652fb1e",
+        "mime": "image/jpeg",
+        "path": "2025/07/WhatsApp-Image-2024-11-11-a-15.52.33_d652fb1e.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/WhatsApp-Image-2024-11-11-a-15.52.33_d652fb1e.jpg",
+        "date": "2025-07-17 12:04:46"
+      },
+      {
+        "id": 4443,
+        "title": "WhatsApp Image 2024-11-11 à 15.52.35_47041952",
+        "mime": "image/jpeg",
+        "path": "2025/07/WhatsApp-Image-2024-11-11-a-15.52.35_47041952.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/WhatsApp-Image-2024-11-11-a-15.52.35_47041952.jpg",
+        "date": "2025-07-17 12:04:48"
+      },
+      {
+        "id": 4441,
+        "title": "WhatsApp Image 2024-11-11 à 15.52.35_c701d482",
+        "mime": "image/jpeg",
+        "path": "2025/07/WhatsApp-Image-2024-11-11-a-15.52.35_c701d482.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/WhatsApp-Image-2024-11-11-a-15.52.35_c701d482.jpg",
+        "date": "2025-07-17 12:04:43"
+      },
+      {
+        "id": 4215,
+        "title": "after",
+        "mime": "image/png",
+        "path": "2025/07/after.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/after.png",
+        "date": "2025-07-16 14:35:41"
+      },
+      {
+        "id": 4246,
+        "title": "after1",
+        "mime": "image/png",
+        "path": "2025/07/after1.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/after1.png",
+        "date": "2025-07-16 15:05:38"
+      },
+      {
+        "id": 2964,
+        "title": "almas1",
+        "mime": "image/png",
+        "path": "2025/07/almas1.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/almas1.png",
+        "date": "2025-07-02 10:09:11"
+      },
+      {
+        "id": 2965,
+        "title": "arkam1",
+        "mime": "image/png",
+        "path": "2025/07/arkam1.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/arkam1.png",
+        "date": "2025-07-02 10:09:13"
+      },
+      {
+        "id": 4011,
+        "title": "bannermockup",
+        "mime": "image/jpeg",
+        "path": "2025/07/bannermockup.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/bannermockup.jpg",
+        "date": "2025-07-13 11:53:50"
+      },
+      {
+        "id": 4216,
+        "title": "before",
+        "mime": "image/png",
+        "path": "2025/07/before.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/before.png",
+        "date": "2025-07-16 14:35:58"
+      },
+      {
+        "id": 4247,
+        "title": "before1",
+        "mime": "image/png",
+        "path": "2025/07/before1.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/before1.png",
+        "date": "2025-07-16 15:05:45"
+      },
+      {
+        "id": 2963,
+        "title": "bissanelab1",
+        "mime": "image/png",
+        "path": "2025/07/bissanelab1.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/bissanelab1.png",
+        "date": "2025-07-02 10:07:13"
+      },
+      {
+        "id": 3434,
+        "title": "cartevisite mockup3",
+        "mime": "image/png",
+        "path": "2025/07/cartevisite-mockup3.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/cartevisite-mockup3.png",
+        "date": "2025-07-05 15:38:03"
+      },
+      {
+        "id": 2966,
+        "title": "chips1",
+        "mime": "image/png",
+        "path": "2025/07/chips1.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/chips1.png",
+        "date": "2025-07-02 10:10:57"
+      },
+      {
+        "id": 2969,
+        "title": "delmoosh1",
+        "mime": "image/png",
+        "path": "2025/07/delmoosh1.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/delmoosh1.png",
+        "date": "2025-07-02 10:18:30"
+      },
+      {
+        "id": 2962,
+        "title": "eve1",
+        "mime": "image/png",
+        "path": "2025/07/eve1.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/eve1.png",
+        "date": "2025-07-02 10:06:10"
+      },
+      {
+        "id": 2959,
+        "title": "evelogo",
+        "mime": "image/png",
+        "path": "2025/07/evelogo.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/evelogo.png",
+        "date": "2025-07-02 09:59:03"
+      },
+      {
+        "id": 3436,
+        "title": "fffff (2)",
+        "mime": "image/jpeg",
+        "path": "2025/07/fffff-2.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/fffff-2.jpg",
+        "date": "2025-07-05 15:41:59"
+      },
+      {
+        "id": 3437,
+        "title": "fin (2)",
+        "mime": "image/jpeg",
+        "path": "2025/07/fin-2.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/fin-2.jpg",
+        "date": "2025-07-05 15:42:23"
+      },
+      {
+        "id": 3954,
+        "title": "hmhgm 1",
+        "mime": "image/png",
+        "path": "2025/07/hmhgm-1.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/hmhgm-1.png",
+        "date": "2025-07-12 14:51:39"
+      },
+      {
+        "id": 4253,
+        "title": "image_2025-07-16_16-22-15",
+        "mime": "image/png",
+        "path": "2025/07/image_2025-07-16_16-22-15.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/image_2025-07-16_16-22-15.png",
+        "date": "2025-07-16 15:22:47"
+      },
+      {
+        "id": 3433,
+        "title": "magasine mockupdd",
+        "mime": "image/jpeg",
+        "path": "2025/07/magasine-mockupdd.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/magasine-mockupdd.jpg",
+        "date": "2025-07-05 15:32:43"
+      },
+      {
+        "id": 3423,
+        "title": "mockup 1",
+        "mime": "image/png",
+        "path": "2025/07/mockup-1.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/mockup-1.png",
+        "date": "2025-07-05 15:01:06"
+      },
+      {
+        "id": 4254,
+        "title": "phoneposte",
+        "mime": "image/png",
+        "path": "2025/07/phoneposte.png",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/phoneposte.png",
+        "date": "2025-07-16 15:23:57"
+      },
+      {
+        "id": 3422,
+        "title": "photo_2023-04-09_00-17-00",
+        "mime": "image/jpeg",
+        "path": "2025/07/photo_2023-04-09_00-17-00.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/photo_2023-04-09_00-17-00.jpg",
+        "date": "2025-07-05 14:55:40"
+      },
+      {
+        "id": 3432,
+        "title": "photo_2024-01-16_13-15-12",
+        "mime": "image/jpeg",
+        "path": "2025/07/photo_2024-01-16_13-15-12.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/photo_2024-01-16_13-15-12.jpg",
+        "date": "2025-07-05 15:28:29"
+      },
+      {
+        "id": 3854,
+        "title": "photo_2025-07-12_10-57-35",
+        "mime": "image/jpeg",
+        "path": "2025/07/photo_2025-07-12_10-57-35.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/photo_2025-07-12_10-57-35.jpg",
+        "date": "2025-07-12 09:58:40"
+      },
+      {
+        "id": 3941,
+        "title": "photo_2025-07-12_15-26-46",
+        "mime": "image/jpeg",
+        "path": "2025/07/photo_2025-07-12_15-26-46.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/photo_2025-07-12_15-26-46.jpg",
+        "date": "2025-07-12 14:28:24"
+      },
+      {
+        "id": 3940,
+        "title": "photo_2025-07-12_15-26-48",
+        "mime": "image/jpeg",
+        "path": "2025/07/photo_2025-07-12_15-26-48.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/photo_2025-07-12_15-26-48.jpg",
+        "date": "2025-07-12 14:28:21"
+      },
+      {
+        "id": 3939,
+        "title": "photo_2025-07-12_15-26-50",
+        "mime": "image/jpeg",
+        "path": "2025/07/photo_2025-07-12_15-26-50.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/photo_2025-07-12_15-26-50.jpg",
+        "date": "2025-07-12 14:28:18"
+      },
+      {
+        "id": 3938,
+        "title": "photo_2025-07-12_15-26-51",
+        "mime": "image/jpeg",
+        "path": "2025/07/photo_2025-07-12_15-26-51.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/photo_2025-07-12_15-26-51.jpg",
+        "date": "2025-07-12 14:28:16"
+      },
+      {
+        "id": 3937,
+        "title": "photo_2025-07-12_15-26-53",
+        "mime": "image/jpeg",
+        "path": "2025/07/photo_2025-07-12_15-26-53.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/photo_2025-07-12_15-26-53.jpg",
+        "date": "2025-07-12 14:28:13"
+      },
+      {
+        "id": 3936,
+        "title": "photo_2025-07-12_15-26-55",
+        "mime": "image/jpeg",
+        "path": "2025/07/photo_2025-07-12_15-26-55.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/photo_2025-07-12_15-26-55.jpg",
+        "date": "2025-07-12 14:28:11"
+      },
+      {
+        "id": 3935,
+        "title": "photo_2025-07-12_15-26-57",
+        "mime": "image/jpeg",
+        "path": "2025/07/photo_2025-07-12_15-26-57.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/photo_2025-07-12_15-26-57.jpg",
+        "date": "2025-07-12 14:28:08"
+      },
+      {
+        "id": 3934,
+        "title": "photo_2025-07-12_15-26-58",
+        "mime": "image/jpeg",
+        "path": "2025/07/photo_2025-07-12_15-26-58.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/photo_2025-07-12_15-26-58.jpg",
+        "date": "2025-07-12 14:28:06"
+      },
+      {
+        "id": 4675,
+        "title": "photo_2025-07-20_12-20-47",
+        "mime": "image/jpeg",
+        "path": "2025/07/photo_2025-07-20_12-20-47.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/photo_2025-07-20_12-20-47.jpg",
+        "date": "2025-07-20 11:32:55"
+      },
+      {
+        "id": 3558,
+        "title": "rr comp",
+        "mime": "image/jpeg",
+        "path": "2025/07/rr-comp.jpeg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/rr-comp.jpeg",
+        "date": "2025-07-08 10:53:27"
+      },
+      {
+        "id": 4263,
+        "title": "screencast-bissanelab_com-2024_11_28-10_40_04",
+        "mime": "video/webm",
+        "path": "2025/07/screencast-bissanelab_com-2024_11_28-10_40_04.webm",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/screencast-bissanelab_com-2024_11_28-10_40_04.webm",
+        "date": "2025-07-16 15:43:59"
+      },
+      {
+        "id": 3430,
+        "title": "small medium (2)",
+        "mime": "image/jpeg",
+        "path": "2025/07/small-medium-2.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/small-medium-2.jpg",
+        "date": "2025-07-05 15:28:09"
+      },
+      {
+        "id": 3431,
+        "title": "small medium",
+        "mime": "image/jpeg",
+        "path": "2025/07/small-medium.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/small-medium.jpg",
+        "date": "2025-07-05 15:28:24"
+      },
+      {
+        "id": 3435,
+        "title": "sssss",
+        "mime": "image/jpeg",
+        "path": "2025/07/sssss.jpg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/sssss.jpg",
+        "date": "2025-07-05 15:40:53"
+      },
+      {
+        "id": 3393,
+        "title": "test 3",
+        "mime": "video/quicktime",
+        "path": "2025/07/test-3.mov",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/test-3.mov",
+        "date": "2025-07-05 12:34:57"
+      },
+      {
+        "id": 3395,
+        "title": "tesف",
+        "mime": "video/quicktime",
+        "path": "2025/07/tesف.mov",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/tesف.mov",
+        "date": "2025-07-05 12:36:11"
+      },
+      {
+        "id": 3387,
+        "title": "video_2025-07-05_13-09-34",
+        "mime": "video/mp4",
+        "path": "2025/07/video_2025-07-05_13-09-34.mp4",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/video_2025-07-05_13-09-34.mp4",
+        "date": "2025-07-05 12:12:32"
+      },
+      {
+        "id": 3412,
+        "title": "vvtt11455",
+        "mime": "video/quicktime",
+        "path": "2025/07/vvtt11455-1.mov",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/vvtt11455-1.mov",
+        "date": "2025-07-05 12:52:22"
+      },
+      {
+        "id": 3388,
+        "title": "vvtt11455",
+        "mime": "video/quicktime",
+        "path": "2025/07/vvtt11455.mov",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/vvtt11455.mov",
+        "date": "2025-07-05 12:15:47"
+      },
+      {
+        "id": 3556,
+        "title": "🚀 Boost Your Brand Visibility with Social Media",
+        "mime": "image/jpeg",
+        "path": "2025/07/🚀-Boost-Your-Brand-Visibility-with-Social-Media.jpeg",
+        "url": "https://digex.agency/wp-content/uploads/2025/07/🚀-Boost-Your-Brand-Visibility-with-Social-Media.jpeg",
+        "date": "2025-07-08 10:48:36"
+      },
+      {
+        "id": 4591,
+        "title": "Elementor-post-screenshot_162_2025-07-19-14-14-39_748dc47c.png",
+        "mime": "image/png",
+        "path": "elementor/screenshots/Elementor-post-screenshot_162_2025-07-19-14-14-39_748dc47c.png",
+        "url": "https://digex.agency/wp-content/uploads/elementor/screenshots/Elementor-post-screenshot_162_2025-07-19-14-14-39_748dc47c.png",
+        "date": "2025-07-19 14:14:39"
+      },
+      {
+        "id": 2794,
+        "title": "Elementor-post-screenshot_2648_2025-07-01-13-02-07_14e0287f.png",
+        "mime": "image/png",
+        "path": "elementor/screenshots/Elementor-post-screenshot_2648_2025-07-01-13-02-07_14e0287f.png",
+        "url": "https://digex.agency/wp-content/uploads/elementor/screenshots/Elementor-post-screenshot_2648_2025-07-01-13-02-07_14e0287f.png",
+        "date": "2025-07-01 13:02:07"
+      },
+      {
+        "id": 4061,
+        "title": "Elementor-post-screenshot_4017_2025-07-14-10-46-03_64225505.png",
+        "mime": "image/png",
+        "path": "elementor/screenshots/Elementor-post-screenshot_4017_2025-07-14-10-46-03_64225505.png",
+        "url": "https://digex.agency/wp-content/uploads/elementor/screenshots/Elementor-post-screenshot_4017_2025-07-14-10-46-03_64225505.png",
+        "date": "2025-07-14 10:46:03"
+      }
+    ]
+  }
+}

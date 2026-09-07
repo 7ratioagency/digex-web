@@ -95,7 +95,20 @@
       "inapiFiling": "إيداع وحماية العلامة لدى INAPI",
       "gs1Barcode": "باركود رسمي عبر GS1 Algeria",
       "clicheFile": "إعداد ملف الكليشيه",
-      "renewalProtection": "متابعة التجديد وحماية الحقوق"
+      "renewalProtection": "متابعة التجديد وحماية الحقوق",
+      "adCampaigns": "حملات إعلانية موجّهة",
+      "microperfStickers": "ملصقات مجهرية التثقيب",
+      "transparentMirror": "تأثير شفاف وتأثير المرآة",
+      "customDesks": "مناضد عرض مخصّصة",
+      "loyaltyCards": "بطاقات وفاء",
+      "customStickers": "ملصقات حسب الطلب",
+      "dieCuts": "قوالب قصّ خاصة",
+      "competitorAnalysis": "تحليل المنافسين",
+      "hostingSupport": "استضافة مع سنة دعم",
+      "dailyBackups": "نسخ احتياطي يومي",
+      "sslSecurity": "شهادة أمان SSL",
+      "bilingualSite": "موقع بلغتين",
+      "renders3d": "رندرات ثلاثية الأبعاد واقعية"
     },
     "items": {
       "branding": {
@@ -214,26 +227,27 @@
     "eyebrow": "أرقامنا",
     "title": "<mark>يثقون</mark> بنا",
     "lead": "علامات جزائرية اشتغلنا معها من الهوية حتى الإطلاق.",
+    "testimonialsTitle": "ماذا قال عملاؤنا",
     "stats": [
       {
-        "value": "16",
-        "suffix": "+",
-        "label": "علامة تجارية"
+        "value": "240",
+        "suffix": "",
+        "label": "مشروع منجز"
       },
       {
-        "value": "6",
+        "value": "200",
         "suffix": "",
-        "label": "مواقع ومتاجر منشورة"
+        "label": "عميل راضٍ"
       },
       {
-        "value": "12",
+        "value": "7",
         "suffix": "",
-        "label": "إنتاج فيديو"
+        "label": "سنوات خبرة"
       },
       {
-        "value": "5",
+        "value": "4",
         "suffix": "",
-        "label": "خدمات تحت سقف واحد"
+        "label": "عملاء دوليون"
       }
     ]
   },
@@ -244,7 +258,7 @@
     "phoneLabel": "الهاتف",
     "emailLabel": "البريد الإلكتروني",
     "locationLabel": "الموقع",
-    "locationValue": "الجزائر",
+    "locationValue": "حي بارك أفوراج، مقابل ثانوية صلاح الدين — باتنة، الجزائر",
     "hoursLabel": "أوقات العمل",
     "hoursValue": "السبت - الخميس: 9ص - 6م",
     "formTitle": "أرسل لنا رسالة",

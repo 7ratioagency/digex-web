@@ -90,6 +90,7 @@ export const services: Service[] = [
       'customerExperience',
       'visionValues',
       'strategicPlanning',
+      'competitorAnalysis',
     ],
   },
   {
@@ -110,6 +111,7 @@ export const services: Service[] = [
       'dataDrivenStrategy',
       'highValueContent',
       'channelManagement',
+      'adCampaigns',
     ],
   },
   {
@@ -125,6 +127,10 @@ export const services: Service[] = [
       'erp',
       'cloudStorage',
       'dataProtection',
+      'hostingSupport',
+      'dailyBackups',
+      'sslSecurity',
+      'bilingualSite',
     ],
   },
   {
@@ -141,6 +147,11 @@ export const services: Service[] = [
       'flyers',
       'brochures',
       'catalogues',
+      'microperfStickers',
+      'transparentMirror',
+      'customDesks',
+      'customStickers',
+      'loyaltyCards',
     ],
   },
   {
@@ -148,7 +159,7 @@ export const services: Service[] = [
     slug: 'packaging',
     Icon: PackagingIcon,
     accent: 'var(--accent-blue)',
-    deliverableKeys: ['packagingDesign', 'labels', 'shelfReady'],
+    deliverableKeys: ['packagingDesign', 'labels', 'shelfReady', 'dieCuts'],
   },
   {
     key: 'trademark',
@@ -180,6 +191,7 @@ export const services: Service[] = [
       'spacePlanning',
       'furniture',
       'lighting',
+      'renders3d',
     ],
   },
   {
@@ -205,7 +217,14 @@ export const getService = (slug: string) =>
 
 /** Business contact details — single source of truth. */
 export const contactDetails = {
-  phones: ['+213662560998', '+213773007662'],
+  /*
+   * Two mobiles and the Batna landline. The landline came off the old
+   * digex.agency contact block (public/backup/digex-content.json → contact),
+   * where it was published as 033 24 96 98; it is written here in E.164 like
+   * the others so `tel:` links and the LocalBusiness schema in lib/seo.ts
+   * both work without a per-number special case.
+   */
+  phones: ['+213662560998', '+213773007662', '+21333249698'],
   email: 'contact@digex.agency',
   whatsapp: '213662560998',
   social: {

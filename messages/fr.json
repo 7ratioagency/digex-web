@@ -95,7 +95,20 @@
       "inapiFiling": "Dépôt et protection de la marque (INAPI)",
       "gs1Barcode": "Code-barres officiel GS1 Algeria",
       "clicheFile": "Préparation du fichier du cliché",
-      "renewalProtection": "Suivi des renouvellements et des droits"
+      "renewalProtection": "Suivi des renouvellements et des droits",
+      "adCampaigns": "Campagnes publicitaires ciblées",
+      "microperfStickers": "Stickers microperforés",
+      "transparentMirror": "Effet transparent & miroir",
+      "customDesks": "Desks personnalisés",
+      "loyaltyCards": "Cartes de fidélité",
+      "customStickers": "Stickers sur mesure",
+      "dieCuts": "Découpes sur mesure (die-cuts)",
+      "competitorAnalysis": "Analyse concurrentielle",
+      "hostingSupport": "Hébergement + 1 an de support",
+      "dailyBackups": "Sauvegardes quotidiennes",
+      "sslSecurity": "Sécurité SSL",
+      "bilingualSite": "Site bilingue",
+      "renders3d": "Rendus 3D ultra-réalistes"
     },
     "items": {
       "branding": {
@@ -214,26 +227,27 @@
     "eyebrow": "En chiffres",
     "title": "Ils nous font <mark>confiance</mark>",
     "lead": "Des marques algériennes accompagnées de l'identité jusqu'au lancement.",
+    "testimonialsTitle": "Témoignages de nos clients",
     "stats": [
       {
-        "value": "16",
-        "suffix": "+",
-        "label": "marques accompagnées"
+        "value": "240",
+        "suffix": "",
+        "label": "projets réalisés"
       },
       {
-        "value": "6",
+        "value": "200",
         "suffix": "",
-        "label": "sites et boutiques en ligne"
+        "label": "clients satisfaits"
       },
       {
-        "value": "12",
+        "value": "7",
         "suffix": "",
-        "label": "productions vidéo"
+        "label": "ans d'expérience"
       },
       {
-        "value": "5",
+        "value": "4",
         "suffix": "",
-        "label": "services sous un même toit"
+        "label": "clients internationaux"
       }
     ]
   },
@@ -244,7 +258,7 @@
     "phoneLabel": "Téléphone",
     "emailLabel": "E-mail",
     "locationLabel": "Localisation",
-    "locationValue": "Algérie",
+    "locationValue": "Cité Park à Fourrage, en face du lycée Salah Eddine — Batna, Algérie",
     "hoursLabel": "Horaires",
     "hoursValue": "Samedi - Jeudi : 9h - 18h",
     "formTitle": "Envoyez-nous un message",

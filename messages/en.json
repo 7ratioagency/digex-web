@@ -95,7 +95,20 @@
       "inapiFiling": "Trademark filing and protection (INAPI)",
       "gs1Barcode": "Official GS1 Algeria barcode",
       "clicheFile": "Cliché file preparation",
-      "renewalProtection": "Renewals and rights follow-up"
+      "renewalProtection": "Renewals and rights follow-up",
+      "adCampaigns": "Targeted ad campaigns",
+      "microperfStickers": "Microperforated stickers",
+      "transparentMirror": "Transparent and mirror finishes",
+      "customDesks": "Custom display desks",
+      "loyaltyCards": "Loyalty cards",
+      "customStickers": "Custom stickers",
+      "dieCuts": "Custom die-cuts",
+      "competitorAnalysis": "Competitive analysis",
+      "hostingSupport": "Hosting plus a year of support",
+      "dailyBackups": "Daily backups",
+      "sslSecurity": "SSL security",
+      "bilingualSite": "Bilingual site",
+      "renders3d": "Photorealistic 3D renders"
     },
     "items": {
       "branding": {
@@ -214,26 +227,27 @@
     "eyebrow": "By the numbers",
     "title": "Brands that <mark>trust</mark> us",
     "lead": "Algerian brands we've taken from identity through to launch.",
+    "testimonialsTitle": "What our clients say",
     "stats": [
       {
-        "value": "16",
-        "suffix": "+",
-        "label": "brands served"
+        "value": "240",
+        "suffix": "",
+        "label": "projects delivered"
       },
       {
-        "value": "6",
+        "value": "200",
         "suffix": "",
-        "label": "live sites and stores"
+        "label": "satisfied clients"
       },
       {
-        "value": "12",
+        "value": "7",
         "suffix": "",
-        "label": "video productions"
+        "label": "years of experience"
       },
       {
-        "value": "5",
+        "value": "4",
         "suffix": "",
-        "label": "services under one roof"
+        "label": "international clients"
       }
     ]
   },
@@ -244,7 +258,7 @@
     "phoneLabel": "Phone",
     "emailLabel": "Email",
     "locationLabel": "Location",
-    "locationValue": "Algeria",
+    "locationValue": "Cité Park à Fourrage, opposite Salah Eddine high school — Batna, Algeria",
     "hoursLabel": "Working hours",
     "hoursValue": "Saturday - Thursday: 9am - 6pm",
     "formTitle": "Send us a message",
