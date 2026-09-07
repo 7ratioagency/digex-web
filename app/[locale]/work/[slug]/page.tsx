@@ -6,6 +6,7 @@ import { buildMetadata } from '@/lib/seo'
 import { Link } from '@/lib/i18n/navigation'
 import { Section } from '@/components/ui/Section'
 import { Button } from '@/components/ui/Button'
+import { CaseStudyBody } from '@/components/sections/CaseStudyBody'
 import { ContactCTA } from '@/components/sections/ContactCTA'
 import { ArrowIcon } from '@/components/icons'
 import {
@@ -151,6 +152,14 @@ export default async function CaseStudyPage({ params }: Props) {
           )}
         </div>
       </Section>
+
+      {/*
+        The long form, for the two projects that have one written. It takes the
+        alt tone so it reads as its own chapter rather than as more of the page
+        above; the gallery below goes back to base, and <ContactCTA> paints alt
+        on its own, so no two identical bands touch.
+      */}
+      <CaseStudyBody project={project} alt />
 
       {/* Only projects with real photographs carry a gallery. */}
       {project.gallery.length > 0 && (

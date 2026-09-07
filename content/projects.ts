@@ -20,6 +20,36 @@ export type ProjectCategory =
 
 export type ProjectLinkKind = 'live' | 'behance' | 'youtube'
 
+/** One numbered pillar of a solution, as the agency presented it. */
+export interface CaseStudyStep {
+  title: Localized
+  points: LocalizedList
+}
+
+/**
+ * The long form of a project, for /work/[slug].
+ *
+ * Recovered from the old digex.agency, which published two of these
+ * (assets/backup/digex-content.json → case_studies) and is now offline. French
+ * is the agency's own published wording; Arabic and English are written
+ * natively here, because the old site had neither.
+ *
+ * Optional, and likely to stay that way for most entries: a case study is a
+ * piece of writing the agency has to actually do, not a field that can be
+ * filled in from a slug. A project without one still renders its summary,
+ * deliverables and link.
+ */
+export interface CaseStudy {
+  /** The client, and where they stood before the work. */
+  about: Localized
+  /** What the engagement set out to do. */
+  objectives: LocalizedList
+  /** How it was approached, in the order it was approached. */
+  solution: CaseStudyStep[]
+  /** What came of it. The client's own claims, unedited. */
+  results: LocalizedList
+}
+
 export interface Project {
   /** URL slug for /work/[slug] */
   slug: string
@@ -51,6 +81,8 @@ export interface Project {
   cover?: string
   /** Gallery images for the case study page */
   gallery: string[]
+  /** The long form, where one has been written. */
+  caseStudy?: CaseStudy
   /** Show on the homepage "selected work" section */
   featured: boolean
   /** Year delivered — set to the real year before launch */
@@ -79,10 +111,263 @@ export const projects: Project[] = [
     },
     link: { kind: 'live', url: 'https://eveaccessoires.com' },
     cover: '/work/eve-accessoires/cover.webp',
+    caseStudy: {
+      about: {
+        ar: 'إيف أكسسوار متجر متخصّص في بيع الإكسسوارات والمجوهرات التقليدية والعصرية، بتشكيلة راقية موجّهة لزبون متطلّب، تجمع بين الثراء الثقافي والإبداع المعاصر.',
+        fr: "Eve Accessoires est une boutique spécialisée dans la vente d'accessoires et de bijoux traditionnels et modernes. Elle propose une sélection raffinée pour une clientèle exigeante, alliant richesse culturelle et créations contemporaines.",
+        en: 'Eve Accessoires sells traditional and modern accessories and jewellery — a refined selection for a demanding clientele, where cultural richness meets contemporary design.',
+      },
+      objectives: {
+        ar: [
+          'تحديث صورة العلامة عبر هوية بصرية قوية ومتماسكة.',
+          'إنشاء متجر إلكتروني عالي الأداء.',
+          'وضع نظام بسيط وفعّال لتسيير المخزون.',
+          'اقتراح استراتيجية تسويق ملائمة لزيادة الظهور.',
+        ],
+        fr: [
+          "Moderniser l'image de la marque à travers une identité visuelle forte et cohérente.",
+          'Créer une boutique en ligne performante.',
+          'Mettre en place un système de gestion des stocks simple et efficace.',
+          'Proposer une stratégie de marketing adaptée pour accroître la visibilité.',
+        ],
+        en: [
+          "Modernise the brand's image with a strong, coherent visual identity.",
+          'Build an online store that performs.',
+          'Put a simple, effective stock system in place.',
+          'Propose a marketing strategy suited to growing visibility.',
+        ],
+      },
+      solution: [
+        {
+          title: {
+            ar: 'بناء هوية بصرية قوية',
+            fr: "Création d'une identité visuelle forte",
+            en: 'A strong visual identity',
+          },
+          points: {
+            ar: ['تصميم دليل بصري أنيق يشمل الشعار والألوان والخطوط.'],
+            fr: [
+              "Conception d'une charte graphique élégante incluant logo, couleurs et typographies.",
+            ],
+            en: ['An elegant graphic charter: logo, colours and typefaces.'],
+          },
+        },
+        {
+          title: {
+            ar: 'تطوير الموقع',
+            fr: 'Développement web',
+            en: 'Web development',
+          },
+          points: {
+            ar: ['متجر إلكتروني مصمّم خصيصًا، متجاوب ومحسّن لتجربة الاستخدام.'],
+            fr: [
+              "Développement d'un site e-commerce sur mesure, responsive et optimisé UX.",
+            ],
+            en: ['A bespoke e-commerce site, responsive and optimised for UX.'],
+          },
+        },
+        {
+          title: {
+            ar: 'تسيير المخزون',
+            fr: 'Gestion des stocks',
+            en: 'Stock management',
+          },
+          points: {
+            ar: ['اقتراح برنامج Odoo وضبطه لإدارة المنتجات والمخزون.'],
+            fr: [
+              'Proposition et configuration du logiciel Odoo pour la gestion des produits et des stocks.',
+            ],
+            en: ['Odoo proposed and configured for products and stock.'],
+          },
+        },
+      ],
+      results: {
+        ar: [
+          'هوية بصرية متماسكة ومميّزة.',
+          'متجر إلكتروني جاهز للتشغيل.',
+          'تسيير مركزي ومبسّط للمخزون بفضل Odoo.',
+        ],
+        fr: [
+          'Une identité visuelle cohérente et distinctive.',
+          'Un site e-commerce clé en main.',
+          'Une gestion de stock centralisée et simplifiée grâce à Odoo.',
+        ],
+        en: [
+          'A coherent, distinctive visual identity.',
+          'A turnkey e-commerce site.',
+          'Centralised, simplified stock management through Odoo.',
+        ],
+      },
+    },
     // Empty until real gallery exports arrive. These three used to name
     // /work/eve/1..3.webp, files that never existed — invisible while the
     // page drew placeholders, three 400s the moment it drew <Image>.
     gallery: [],
+    featured: true,
+  },
+  /*
+   * The strongest piece of work in the archive, and it was missing entirely:
+   * the old site carried this case study but content/projects.ts never had the
+   * client. Placed second so it reaches the homepage's three hero scenes.
+   */
+  {
+    slug: 'bissanelab',
+    client: 'BissaneLab',
+    category: 'websites',
+    sector: {
+      ar: 'مخبر ديرمو-كوزمتيك',
+      fr: 'Laboratoire dermo-cosmétique',
+      en: 'Dermo-cosmetic laboratory',
+    },
+    summary: {
+      ar: 'إطلاق رقمي كامل من الصفر: هوية، تصوير منتجات، شبكات اجتماعية، وموقع مع متجر إلكتروني.',
+      fr: 'Lancement digital complet depuis zéro : identité, photographie produit, réseaux sociaux, site et boutique en ligne.',
+      en: 'A complete digital launch from zero: identity, product photography, social, and a site with an online store.',
+    },
+    delivered: {
+      ar: ['هوية بصرية', 'تصوير المنتجات', 'إدارة الشبكات الاجتماعية', 'موقع ومتجر إلكتروني'],
+      fr: [
+        'Identité visuelle',
+        'Photographie produit',
+        'Gestion des réseaux sociaux',
+        'Site & boutique en ligne',
+      ],
+      en: [
+        'Visual identity',
+        'Product photography',
+        'Social media management',
+        'Site & online store',
+      ],
+    },
+    link: { kind: 'live', url: 'https://bissanelab.com' },
+    gallery: [],
+    caseStudy: {
+      about: {
+        ar: 'عميلنا مخبر متخصّص في الديرمو-كوزمتيك، يقدّم عناية جلدية راقية موجّهة للبشرة الحسّاسة والمتطلّبة. قبل تدخّلنا، لم يكن للعلامة أي حضور رقمي ولا حسابات على الشبكات الاجتماعية، ولا موقع تعريفي ولا متجر إلكتروني.',
+        fr: "Notre client est un laboratoire spécialisé en dermo-cosmétique, proposant des soins dermatologiques haut de gamme, conçus pour répondre aux besoins des peaux sensibles et exigeantes. Avant notre intervention, la marque n'avait aucune présence digitale ni réseaux sociaux, et ne disposait pas d'un site vitrine ou e-commerce.",
+        en: 'Our client is a laboratory specialising in dermo-cosmetics, making high-end dermatological care for sensitive, demanding skin. Before we started the brand had no digital presence, no social accounts, and neither a showcase site nor an online store.',
+      },
+      objectives: {
+        ar: [
+          'بناء حضور رقمي احترافي وتطويره.',
+          'إطلاق حسابات رسمية على أهم الشبكات الاجتماعية.',
+          'إبراز المنتجات بصور جذّابة.',
+          'إنشاء موقع تعريفي ومتجر إلكتروني.',
+        ],
+        fr: [
+          'Créer et développer une présence digitale professionnelle.',
+          'Lancer des comptes officiels sur les principaux réseaux sociaux.',
+          'Mettre en valeur les produits via des photos attractives.',
+          'Créer un site web vitrine et une boutique e-commerce.',
+        ],
+        en: [
+          'Build a professional digital presence from nothing.',
+          'Launch official accounts on the main social platforms.',
+          'Show the products off through attractive photography.',
+          'Build a showcase site and an e-commerce store.',
+        ],
+      },
+      solution: [
+        {
+          title: {
+            ar: 'استراتيجية العلامة والهوية البصرية',
+            fr: 'Stratégie de marque et identité visuelle',
+            en: 'Brand strategy and visual identity',
+          },
+          points: {
+            ar: [
+              'تحديد التموضع في مجال الديرمو-كوزمتيك.',
+              'وضع دليل بصري متماسك مخصّص للرقمي.',
+            ],
+            fr: [
+              'Définition du positionnement dermo-cosmétique.',
+              "Création d'une charte visuelle cohérente pour le digital.",
+            ],
+            en: [
+              'Defining the dermo-cosmetic positioning.',
+              'A coherent visual system built for digital.',
+            ],
+          },
+        },
+        {
+          title: {
+            ar: 'تصوير احترافي للمنتجات',
+            fr: 'Photographie produit professionnelle',
+            en: 'Professional product photography',
+          },
+          points: {
+            ar: ['جلسة تصوير مخصّصة لإبراز التغليف والقوام.'],
+            fr: ['Shooting dédié pour présenter les packagings et textures.'],
+            en: ['A dedicated shoot for the packaging and the textures.'],
+          },
+        },
+        {
+          title: {
+            ar: 'التسويق عبر الشبكات الاجتماعية',
+            fr: 'Social media marketing',
+            en: 'Social media marketing',
+          },
+          points: {
+            ar: [
+              'إنشاء وفتح الحسابات الرسمية على فيسبوك وإنستغرام.',
+              'مخطّط تحريري على ستة أشهر.',
+              'حملات إعلانية موجّهة لتسريع نموّ المتابعين.',
+            ],
+            fr: [
+              'Création et ouverture des comptes officiels (Facebook, Instagram).',
+              'Planning éditorial sur 6 mois.',
+              'Campagnes publicitaires ciblées pour accélérer la croissance des abonnés.',
+            ],
+            en: [
+              'Opening the official Facebook and Instagram accounts.',
+              'A six-month editorial plan.',
+              'Targeted ad campaigns to accelerate follower growth.',
+            ],
+          },
+        },
+        {
+          title: {
+            ar: 'تطوير الموقع',
+            fr: 'Développement web',
+            en: 'Web development',
+          },
+          points: {
+            ar: [
+              'موقع تعريفي عصري ومتجاوب مع كل الشاشات.',
+              'دمج متجر إلكتروني متكامل.',
+            ],
+            fr: [
+              "Création d'un site vitrine moderne et responsive.",
+              "Intégration d'une boutique e-commerce complète.",
+            ],
+            en: [
+              'A modern, responsive showcase site.',
+              'A full e-commerce store integrated into it.',
+            ],
+          },
+        },
+      ],
+      results: {
+        ar: [
+          'نموّ المتابعين على إنستغرام وفيسبوك من صفر إلى 30 500 متابع في ستة أشهر.',
+          'فيديو CGI أنتجناه ليحمل العلامة، من حضور رقمي انطلق من الصفر إلى رافعة تجارية ومجتمعية حقيقية.',
+          'أكثر من 150 منشورًا صُمّم ونُشر، اعتمادًا على تصوير أصلي.',
+          'إطلاق ناجح للمتجر الإلكتروني، مع أول طلبية في الأسبوع الأول.',
+        ],
+        fr: [
+          'Croissance des abonnés sur Instagram et Facebook de 0 à 30 500 followers en 6 mois.',
+          "Une vidéo CGI produite pour porter la marque, d'une présence digitale partie de zéro à un véritable levier commercial et communautaire.",
+          '+150 publications créées et publiées, avec shooting original.',
+          'Lancement réussi de la boutique en ligne, avec une première commande dès la première semaine.',
+        ],
+        en: [
+          'Instagram and Facebook grew from zero to 30,500 followers in six months.',
+          'A CGI film made to carry the brand — from a digital presence starting at zero to a real commercial and community lever.',
+          'More than 150 posts created and published, all on original photography.',
+          'The online store launched successfully, with its first order in the first week.',
+        ],
+      },
+    },
     featured: true,
   },
   {

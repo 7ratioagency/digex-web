@@ -212,6 +212,10 @@
     "viewVideo": "Watch the video",
     "sector": "Sector",
     "delivered": "What we delivered",
+    "caseAbout": "The client",
+    "caseObjectives": "The objectives",
+    "caseSolution": "What we did",
+    "caseResults": "The results",
     "slidePrev": "Previous project",
     "slideNext": "Next project",
     "filters": {
