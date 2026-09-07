@@ -240,7 +240,117 @@
     "perUnit": "/ pack",
     "currency": "DA",
     "featured": "Le plus demandé",
-    "cta": "Demander un devis"
+    "cta": "Demander un devis",
+    "tiers": {
+      "marketingEssentiel": "Pack Essentiel",
+      "marketingPerformance": "Pack Performance",
+      "marketingEnterprise": "Pack Enterprise",
+      "siteVitrine": "Site vitrine",
+      "siteEntreprise": "Site entreprise",
+      "siteEcommerce": "Site e-commerce",
+      "identiteComplete": "Identité visuelle complète"
+    },
+    "features": {
+      "auditFree": "Audit marketing gratuit",
+      "strategy3Months": "Stratégie digitale sur 3 mois",
+      "social8Posts": "Gestion des réseaux sociaux (8 posts/mois)",
+      "googleAds": "Campagne Google Ads (budget exclu)",
+      "bonusTraining": "Bonus : 1 formation offerte à votre équipe",
+      "everythingEssentiel": "Tout le Pack Essentiel, +",
+      "seoFull": "SEO complet (optimisation technique & contenu)",
+      "emailAutomation": "Email marketing automatisé (2 campagnes/mois)",
+      "monthlyReport": "Reporting mensuel détaillé",
+      "bonusPriority": "Bonus : accès prioritaire aux experts",
+      "fullService360": "Accompagnement 360° (stratégie + exécution)",
+      "dedicatedTeam": "Équipe dédiée (CMO virtuel, designer, etc.)",
+      "advancedCompetitive": "Analyse concurrentielle avancée",
+      "crisisManagement": "Gestion de crise incluse",
+      "bonusQuarterly": "Bonus : réunion trimestrielle avec votre direction",
+      "hostingDomain1y": "Hébergement & nom de domaine (1 an inclus ou assistance à la configuration)",
+      "responsiveDesign": "Responsive design (mobile & tablette)",
+      "pages3": "3 pages incluses",
+      "basicSecurity": "Sécurité de base (anti-spam)",
+      "contactForm": "Intégration d'un formulaire de contact",
+      "basicTraining": "Formation de base à la gestion du site",
+      "everythingVitrine": "Tout le contenu du Pack Vitrine, +",
+      "proEmails": "Création d'adresses e-mail professionnelles",
+      "pages6": "Jusqu'à 6 pages incluses",
+      "seoAdvanced": "Optimisation SEO avancée (balises, vitesse)",
+      "maintenance1m": "Maintenance & mises à jour (1 mois inclus)",
+      "blogSpace": "Blog ou espace actualités intégré",
+      "everythingEntreprise": "Tout le contenu du Pack Entreprise, +",
+      "stockOrders": "Gestion des stocks & des commandes",
+      "customerArea": "Espace client sécurisé (connexion, suivi commande, compte)",
+      "deliveryOptions": "Livraison (tarifs, zones, suivi)",
+      "paymentGateway": "Intégration d'une passerelle de paiement",
+      "coupons": "Coupons & codes promo",
+      "logoPro": "Logo professionnel",
+      "businessCard": "Carte de visite",
+      "rollUpItem": "Roll-up",
+      "flyerItem": "Flyer"
+    },
+    "print": {
+      "title": "Tarifs impression",
+      "lead": "Prix à l'unité, issus de notre boutique d'impression. Pour les formats et quantités particuliers, contactez-nous.",
+      "perSquareMetre": "le m²",
+      "products": {
+        "rollUp": {
+          "name": "Roll-up",
+          "note": "85 cm"
+        },
+        "xBanner": {
+          "name": "X-Banner",
+          "note": ""
+        },
+        "backlight": {
+          "name": "Backlight",
+          "note": ""
+        },
+        "flag": {
+          "name": "Drapeau",
+          "note": "Prix selon la taille"
+        },
+        "tarpaulin": {
+          "name": "Bâche",
+          "note": ""
+        },
+        "windowFilm": {
+          "name": "Vitrine",
+          "note": "Prix selon le type"
+        },
+        "flyer": {
+          "name": "Flyer",
+          "note": "Le prix varie selon le format (A4, A5, A6) et le recto/verso"
+        },
+        "notebook": {
+          "name": "Notebook",
+          "note": "50 feuilles. Le prix varie selon le format, la couverture et la couleur"
+        }
+      }
+    },
+    "estimator": {
+      "title": "Estimez le budget de votre site",
+      "lead": "Choisissez ce dont vous avez besoin et obtenez une estimation immédiate. Le chiffre est indicatif — le devis final suit un court échange.",
+      "websiteType": "Type de site",
+      "customDesign": "Design sur mesure",
+      "customDesignHint": "Un site qui reflète votre identité de marque : responsive, moderne, agréable à utiliser.",
+      "pages": "Nombre de pages",
+      "pagesHint": "Déplacez le curseur pour choisir le nombre de pages.",
+      "hosting": "Hébergement + nom de domaine",
+      "hostingHint": ".com / .dz",
+      "proEmail": "Email professionnel",
+      "proEmailHint": "Renforcez votre crédibilité avec une adresse email à votre nom de domaine.",
+      "included": "Inclus",
+      "total": "Estimation",
+      "disclaimer": "Estimation indicative selon vos choix, hors budgets publicitaires et hors contenu. Contactez-nous pour un devis précis.",
+      "choices": {
+        "landingPage": "Landing page",
+        "professionalSite": "Site professionnel",
+        "ecommerce": "E-commerce",
+        "basicHosting": "Hébergement basique",
+        "proHosting": "Hébergement pro"
+      }
+    }
   },
   "process": {
     "eyebrow": "Notre méthode",

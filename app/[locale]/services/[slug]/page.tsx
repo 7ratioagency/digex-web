@@ -10,12 +10,15 @@ import { DecorLayer, GlassBubble, SpiralOrb } from '@/components/ui/Decor'
 import { ServiceIncluded } from '@/components/sections/ServiceIncluded'
 import { ServiceWork } from '@/components/sections/ServiceWork'
 import { ServiceStrategy } from '@/components/sections/ServiceStrategy'
+import { PrintPrices } from '@/components/sections/PrintPrices'
+import { EstimatorSection } from '@/components/sections/EstimatorSection'
 import { ProcessCompact } from '@/components/sections/ProcessCompact'
 import { Pricing } from '@/components/sections/Pricing'
 import { ContactCTA } from '@/components/sections/ContactCTA'
 import { ArrowIcon } from '@/components/icons'
 import { services, getService } from '@/content/services'
 import { getPricing } from '@/content/pricing'
+import { estimatorEnabled } from '@/content/estimator'
 import { projectsByCategory } from '@/content/projects'
 
 type Props = {
@@ -82,6 +85,13 @@ export default async function ServiceDetailPage({ params }: Props) {
   // <ServiceStrategy>, which owns that fact. Mirrored here only so the tone
   // rhythm below counts the same sections the page actually renders.
   const hasStrategy = service.key === 'digitalMarketing'
+  // The print rate card belongs to printing alone — see <PrintPrices>, which
+  // owns that fact. Mirrored here only for the tone rhythm below.
+  const hasPrintPrices = service.key === 'printing'
+  // The estimator has two gates — the service, and whether prices are
+  // confirmed at all. <EstimatorSection> owns both; this mirrors them so the
+  // tone rhythm counts only what renders.
+  const hasEstimator = service.key === 'digitalSolutions' && estimatorEnabled
 
   /*
    * Alternating paper/navy tone down the page — DESIGN.md §3 rule 1, where
@@ -103,6 +113,8 @@ export default async function ServiceDetailPage({ params }: Props) {
     hasStrategy && 'strategy',
     'process',
     hasWork && 'work',
+    hasPrintPrices && 'printPrices',
+    hasEstimator && 'estimator',
     hasPricing && 'pricing',
   ].filter(Boolean) as string[]
   const isAlt = (name: string) => {
@@ -195,10 +207,16 @@ export default async function ServiceDetailPage({ params }: Props) {
       {/* ── 5. Selected work ────────────────────────────────────────────── */}
       <ServiceWork service={service} alt={isAlt('work')} />
 
-      {/* ── 6. Pricing ──────────────────────────────────────────────────── */}
+      {/* ── 6. Print rate card (printing only) ─────────────────────────── */}
+      <PrintPrices serviceKey={service.key} alt={isAlt('printPrices')} />
+
+      {/* ── 7. Website estimator (digital solutions only) ──────────────── */}
+      <EstimatorSection serviceKey={service.key} alt={isAlt('estimator')} />
+
+      {/* ── 8. Pricing ──────────────────────────────────────────────────── */}
       <Pricing serviceSlug={service.slug} alt={isAlt('pricing')} />
 
-      {/* ── 7. CTA — WhatsApp, plus the route through to the form ───────── */}
+      {/* ── 9. CTA — WhatsApp, plus the route through to the form ───────── */}
       <ContactCTA showFormLink />
     </main>
   )

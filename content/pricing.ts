@@ -1,25 +1,24 @@
 // Destination in repo: content/pricing.ts
 //
-// ⚠️  NO PRICES YET — the array below is deliberately empty.
+// ⚠️  THESE FIGURES ARE THE OLD SITE'S, NOT CONFIRMED CURRENT RATES.
 //
-//     Every figure this file used to carry was a placeholder invented for
-//     layout, and the client's catalogue (the source the eight services were
-//     rebuilt from) prints no prices at all. Rather than keep inventing
-//     numbers, there is nothing here until the client sends real rates.
+//     Every number below is real — it was published on digex.agency and
+//     recovered from assets/backup/digex-content.json (→ pricing.packs). None
+//     of it is invented, which is what the previous, empty version of this
+//     file was waiting for.
 //
-//     While the array is empty, `getPricing()` returns undefined for every
-//     slug and <Pricing> renders nothing — no empty block, no "from 0 DA".
+//     But it is the *old* site's pricing, and nobody has confirmed it still
+//     stands. So `pricesConfirmed` remains false and `displayPrice()` returns
+//     null for every tier: the UI renders the localised "on request" label and
+//     no figure reaches a visitor.
 //
-//     To bring pricing back: add one ServicePricing entry per slug (slugs live
-//     in content/services.ts), restore the tier and feature strings under
-//     `pricing.tiers.*` / `pricing.features.*` in messages/{ar,fr,en}.json, and
-//     flip `pricesConfirmed` to true ONLY once every figure has been reviewed.
+//     TO GO LIVE: check each `price` against current rates, correct any that
+//     have moved, then flip `pricesConfirmed` to true. That one edit turns on
+//     the packs here, the print price list in content/printProducts.ts, and
+//     the website estimator, all of which read through the same switch.
 //
-//     Deliverables no longer live here. "What's included" used to flatten each
-//     tier's `featureKeys`, which tied a service's capabilities to its having
-//     a price — so emptying this file would have silently deleted that section
-//     from every service page. They now come from `deliverableKeys` in
-//     content/services.ts, straight out of the catalogue.
+//     Feature lists are the packs' own contents, verbatim apart from two typos
+//     the old CMS carried ("iclues", "inclues" → "incluses").
 
 export const pricesConfirmed = false as boolean
 
@@ -27,7 +26,7 @@ export type Currency = 'DZD'
 
 export interface PricingTier {
   key: string
-  /** null = always quote-only. */
+  /** From the old site. null = quote-only by design. */
   price: number | null
   currency: Currency
   /** true = show "starting from" prefix */
@@ -45,8 +44,124 @@ export interface ServicePricing {
   tiers: PricingTier[]
 }
 
-/** Empty until the client sends real rates — see the note at the top. */
-export const pricing: ServicePricing[] = []
+/*
+ * No tier is `featured`. The old site badged all seven "Populaire", which
+ * carries no signal at all — and picking a different one to promote would be
+ * inventing a recommendation the agency never made.
+ */
+export const pricing: ServicePricing[] = [
+  {
+    serviceSlug: 'digital-marketing',
+    tiers: [
+      {
+        key: 'marketingEssentiel',
+        price: 45000,
+        currency: 'DZD',
+        from: false,
+        billing: 'monthly',
+        featureKeys: [
+          'auditFree',
+          'strategy3Months',
+          'social8Posts',
+          'googleAds',
+          'bonusTraining',
+        ],
+      },
+      {
+        key: 'marketingPerformance',
+        price: 110000,
+        currency: 'DZD',
+        from: false,
+        billing: 'monthly',
+        featureKeys: [
+          'everythingEssentiel',
+          'seoFull',
+          'emailAutomation',
+          'monthlyReport',
+          'bonusPriority',
+        ],
+      },
+      {
+        key: 'marketingEnterprise',
+        // Quote-only on the old site too, not an unconfirmed number.
+        price: null,
+        currency: 'DZD',
+        from: false,
+        billing: 'monthly',
+        featureKeys: [
+          'fullService360',
+          'dedicatedTeam',
+          'advancedCompetitive',
+          'crisisManagement',
+          'bonusQuarterly',
+        ],
+      },
+    ],
+  },
+  {
+    serviceSlug: 'digital-solutions',
+    tiers: [
+      {
+        key: 'siteVitrine',
+        price: 40000,
+        currency: 'DZD',
+        from: false,
+        billing: 'once',
+        featureKeys: [
+          'hostingDomain1y',
+          'responsiveDesign',
+          'pages3',
+          'basicSecurity',
+          'contactForm',
+          'basicTraining',
+        ],
+      },
+      {
+        key: 'siteEntreprise',
+        price: 60000,
+        currency: 'DZD',
+        from: false,
+        billing: 'once',
+        featureKeys: [
+          'everythingVitrine',
+          'proEmails',
+          'pages6',
+          'seoAdvanced',
+          'maintenance1m',
+          'blogSpace',
+        ],
+      },
+      {
+        key: 'siteEcommerce',
+        price: 198000,
+        currency: 'DZD',
+        from: false,
+        billing: 'once',
+        featureKeys: [
+          'everythingEntreprise',
+          'stockOrders',
+          'customerArea',
+          'deliveryOptions',
+          'paymentGateway',
+          'coupons',
+        ],
+      },
+    ],
+  },
+  {
+    serviceSlug: 'visual-identity',
+    tiers: [
+      {
+        key: 'identiteComplete',
+        price: 20000,
+        currency: 'DZD',
+        from: false,
+        billing: 'once',
+        featureKeys: ['logoPro', 'businessCard', 'rollUpItem', 'flyerItem'],
+      },
+    ],
+  },
+]
 
 export const getPricing = (serviceSlug: string) =>
   pricing.find((p) => p.serviceSlug === serviceSlug)

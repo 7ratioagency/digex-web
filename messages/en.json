@@ -240,7 +240,117 @@
     "perUnit": "/ pack",
     "currency": "DZD",
     "featured": "Most popular",
-    "cta": "Request a quote"
+    "cta": "Request a quote",
+    "tiers": {
+      "marketingEssentiel": "Essential pack",
+      "marketingPerformance": "Performance pack",
+      "marketingEnterprise": "Enterprise pack",
+      "siteVitrine": "Showcase site",
+      "siteEntreprise": "Company site",
+      "siteEcommerce": "E-commerce site",
+      "identiteComplete": "Complete visual identity"
+    },
+    "features": {
+      "auditFree": "Free marketing audit",
+      "strategy3Months": "A three-month digital strategy",
+      "social8Posts": "Social media management (8 posts a month)",
+      "googleAds": "A Google Ads campaign (ad budget not included)",
+      "bonusTraining": "Bonus: one training session for your team",
+      "everythingEssentiel": "Everything in the Essential pack, plus:",
+      "seoFull": "Full SEO — technical and content",
+      "emailAutomation": "Automated email marketing (2 campaigns a month)",
+      "monthlyReport": "A detailed monthly report",
+      "bonusPriority": "Bonus: priority access to the specialists",
+      "fullService360": "End-to-end support (strategy and execution)",
+      "dedicatedTeam": "A dedicated team (virtual CMO, designer, and so on)",
+      "advancedCompetitive": "Advanced competitive analysis",
+      "crisisManagement": "Crisis management included",
+      "bonusQuarterly": "Bonus: a quarterly meeting with your leadership",
+      "hostingDomain1y": "Hosting and domain name (one year included, or help setting it up)",
+      "responsiveDesign": "Responsive design (mobile and tablet)",
+      "pages3": "Three pages included",
+      "basicSecurity": "Basic security (anti-spam)",
+      "contactForm": "A contact form, integrated",
+      "basicTraining": "Basic training on running the site",
+      "everythingVitrine": "Everything in the Showcase pack, plus:",
+      "proEmails": "Professional email addresses",
+      "pages6": "Up to six pages included",
+      "seoAdvanced": "Advanced SEO (tags, speed)",
+      "maintenance1m": "Maintenance and updates (one month included)",
+      "blogSpace": "A blog or news space, integrated",
+      "everythingEntreprise": "Everything in the Company pack, plus:",
+      "stockOrders": "Stock and order management",
+      "customerArea": "A secure customer area (login, order tracking, account)",
+      "deliveryOptions": "Delivery (rates, zones, tracking)",
+      "paymentGateway": "A payment gateway, integrated",
+      "coupons": "Coupons and promo codes",
+      "logoPro": "A professional logo",
+      "businessCard": "Business card",
+      "rollUpItem": "Roll-up",
+      "flyerItem": "Flyer"
+    },
+    "print": {
+      "title": "Print prices",
+      "lead": "Unit prices from our print shop. For particular formats and quantities, get in touch.",
+      "perSquareMetre": "per m²",
+      "products": {
+        "rollUp": {
+          "name": "Roll-up",
+          "note": "85 cm"
+        },
+        "xBanner": {
+          "name": "X-Banner",
+          "note": ""
+        },
+        "backlight": {
+          "name": "Backlight",
+          "note": ""
+        },
+        "flag": {
+          "name": "Flag",
+          "note": "Price depends on size"
+        },
+        "tarpaulin": {
+          "name": "Tarpaulin",
+          "note": ""
+        },
+        "windowFilm": {
+          "name": "Window film",
+          "note": "Price depends on the finish"
+        },
+        "flyer": {
+          "name": "Flyer",
+          "note": "Price varies with format (A4, A5, A6) and single or double sided"
+        },
+        "notebook": {
+          "name": "Notebook",
+          "note": "50 sheets. Price varies with format, cover and colour"
+        }
+      }
+    },
+    "estimator": {
+      "title": "Estimate your website budget",
+      "lead": "Pick what you need and get an instant estimate. The figure is indicative — the real quote follows a short conversation.",
+      "websiteType": "Website",
+      "customDesign": "Custom design",
+      "customDesignHint": "A website that reflects your brand identity: responsive, modern, user-friendly.",
+      "pages": "Pages",
+      "pagesHint": "Drag to set the number of pages.",
+      "hosting": "Hosting + domain name",
+      "hostingHint": ".com / .dz",
+      "proEmail": "Professional email",
+      "proEmailHint": "Strengthen your credibility with an email address on your own domain.",
+      "included": "Included",
+      "total": "Estimate",
+      "disclaimer": "An indicative estimate based on your choices, excluding ad budgets and content. Get in touch for a precise quote.",
+      "choices": {
+        "landingPage": "Landing page",
+        "professionalSite": "Professional website",
+        "ecommerce": "E-commerce",
+        "basicHosting": "Basic hosting",
+        "proHosting": "Pro hosting"
+      }
+    }
   },
   "process": {
     "eyebrow": "How we work",
