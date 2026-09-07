@@ -7,6 +7,7 @@
     "home": "Accueil",
     "services": "Services",
     "work": "Réalisations",
+    "about": "À propos",
     "contact": "Contact",
     "cta": "Démarrer un projet",
     "language": "Langue",
@@ -20,6 +21,40 @@
     "sub": "Identité visuelle, boutique en ligne, contenu qui vend — une seule équipe, de l'idée à la première vente.",
     "ctaPrimary": "Démarrer un projet",
     "ctaSecondary": "Voir nos réalisations"
+  },
+  "about": {
+    "eyebrow": "À propos",
+    "title": "Une agence créative et digitale <mark>à 360°</mark>",
+    "lead": "Concevoir l'avenir numérique de l'Algérie.",
+    "storyTitle": "Notre histoire",
+    "story": "Nous sommes une agence créative et digitale à 360°, passionnée par l'idée d'accompagner les marques dans toutes les dimensions de leur communication. Nous croyons qu'aujourd'hui, une présence forte et cohérente nécessite bien plus qu'un simple logo ou un site web : elle demande une vision globale et des solutions sur mesure.",
+    "missionTitle": "Notre mission",
+    "mission": "C'est pourquoi nous avons réuni, au sein d'une même équipe, des spécialistes en marketing digital, développement web, design graphique, branding, impression, photographie et packaging design. Cette diversité est notre force : elle nous permet de proposer des stratégies complètes, cohérentes et parfaitement adaptées à chaque client.",
+    "pillarsTitle": "Nos expertises",
+    "visionTitle": "Votre vision, notre affaire",
+    "vision": "Nous construisons des partenariats durables en plaçant le client d'abord : comprendre votre vision et livrer des résultats mesurables. Startup ou entreprise établie, nous sommes là pour élever votre présence digitale et rendre votre marque inoubliable.",
+    "pillars": {
+      "marketing": {
+        "title": "Marketing digital",
+        "text": "Nous élaborons des plans stratégiques pour booster votre visibilité, engager votre audience et convertir vos prospects en clients fidèles."
+      },
+      "web": {
+        "title": "Développement web",
+        "text": "Nous concevons des sites modernes, performants et optimisés pour offrir la meilleure expérience aux utilisateurs."
+      },
+      "branding": {
+        "title": "Design graphique et branding",
+        "text": "Nous construisons des identités fortes et mémorables, qui traduisent vos valeurs et captent l'attention de votre marché."
+      },
+      "print": {
+        "title": "Impression et packaging",
+        "text": "Nous vous accompagnons dans la création de supports imprimés de qualité et de packagings attractifs qui valorisent vos produits."
+      },
+      "photo": {
+        "title": "Photographie",
+        "text": "Nous capturons l'essence de votre marque à travers des images professionnelles et authentiques."
+      }
+    }
   },
   "problem": {
     "eyebrow": "Pourquoi nous",
@@ -52,6 +87,44 @@
     "viewAll": "Voir tous les services",
     "workLabel": "Réalisations liées",
     "included": "Ce qui est inclus",
+    "strategy": {
+      "title": "Notre stratégie",
+      "lead": "Une marque forte se construit par la constance, la stratégie et l'engagement.",
+      "steps": [
+        {
+          "title": "Étude de marché",
+          "text": "Analyser votre audience cible, vos concurrents et les tendances du secteur."
+        },
+        {
+          "title": "Positionnement de marque",
+          "text": "Définir votre valeur propre, votre mission et votre identité."
+        },
+        {
+          "title": "Stratégie de contenu",
+          "text": "Créer un contenu engageant qui parle réellement à votre audience."
+        },
+        {
+          "title": "Présence digitale",
+          "text": "Construire un site, l'optimiser pour le référencement et ouvrir vos canaux sociaux."
+        },
+        {
+          "title": "Publicité & promotion",
+          "text": "Campagnes payantes, collaborations d'influence et emailing."
+        },
+        {
+          "title": "Marketing traditionnel",
+          "text": "Compléter le digital par les outils classiques pour renforcer la présence publique."
+        },
+        {
+          "title": "Engagement & communauté",
+          "text": "Entretenir la relation par les réseaux sociaux et l'échange avec vos clients."
+        },
+        {
+          "title": "Analyse & optimisation",
+          "text": "Mesurer la performance et affiner la stratégie pour une croissance continue."
+        }
+      ]
+    },
     "deliverables": {
       "marketStudy": "Étude de marché",
       "targetAudience": "Audience cible",

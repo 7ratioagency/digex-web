@@ -11,6 +11,13 @@ type SectionHeaderProps = {
   lead?: string
   /** Centre the header (used by the closing CTA sections) */
   centered?: boolean
+  /**
+   * Heading level. `h2` is right for a section inside a page that already has
+   * an `h1` elsewhere — which is every homepage section, and why it is the
+   * default. A standalone page whose header IS the page title passes `h1`, so
+   * the document has exactly one and the outline is not missing its top level.
+   */
+  as?: 'h1' | 'h2'
 }
 
 /**
@@ -27,6 +34,7 @@ export function SectionHeader({
   title,
   lead,
   centered = false,
+  as: Heading = 'h2',
 }: SectionHeaderProps) {
   return (
     <Reveal
@@ -59,9 +67,9 @@ export function SectionHeader({
         clears it. Latin keeps 1.25: no descender there is deep enough to
         reach, and the looser value would read as slack at this size.
       */}
-      <h2 className="mt-section-xs text-section font-semibold leading-[1.25] text-balance rtl:leading-[1.45] ltr:tracking-tight">
+      <Heading className="mt-section-xs text-section font-semibold leading-[1.25] text-balance rtl:leading-[1.45] ltr:tracking-tight">
         {title}
-      </h2>
+      </Heading>
       {lead && (
         <p className="mt-section-sm text-base leading-relaxed text-pretty text-muted-foreground">
           {lead}

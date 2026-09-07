@@ -29,6 +29,7 @@ export async function Footer() {
     { href: '/', label: tNav('home') },
     { href: '/#services', label: tNav('services') },
     { href: '/#work', label: tNav('work') },
+    { href: '/about', label: tNav('about') },
     { href: '/#contact', label: tNav('contact') },
   ]
 

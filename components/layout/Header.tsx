@@ -13,6 +13,7 @@ export async function Header() {
     { href: '/', label: t('home') },
     { href: '/#services', label: t('services') },
     { href: '/#work', label: t('work') },
+    { href: '/about', label: t('about') },
     { href: '/#contact', label: t('contact') },
   ]
 

@@ -9,6 +9,7 @@ import { Highlight } from '@/components/ui/Highlight'
 import { DecorLayer, GlassBubble, SpiralOrb } from '@/components/ui/Decor'
 import { ServiceIncluded } from '@/components/sections/ServiceIncluded'
 import { ServiceWork } from '@/components/sections/ServiceWork'
+import { ServiceStrategy } from '@/components/sections/ServiceStrategy'
 import { ProcessCompact } from '@/components/sections/ProcessCompact'
 import { Pricing } from '@/components/sections/Pricing'
 import { ContactCTA } from '@/components/sections/ContactCTA'
@@ -77,6 +78,10 @@ export default async function ServiceDetailPage({ params }: Props) {
    */
   const hasIncluded = service.deliverableKeys.length > 0
   const hasPricing = Boolean(getPricing(service.slug))
+  // The eight-step method belongs to digital marketing alone — see
+  // <ServiceStrategy>, which owns that fact. Mirrored here only so the tone
+  // rhythm below counts the same sections the page actually renders.
+  const hasStrategy = service.key === 'digitalMarketing'
 
   /*
    * Alternating paper/navy tone down the page — DESIGN.md §3 rule 1, where
@@ -95,6 +100,7 @@ export default async function ServiceDetailPage({ params }: Props) {
   const rendered = [
     'hero',
     hasIncluded && 'included',
+    hasStrategy && 'strategy',
     'process',
     hasWork && 'work',
     hasPricing && 'pricing',
@@ -180,16 +186,19 @@ export default async function ServiceDetailPage({ params }: Props) {
       {/* ── 2. What's included ──────────────────────────────────────────── */}
       <ServiceIncluded serviceSlug={service.slug} alt={isAlt('included')} />
 
-      {/* ── 3. Process ──────────────────────────────────────────────────── */}
+      {/* ── 3. How this service is practised (digital marketing only) ───── */}
+      <ServiceStrategy serviceKey={service.key} alt={isAlt('strategy')} />
+
+      {/* ── 4. Process ──────────────────────────────────────────────────── */}
       <ProcessCompact alt={isAlt('process')} />
 
-      {/* ── 4. Selected work ────────────────────────────────────────────── */}
+      {/* ── 5. Selected work ────────────────────────────────────────────── */}
       <ServiceWork service={service} alt={isAlt('work')} />
 
-      {/* ── 5. Pricing ──────────────────────────────────────────────────── */}
+      {/* ── 6. Pricing ──────────────────────────────────────────────────── */}
       <Pricing serviceSlug={service.slug} alt={isAlt('pricing')} />
 
-      {/* ── 6. CTA — WhatsApp, plus the route through to the form ───────── */}
+      {/* ── 7. CTA — WhatsApp, plus the route through to the form ───────── */}
       <ContactCTA showFormLink />
     </main>
   )

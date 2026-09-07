@@ -58,6 +58,7 @@ export default async function WorkPage({ params }: Props) {
     <main className="flex flex-1 flex-col">
       <Section>
         <SectionHeader
+          as="h1"
           eyebrow={t('eyebrow')}
           // Same key, same `mark` render prop as the homepage Work section —
           // this page is that section's full listing, not different copy.

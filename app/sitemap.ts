@@ -20,6 +20,7 @@ function routePaths() {
       priority: 0.7,
       changeFrequency: 'yearly' as const,
     })),
+    { path: '/about', priority: 0.7, changeFrequency: 'yearly' as const },
     { path: '/contact', priority: 0.8, changeFrequency: 'yearly' as const },
   ]
 }

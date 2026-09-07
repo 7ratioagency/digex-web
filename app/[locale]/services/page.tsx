@@ -62,6 +62,7 @@ export default async function ServicesPage({ params }: Props) {
         }
       >
         <SectionHeader
+          as="h1"
           eyebrow={t('eyebrow')}
           // Same key, same `mark` render prop as the homepage Services
           // section — this page is that section's full listing, not a

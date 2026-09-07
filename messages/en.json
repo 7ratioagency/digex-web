@@ -7,6 +7,7 @@
     "home": "Home",
     "services": "Services",
     "work": "Work",
+    "about": "About",
     "contact": "Contact",
     "cta": "Start a project",
     "language": "Language",
@@ -20,6 +21,40 @@
     "sub": "Brand identity, an online store that sells, content that lands — one team, from the idea to the first sale.",
     "ctaPrimary": "Start a project",
     "ctaSecondary": "See our work"
+  },
+  "about": {
+    "eyebrow": "About us",
+    "title": "A <mark>360°</mark> creative and digital agency",
+    "lead": "Designing Algeria's digital future.",
+    "storyTitle": "Our story",
+    "story": "We are a 360° creative and digital agency, driven by the idea of standing with brands across every dimension of how they communicate. A strong, coherent presence today takes far more than a logo or a website: it takes a whole view, and solutions cut to measure.",
+    "missionTitle": "Our mission",
+    "mission": "So we brought specialists in digital marketing, web development, graphic design, branding, print, photography and packaging design into one team. That range is the point: it lets us propose strategies that are complete, coherent, and cut to each client.",
+    "pillarsTitle": "What we do",
+    "visionTitle": "Your vision, our concern",
+    "vision": "With a client-first approach, we build lasting partnerships by understanding your unique vision and delivering measurable results. Whether you're a startup or an established business, we're here to elevate your digital presence and make your brand unforgettable.",
+    "pillars": {
+      "marketing": {
+        "title": "Digital marketing",
+        "text": "We build strategic plans to lift your visibility, engage your audience, and turn prospects into loyal customers."
+      },
+      "web": {
+        "title": "Web development",
+        "text": "We build modern, fast, optimised sites that give users the best possible experience."
+      },
+      "branding": {
+        "title": "Graphic design and branding",
+        "text": "We build strong, memorable identities that carry your values and catch your market's attention."
+      },
+      "print": {
+        "title": "Print and packaging",
+        "text": "We see quality printed material and attractive packaging through, so your products are worth more on the shelf."
+      },
+      "photo": {
+        "title": "Photography",
+        "text": "We capture what your brand actually is, in professional and honest images."
+      }
+    }
   },
   "problem": {
     "eyebrow": "Why us",
@@ -52,6 +87,44 @@
     "viewAll": "View all services",
     "workLabel": "Work from this service",
     "included": "What's included",
+    "strategy": {
+      "title": "Our strategy",
+      "lead": "A strong brand is built through consistency, strategy, and engagement.",
+      "steps": [
+        {
+          "title": "Market research",
+          "text": "Analyze your target audience, competitors, and industry trends."
+        },
+        {
+          "title": "Brand positioning",
+          "text": "Define your unique value, mission, and brand identity."
+        },
+        {
+          "title": "Content strategy",
+          "text": "Create engaging content that resonates with your audience."
+        },
+        {
+          "title": "Digital presence",
+          "text": "Build a website, optimize for SEO, and establish social media channels."
+        },
+        {
+          "title": "Advertising & promotion",
+          "text": "Run paid ads, influencer collaborations, and email campaigns."
+        },
+        {
+          "title": "Traditional marketing",
+          "text": "Complement digital efforts with traditional marketing tools to enhance public presence."
+        },
+        {
+          "title": "Engagement & community",
+          "text": "Foster relationships through social media and customer interactions."
+        },
+        {
+          "title": "Analytics & optimization",
+          "text": "Track performance and refine strategies for continuous growth."
+        }
+      ]
+    },
     "deliverables": {
       "marketStudy": "Market research",
       "targetAudience": "Target audience",
