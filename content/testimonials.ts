@@ -1,7 +1,7 @@
 // Destination in repo: content/testimonials.ts
 //
 // Real client testimonials, recovered from the old digex.agency site
-// (public/backup/digex-content.json → testimonials_fr / testimonials_en).
+// (assets/backup/digex-content.json → testimonials_fr / testimonials_en).
 //
 // RULE, same as content/projects.ts: never add an entry that a client did not
 // actually say. Until this file existed the site had no testimonials at all,

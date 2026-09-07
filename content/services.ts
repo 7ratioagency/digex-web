@@ -219,7 +219,7 @@ export const getService = (slug: string) =>
 export const contactDetails = {
   /*
    * Two mobiles and the Batna landline. The landline came off the old
-   * digex.agency contact block (public/backup/digex-content.json → contact),
+   * digex.agency contact block (assets/backup/digex-content.json → contact),
    * where it was published as 033 24 96 98; it is written here in E.164 like
    * the others so `tel:` links and the LocalBusiness schema in lib/seo.ts
    * both work without a per-number special case.
