@@ -7,13 +7,14 @@ import { Highlight } from '@/components/ui/Highlight'
 import { ProjectCard } from '@/components/ui/ProjectCard'
 import { ContactCTA } from '@/components/sections/ContactCTA'
 import { WorkFilter, type FilterKey } from '@/components/work/WorkFilter'
-import { projects } from '@/content/projects'
+import { projects, type ProjectCategory } from '@/content/projects'
 
 const filterOrder: FilterKey[] = [
   'all',
   'websites',
   'branding',
   'design',
+  'marketing',
   'print',
   'video',
 ]
@@ -49,10 +50,22 @@ export default async function WorkPage({ params }: Props) {
     card: <ProjectCard project={project} />,
   }))
 
-  const filters = filterOrder.map((key) => ({
-    key,
-    label: t(`filters.${key}`),
-  }))
+  /*
+   * Only the categories that actually hold something. 'print' is the live
+   * example: the service exists and the filter was rendering "Print 0", a
+   * button whose only outcome is an empty grid. Dropping empty ones also means
+   * the strip grows on its own as work is added, rather than needing this
+   * array edited alongside content/projects.ts.
+   *
+   * 'all' is never dropped — it is the reset, not a category.
+   */
+  const populated = new Set(projects.map((project) => project.category))
+  const filters = filterOrder
+    .filter((key) => key === 'all' || populated.has(key as ProjectCategory))
+    .map((key) => ({
+      key,
+      label: t(`filters.${key}`),
+    }))
 
   return (
     <main className="flex flex-1 flex-col">

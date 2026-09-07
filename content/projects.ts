@@ -16,6 +16,18 @@ export type ProjectCategory =
   | 'branding'
   | 'design'
   | 'print'
+  /*
+   * Social media and campaign work. Added because the portfolio had nowhere to
+   * put it — digital marketing was the one service on the site with no
+   * category that could evidence it, so its page showed no work at all while
+   * the agency had been running campaigns for years.
+   */
+  | 'marketing'
+  /*
+   * Photography as well as film. The label is "Photo & video" in every locale;
+   * the key stays 'video' because renaming it would rewrite every entry that
+   * already uses it for no gain.
+   */
   | 'video'
 
 export type ProjectLinkKind = 'live' | 'behance' | 'youtube'
@@ -599,6 +611,144 @@ export const projects: Project[] = [
     link: {
       kind: 'behance',
       url: 'https://www.behance.net/gallery/211320045/silvira',
+    },
+    gallery: [],
+    featured: false,
+  },
+  /*
+   * The rest of the client list the old site published
+   * (assets/backup/digex-content.json → clients), none of which had ever made
+   * it into the portfolio. Sector and scope are the agency's own one-line
+   * descriptions of each engagement; the deliverables are what those lines and
+   * the clients' own testimonials actually name. Nothing beyond that is
+   * claimed.
+   *
+   * None carries a link. The old site published none for these, and
+   * taxiclick.fr — the one URL it did give — no longer resolves. Add one the
+   * moment a working URL exists.
+   */
+  {
+    slug: 'el-arkem',
+    client: 'El Arkem',
+    category: 'branding',
+    sector: { ar: 'علامة شاي', fr: 'Marque de thé', en: 'Tea brand' },
+    summary: {
+      ar: 'هوية وتغليف لعلامة شاي: شعار وتصميم علبة يعكسان جودة المنتج على الرفّ.',
+      fr: "Identité et packaging pour une marque de thé : un logo et un design d'emballage qui portent la qualité du produit en rayon.",
+      en: 'Identity and packaging for a tea brand: a logo and a pack design that carry the product’s quality on the shelf.',
+    },
+    delivered: {
+      ar: ['شعار', 'هوية بصرية', 'تصميم التغليف'],
+      fr: ['Logo', 'Identité visuelle', 'Design du packaging'],
+      en: ['Logo', 'Visual identity', 'Packaging design'],
+    },
+    gallery: [],
+    featured: false,
+  },
+  {
+    slug: 'chips-miaw',
+    client: 'Chips Miaw',
+    category: 'branding',
+    sector: { ar: 'وجبات خفيفة', fr: 'Snacks', en: 'Snacks' },
+    summary: {
+      ar: 'هوية بصرية جريئة وتغليف لأربع نكهات، مصمّم ليلفت الأنظار في الرفوف.',
+      fr: 'Identité visuelle audacieuse et packaging pour quatre saveurs, pensé pour se démarquer en rayon.',
+      en: 'A bold visual identity and packaging across four flavours, made to stand out on the shelf.',
+    },
+    delivered: {
+      ar: ['هوية بصرية', 'تغليف أربع نكهات', 'شعار'],
+      fr: ['Identité visuelle', 'Packaging 4 saveurs', 'Logo'],
+      en: ['Visual identity', 'Packaging for four flavours', 'Logo'],
+    },
+    gallery: [],
+    featured: false,
+  },
+  {
+    slug: 'qaada',
+    client: 'Qaada',
+    category: 'branding',
+    sector: { ar: 'براندينغ وعرض تقديمي', fr: 'Branding & présentation', en: 'Branding & presentation' },
+    summary: {
+      ar: 'عمل هوية وعرض تقديمي للعلامة.',
+      fr: 'Travail de branding et de présentation de marque.',
+      en: 'Branding and brand-presentation work.',
+    },
+    delivered: {
+      ar: ['هوية العلامة', 'عرض تقديمي'],
+      fr: ['Identité de marque', 'Présentation'],
+      en: ['Brand identity', 'Presentation'],
+    },
+    gallery: [],
+    featured: false,
+  },
+  {
+    slug: 'azas-tapis-royal',
+    client: 'Azas Tapis Royal',
+    category: 'marketing',
+    sector: { ar: 'زرابي وفرش', fr: 'Tapis', en: 'Rugs & carpets' },
+    summary: {
+      ar: 'إدارة الشبكات الاجتماعية وحملات ممولة موجّهة، بنَت حضورًا رقميًا قويًا للعلامة.',
+      fr: 'Gestion des réseaux sociaux et campagnes sponsorisées ciblées, qui ont bâti une forte présence en ligne.',
+      en: 'Social media management and targeted sponsored campaigns that built a strong online presence.',
+    },
+    delivered: {
+      ar: ['إدارة الشبكات الاجتماعية', 'حملات ممولة', 'محتوى منتظم'],
+      fr: ['Gestion des réseaux sociaux', 'Campagnes sponsorisées', 'Contenu régulier'],
+      en: ['Social media management', 'Sponsored campaigns', 'Regular content'],
+    },
+    gallery: [],
+    featured: false,
+  },
+  {
+    slug: 'almas-travel',
+    client: 'Almas Travel',
+    category: 'websites',
+    sector: { ar: 'وكالة أسفار', fr: 'Agence de voyage', en: 'Travel agency' },
+    summary: {
+      ar: 'موقع تعريفي بتصميم مميّز يعكس مكانة الوكالة.',
+      fr: "Site vitrine au design distinctif, à la hauteur du prestige de l'agence.",
+      en: 'A showcase site with a distinctive design, matched to the agency’s standing.',
+    },
+    delivered: {
+      ar: ['موقع تعريفي', 'تصميم الواجهة', 'موقع متجاوب'],
+      fr: ['Site vitrine', 'Design de l’interface', 'Site responsive'],
+      en: ['Showcase site', 'Interface design', 'Responsive build'],
+    },
+    gallery: [],
+    featured: false,
+  },
+  {
+    slug: 'taxiclick',
+    client: 'Taxiclick',
+    category: 'websites',
+    sector: { ar: 'نقل بسائق', fr: 'VTC & mobilité', en: 'Ride-hailing & mobility' },
+    summary: {
+      ar: 'موقع إلكتروني لخدمة النقل بسائق.',
+      fr: 'Site web pour un service de VTC.',
+      en: 'A website for a ride-hailing service.',
+    },
+    delivered: {
+      ar: ['موقع إلكتروني', 'تصميم الواجهة'],
+      fr: ['Site web', 'Design de l’interface'],
+      en: ['Website', 'Interface design'],
+    },
+    gallery: [],
+    featured: false,
+  },
+  {
+    slug: 'rozajin',
+    client: 'Rozajin',
+    category: 'video',
+    sector: { ar: 'تصوير المنتجات', fr: 'Photographie produit', en: 'Product photography' },
+    summary: {
+      ar: 'جلسة تصوير منتجات احترافية، بإخراج فني موحّد عبر كامل التشكيلة.',
+      fr: 'Shooting produit professionnel, avec une direction artistique tenue sur toute la gamme.',
+      en: 'A professional product shoot, art-directed consistently across the range.',
+    },
+    delivered: {
+      ar: ['تصوير المنتجات', 'إخراج فني', 'صور جاهزة للنشر'],
+      fr: ['Photographie produit', 'Direction artistique', 'Images prêtes à publier'],
+      en: ['Product photography', 'Art direction', 'Publish-ready images'],
     },
     gallery: [],
     featured: false,

@@ -106,7 +106,9 @@ export const services: Service[] = [
     slug: 'digital-marketing',
     Icon: MarketingIcon,
     accent: 'var(--accent-blue)',
-    // No marketing category exists in content/projects.ts, so no related work.
+    // 'marketing' was added to ProjectCategory for exactly this: the service
+    // had no category that could evidence it, so its page showed no work.
+    projectCategory: 'marketing',
     deliverableKeys: [
       'dataDrivenStrategy',
       'highValueContent',
